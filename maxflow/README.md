@@ -23,10 +23,3 @@ Usage: ./maxflow <input matrix file> <source id> <target id> [<random seed>]
 
 There is also a test script `test.py` which runs various pre-defined examples and validates results. You will need to create a soft link `maxflow_gpu` to `maxflow_gpu_naive` or `maxflow_gpu_gunrock` to use the script.
 
-## Development plan
-
-- [ ] Study maximum flow algorithms and relevant papers (2 weeks)
-- [ ] Implementation of selected maximum flow algorithms on GPU (2-4 weeks)
-- [ ] Study applications: bipartite matching, community detection (2 weeks)
-- [ ] Integration into nvGraph (2 weeks)
-
