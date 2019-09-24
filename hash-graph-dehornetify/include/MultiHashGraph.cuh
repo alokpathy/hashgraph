@@ -22,22 +22,24 @@
 
 #include <cuda_profiler_api.h> //--profile-from-start off
 
-#include <moderngpu/memory.hxx>
-#include <moderngpu/kernel_sortedsearch.hxx>
-#include <moderngpu/kernel_mergesort.hxx>
-#include <moderngpu/kernel_merge.hxx>
-#include <moderngpu/kernel_scan.hxx>
-#include <moderngpu/kernel_segsort.hxx>
+// #include <moderngpu/memory.hxx>
+// #include <moderngpu/kernel_sortedsearch.hxx>
+// #include <moderngpu/kernel_mergesort.hxx>
+// #include <moderngpu/kernel_merge.hxx>
+// #include <moderngpu/kernel_scan.hxx>
+// #include <moderngpu/kernel_segsort.hxx>
 
 #include <thrust/random.h>
 #include <thrust/device_vector.h>
 #include <thrust/transform.h>
 #include <thrust/iterator/counting_iterator.h>
 
-#include "rmm.h"
-#include "rmm.hpp"
-#include "rmm/rmm_api.h"
-#include "rmm/detail/memory_manager.hpp"
+#include <omp.h>
+
+// #include "rmm.h"
+// #include "rmm.hpp"
+// #include "rmm/rmm_api.h"
+// #include "rmm/detail/memory_manager.hpp"
 
 
 // #include <moderngpu/kernel_load_balance.hxx>
@@ -53,7 +55,7 @@ using hkey_t = int32_t;
 using index_t = int32_t;
 using HashKey = int32_t;
 
-using namespace mgpu;
+// using namespace mgpu;
 
 #define CHECK_ERROR(str) \
 	{cudaError_t err; err = cudaGetLastError(); if(err!=0) {printf("ERROR %s:  %d %s\n", str, err, cudaGetErrorString(err)); fflush(stdout); exit(0);}}
@@ -100,50 +102,51 @@ inline bool operator==(const keyval &kv1, const keyval &kv2) {
 }
 
 // Overload Modern GPU memory allocation and free to use RMM
-class rmm_mgpu_context_t : public mgpu::standard_context_t
-{
-public:
-  rmm_mgpu_context_t(bool print_prop = true, cudaStream_t stream_ = 0) :
-    mgpu::standard_context_t(print_prop, stream_) {}
-  ~rmm_mgpu_context_t() {}
-
-  virtual void* alloc(size_t size, memory_space_t space) {
-    void *p = nullptr;
-    if(size) {
-      if (memory_space_device == space) {
-        if (RMM_SUCCESS != RMM_ALLOC(&p, size, stream()))
-          throw cuda_exception_t(cudaPeekAtLastError());
-      }
-      else {
-        cudaError_t result = cudaMallocHost(&p, size);
-        if (cudaSuccess != result) throw cuda_exception_t(result);
-      }
-    }
-    return p;
-  }
-
-  virtual void free(void* p, memory_space_t space) {
-    if (p) {
-      if (memory_space_device == space) {
-        if (RMM_SUCCESS != RMM_FREE(p, stream()))
-          throw cuda_exception_t(cudaPeekAtLastError());
-      }
-      else {
-        cudaError_t result = cudaFreeHost(&p);
-        if (cudaSuccess != result) throw cuda_exception_t(result);
-      }
-    }
-  }
-};
+// class rmm_mgpu_context_t : public mgpu::standard_context_t
+// {
+// public:
+//   rmm_mgpu_context_t(bool print_prop = true, cudaStream_t stream_ = 0) :
+//     mgpu::standard_context_t(print_prop, stream_) {}
+//   ~rmm_mgpu_context_t() {}
+// 
+//   virtual void* alloc(size_t size, memory_space_t space) {
+//     void *p = nullptr;
+//     if(size) {
+//       if (memory_space_device == space) {
+//         if (RMM_SUCCESS != RMM_ALLOC(&p, size, stream()))
+//           throw cuda_exception_t(cudaPeekAtLastError());
+//       }
+//       else {
+//         cudaError_t result = cudaMallocHost(&p, size);
+//         if (cudaSuccess != result) throw cuda_exception_t(result);
+//       }
+//     }
+//     return p;
+//   }
+// 
+//   virtual void free(void* p, memory_space_t space) {
+//     if (p) {
+//       if (memory_space_device == space) {
+//         if (RMM_SUCCESS != RMM_FREE(p, stream()))
+//           throw cuda_exception_t(cudaPeekAtLastError());
+//       }
+//       else {
+//         cudaError_t result = cudaFreeHost(&p);
+//         if (cudaSuccess != result) throw cuda_exception_t(result);
+//       }
+//     }
+//   }
+// };
 
 class MultiHashGraph {
 public:
     MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t maxkey, 
-                      context_t &context, int64_t tableSize,
+                      // context_t &context, int64_t tableSize,
+                      int64_t tableSize,
                       uint64_t binCount, index_t lrbBins, uint64_t gpuCount); ~MultiHashGraph();
 
     void build(bool buildSplits, uint64_t tid);
-    void buildSingle(context_t &context);
+    // void buildSingle(context_t &context);
 
     static void intersect(MultiHashGraph &mgA, MultiHashGraph &mgB, int64_t *h_Common,
                               keypair **h_dOutput, uint64_t tid);

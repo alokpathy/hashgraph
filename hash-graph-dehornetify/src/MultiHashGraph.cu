@@ -25,12 +25,12 @@
 
 #include <cuda_profiler_api.h> //--profile-from-start off
 
-#include <moderngpu/memory.hxx>
-#include <moderngpu/kernel_sortedsearch.hxx>
-#include <moderngpu/kernel_mergesort.hxx>
-#include <moderngpu/kernel_merge.hxx>
-#include <moderngpu/kernel_scan.hxx>
-#include <moderngpu/kernel_segsort.hxx>
+// #include <moderngpu/memory.hxx>
+// #include <moderngpu/kernel_sortedsearch.hxx>
+// #include <moderngpu/kernel_mergesort.hxx>
+// #include <moderngpu/kernel_merge.hxx>
+// #include <moderngpu/kernel_scan.hxx>
+// #include <moderngpu/kernel_segsort.hxx>
 
 #include <cuda_runtime_api.h>
 #include <cub/cub.cuh>
@@ -57,7 +57,8 @@ uint64_t tidFocused = 2;
 #endif
 
 MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t maxkey, 
-                                    context_t &context, int64_t tableSize, 
+                                    // context_t &context, int64_t tableSize, 
+                                    int64_t tableSize, 
                                     uint64_t binCount, index_t lrbBins, 
                                     uint64_t gpuCount) {
 
@@ -324,13 +325,13 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
   _d_temp_storage = nullptr; _temp_storage_bytes = 0;
   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
                                     d_offSet, tableSize);
-  // cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
-  RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
+  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+  // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
                                      d_offSet, tableSize);
   cudaMemcpy(d_offSet + tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
-  // cudaFree(_d_temp_storage);
-  RMM_FREE(_d_temp_storage, 0);
+  cudaFree(_d_temp_storage);
+  // RMM_FREE(_d_temp_storage, 0);
 
   cudaMemset(d_counter, 0, tableSize * sizeof(index_t));
 
@@ -468,10 +469,10 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
 #endif
 
 #ifdef INDEX_TRACK
-  // cudaFree(h_dVals[tid].d_keys);
-  // cudaFree(h_dVals[tid].d_hash);
-  RMM_FREE(h_dVals[tid].d_keys, 0);
-  RMM_FREE(h_dVals[tid].d_hash, 0);
+  cudaFree(h_dVals[tid].d_keys);
+  cudaFree(h_dVals[tid].d_hash);
+  // RMM_FREE(h_dVals[tid].d_keys, 0);
+  // RMM_FREE(h_dVals[tid].d_hash, 0);
 #endif
 
   // On each GPU, count the number of keys that will get shipped to it.
@@ -627,10 +628,10 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
   int64_t *d_countCommon = nullptr;
   int64_t *d_outputPositions = nullptr;
 
-  // cudaMalloc(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t));
-  // cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t));
-  RMM_ALLOC(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t), 0);
-  RMM_ALLOC(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t), 0);
+  cudaMalloc(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t));
+  cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t));
+  // RMM_ALLOC(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t), 0);
+  // RMM_ALLOC(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t), 0);
 
   cudaMemsetAsync(d_countCommon, 0, (size_t)(tableSize + 1) * sizeof(int64_t));
   cudaMemsetAsync(d_outputPositions, 0, (size_t)(tableSize + 1) * sizeof(int64_t));
@@ -647,25 +648,25 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
   _d_temp_storage=nullptr; _temp_storage_bytes=0;
   cub::DeviceReduce::Sum(_d_temp_storage, _temp_storage_bytes, d_countCommon, 
                               d_Common, tableSize);
-  // cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
-  RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
+  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+  // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
   cub::DeviceReduce::Sum(_d_temp_storage, _temp_storage_bytes, d_countCommon, 
                               d_Common, tableSize);
   cudaMemcpy(&h_Common[tid], d_Common, 1 * sizeof(int64_t), cudaMemcpyDeviceToHost);
   // gpu::copyToHost<int32_t>(d_Common.data(), 1, &h_Common);
-  // cudaFree(_d_temp_storage);
-  RMM_FREE(_d_temp_storage, 0);
+  cudaFree(_d_temp_storage);
+  // RMM_FREE(_d_temp_storage, 0);
   // gpu::free(_d_temp_storage);
 
   _d_temp_storage=nullptr; _temp_storage_bytes=0;
   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes, d_countCommon, 
                               d_outputPositions, tableSize);
-  // cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
-  RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
+  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+  // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes, d_countCommon, 
                               d_outputPositions, tableSize);
-  // cudaFree(_d_temp_storage);
-  RMM_FREE(_d_temp_storage, 0);
+  cudaFree(_d_temp_storage);
+  // RMM_FREE(_d_temp_storage, 0);
   // gpu::free(_d_temp_storage);
 
 
@@ -673,8 +674,8 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
 
   if (h_Common[tid] > 0) {
     // d_output =  mem_t<keypair>(h_Common,context,memory_space_device);
-    // cudaMalloc(&h_dOutput[tid], h_Common[tid] * sizeof(keypair));
-    RMM_ALLOC(&h_dOutput[tid], h_Common[tid] * sizeof(keypair), 0);
+    cudaMalloc(&h_dOutput[tid], h_Common[tid] * sizeof(keypair));
+    // RMM_ALLOC(&h_dOutput[tid], h_Common[tid] * sizeof(keypair), 0);
   }
 
 
@@ -691,6 +692,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
   CHECK_ERROR("intersect error");
 }
 
+#if 0
 void MultiHashGraph::buildSingle(context_t &context) {
 
     cudaSetDevice(0);
@@ -792,3 +794,4 @@ void MultiHashGraph::buildSingle(context_t &context) {
     cudaFree(d_vals);
 
 }
+#endif

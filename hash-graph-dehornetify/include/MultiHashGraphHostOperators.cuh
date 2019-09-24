@@ -245,11 +245,11 @@ void countFinalKeys(uint64_t **h_bufferCounter, char **h_dFinalKeys,
   // except hash, hash is type HashKey
   // cudaMalloc(&h_dFinalKeys[tid], (4 * keyCount * sizeof(keyval)) +
   //                               (2 * (hashRange + 1) * sizeof(index_t)));
-  // cudaMalloc(&h_dFinalKeys[tid], keyCount * sizeof(keyval) + 
-  RMM_ALLOC(&h_dFinalKeys[tid], keyCount * sizeof(keyval) + 
+  cudaMalloc(&h_dFinalKeys[tid], keyCount * sizeof(keyval) + 
+  // RMM_ALLOC(&h_dFinalKeys[tid], keyCount * sizeof(keyval) + 
                                  keyCount * sizeof(HashKey) +
                                  (2 * keyCount * sizeof(keyval)) +
-                                 (2 * (hashRange + 1) * sizeof(index_t)), 0);
+                                 (2 * (hashRange + 1) * sizeof(index_t)));
 }
 
 // void allToAll(inputData *h_dVals, hkey_t **h_dFinalKeys,
@@ -274,32 +274,32 @@ void allToAll(inputData *h_dVals, char **h_dFinalKeys,
   }
 }
 
-template<typename hkey_t, typename HashKey,  typename index_t>
-void buildTable(hkey_t *d_vals, mem_t<HashKey> &d_hash, mem_t<int32_t> &d_counter, 
-	            mem_t<index_t> &d_offSet, mem_t<keyval> &d_edges, index_t valCount, 
-                    index_t tableSize, context_t& context, int64_t valsOffset=0) {
-
-  void*  _d_temp_storage     { nullptr };
-  size_t _temp_storage_bytes { 0 };
-
-  // hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
-  //                                                  d_hash.data(), (HashKey) tableSize);
-  basicHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
-                                                  d_hash.data(), (HashKey) tableSize);
-
-  countHashD32<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash.data(), d_counter.data());
-
-  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter.data(), 
-                                    d_offSet.data(), tableSize);
-  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
-  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter.data(), 
-                                    d_offSet.data(), tableSize);
-  d_counter = fill(0, (size_t)tableSize, context);
-  cudaMemcpy(d_offSet.data()+tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
-  cudaFree(_d_temp_storage);
-
-  copyToGraphD32<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
-                                    d_hash.data(), d_counter.data(), d_offSet.data(), 
-                                    d_edges.data(), tableSize);
-}
-
+// template<typename hkey_t, typename HashKey,  typename index_t>
+// void buildTable(hkey_t *d_vals, mem_t<HashKey> &d_hash, mem_t<int32_t> &d_counter, 
+// 	            mem_t<index_t> &d_offSet, mem_t<keyval> &d_edges, index_t valCount, 
+//                     index_t tableSize, context_t& context, int64_t valsOffset=0) {
+// 
+//   void*  _d_temp_storage     { nullptr };
+//   size_t _temp_storage_bytes { 0 };
+// 
+//   // hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
+//   //                                                  d_hash.data(), (HashKey) tableSize);
+//   basicHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
+//                                                   d_hash.data(), (HashKey) tableSize);
+// 
+//   countHashD32<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash.data(), d_counter.data());
+// 
+//   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter.data(), 
+//                                     d_offSet.data(), tableSize);
+//   cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+//   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter.data(), 
+//                                     d_offSet.data(), tableSize);
+//   d_counter = fill(0, (size_t)tableSize, context);
+//   cudaMemcpy(d_offSet.data()+tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
+//   cudaFree(_d_temp_storage);
+// 
+//   copyToGraphD32<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
+//                                     d_hash.data(), d_counter.data(), d_offSet.data(), 
+//                                     d_edges.data(), tableSize);
+// }
+// 

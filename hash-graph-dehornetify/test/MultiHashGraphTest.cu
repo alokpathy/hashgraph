@@ -15,10 +15,12 @@
  */
 #include "MultiHashGraph.cuh"
 
+#include <algorithm>
+
 #define RAND_KEYS
 // #define PRINT_KEYS
 
-// #define BUILD_TEST
+#define BUILD_TEST
 
 struct prg {
   hkey_t lo, hi;
@@ -163,8 +165,8 @@ int main(int argc, char **argv) {
   std::cout << "countSizeA: " << countSizeA << std::endl;
   std::cout << "maxkey: " << maxkey << std::endl;
 
-  rmm_mgpu_context_t contextA;
-  rmm_mgpu_context_t contextB;
+  // rmm_mgpu_context_t contextA;
+  // rmm_mgpu_context_t contextB;
 
   cudaEvent_t start, stop;
   cudaEventCreate(&start);
@@ -173,27 +175,28 @@ int main(int argc, char **argv) {
 
   enablePeerAccess(gpuCount);
 
-  rmmOptions_t rmmO;
+  // rmmOptions_t rmmO;
 
-  rmmO.initial_pool_size = 1L << 60;
-  rmmO.allocation_mode = PoolAllocation;
-  rmmO.enable_logging = false;
-  rmmO.num_devices = 16;
+  // rmmO.initial_pool_size = 1L << 60;
+  // rmmO.allocation_mode = PoolAllocation;
+  // rmmO.enable_logging = false;
+  // rmmO.num_devices = 16;
 
-  int *devices = (int *)malloc(gpuCount * sizeof(int));
-  for (int64_t i = 0; i < gpuCount; i++) {
-    devices[i] = i;
-  }
-  
-  rmmO.devices = devices;
+  // int *devices = (int *)malloc(gpuCount * sizeof(int));
+  // for (int64_t i = 0; i < gpuCount; i++) {
+  //   devices[i] = i;
+  // }
+  // 
+  // rmmO.devices = devices;
 
-  rmmInitialize(&rmmO);
+  // rmmInitialize(&rmmO);
 
 #ifdef BUILD_TEST
   inputData *h_dVals = new inputData[gpuCount]();
   generateInput(h_dVals, countSizeA, maxkey, gpuCount, 0);
 
-  MultiHashGraph mhg(h_dVals, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
+  // MultiHashGraph mhg(h_dVals, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
+  MultiHashGraph mhg(h_dVals, countSizeA, maxkey, tableSize, binCount, lrbBins, gpuCount);
 
   omp_set_num_threads(gpuCount);
 
@@ -216,7 +219,7 @@ int main(int argc, char **argv) {
 
   if (checkCorrectness) {
     mhg.destroyMulti();
-    mhg.buildSingle(contextA);
+    // mhg.buildSingle(contextA);
   }
 #else
   inputData *h_dValsA = new inputData[gpuCount]();
@@ -226,8 +229,10 @@ int main(int argc, char **argv) {
   generateInput(h_dValsB, countSizeB, maxkey, gpuCount, countSizeA);
 
   std::cout << "hashgraph constructors" << std::endl;
-  MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
-  MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, contextB, tableSize, binCount, lrbBins, gpuCount);
+  // MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
+  // MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, contextB, tableSize, binCount, lrbBins, gpuCount);
+  MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, tableSize, binCount, lrbBins, gpuCount);
+  MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, tableSize, binCount, lrbBins, gpuCount);
   std::cout << "done hashgraph constructors" << std::endl;
 
   keypair **h_dOutput = new keypair*[gpuCount]();
@@ -267,8 +272,8 @@ int main(int argc, char **argv) {
   std::cout << "multi intersect() time: " << (buildTime / 1000.0) << "\n"; // seconds
 
   if (checkCorrectness) {
-    mhgA.buildSingle(contextA);
-    mhgB.buildSingle(contextB);
+    // mhgA.buildSingle(contextA);
+    // mhgB.buildSingle(contextB);
     
     int64_t outputSize = 0;
     for (int64_t i = 0; i < gpuCount; i++) {
