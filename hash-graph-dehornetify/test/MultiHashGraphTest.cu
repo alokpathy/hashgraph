@@ -20,7 +20,7 @@
 #define RAND_KEYS
 // #define PRINT_KEYS
 
-#define BUILD_TEST
+// #define BUILD_TEST
 
 struct prg {
   hkey_t lo, hi;
@@ -319,15 +319,15 @@ int main(int argc, char **argv) {
         ans.push_back(mhgA.h_vals[i]);
         idx++;
       }
-      for (int64_t j = 0; j < countSizeB; j++) {
-        if (mhgA.h_vals[i] == mhgB.h_vals[j]) {
-          ans.push_back(mhgA.h_vals[i]);
-        }
+      // for (int64_t j = 0; j < countSizeB; j++) {
+      //   if (mhgA.h_vals[i] == mhgB.h_vals[j]) {
+      //     ans.push_back(mhgA.h_vals[i]);
+      //   }
 
-        if (mhgA.h_vals[i] < mhgB.h_vals[j]) {
-          break;
-        }
-      } 
+      //   if (mhgA.h_vals[i] < mhgB.h_vals[j]) {
+      //     break;
+      //   }
+      // } 
     }
 
     if (ans.size() != outputSize) {
