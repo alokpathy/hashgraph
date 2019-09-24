@@ -274,32 +274,32 @@ void allToAll(inputData *h_dVals, char **h_dFinalKeys,
   }
 }
 
-// template<typename hkey_t, typename HashKey,  typename index_t>
-// void buildTable(hkey_t *d_vals, mem_t<HashKey> &d_hash, mem_t<int32_t> &d_counter, 
-// 	            mem_t<index_t> &d_offSet, mem_t<keyval> &d_edges, index_t valCount, 
-//                     index_t tableSize, context_t& context, int64_t valsOffset=0) {
-// 
-//   void*  _d_temp_storage     { nullptr };
-//   size_t _temp_storage_bytes { 0 };
-// 
-//   // hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
-//   //                                                  d_hash.data(), (HashKey) tableSize);
-//   basicHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
-//                                                   d_hash.data(), (HashKey) tableSize);
-// 
-//   countHashD32<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash.data(), d_counter.data());
-// 
-//   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter.data(), 
-//                                     d_offSet.data(), tableSize);
-//   cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
-//   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter.data(), 
-//                                     d_offSet.data(), tableSize);
-//   d_counter = fill(0, (size_t)tableSize, context);
-//   cudaMemcpy(d_offSet.data()+tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
-//   cudaFree(_d_temp_storage);
-// 
-//   copyToGraphD32<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
-//                                     d_hash.data(), d_counter.data(), d_offSet.data(), 
-//                                     d_edges.data(), tableSize);
-// }
-// 
+template<typename hkey_t, typename HashKey,  typename index_t>
+void buildTable(hkey_t *d_vals, HashKey *d_hash, int32_t *d_counter, 
+	            index_t *d_offSet, keyval *d_edges, index_t valCount, 
+                    index_t tableSize, int64_t valsOffset=0) {
+
+  void*  _d_temp_storage     { nullptr };
+  size_t _temp_storage_bytes { 0 };
+
+  // hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
+  //                                                  d_hash.data(), (HashKey) tableSize);
+  basicHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
+                                                  d_hash, (HashKey) tableSize);
+
+  countHashD32<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash, d_counter);
+  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
+                                    d_offSet, tableSize);
+  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
+                                    d_offSet, tableSize);
+  // d_counter = fill(0, (size_t)tableSize, context);
+  cudaMemset(d_counter, 0, tableSize * sizeof(int32_t));
+  cudaMemcpy(d_offSet + tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
+  cudaFree(_d_temp_storage);
+
+  copyToGraphD32<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
+                                    d_hash, d_counter, d_offSet, 
+                                    d_edges, tableSize);
+}
+

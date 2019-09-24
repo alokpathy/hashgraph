@@ -146,7 +146,7 @@ public:
                       uint64_t binCount, index_t lrbBins, uint64_t gpuCount); ~MultiHashGraph();
 
     void build(bool buildSplits, uint64_t tid);
-    // void buildSingle(context_t &context);
+    void buildSingle();
 
     static void intersect(MultiHashGraph &mgA, MultiHashGraph &mgB, int64_t *h_Common,
                               keypair **h_dOutput, uint64_t tid);

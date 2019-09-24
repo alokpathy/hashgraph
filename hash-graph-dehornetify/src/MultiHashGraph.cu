@@ -23,6 +23,8 @@
 #include <set>
 #include <chrono>
 
+#include <algorithm>
+
 #include <cuda_profiler_api.h> //--profile-from-start off
 
 // #include <moderngpu/memory.hxx>
@@ -692,17 +694,28 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
   CHECK_ERROR("intersect error");
 }
 
-#if 0
-void MultiHashGraph::buildSingle(context_t &context) {
+void MultiHashGraph::buildSingle() {
 
     cudaSetDevice(0);
     std::cout << "single countSize: " << countSize << std::endl;
     std::cout << "single tableSize: " << tableSize << std::endl;
 
-    mem_t<HashKey>  d_hashA(countSize, context, memory_space_device);
-    mem_t<int32_t>  d_counterA = fill((int32_t)0, (size_t)(tableSize+1), context);
-    mem_t<index_t>  d_offsetA = fill((index_t)0, (size_t)(tableSize+1), context);
-    mem_t<keyval>   d_edgesA(countSize,context,memory_space_device);
+    // mem_t<HashKey>  d_hashA(countSize, context, memory_space_device);
+    // mem_t<int32_t>  d_counterA = fill((int32_t)0, (size_t)(tableSize+1), context);
+    // mem_t<index_t>  d_offsetA = fill((index_t)0, (size_t)(tableSize+1), context);
+    // mem_t<keyval>   d_edgesA(countSize,context,memory_space_device);
+    HashKey *d_hashA;
+    int32_t *d_counterA;
+    index_t * d_offsetA;
+    keyval *d_edgesA;
+
+    cudaMalloc(&d_hashA, countSize * sizeof(HashKey));
+    cudaMalloc(&d_counterA, (tableSize + 1) * sizeof(int32_t));
+    cudaMalloc(&d_offsetA, (tableSize + 1) * sizeof(index_t));
+    cudaMalloc(&d_edgesA, countSize * sizeof(keyval));
+    
+    cudaMemset(d_counterA, 0, (tableSize + 1) * sizeof(int32_t));
+    cudaMemset(d_offsetA, 0, (tableSize + 1) * sizeof(index_t));
 
     cudaEvent_t start, stop;
     cudaEventCreate(&start);
@@ -715,7 +728,7 @@ void MultiHashGraph::buildSingle(context_t &context) {
     cudaEventRecord(start);
 
     buildTable(d_vals, d_hashA, d_counterA, d_offsetA, d_edgesA, (index_t)countSize, 
-                  (index_t)(tableSize), context);
+                  (index_t)(tableSize));
 
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
@@ -723,9 +736,17 @@ void MultiHashGraph::buildSingle(context_t &context) {
 
     std::cout << "single buildTable() time: " << (buildTime / 1000.0) << "\n"; // seconds
 
-    std::vector<index_t> h_offset = from_mem(d_offsetA);
-    std::vector<HashKey> h_hash = from_mem(d_hashA);
-    std::vector<keyval> h_edges = from_mem(d_edgesA);
+    index_t *h_offset = new index_t[tableSize + 1]();
+    HashKey *h_hash = new HashKey[countSize]();
+    keyval *h_edges = new keyval[countSize]();
+
+    cudaMemcpy(h_offset, d_offsetA, (tableSize + 1) * sizeof(index_t), 
+                        cudaMemcpyDeviceToHost);
+
+    cudaMemcpy(h_hash, d_hashA, countSize * sizeof(HashKey),
+                        cudaMemcpyDeviceToHost);
+    cudaMemcpy(h_edges, d_edgesA, countSize * sizeof(keyval),
+                        cudaMemcpyDeviceToHost);
 
     // Everything in multi-GPU HG is in single-GPU HG
     for (uint64_t i = 0; i < gpuCount; i++) {
@@ -749,12 +770,17 @@ void MultiHashGraph::buildSingle(context_t &context) {
 
         uint64_t hash = j + h_binSplits[i];
 
-        uint64_t multiDegree = h_hOffsets[j + 1] - h_hOffsets[j];
-        uint64_t singleDegree = h_offset[hash + 1] - h_offset[hash];
+        index_t multiDegree = h_hOffsets[j + 1] - h_hOffsets[j];
+        index_t singleDegree = h_offset[hash + 1] - h_offset[hash];
 
         if (multiDegree != singleDegree) {
          std::cerr << "Degree error hash: " << hash  << " multi: " << 
               multiDegree << " single: " << singleDegree << "\n";
+
+          if (hash == 0 || hash == 7) {
+            std::cerr << "offset[i]: " << h_offset[hash] << " offset[i + 1]: " << 
+                h_offset[hash + 1] << std::endl;
+          }    
         }
 
         std::vector<hkey_t> multiGPU;
@@ -792,6 +818,5 @@ void MultiHashGraph::buildSingle(context_t &context) {
     cudaSetDevice(0);
 
     cudaFree(d_vals);
-
+    CHECK_ERROR("buildSingle");
 }
-#endif

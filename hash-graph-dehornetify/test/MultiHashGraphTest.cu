@@ -219,7 +219,7 @@ int main(int argc, char **argv) {
 
   if (checkCorrectness) {
     mhg.destroyMulti();
-    // mhg.buildSingle(contextA);
+    mhg.buildSingle();
   }
 #else
   inputData *h_dValsA = new inputData[gpuCount]();
@@ -272,8 +272,8 @@ int main(int argc, char **argv) {
   std::cout << "multi intersect() time: " << (buildTime / 1000.0) << "\n"; // seconds
 
   if (checkCorrectness) {
-    // mhgA.buildSingle(contextA);
-    // mhgB.buildSingle(contextB);
+    mhgA.buildSingle();
+    mhgB.buildSingle();
     
     int64_t outputSize = 0;
     for (int64_t i = 0; i < gpuCount; i++) {
@@ -292,7 +292,6 @@ int main(int argc, char **argv) {
     std::vector<hkey_t> result;
     result.reserve(outputSize);
     for (int64_t i = 0; i < outputSize; i++) {
-      // result[i] = h_output[i].right;
       result.push_back(h_output[i].right);
     }
 
@@ -320,15 +319,15 @@ int main(int argc, char **argv) {
         ans.push_back(mhgA.h_vals[i]);
         idx++;
       }
-      // for (int64_t j = 0; j < countSizeB; j++) {
-      //   if (mhgA.h_vals[i] == mhgB.h_vals[j]) {
-      //     ans.push_back(mhgA.h_vals[i]);
-      //   }
+      for (int64_t j = 0; j < countSizeB; j++) {
+        if (mhgA.h_vals[i] == mhgB.h_vals[j]) {
+          ans.push_back(mhgA.h_vals[i]);
+        }
 
-      //   if (mhgA.h_vals[i] < mhgB.h_vals[j]) {
-      //     break;
-      //   }
-      // } 
+        if (mhgA.h_vals[i] < mhgB.h_vals[j]) {
+          break;
+        }
+      } 
     }
 
     if (ans.size() != outputSize) {
