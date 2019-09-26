@@ -48,7 +48,7 @@ using namespace std::chrono;
 // Uncomment once we remove "using namespace hornets_nest"
 // const int BLOCK_SIZE_OP2 = 256;
 
-// #define ERROR_CHECK
+#define ERROR_CHECK
 // #define PRINT_KEYS
 #define LRB_BUILD
 

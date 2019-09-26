@@ -131,10 +131,11 @@ int main(int argc, char **argv) {
   index_t lrbBins = -1;
 
   bool checkCorrectness = false;
+  bool buildTest = false;
 
   int64_t countSizeB = 1L << 22;
 
-  if (argc >= 2 && argc < 8) {
+  if (argc >= 2 && argc < 9) {
     std::cerr << "Please specify all arguments.\n";
     return 1;
   }
@@ -158,6 +159,10 @@ int main(int argc, char **argv) {
     }
     
     countSizeB = strtoull(argv[7], NULL, 0);
+
+    if (!strcmp(argv[8], "build")) {
+      buildTest = true;
+    }
   } 
 
   HashKey tableSize = maxkey;
@@ -191,159 +196,159 @@ int main(int argc, char **argv) {
 
   // rmmInitialize(&rmmO);
 
-#ifdef BUILD_TEST
-  inputData *h_dVals = new inputData[gpuCount]();
-  generateInput(h_dVals, countSizeA, maxkey, gpuCount, 0);
 
-  // MultiHashGraph mhg(h_dVals, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
-  MultiHashGraph mhg(h_dVals, countSizeA, maxkey, tableSize, binCount, lrbBins, gpuCount);
+  if (buildTest) {
+    inputData *h_dVals = new inputData[gpuCount]();
+    generateInput(h_dVals, countSizeA, maxkey, gpuCount, 0);
 
-  omp_set_num_threads(gpuCount);
+    // MultiHashGraph mhg(h_dVals, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
+    MultiHashGraph mhg(h_dVals, countSizeA, maxkey, tableSize, binCount, lrbBins, gpuCount);
 
-  cudaSetDevice(0);
-  cudaEventRecord(start);
+    omp_set_num_threads(gpuCount);
 
-  #pragma omp parallel
-  {
-    uint64_t tid = omp_get_thread_num();
-    mhg.build(true, tid);
-  } // pragma
+    cudaSetDevice(0);
+    cudaEventRecord(start);
 
-  cudaSetDevice(0);
-  cudaEventRecord(stop);
-
-  cudaEventSynchronize(stop);
-  cudaEventElapsedTime(&buildTime, start, stop);
-
-  std::cout << "multi buildTable() time: " << (buildTime / 1000.0) << "\n"; // seconds
-
-  if (checkCorrectness) {
-    mhg.destroyMulti();
-    mhg.buildSingle();
-  }
-#else
-  inputData *h_dValsA = new inputData[gpuCount]();
-  inputData *h_dValsB = new inputData[gpuCount]();
-
-  generateInput(h_dValsA, countSizeA, maxkey, gpuCount, 0);
-  generateInput(h_dValsB, countSizeB, maxkey, gpuCount, countSizeA);
-
-  std::cout << "hashgraph constructors" << std::endl;
-  // MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
-  // MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, contextB, tableSize, binCount, lrbBins, gpuCount);
-  MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, tableSize, binCount, lrbBins, gpuCount);
-  MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, tableSize, binCount, lrbBins, gpuCount);
-  std::cout << "done hashgraph constructors" << std::endl;
-
-  keypair **h_dOutput = new keypair*[gpuCount]();
-  int64_t *h_Common = new int64_t[gpuCount]();
-
-  omp_set_num_threads(gpuCount);
-
-  cudaSetDevice(0);
-  cudaEventRecord(start);
-
-  #pragma omp parallel
-  {
-    uint64_t tid = omp_get_thread_num();
-    mhgA.build(true, tid);
-
-    #pragma omp master
+    #pragma omp parallel
     {
-      mhgB.h_binSplits = mhgA.h_binSplits; // small memory leak.
-      mhgB.h_dBinSplits = mhgA.h_dBinSplits;
-    } // master
+      uint64_t tid = omp_get_thread_num();
+      mhg.build(true, tid);
+    } // pragma
 
-    #pragma omp barrier
+    cudaSetDevice(0);
+    cudaEventRecord(stop);
 
-    mhgB.build(false, tid); // Build second HG but use same splits as first HG.
+    cudaEventSynchronize(stop);
+    cudaEventElapsedTime(&buildTime, start, stop);
 
-    #pragma omp barrier
+    std::cout << "multi buildTable() time: " << (buildTime / 1000.0) << "\n"; // seconds
 
-    MultiHashGraph::intersect(mhgA, mhgB, h_Common, h_dOutput, tid);
-  } // pragma
-
-  cudaSetDevice(0);
-  cudaEventRecord(stop);
-
-  cudaEventSynchronize(stop);
-  cudaEventElapsedTime(&buildTime, start, stop);
-
-  std::cout << "multi intersect() time: " << (buildTime / 1000.0) << "\n"; // seconds
-
-  if (checkCorrectness) {
-    mhgA.buildSingle();
-    mhgB.buildSingle();
-    
-    int64_t outputSize = 0;
-    for (int64_t i = 0; i < gpuCount; i++) {
-      outputSize += h_Common[i];
+    if (checkCorrectness) {
+      mhg.destroyMulti();
+      mhg.buildSingle();
     }
+  } else {
+    inputData *h_dValsA = new inputData[gpuCount]();
+    inputData *h_dValsB = new inputData[gpuCount]();
 
-    keypair *h_output = new keypair[outputSize]();
-    int64_t h_idx = 0;
-    for (int64_t i = 0; i < gpuCount; i++) {
-      cudaSetDevice(i);
-      cudaMemcpy(h_output + h_idx, h_dOutput[i], h_Common[i] * sizeof(keypair),
-                          cudaMemcpyDeviceToHost);
-      h_idx += h_Common[i];
-    }
+    generateInput(h_dValsA, countSizeA, maxkey, gpuCount, 0);
+    generateInput(h_dValsB, countSizeB, maxkey, gpuCount, countSizeA);
 
-    std::vector<hkey_t> result;
-    result.reserve(outputSize);
-    for (int64_t i = 0; i < outputSize; i++) {
-      result.push_back(h_output[i].right);
-    }
+    std::cout << "hashgraph constructors" << std::endl;
+    // MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
+    // MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, contextB, tableSize, binCount, lrbBins, gpuCount);
+    MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, tableSize, binCount, lrbBins, gpuCount);
+    MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, tableSize, binCount, lrbBins, gpuCount);
+    std::cout << "done hashgraph constructors" << std::endl;
 
-    if (result.size() != result.capacity()) {
-      std::cerr << "ERROR: RESULT ERROR" << std::endl;
-      exit(0);
-    }
+    keypair **h_dOutput = new keypair*[gpuCount]();
+    int64_t *h_Common = new int64_t[gpuCount]();
 
-    std::sort(mhgA.h_vals, mhgA.h_vals + countSizeA);
-    std::sort(mhgB.h_vals, mhgB.h_vals + countSizeB);
+    omp_set_num_threads(gpuCount);
 
-    std::vector<hkey_t> ans;
-    ans.reserve(outputSize);
-    for (int64_t i = 0; i < countSizeA; i++) {
-      int64_t ogIdx = binarySearch(mhgB.h_vals, 0, countSizeB - 1, mhgA.h_vals[i]);
+    cudaSetDevice(0);
+    cudaEventRecord(start);
 
-      int64_t idx = ogIdx;
-      while (idx >= 0 && mhgB.h_vals[idx] == mhgA.h_vals[i]) {
-        ans.push_back(mhgA.h_vals[i]);
-        idx--;
+    #pragma omp parallel
+    {
+      uint64_t tid = omp_get_thread_num();
+      mhgA.build(true, tid);
+
+      #pragma omp master
+      {
+        mhgB.h_binSplits = mhgA.h_binSplits; // small memory leak.
+        mhgB.h_dBinSplits = mhgA.h_dBinSplits;
+      } // master
+
+      #pragma omp barrier
+
+      mhgB.build(false, tid); // Build second HG but use same splits as first HG.
+
+      #pragma omp barrier
+
+      MultiHashGraph::intersect(mhgA, mhgB, h_Common, h_dOutput, tid);
+    } // pragma
+
+    cudaSetDevice(0);
+    cudaEventRecord(stop);
+
+    cudaEventSynchronize(stop);
+    cudaEventElapsedTime(&buildTime, start, stop);
+
+    std::cout << "multi intersect() time: " << (buildTime / 1000.0) << "\n"; // seconds
+
+    if (checkCorrectness) {
+      mhgA.buildSingle();
+      mhgB.buildSingle();
+      
+      int64_t outputSize = 0;
+      for (int64_t i = 0; i < gpuCount; i++) {
+        outputSize += h_Common[i];
       }
 
-      idx = ogIdx + 1;
-      while (idx < countSizeB && mhgB.h_vals[idx] == mhgA.h_vals[i]) {
-        ans.push_back(mhgA.h_vals[i]);
-        idx++;
+      keypair *h_output = new keypair[outputSize]();
+      int64_t h_idx = 0;
+      for (int64_t i = 0; i < gpuCount; i++) {
+        cudaSetDevice(i);
+        cudaMemcpy(h_output + h_idx, h_dOutput[i], h_Common[i] * sizeof(keypair),
+                            cudaMemcpyDeviceToHost);
+        h_idx += h_Common[i];
       }
-      // for (int64_t j = 0; j < countSizeB; j++) {
-      //   if (mhgA.h_vals[i] == mhgB.h_vals[j]) {
-      //     ans.push_back(mhgA.h_vals[i]);
-      //   }
 
-      //   if (mhgA.h_vals[i] < mhgB.h_vals[j]) {
-      //     break;
-      //   }
-      // } 
-    }
+      std::vector<hkey_t> result;
+      result.reserve(outputSize);
+      for (int64_t i = 0; i < outputSize; i++) {
+        result.push_back(h_output[i].right);
+      }
 
-    if (ans.size() != outputSize) {
-      std::cerr << "ERROR: INTERSECT OUTPUT HAS INCORRECT SIZE" << std::endl;
-      std::cerr << "ansSize: " << ans.size() << " outputSize: " << outputSize << std::endl;
-      exit(0);
-    }
+      if (result.size() != result.capacity()) {
+        std::cerr << "ERROR: RESULT ERROR" << std::endl;
+        exit(0);
+      }
 
-    std::sort(result.begin(), result.end());
-    std::sort(ans.begin(), ans.end());
+      std::sort(mhgA.h_vals, mhgA.h_vals + countSizeA);
+      std::sort(mhgB.h_vals, mhgB.h_vals + countSizeB);
 
-    if (result != ans) {
-      std::cerr << "ERROR: INTERSECT OUTPUT HAS INCORRECT CONTENT" << std::endl;
-      exit(0);
+      std::vector<hkey_t> ans;
+      ans.reserve(outputSize);
+      for (int64_t i = 0; i < countSizeA; i++) {
+        int64_t ogIdx = binarySearch(mhgB.h_vals, 0, countSizeB - 1, mhgA.h_vals[i]);
+
+        int64_t idx = ogIdx;
+        while (idx >= 0 && mhgB.h_vals[idx] == mhgA.h_vals[i]) {
+          ans.push_back(mhgA.h_vals[i]);
+          idx--;
+        }
+
+        idx = ogIdx + 1;
+        while (idx < countSizeB && mhgB.h_vals[idx] == mhgA.h_vals[i]) {
+          ans.push_back(mhgA.h_vals[i]);
+          idx++;
+        }
+        // for (int64_t j = 0; j < countSizeB; j++) {
+        //   if (mhgA.h_vals[i] == mhgB.h_vals[j]) {
+        //     ans.push_back(mhgA.h_vals[i]);
+        //   }
+
+        //   if (mhgA.h_vals[i] < mhgB.h_vals[j]) {
+        //     break;
+        //   }
+        // } 
+      }
+
+      if (ans.size() != outputSize) {
+        std::cerr << "ERROR: INTERSECT OUTPUT HAS INCORRECT SIZE" << std::endl;
+        std::cerr << "ansSize: " << ans.size() << " outputSize: " << outputSize << std::endl;
+        exit(0);
+      }
+
+      std::sort(result.begin(), result.end());
+      std::sort(ans.begin(), ans.end());
+
+      if (result != ans) {
+        std::cerr << "ERROR: INTERSECT OUTPUT HAS INCORRECT CONTENT" << std::endl;
+        exit(0);
+      }
     }
   }
-
-#endif
 }
