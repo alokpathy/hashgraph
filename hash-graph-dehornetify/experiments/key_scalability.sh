@@ -25,6 +25,6 @@ for i in "${keycounts[@]}"
     do
         echo $i
         echo $i >> $resultsfile
-        ./$execpath/multi-hash $(echo "2^32" | bc) $tablesize $bincount $gpucount $bincount nocheck $i intersect | grep "time" >> $resultsfile
+        ./$execpath/multi-hash $(echo "2^33" | bc) $tablesize $bincount $gpucount $bincount nocheck $i intersect | grep "time" >> $resultsfile
     done
 echo "" >> $resultsfile
