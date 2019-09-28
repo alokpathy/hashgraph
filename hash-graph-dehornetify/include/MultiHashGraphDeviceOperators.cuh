@@ -18,11 +18,10 @@
 
 #define ID_HASH
 
-__forceinline__  __host__ __device__ uint64_t rotl32( uint64_t x, int8_t r ) {
+__forceinline__  __host__ __device__ uint32_t rotl32( uint32_t x, int8_t r ) {
   return (x << r) | (x >> (32 - r));
 }
-
-__forceinline__ __host__ __device__ uint64_t fmix32( uint64_t h ) {
+__forceinline__ __host__ __device__ uint32_t fmix32( uint32_t h ) {
   h ^= h >> 16;
   h *= 0x85ebca6b;
   h ^= h >> 13;
@@ -30,43 +29,36 @@ __forceinline__ __host__ __device__ uint64_t fmix32( uint64_t h ) {
   h ^= h >> 16;
   return h;
 }
-
-__forceinline__  __host__ __device__ uint64_t hash_murmur(const uint64_t& key) {
-  
-#ifdef ID_HASH
-  return (uint64_t) key;
-#endif
-
+__forceinline__  __host__ __device__ uint32_t hash_murmur(const HashKey& key) {
   constexpr int len = sizeof(int);
   const uint8_t * const data = (const uint8_t*)&key;
   constexpr int nblocks = len / 4;
-  uint64_t h1 = 0;
-  constexpr uint64_t c1 = 0xcc9e2d51;
-  constexpr uint64_t c2 = 0x1b873593;
+  uint32_t h1 = 0;
+  constexpr uint32_t c1 = 0xcc9e2d51;
+  constexpr uint32_t c2 = 0x1b873593;
   //----------
-
   // body
-  const uint64_t * const blocks = (const uint64_t *)(data + nblocks*4);
+  const uint32_t * const blocks = (const uint32_t *)(data + nblocks*4);
   for(int i = -nblocks; i; i++)
   {
-	uint64_t k1 = blocks[i];//getblock32(blocks,i);
-	k1 *= c1;
-	k1 = rotl32(k1,15);
-	k1 *= c2;
-	h1 ^= k1;
-	h1 = rotl32(h1,13); 
-	h1 = h1*5+0xe6546b64;
+    uint32_t k1 = blocks[i];//getblock32(blocks,i);
+    k1 *= c1;
+    k1 = rotl32(k1,15);
+    k1 *= c2;
+    h1 ^= k1;
+    h1 = rotl32(h1,13); 
+    h1 = h1*5+0xe6546b64;
   }
   //----------
   // tail
   const uint8_t * tail = (const uint8_t*)(data + nblocks*4);
-  uint64_t k1 = 0;
+  uint32_t k1 = 0;
   switch(len & 3)
   {
-	case 3: k1 ^= tail[2] << 16;
-	case 2: k1 ^= tail[1] << 8;
-	case 1: k1 ^= tail[0];
-			k1 *= c1; k1 = rotl32(k1,15); k1 *= c2; h1 ^= k1;
+    case 3: k1 ^= tail[2] << 16;
+    case 2: k1 ^= tail[1] << 8;
+    case 1: k1 ^= tail[0];
+            k1 *= c1; k1 = rotl32(k1,15); k1 *= c2; h1 ^= k1;
   };
   //----------
   // finalization
@@ -99,8 +91,8 @@ __global__ void countHashD(uint64_t valCount, HashKey *hashArr, index_t *countAr
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
-    // atomicAdd((unsigned long long int*)(countArr + hashArr[i]), 1);
-    atomicAdd((countArr + hashArr[i]), 1);
+    atomicAdd((unsigned long long int*)(countArr + hashArr[i]), 1);
+    // atomicAdd((countArr + hashArr[i]), 1);
   }    
 }
 
@@ -119,8 +111,8 @@ __global__ void copyToGraphD(uint64_t valCount, hkey_t *valsArr, HashKey *hashAr
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
     HashKey hashVal=hashArr[i];
-    // int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
-    int pos = atomicAdd((countArr + hashVal),1)+offsetArr[hashVal];
+    int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
+    // int pos = atomicAdd((countArr + hashVal),1)+offsetArr[hashVal];
 #ifdef INDEX_TRACK
     edges[pos]={valsArr[i],i};
 #else
@@ -321,8 +313,8 @@ __global__ void lrbCountHashD(index_t valCount, HashKey *hashArr, index_t *d_lrb
   for (auto i = id; i < valCount; i += stride) {
       index_t ha = (index_t)(hashArr[i] / lrbBinSize);
       // index_t ha = (index_t)(hashArr[i].key / lrbBinSize);
-      // atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1);
-      atomicAdd((d_lrbCounters + ha),1);
+      atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1);
+      // atomicAdd((d_lrbCounters + ha),1);
   }    
 }
 
@@ -338,8 +330,8 @@ __global__ void lrbRehashD(index_t valCount, keyval *valsArr, HashKey *hashArr,
   for (auto i = id; i < valCount; i += stride) {
       // HashKey ha = hashArr[i].key/lrbBinSize;
       HashKey ha = hashArr[i]/lrbBinSize;
-      // index_t pos = atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
-      index_t pos = atomicAdd((d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
+      index_t pos = atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
+      // index_t pos = atomicAdd((d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
       // d_lrbHashReordered[pos]={valsArr[i],i};
       d_lrbHashReordered[pos] = valsArr[i];
   }
@@ -354,8 +346,8 @@ __global__ void lrbCountHashGlobalD(index_t valCount, index_t *countArr,
   for (auto i = id; i < valCount; i += stride) {
       HashKey hash = hash_murmur(d_lrbHashReordered[i].key);
       HashKey ha = (hash % tableSize) - splits[devNum];
-      // atomicAdd((unsigned long long int*)(countArr + ha),1);
-      atomicAdd((countArr + ha),1);
+      atomicAdd((unsigned long long int*)(countArr + ha),1);
+      // atomicAdd((countArr + ha),1);
   }    
 }
 
@@ -369,8 +361,8 @@ __global__ void lrbCopyToGraphD(index_t valCount, index_t *countArr, index_t *of
       HashKey hash = hash_murmur(d_lrbHashReordered[i].key);
       HashKey hashVal = (hash % tableSize) - splits[devNum];
       // HashKey hashVal=d_lrbHashReordered[i].key;
-      // int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
-      int pos = atomicAdd((countArr + hashVal),1)+offsetArr[hashVal];
+      int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
+      // int pos = atomicAdd((countArr + hashVal),1)+offsetArr[hashVal];
       edges[pos]=d_lrbHashReordered[i];
   }    
 }

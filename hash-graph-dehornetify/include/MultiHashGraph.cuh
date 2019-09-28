@@ -51,14 +51,14 @@
 
 #include <cub/cub.cuh>
 
-using hkey_t = int32_t;
-using index_t = int32_t;
-using HashKey = int32_t;
+using hkey_t = int64_t;
+using index_t = int64_t;
+using HashKey = int64_t;
 
 // using namespace mgpu;
 
 #define CHECK_ERROR(str) \
-	{cudaError_t err; err = cudaGetLastError(); if(err!=0) {printf("ERROR %s:  %d %s\n", str, err, cudaGetErrorString(err)); fflush(stdout); exit(0);}}
+	{cudaDeviceSynchronize(); cudaError_t err; err = cudaGetLastError(); if(err!=0) {printf("ERROR %s:  %d %s\n", str, err, cudaGetErrorString(err)); fflush(stdout); exit(0);}}
 
 // #define HOST_PROFILE
 // #define CUDA_PROFILE
