@@ -63,7 +63,7 @@ using HashKey = int64_t;
 // #define HOST_PROFILE
 // #define CUDA_PROFILE
 
-// #define INDEX_TRACK
+#define INDEX_TRACK
 
 struct keyval_key
 {
