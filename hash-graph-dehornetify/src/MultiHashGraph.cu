@@ -48,7 +48,7 @@ using namespace std::chrono;
 // Uncomment once we remove "using namespace hornets_nest"
 // const int BLOCK_SIZE_OP2 = 256;
 
-// #define ERROR_CHECK
+#define ERROR_CHECK
 // #define PRINT_KEYS
 #define LRB_BUILD
 
@@ -221,6 +221,19 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
     cudaMalloc(&h_dLrbCountersPrefix[i], (lrbBins + 2) * sizeof(index_t));
     cudaMemset(h_dLrbCountersPrefix[i], 0,(lrbBins + 2) * sizeof(index_t));
   }
+#endif
+
+#ifdef MANAGED_MEM
+  uint64_t size = countSize * sizeof(keyval) + 
+                     countSize * sizeof(HashKey) +
+                     (2 * countSize * sizeof(keyval)) +
+                     (2 * (tableSize + gpuCount) * sizeof(index_t));
+  std::cout << "managed alloc size: " << size << std::endl;
+  this->totalSize = size;
+  uvmPtr = nullptr;
+
+  cudaMallocManaged(&uvmPtr, size);
+  prefixArray = new uint64_t[gpuCount + 1]();
 #endif
 
   CHECK_ERROR("constructor");
@@ -478,8 +491,14 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
 #endif
 
   // On each GPU, count the number of keys that will get shipped to it.
+#ifdef MANAGED_MEM
+  countFinalKeys(h_bufferCounter, h_dFinalKeys, h_hFinalCounter,
+                    h_hFinalOffset, h_dFinalOffset, h_binSplits, gpuCount, tid,
+                    uvmPtr, prefixArray, totalSize);
+#else
   countFinalKeys(h_bufferCounter, h_dFinalKeys, h_hFinalCounter,
                     h_hFinalOffset, h_dFinalOffset, h_binSplits, gpuCount, tid);
+#endif
 #ifdef HOST_PROFILE
   if (tid == tidFocused) {
     cudaDeviceSynchronize();

@@ -203,10 +203,18 @@ void populateKeyBuffs(inputData *h_dVals, keyval **h_dKeyBinBuff,
 }
 
 // void countFinalKeys(uint64_t **h_bufferCounter, hkey_t **h_dFinalKeys,
+#ifdef MANAGED_MEM
+void countFinalKeys(uint64_t **h_bufferCounter, char **h_dFinalKeys,
+                        uint64_t **h_hFinalCounters, 
+                        uint64_t **h_hFinalOffset, uint64_t **h_dFinalOffset, 
+                        uint64_t *h_binSplits, uint64_t gpuCount, uint64_t tid,
+                        char *uvmPtr, uint64_t *prefixArray, uint64_t totalSize) {
+#else
 void countFinalKeys(uint64_t **h_bufferCounter, char **h_dFinalKeys,
                         uint64_t **h_hFinalCounters, 
                         uint64_t **h_hFinalOffset, uint64_t **h_dFinalOffset, 
                         uint64_t *h_binSplits, uint64_t gpuCount, uint64_t tid) {
+#endif
 
   // h_hFinalCounters is the transpose of h_bufferCounter
   // h_hFinalCounters[i][j] is the number of keys GPU i receives from GPU j.
@@ -245,11 +253,43 @@ void countFinalKeys(uint64_t **h_bufferCounter, char **h_dFinalKeys,
   // except hash, hash is type HashKey
   // cudaMalloc(&h_dFinalKeys[tid], (4 * keyCount * sizeof(keyval)) +
   //                               (2 * (hashRange + 1) * sizeof(index_t)));
-  cudaMalloc(&h_dFinalKeys[tid], keyCount * sizeof(keyval) + 
   // RMM_ALLOC(&h_dFinalKeys[tid], keyCount * sizeof(keyval) + 
+#ifdef MANAGED_MEM
+  #pragma omp barrier
+  #pragma omp master
+  {
+    prefixArray[0] = 0;
+    for (uint64_t i = 1; i < gpuCount; i++) {
+      uint64_t tidKeyCount = h_hFinalOffset[i - 1][gpuCount];
+      uint64_t tidHashRange = h_binSplits[i] - h_binSplits[i - 1];
+      uint64_t size = tidKeyCount * sizeof(keyval) + 
+                                 tidKeyCount * sizeof(HashKey) +
+                                 (2 * tidKeyCount * sizeof(keyval)) +
+                                 (2 * (tidHashRange + 1) * sizeof(index_t));
+
+      prefixArray[i] = prefixArray[i - 1] + size;
+    }
+    prefixArray[gpuCount] = totalSize;
+
+    h_dFinalKeys[0] = uvmPtr;
+    for (uint64_t i = 1; i < gpuCount; i++) {
+      h_dFinalKeys[i] = uvmPtr + (prefixArray[i] - prefixArray[i - 1]);
+    }
+  }
+  #pragma omp barrier
+
+  cudaDeviceSynchronize();
+  CHECK_ERROR("before");
+  cudaMemPrefetchAsync(h_dFinalKeys[tid], prefixArray[tid + 1] - prefixArray[tid], tid);
+  cudaDeviceSynchronize();
+  CHECK_ERROR("after");
+
+#else
+  cudaMalloc(&h_dFinalKeys[tid], keyCount * sizeof(keyval) + 
                                  keyCount * sizeof(HashKey) +
                                  (2 * keyCount * sizeof(keyval)) +
                                  (2 * (hashRange + 1) * sizeof(index_t)));
+#endif
 }
 
 // void allToAll(inputData *h_dVals, hkey_t **h_dFinalKeys,

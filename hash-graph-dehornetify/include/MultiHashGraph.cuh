@@ -63,7 +63,8 @@ using HashKey = int64_t;
 // #define HOST_PROFILE
 // #define CUDA_PROFILE
 
-#define INDEX_TRACK
+// #define INDEX_TRACK
+// #define MANAGED_MEM
 
 struct keyval_key
 {
@@ -240,6 +241,10 @@ private:
     HashKey **h_dHashBuff;
     uint64_t **h_dOffset;
     uint64_t **h_hOffset;
+
+    char *uvmPtr;
+    uint64_t *prefixArray;
+    uint64_t totalSize;
 
 
     // size_t *h_keyPitches;
