@@ -30,6 +30,11 @@ __forceinline__ __host__ __device__ uint32_t fmix32( uint32_t h ) {
   return h;
 }
 __forceinline__  __host__ __device__ uint32_t hash_murmur(const HashKey& key) {
+
+#ifdef ID_HASH
+  return (uint32_t) key;
+#endif
+
   constexpr int len = sizeof(int);
   const uint8_t * const data = (const uint8_t*)&key;
   constexpr int nblocks = len / 4;
@@ -430,14 +435,14 @@ __global__ void simpleIntersect(index_t valCount, index_t *offsetA, keyval *edge
     int64_t sizeA = offsetA[i + 1] - offsetA[i];
     int64_t sizeB = offsetB[i + 1] - offsetB[i];
     if (sizeA == 0 || sizeB == 0) {
-      return;
+      continue;
     }
 
     for (index_t ia = 0; ia < sizeA; ia++) {
       hkey_t aKey = edgesA[offsetA[i] + ia].key;
-
       for (index_t ib = 0; ib < sizeB; ib++) {
         hkey_t bKey = edgesB[offsetB[i] + ib].key;
+
         if (aKey == bKey) {
           if (countOnly) {
             counter[i]++;

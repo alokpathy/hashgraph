@@ -339,7 +339,7 @@ int main(int argc, char **argv) {
       if (ans.size() != outputSize) {
         std::cerr << "ERROR: INTERSECT OUTPUT HAS INCORRECT SIZE" << std::endl;
         std::cerr << "ansSize: " << ans.size() << " outputSize: " << outputSize << std::endl;
-        exit(0);
+        // exit(0);
       }
 
       std::sort(result.begin(), result.end());
@@ -347,6 +347,19 @@ int main(int argc, char **argv) {
 
       if (result != ans) {
         std::cerr << "ERROR: INTERSECT OUTPUT HAS INCORRECT CONTENT" << std::endl;
+        
+        std::cout << "output: " << std::endl;
+        for (auto i = result.begin(); i != result.end(); ++i) {
+            std::cout << *i << " ";
+        }
+        std::cout << std::endl;
+
+        std::cout << "ans: " << std::endl;
+        for (auto i = ans.begin(); i != ans.end(); ++i) {
+            std::cout << *i << " ";
+        }
+        std::cout << std::endl;
+
         exit(0);
       }
     }
