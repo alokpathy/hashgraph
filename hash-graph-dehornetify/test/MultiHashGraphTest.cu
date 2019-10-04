@@ -246,6 +246,7 @@ int main(int argc, char **argv) {
     uint64_t size = 2 * (tableSize + gpuCount) * sizeof(int64_t);
     cudaMallocManaged(&mhgA.uvmPtrIntersect, size);
     mhgA.prefixArrayIntersect = new uint64_t[gpuCount + 1]();
+    mhgA.totalSizeIntersect = size;
     std::cout << "done managed mem constructors" << std::endl;
 #endif
 
