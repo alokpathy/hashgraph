@@ -234,6 +234,8 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
 
   cudaMallocManaged(&uvmPtr, size);
   prefixArray = new uint64_t[gpuCount + 1]();
+  
+  h_dCountCommon = new char*[gpuCount]();
 #endif
 
   CHECK_ERROR("constructor");
@@ -649,13 +651,24 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
   int64_t *d_countCommon = nullptr;
   int64_t *d_outputPositions = nullptr;
 
-  cudaMalloc(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t));
-  cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t));
+  // cudaMalloc(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t));
+  // cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t));
+#ifdef MANAGED_MEM
+  d_countCommon = (int64_t *) mhgA.h_dCountCommon[tid];
+  cudaMemPrefetchAsync(d_countCommon, 
+                            mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
+                            tid);
+#else
+  cudaMalloc(&d_countCommon, (size_t)(2 * ((tableSize + 1) * sizeof(int64_t))));
+#endif
+  d_outputPositions = d_countCommon + tableSize + 1;
+
   // RMM_ALLOC(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t), 0);
   // RMM_ALLOC(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t), 0);
 
-  cudaMemsetAsync(d_countCommon, 0, (size_t)(tableSize + 1) * sizeof(int64_t));
-  cudaMemsetAsync(d_outputPositions, 0, (size_t)(tableSize + 1) * sizeof(int64_t));
+  // cudaMemsetAsync(d_countCommon, 0, (size_t)(tableSize + 1) * sizeof(int64_t));
+  // cudaMemsetAsync(d_outputPositions, 0, (size_t)(tableSize + 1) * sizeof(int64_t));
+  cudaMemsetAsync(d_countCommon, 0, (size_t)(2 * ((tableSize + 1) * sizeof(int64_t))));
 
   simpleIntersect<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(tableSize, d_offsetA, d_edgesA, d_offsetB,
                                                         d_edgesB, d_countCommon, NULL, true);

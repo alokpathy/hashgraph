@@ -178,6 +178,14 @@ public:
     // Public for correctness check
     hkey_t *h_vals;
 
+    char **h_dCountCommon;
+    char *uvmPtr;
+    char *uvmPtrIntersect;
+    uint64_t *prefixArray;
+    uint64_t *prefixArrayIntersect;
+    uint64_t totalSize;
+    uint64_t totalSizeIntersect;
+
 private:
 
     // mem_t<hkey_t>  d_vals;
@@ -241,11 +249,6 @@ private:
     HashKey **h_dHashBuff;
     uint64_t **h_dOffset;
     uint64_t **h_hOffset;
-
-    char *uvmPtr;
-    uint64_t *prefixArray;
-    uint64_t totalSize;
-
 
     // size_t *h_keyPitches;
     // size_t *h_hashPitches;

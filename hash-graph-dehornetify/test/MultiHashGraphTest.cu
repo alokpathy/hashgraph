@@ -241,6 +241,14 @@ int main(int argc, char **argv) {
     MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, tableSize, binCount, lrbBins, gpuCount);
     std::cout << "done hashgraph constructors" << std::endl;
 
+#ifdef MANAGED_MEM
+    std::cout << "managed mem constructors" << std::endl;
+    uint64_t size = 2 * (tableSize + gpuCount) * sizeof(int64_t);
+    cudaMallocManaged(&mhgA.uvmPtrIntersect, size);
+    mhgA.prefixArrayIntersect = new uint64_t[gpuCount + 1]();
+    std::cout << "done managed mem constructors" << std::endl;
+#endif
+
     keypair **h_dOutput = new keypair*[gpuCount]();
     int64_t *h_Common = new int64_t[gpuCount]();
 
@@ -258,6 +266,23 @@ int main(int argc, char **argv) {
       {
         mhgB.h_binSplits = mhgA.h_binSplits; // small memory leak.
         mhgB.h_dBinSplits = mhgA.h_dBinSplits;
+
+#ifdef MANAGED_MEM
+        mhgA.prefixArrayIntersect[0] = 0;
+        for (uint64_t i = 1; i < gpuCount; i++) {
+          uint64_t tidHashRange = mhgA.h_binSplits[i] - mhgA.h_binSplits[i - 1];
+          uint64_t size = 2 * (tidHashRange + 1) * sizeof(int64_t);
+          mhgA.prefixArrayIntersect[i] = mhgA.prefixArrayIntersect[i - 1] + size;
+        }
+        mhgA.prefixArrayIntersect[gpuCount] = mhgA.totalSizeIntersect;
+
+        mhgA.h_dCountCommon[0] = mhgA.uvmPtrIntersect;
+        for (uint64_t i = 1; i < gpuCount; i++) {
+          mhgA.h_dCountCommon[i] = mhgA.uvmPtrIntersect + 
+                                        (mhgA.prefixArrayIntersect[i] - 
+                                         mhgA.prefixArrayIntersect[i - 1]);
+        }
+#endif
       } // master
 
       #pragma omp barrier
