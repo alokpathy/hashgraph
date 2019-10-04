@@ -589,6 +589,7 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
                         (keyCount * sizeof(HashKey)) +
                         (keyCount * sizeof(keyval));
 
+
   lrbBuildMultiTable((keyval *) h_dFinalKeys[tid], 
                           (HashKey *) (h_dFinalKeys[tid] + h_hashOff[tid]), // d_hash
                           (index_t *)(h_dFinalKeys[tid] + h_counterOff[tid]), // d_counter

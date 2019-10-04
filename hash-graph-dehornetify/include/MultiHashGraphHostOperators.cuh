@@ -97,6 +97,8 @@ void countBinSizes(inputData *h_dVals, uint64_t **h_hBinSizes, uint64_t **h_dBin
   int64_t minRange = upperIdx * binRange; 
   h_binSplits[tid + 1] = std::min(minRange, tableSize);
 
+  #pragma omp barrier
+
   cudaMemcpyAsync(h_dBinSplits[tid], h_binSplits, (gpuCount + 1) * sizeof(uint64_t),
                       cudaMemcpyHostToDevice);
 #ifdef DEBUG
