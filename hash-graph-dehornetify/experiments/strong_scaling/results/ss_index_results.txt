@@ -1,2 +1,0 @@
-keycount,gpucount,time
-build tests

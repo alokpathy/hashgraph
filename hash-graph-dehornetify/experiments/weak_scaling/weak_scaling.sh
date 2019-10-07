@@ -1,8 +1,8 @@
 keycounts=($(seq 24 1 33))
-gpucounts=($(seq 0 1 4))
+gpucounts=($(seq 0 1 0))
 
 execpath="../../build"
-resultsfile="./results/ws_index_results.txt"
+resultsfile=$1
 
 bincount=16000
 

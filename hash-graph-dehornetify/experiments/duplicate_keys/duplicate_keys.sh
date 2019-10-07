@@ -3,7 +3,7 @@ gpucount=4
 tablesizes=($(seq 21 1 31))
 
 execpath="../../build"
-resultsfile="./results/dk_index_results.txt"
+resultsfile=$1
 
 bincount=16000
 
