@@ -6,7 +6,7 @@ resultsfile="./results/ss_noindex_results.txt"
 
 bincount=16000
 
-sed -i 's/^#define INDEX_TRACK/\/\/&/' ../../include/MultiHashGraph.cuh
+# sed -i 's/^#define INDEX_TRACK/\/\/&/' ../../include/MultiHashGraph.cuh
 make -C $execpath multi-hash
 
 rm $resultsfile

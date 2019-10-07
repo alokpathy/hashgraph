@@ -6,7 +6,7 @@ resultsfile="./results/ws_nomanaged_results.txt"
 
 bincount=16000
 
-sed -i 's/^#define MANAGED_MEM/\/\/&/' ../../include/MultiHashGraph.cuh
+# sed -i 's/^#define MANAGED_MEM/\/\/&/' ../../include/MultiHashGraph.cuh
 make -C $execpath multi-hash
 
 rm $resultsfile
