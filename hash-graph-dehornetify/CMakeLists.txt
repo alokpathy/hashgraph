@@ -41,14 +41,14 @@ add_library(alg ${CU_SRCS})
 # - add executables -------------------------------------------------------------------------------
 
 # add_executable(sing-hash test/SingleHashGraphTest.cu mem/memory.cpp mem/memory_manager.cpp externals/cnmem/src/cnmem.cpp)
-add_executable(sing-hash test/SingleHashGraphTest.cu mem/memory_manager.cpp)
+# add_executable(sing-hash test/SingleHashGraphTest.cu mem/memory_manager.cpp)
 # add_executable(multi-hash test/MultiHashGraphTest.cu mem/memory.cpp mem/memory_manager.cpp externals/cnmem/src/cnmem.cpp)
 add_executable(multi-hash test/MultiHashGraphTest.cu )
 # add_executable(multi-hash test/MultiHashGraphTest.cu )
 
 
-link_directories(externals/rmm)
+# link_directories(externals/rmm)
 # target_link_libraries(sing-hash  alg cuda rmm)
-target_link_libraries(sing-hash  alg cuda )
+# target_link_libraries(sing-hash  alg cuda )
 # target_link_libraries(multi-hash alg cuda rmm -fopenmp )
 target_link_libraries(multi-hash alg cuda -fopenmp )
