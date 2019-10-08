@@ -1,7 +1,7 @@
 keycounts=($(seq 24 1 33))
-gpucounts=($(seq 0 1 0))
+gpucounts=($(seq 0 1 4))
 
-execpath="../../build"
+execpath="../build"
 resultsfile=$1
 
 bincount=16000
