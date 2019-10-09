@@ -1,8 +1,8 @@
 keycount=26
-gpucount=16
+gpucount=4
 tablesizes=($(seq 21 1 31))
 
-execpath="../../build"
+execpath="../build"
 resultsfile=$1
 
 bincount=16000

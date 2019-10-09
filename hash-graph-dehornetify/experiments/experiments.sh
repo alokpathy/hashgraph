@@ -1,28 +1,28 @@
-echo "no index, no managed memory"
-
-sed -i 's/^#define INDEX_TRACK/\/\/&/' ../include/MultiHashGraph.cuh
-sed -i 's/^#define MANAGED_MEM/\/\/&/' ../include/MultiHashGraph.cuh
-
-echo "strong scaling"
-./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_noindex_nomanaged.txt
-
-echo "weak scaling"
-./weak_scaling/weak_scaling.sh ./weak_scaling/results/ws_noindex_nomanaged.txt
-
+# echo "no index, no managed memory"
+# 
+# sed -i 's/^#define INDEX_TRACK/\/\/&/' ../include/MultiHashGraph.cuh
+# sed -i 's/^#define MANAGED_MEM/\/\/&/' ../include/MultiHashGraph.cuh
+# 
+# echo "strong scaling"
+# ./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_noindex_nomanaged.txt
+# 
+# echo "weak scaling"
+# ./weak_scaling/weak_scaling.sh ./weak_scaling/results/ws_noindex_nomanaged.txt
+# 
 echo "duplicate keys"
 ./duplicate_keys/duplicate_keys.sh ./duplicate_keys/results/dk_noindex_nomanaged.txt
-
-
-echo "index, no managed memory"
-
-sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' ../include/MultiHashGraph.cuh
-sed -i 's/^#define MANAGED_MEM/\/\/&/' ../include/MultiHashGraph.cuh
-
-echo "strong scaling"
-./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_index_nomanaged.txt
-
-echo "weak scaling"
-./weak_scaling/weak_scaling.sh ./weak_scaling/results/ws_index_nomanaged.txt
+# 
+# 
+# echo "index, no managed memory"
+# 
+# sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' ../include/MultiHashGraph.cuh
+# sed -i 's/^#define MANAGED_MEM/\/\/&/' ../include/MultiHashGraph.cuh
+# 
+# echo "strong scaling"
+# ./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_index_nomanaged.txt
+# 
+# echo "weak scaling"
+# ./weak_scaling/weak_scaling.sh ./weak_scaling/results/ws_index_nomanaged.txt
 
 echo "duplicate keys"
 ./duplicate_keys/duplicate_keys.sh ./duplicate_keys/results/dk_index_nomanaged.txt
