@@ -1,7 +1,7 @@
 # echo "no index, no managed memory"
 # 
-# sed -i 's/^#define INDEX_TRACK/\/\/&/' ../include/MultiHashGraph.cuh
-# sed -i 's/^#define MANAGED_MEM/\/\/&/' ../include/MultiHashGraph.cuh
+sed -i 's/^#define INDEX_TRACK/\/\/&/' ../include/MultiHashGraph.cuh
+sed -i 's/^#define MANAGED_MEM/\/\/&/' ../include/MultiHashGraph.cuh
 # 
 # echo "strong scaling"
 # ./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_noindex_nomanaged.txt
