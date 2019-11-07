@@ -16,6 +16,7 @@
 #include "MultiHashGraph.cuh"
 
 #include <algorithm>
+#include <unistd.h>
 
 #define RAND_KEYS
 // #define PRINT_KEYS
@@ -122,6 +123,16 @@ void generateInput(inputData *h_dVals, int64_t countSize, int64_t maxkey, uint32
 
 int main(int argc, char **argv) {
 
+  int deviceCount = 0;
+  cudaGetDeviceCount(&deviceCount);
+
+  std::cout << "deviceCount: " << deviceCount << std::endl;
+
+  char hostname[HOST_NAME_MAX];
+  gethostname(hostname, HOST_NAME_MAX);
+
+  std::cout << "hostname: " << hostname << std::endl;
+
   int64_t countSizeA = 1L << 24;
   HashKey maxkey = 1L << 26;
 
@@ -178,7 +189,7 @@ int main(int argc, char **argv) {
   cudaEventCreate(&stop);
   float buildTime = 0.0f; // milliseoncds
 
-  enablePeerAccess(gpuCount);
+  // enablePeerAccess(gpuCount);
 
   // rmmOptions_t rmmO;
 

@@ -3,3 +3,4 @@ build/
 cscope.out
 .*.swp
 logs/
+outputs/
