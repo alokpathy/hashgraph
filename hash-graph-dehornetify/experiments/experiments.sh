@@ -4,13 +4,13 @@ sed -i 's/^#define INDEX_TRACK/\/\/&/' ../include/MultiHashGraph.cuh
 sed -i 's/^#define MANAGED_MEM/\/\/&/' ../include/MultiHashGraph.cuh
 
 echo "strong scaling"
-./strong_scaling/strong_scaling.sh # ./strong_scaling/results/ss_noindex_nomanaged.txt
+./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_noindex_nomanaged.txt
 
 echo "weak scaling"
-./weak_scaling/weak_scaling.sh # ./weak_scaling/results/ws_noindex_nomanaged.txt
+./weak_scaling/weak_scaling.sh ./weak_scaling/results/ws_noindex_nomanaged.txt
 
 echo "duplicate keys"
-./duplicate_keys/duplicate_keys.sh # ./duplicate_keys/results/dk_noindex_nomanaged.txt
+./duplicate_keys/duplicate_keys.sh ./duplicate_keys/results/dk_noindex_nomanaged.txt
 
 
 echo "index, no managed memory"
@@ -19,13 +19,13 @@ sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' ../include/MultiHashG
 sed -i 's/^#define MANAGED_MEM/\/\/&/' ../include/MultiHashGraph.cuh
 
 echo "strong scaling"
-./strong_scaling/strong_scaling.sh # ./strong_scaling/results/ss_index_nomanaged.txt
+./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_index_nomanaged.txt
 
 echo "weak scaling"
-./weak_scaling/weak_scaling.sh # ./weak_scaling/results/ws_index_nomanaged.txt
+./weak_scaling/weak_scaling.sh ./weak_scaling/results/ws_index_nomanaged.txt
 
 echo "duplicate keys"
-./duplicate_keys/duplicate_keys.sh # ./duplicate_keys/results/dk_index_nomanaged.txt
+./duplicate_keys/duplicate_keys.sh ./duplicate_keys/results/dk_index_nomanaged.txt
 
 
 echo "no index, managed memory"
@@ -34,13 +34,13 @@ sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' ../include/MultiHashG
 sed -i 's/^#define INDEX_TRACK/\/\/&/' ../include/MultiHashGraph.cuh
 
 echo "strong scaling"
-./strong_scaling/strong_scaling.sh # ./strong_scaling/results/ss_noindex_managed.txt
+./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_noindex_managed.txt
 
 echo "weak scaling"
-./weak_scaling/weak_scaling.sh # ./weak_scaling/results/ws_noindex_managed.txt
+./weak_scaling/weak_scaling.sh ./weak_scaling/results/ws_noindex_managed.txt
 
 echo "duplicate keys"
-./duplicate_keys/duplicate_keys.sh # ./duplicate_keys/results/dk_noindex_managed.txt
+./duplicate_keys/duplicate_keys.sh ./duplicate_keys/results/dk_noindex_managed.txt
 
 
 echo "index, managed memory"
@@ -49,10 +49,10 @@ sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' ../include/MultiHashG
 sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' ../include/MultiHashGraph.cuh
 
 echo "strong scaling"
-./strong_scaling/strong_scaling.sh # ./strong_scaling/results/ss_index_managed.txt
+./strong_scaling/strong_scaling.sh ./strong_scaling/results/ss_index_managed.txt
 
 echo "weak scaling"
-./weak_scaling/weak_scaling.sh # ./weak_scaling/results/ws_index_managed.txt
+./weak_scaling/weak_scaling.sh ./weak_scaling/results/ws_index_managed.txt
 
 echo "duplicate keys"
-./duplicate_keys/duplicate_keys.sh # ./duplicate_keys/results/dk_index_managed.txt
+./duplicate_keys/duplicate_keys.sh ./duplicate_keys/results/dk_index_managed.txt
