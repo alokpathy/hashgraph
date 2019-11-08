@@ -1,0 +1,69 @@
+strong scaling
+rm: missing operand
+Try 'rm --help' for more information.
+strong_scaling
+keycount,gpucount,time
+build tests
+16777216,1,0.0624526
+16777216,2,0.0497175
+16777216,4,0.048151
+16777216,6,0.0487469
+33554432,1,0.122297
+33554432,2,0.092338
+33554432,4,0.0749314
+33554432,6,0.0843605
+67108864,1,0.251712
+67108864,2,0.17592
+67108864,4,0.138037
+67108864,6,0.152045
+134217728,1,0.496167
+134217728,2,0.35391
+134217728,4,0.273147
+134217728,6,0.263601
+268435456,1,
+268435456,2,0.717936
+268435456,4,0.529709
+268435456,6,0.613547
+536870912,1,
+536870912,2,
+536870912,4,1.04242
+536870912,6,1.10378
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorMemoryAllocation: out of memory
+1073741824,1,
+Could not read jskill result from pmix server
+weak scaling
+Error: error in ptssup_mkcltsock_afunix()
+11-08-2019 15:13:04:273 23816 main: Error initializing RM connection. Exiting.
+duplicate keys
+Error: error in ptssup_mkcltsock_afunix()
+11-08-2019 15:13:05:843 23867 main: Error initializing RM connection. Exiting.
+index, no managed memory
+strong scaling
+Error: error in ptssup_mkcltsock_afunix()
+11-08-2019 15:13:07:403 23919 main: Error initializing RM connection. Exiting.
+weak scaling
+Error: error in ptssup_mkcltsock_afunix()
+11-08-2019 15:13:08:972 23972 main: Error initializing RM connection. Exiting.
+duplicate keys
+Error: error in ptssup_mkcltsock_afunix()
+11-08-2019 15:13:10:533 24021 main: Error initializing RM connection. Exiting.
+no index, managed memory
+strong scaling
+Terminated
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch3>
+Subject: Job 726679: <snmg-hg-experiments> in cluster <summit> Exited
+
+Job <snmg-hg-experiments> was submitted from host <login5> by user <alokt> in cluster <summit> at Fri Nov  8 15:08:05 2019
+Job was executed on host(s) <1*batch3>, in queue <batch>, as user <alokt> in cluster <summit> at Fri Nov  8 15:08:25 2019
+                            <42*h36n13>
+</ccs/home/alokt> was used as the home directory.
+</ccs/home/alokt/code-share/hash-graph-dehornetify/experiments> was used as the working directory.
+Started at Fri Nov  8 15:08:25 2019
+Terminated at Fri Nov  8 15:13:13 2019
+Results reported at Fri Nov  8 15:13:13 2019
+
+The output (if any) is above this job summary.
+

@@ -3,11 +3,11 @@
 #BSUB -W 0:10
 #BSUB -nnodes 1
 #BSUB -alloc_flags gpumps
-#BSUB -J kc24-gc6-build-jsr
-#BSUB -o kc24-gc6-build-jsr.%J
-#BSUB -e kc24-gc6-build-jsr.%J
+#BSUB -J kc28-gc6-build-jsr
+#BSUB -o kc28-gc6-build-jsr.%J
+#BSUB -e kc28-gc6-build-jsr.%J
 
 cd build
-make multi-hash && jsrun -n 1 -g 6 ./multi-hash $(echo "2^24" | bc) $(echo "2^24" | bc) 16000 6 16000 nocheck $(echo "2^24" | bc) build
-mv ../kc24* ../outputs/
-rm kc24*
+make multi-hash && jsrun -n 1 -g 6 ./multi-hash $(echo "2^28" | bc) $(echo "2^28" | bc) 16000 6 16000 nocheck $(echo "2^28" | bc) build
+mv ../kc28* ../outputs/
+rm kc28*
