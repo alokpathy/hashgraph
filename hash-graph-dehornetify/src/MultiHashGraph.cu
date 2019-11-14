@@ -307,7 +307,7 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
 
   hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
-                                                  (HashKey) ogTableSize);
+                                                  (HashKey) ogTableSize, devNum);
   decrHash<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(d_hash, valCount, d_splits, 
                                                 devNum);
 
@@ -589,6 +589,24 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
                         (keyCount * sizeof(HashKey)) +
                         (keyCount * sizeof(keyval));
 
+  #pragma omp barrier
+  if (0 && tid == 2) {
+    keyval *tmp_keys = new keyval[keyCount]();
+    
+    printf("keyCount: %ld\n", keyCount);
+    cudaMemcpy(tmp_keys, h_dFinalKeys[tid], keyCount * sizeof(keyval), cudaMemcpyDeviceToHost);
+
+    cudaDeviceSynchronize();
+    CHECK_ERROR("here???");
+
+    std::cout << "minHash: " << h_binSplits[tid] << std::endl;
+    for (uint64_t i = 0; i < keyCount; i++) {
+      if (tmp_keys[i].key < h_binSplits[tid]) {
+        printf("tid: %ld key: %ld\n", tid, tmp_keys[i].key);
+      }
+    }
+  }
+  #pragma omp barrier
 
   lrbBuildMultiTable((keyval *) h_dFinalKeys[tid], 
                           (HashKey *) (h_dFinalKeys[tid] + h_hashOff[tid]), // d_hash
@@ -656,11 +674,9 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
   // cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t));
 #ifdef MANAGED_MEM
   d_countCommon = (int64_t *) mhgA.h_dCountCommon[tid];
-  CHECK_ERROR("before");
   cudaMemPrefetchAsync(d_countCommon, 
                             mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
                             tid);
-  CHECK_ERROR("after");
 #else
   cudaMalloc(&d_countCommon, (size_t)(2 * ((tableSize + 1) * sizeof(int64_t))));
 #endif
