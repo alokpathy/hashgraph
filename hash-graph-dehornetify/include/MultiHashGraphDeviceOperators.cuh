@@ -89,10 +89,6 @@ __global__ void hashValuesD(uint64_t valCount, keyval *valsArr, HashKey *hashArr
 
   for (auto i = id; i < valCount; i += stride) {
     // hashArr[i].key = (HashKey)(hash_murmur(valsArr[i].key) % tableSize);
-    uint64_t hash = ((uint64_t)hash_murmur(valsArr[i].key)) % tableSize;
-    if (hash != valsArr[i].key) {
-        printf("hash: %ld key: %ld i: %ld\n", hash, valsArr[i].key, i);
-    }
     hashArr[i] = (HashKey)(hash_murmur(valsArr[i].key) % tableSize);
   }    
 }
@@ -294,9 +290,6 @@ __global__ void decrHash(HashKey *hashes, size_t size, uint64_t *splits, uint64_
   for (auto i = id; i < size; i += stride) {
     uint64_t minHash = splits[devNum];
     // hashes[i].key -= minHash;
-    if (hashes[i] < minHash) {
-        // printf("decrHash hash: %ld splits: %ld minHash: %ld i: %ld\n", hashes[i], splits[devNum], minHash, i);
-    }
     hashes[i] -= minHash;
   }
 }

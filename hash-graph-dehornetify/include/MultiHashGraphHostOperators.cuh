@@ -276,17 +276,11 @@ void countFinalKeys(uint64_t **h_bufferCounter, char **h_dFinalKeys,
     h_dFinalKeys[0] = uvmPtr;
     for (uint64_t i = 1; i < gpuCount; i++) {
       h_dFinalKeys[i] = uvmPtr + prefixArray[i];
-      // printf("mm gpu: %ld size: %ld\n", i - 1, (prefixArray[i] - prefixArray[i - 1]));
-      printf("gpu: %ld uvmPtr: %lx size: %ld\n", i - 1, h_dFinalKeys[i], 
-                                                    (prefixArray[i] - prefixArray[i - 1]));
     }
-    // printf("mm gpu: %ld size: %ld\n", gpuCount - 1, (totalSize - prefixArray[gpuCount - 1]));
   }
   #pragma omp barrier
 
-  // cudaMemPrefetchAsync(h_dFinalKeys[tid], prefixArray[tid + 1] - prefixArray[tid], tid);
-  // h_dFinalKeys[tid] = nullptr;
-  // cudaMalloc(&h_dFinalKeys[tid], prefixArray[tid + 1] - prefixArray[tid]);
+  cudaMemPrefetchAsync(h_dFinalKeys[tid], prefixArray[tid + 1] - prefixArray[tid], tid);
 
 #else
   cudaMalloc(&h_dFinalKeys[tid], keyCount * sizeof(keyval) + 
@@ -297,7 +291,6 @@ void countFinalKeys(uint64_t **h_bufferCounter, char **h_dFinalKeys,
                                  keyCount * sizeof(HashKey) +
                                  (2 * keyCount * sizeof(keyval)) +
                                  (2 * (hashRange + 1) * sizeof(index_t));
-  printf("nonmm gpu: %ld size: %ld\n", tid, size);
 #endif
 }
 
@@ -317,29 +310,9 @@ void allToAll(inputData *h_dVals, char **h_dFinalKeys,
     // cudaMemcpyAsync(h_dFinalKeys[j] + (h_hFinalOffset[j][tid] * sizeof(keyval)),
     //                   h_dKeyBinBuff[tid] + h_hKeyBinOff[tid][j],
     //                   keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
-    // printf("gpu1: %ld gpu2: %ld off1: %ld off2: %ld keyCount: %ld\n", tid, j, 
-    //            h_hFinalOffset[tid][j] * sizeof(keyval), h_hKeyBinOff[j][tid], keyCount);
     cudaMemcpyAsync(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
                       h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
                       keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
-#if 0
-    cudaMemcpy(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
-                      h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
-                      keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
-
-    keyval *before_keys = new keyval[keyCount]();
-    keyval *after_keys = new keyval[keyCount]();
-    cudaMemcpy(before_keys, h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid], keyCount * sizeof(keyval), 
-                  cudaMemcpyDeviceToHost);
-    cudaMemcpy(after_keys, h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)), keyCount * sizeof(keyval),                  cudaMemcpyDeviceToHost); 
-
-    for (uint64_t i = 0; i < keyCount; i++) {
-      if (after_keys[i].key != before_keys[i].key) {
-        printf("wut gpu tid %ld gpu j %ld before key %ld after key %ld\n", tid, j, before_keys[i].key, 
-                                                                            after_keys[i].key);
-      }
-    }
-#endif
   }
 }
 

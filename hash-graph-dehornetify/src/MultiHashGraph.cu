@@ -48,7 +48,7 @@ using namespace std::chrono;
 // Uncomment once we remove "using namespace hornets_nest"
 // const int BLOCK_SIZE_OP2 = 256;
 
-#define ERROR_CHECK
+// #define ERROR_CHECK
 // #define PRINT_KEYS
 #define LRB_BUILD
 
@@ -588,25 +588,6 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
   h_lrbOff[tid] =    (keyCount * sizeof(keyval)) +
                         (keyCount * sizeof(HashKey)) +
                         (keyCount * sizeof(keyval));
-
-  #pragma omp barrier
-  if (0 && tid == 2) {
-    keyval *tmp_keys = new keyval[keyCount]();
-    
-    printf("keyCount: %ld\n", keyCount);
-    cudaMemcpy(tmp_keys, h_dFinalKeys[tid], keyCount * sizeof(keyval), cudaMemcpyDeviceToHost);
-
-    cudaDeviceSynchronize();
-    CHECK_ERROR("here???");
-
-    std::cout << "minHash: " << h_binSplits[tid] << std::endl;
-    for (uint64_t i = 0; i < keyCount; i++) {
-      if (tmp_keys[i].key < h_binSplits[tid]) {
-        printf("tid: %ld key: %ld\n", tid, tmp_keys[i].key);
-      }
-    }
-  }
-  #pragma omp barrier
 
   lrbBuildMultiTable((keyval *) h_dFinalKeys[tid], 
                           (HashKey *) (h_dFinalKeys[tid] + h_hashOff[tid]), // d_hash
