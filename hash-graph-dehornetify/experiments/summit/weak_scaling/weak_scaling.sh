@@ -1,9 +1,9 @@
 keycounts=($(seq 24 1 33))
 # gpucounts=($(seq 0 1 4))
-# gpucounts=(1 2 4 6)
-gpucounts=(1 2 4 8)
+gpucounts=(1 2 4 6)
+# gpucounts=(1 2 4 8)
 
-execpath="../build"
+execpath="../../build"
 resultsfile=$1
 
 bincount=16000
@@ -11,12 +11,12 @@ bincount=16000
 # sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' ../../include/MultiHashGraph.cuh
 # make -C $execpath multi-hash
 
-rm $resultsfile
-echo "keycount,gpucount,time" >> $resultsfile
+# rm $resultsfile
+# echo "keycount,gpucount,time" >> $resultsfile
 echo "weak_scaling"
 echo "keycount,gpucount,time"
 echo "build tests"
-echo "build tests" >> $resultsfile
+# echo "build tests" >> $resultsfile
 
 for i in "${keycounts[@]}"
     do
@@ -34,12 +34,13 @@ for i in "${keycounts[@]}"
                 tokens=( $ans )
                 time=${tokens[3]}
 
-                echo "${kc},${gc},${time}" >> $resultsfile
+                # echo "${kc},${gc},${time}" >> $resultsfile
+                echo "${kc},${gc},${time}"
             done
     done
 
 echo "intersect tests"
-echo "intersect tests" >> $resultsfile
+# echo "intersect tests" >> $resultsfile
 
 for i in "${keycounts[@]}"
     do
@@ -58,7 +59,8 @@ for i in "${keycounts[@]}"
                 tokens=( $ans )
                 time=${tokens[3]}
 
-                echo "${kc},${gc},${time}" >> $resultsfile
+                # echo "${kc},${gc},${time}" >> $resultsfile
+                echo "${kc},${gc},${time}"
             done
     done
 

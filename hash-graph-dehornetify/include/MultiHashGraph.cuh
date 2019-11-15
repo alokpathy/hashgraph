@@ -64,7 +64,7 @@ using HashKey = int64_t;
 // #define CUDA_PROFILE
 
 // #define INDEX_TRACK
-#define MANAGED_MEM
+//#define MANAGED_MEM
 
 struct keyval_key
 {

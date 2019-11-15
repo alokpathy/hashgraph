@@ -1,9 +1,8 @@
 keycount=26
-gpucount=8
-# gpucount=6
+gpucount=6
 tablesizes=($(seq 21 1 31))
 
-execpath="../build"
+execpath="../../build"
 resultsfile=$1
 
 bincount=16000
@@ -11,12 +10,12 @@ bincount=16000
 # sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' ../../include/MultiHashGraph.cuh
 # make -C $execpath multi-hash
 
-rm $resultsfile
-echo "keycount,tablesize,gpucount,time" >> $resultsfile
+# rm $resultsfile
+# echo "keycount,tablesize,gpucount,time" >> $resultsfile
 echo "duplicate_keys"
 echo "keycount,tablesize,gpucount,time"
 echo "build tests"
-echo "build tests" >> $resultsfile
+# echo "build tests" >> $resultsfile
 
 for i in "${tablesizes[@]}"
     do
@@ -31,11 +30,12 @@ for i in "${tablesizes[@]}"
         tokens=( $ans )
         time=${tokens[3]}
 
-        echo "${kc},${ts},${gc},${time}" >> $resultsfile
+        # echo "${kc},${ts},${gc},${time}" >> $resultsfile
+        echo "${kc},${ts},${gc},${time}"
     done
 
 echo "intersect tests"
-echo "intersect tests" >> $resultsfile
+# echo "intersect tests" >> $resultsfile
 
 keycount=$((echo $keycount - 1) | bc)
 for i in "${tablesizes[@]}"
@@ -51,5 +51,6 @@ for i in "${tablesizes[@]}"
         tokens=( $ans )
         time=${tokens[3]}
 
-        echo "${kc},${ts},${gc},${time}" >> $resultsfile
+        # echo "${kc},${ts},${gc},${time}" >> $resultsfile
+        echo "${kc},${ts},${gc},${time}"
     done
