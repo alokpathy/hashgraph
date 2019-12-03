@@ -7,8 +7,8 @@
 #BSUB -o snmg-hg-experiments.%J
 #BSUB -e snmg-hg-experiments.%J
 
-#make -C ../build/ multi-hash && jsrun -n 1 -g 6 ../build/multi-hash $(echo "2^28" | bc) $(echo "2^28" | bc) 16000 6 16000 nocheck $(echo "2^28" | bc) build
-#jsrun -n 1 -g 6 ./experiments.sh
+# make -C ../build/ multi-hash && jsrun -n 1 -g 6 ../build/multi-hash $(echo "2^28" | bc) $(echo "2^28" | bc) 16000 6 16000 nocheck $(echo "2^28" | bc) build
+# jsrun -n 1 -g 6 ./experiments.sh
 # mv snmg-hg-experiments* ../outputs/
 
 includepath="../../include"
