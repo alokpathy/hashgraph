@@ -21,7 +21,7 @@ echo "build tests"
 for i in "${keycounts[@]}"
     do
         let kc=$((echo 2^$i) | bc)
-        # echo "keycount: ${kc}"
+        echo "keycount: ${kc}"
         for j in "${gpucounts[@]}"
             do
                 # let gc=$((echo 2^$j) | bc)
