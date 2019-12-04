@@ -11,7 +11,7 @@ sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
 make -C $buildpath multi-hash
 
 echo "strong scaling"
-jsrun -n 1 -g 6 $sspath/strong_scaling.sh > ./strong_scaling/results/ss_noindex_nomanaged.txt
+jsrun -n 1 -g 6 $sspath/strong_scaling.sh 8 > ./strong_scaling/results/ss_noindex_nomanaged.txt
 
 echo "weak scaling"
 jsrun -n 1 -g 6 $wspath/weak_scaling.sh > ./weak_scaling/results/ws_noindex_nomanaged.txt
@@ -28,7 +28,7 @@ sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
 make -C $buildpath multi-hash
 
 echo "strong scaling"
-jsrun -n 1 -g 6 $sspath/strong_scaling.sh > ./strong_scaling/results/ss_index_nomanaged.txt
+jsrun -n 1 -g 6 $sspath/strong_scaling.sh 16 > ./strong_scaling/results/ss_index_nomanaged.txt
 
 echo "weak scaling"
 jsrun -n 1 -g 6 $wspath/weak_scaling.sh > ./weak_scaling/results/ws_index_nomanaged.txt
@@ -45,7 +45,7 @@ sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
 make -C $buildpath multi-hash
 
 echo "strong scaling"
-jsrun -n 1 -g 6 $sspath/strong_scaling.sh > ./strong_scaling/results/ss_noindex_managed.txt
+jsrun -n 1 -g 6 $sspath/strong_scaling.sh 8 > ./strong_scaling/results/ss_noindex_managed.txt
 
 echo "weak scaling"
 jsrun -n 1 -g 6 $wspath/weak_scaling.sh > ./weak_scaling/results/ws_noindex_managed.txt
@@ -62,7 +62,7 @@ sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHas
 make -C $buildpath multi-hash
 
 echo "strong scaling"
-jsrun -n 1 -g 6 $sspath/strong_scaling.sh > ./strong_scaling/results/ss_index_managed.txt
+jsrun -n 1 -g 6 $sspath/strong_scaling.sh 16 > ./strong_scaling/results/ss_index_managed.txt
 
 echo "weak scaling"
 jsrun -n 1 -g 6 $wspath/weak_scaling.sh > ./weak_scaling/results/ws_index_managed.txt
