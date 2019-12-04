@@ -48,7 +48,7 @@ using namespace std::chrono;
 // Uncomment once we remove "using namespace hornets_nest"
 // const int BLOCK_SIZE_OP2 = 256;
 
-#define ERROR_CHECK
+// #define ERROR_CHECK
 // #define PRINT_KEYS
 #define LRB_BUILD
 
@@ -706,22 +706,13 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
 
   // printf("Size of the ouput is : %ld\n", h_Common[tid]); fflush(stdout);
 
-#ifdef ERROR_CHECK
-  cudaDeviceSynchronize();
-  CHECK_ERROR("intersect before");
-#endif
   if (h_Common[tid] > 0) {
     // d_output =  mem_t<keypair>(h_Common,context,memory_space_device);
     cudaMalloc(&h_dOutput[tid], h_Common[tid] * sizeof(keypair));
-    std::cout << "tid: " << tid << " h_Common: " << h_Common[tid] << std::endl;
     // RMM_ALLOC(&h_dOutput[tid], h_Common[tid] * sizeof(keypair), 0);
   }
 
 
-#ifdef ERROR_CHECK
-  cudaDeviceSynchronize();
-  CHECK_ERROR("intersect after");
-#endif
   simpleIntersect<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(tableSize, d_offsetA, d_edgesA, d_offsetB,
                                                         d_edgesB, d_outputPositions, 
                                                         h_dOutput[tid], false);
