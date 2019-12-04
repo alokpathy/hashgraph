@@ -291,8 +291,7 @@ int main(int argc, char **argv) {
         mhgA.h_dCountCommon[0] = mhgA.uvmPtrIntersect;
         for (uint64_t i = 1; i < gpuCount; i++) {
           mhgA.h_dCountCommon[i] = mhgA.uvmPtrIntersect + 
-                                        (mhgA.prefixArrayIntersect[i] - 
-                                         mhgA.prefixArrayIntersect[i - 1]);
+                                        mhgA.prefixArrayIntersect[i];
         }
 #endif
       } // master
