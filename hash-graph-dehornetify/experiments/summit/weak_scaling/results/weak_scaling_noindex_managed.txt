@@ -1,0 +1,5 @@
+weak_scaling
+keycount,gpucount,time
+build tests
+16777216,1,0.0961571
+33554432,2,0.17967
