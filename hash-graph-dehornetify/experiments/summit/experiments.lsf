@@ -7,130 +7,40 @@
 #BSUB -o snmg-hg-experiments.%J
 #BSUB -e snmg-hg-experiments.%J
 
-# make -C ../build/ multi-hash && jsrun -n 1 -g 6 ../build/multi-hash $(echo "2^28" | bc) $(echo "2^28" | bc) 16000 6 16000 nocheck $(echo "2^28" | bc) build
-# jsrun -n 1 -g 6 ./experiments.sh
-# mv snmg-hg-experiments* ../outputs/
-
 buildpath="../../build"
 includepath="../../include"
-sspath="./strong_scaling"
-wspath="./weak_scaling"
-dkpath="./duplicate_keys"
 
 declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
+declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
 
-for mode in modes
+for mode in "${modes[@]}"
   do
     bytes=8
-    if [ "$mode" == "noindex_nomanaged" ] then
+    if [ "$mode" == "noindex_nomanaged" ]; then
       sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
       sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-    elif [ "$mode" == "index_nomanaged" ] then
+    elif [ "$mode" == "index_nomanaged" ]; then
       sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
       sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
       bytes=16
-    elif [ "$mode" == "noindex_managed" ] then
-      sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
-      sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-    elif [ "$mode" == "index_managed" ] then
+    elif [ "$mode" == "noindex_managed" ]; then
+      sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+    elif [ "$mode" == "index_managed" ]; then
       sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
       sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
       bytes=16
     fi
 
-    echo $mode
-
     make -C $buildpath multi-hash
 
-    echo "strong scaling"
-    jsrun -n 1 -g 6 $sspath/strong_scaling.sh $bytes > ./strong_scaling/results/ss_$mode.txt
-    head -n -$(cat ./strong_scaling/results/ss_$mode.txt | grep -n intersect | cut -f1 -d:) ./strong_scaling/results/ss_$mode.txt > ./strong_scaling/results/build/ss_$mode.txt
-    tail -n +$(cat ./strong_scaling/results/ss_$mode.txt | grep -n intersect | cut -f1 -d:) ./strong_scaling/results/ss_$mode.txt > ./strong_scaling/results/intersect/ss_$mode.txt
+    echo $mode
 
-    echo "weak scaling"
-    jsrun -n 1 -g 6 $wspath/weak_scaling.sh $byte > ./weak_scaling/results/ws_$mode.txt
-    head -n -$(cat ./weak_scaling/results/ws_$mode.txt | grep -n intersect | cut -f1 -d:) ./weak_scaling/results/ws_$mode.txt > ./weak_scaling/results/build/ws_$mode.txt
-    tail -n +$(cat ./weak_scaling/results/ws_$mode.txt | grep -n intersect | cut -f1 -d:) ./weak_scaling/results/ws_$mode.txt > ./weak_scaling/results/intersect/ws_$mode.txt
-
-    echo "duplicate keys"
-    jsrun -n 1 -g 6 $dkpath/duplicate_keys.sh $bytes > ./duplicate_keys/results/dk_$mode.txt
-    head -n -$(cat ./duplicate_keys/results/dk_$mode.txt | grep -n intersect | cut -f1 -d:) ./duplicate_keys/results/dk_$mode.txt > ./duplicate_keys/results/build/dk_$mode.txt
-    tail -n +$(cat ./duplicate_keys/results/dk_$mode.txt | grep -n intersect | cut -f1 -d:) ./duplicate_keys/results/dk_$mode.txt > ./duplicate_keys/results/intersect/dk_$mode.txt
-
-
-# echo "no index, no managed memory"
-# 
-# sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
-# sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-# 
-# make -C $buildpath multi-hash
-# 
-# echo "strong scaling"
-# jsrun -n 1 -g 6 $sspath/strong_scaling.sh 8 > ./strong_scaling/results/ss_noindex_nomanaged.txt
-# head -n -$(cat ./strong_scaling/results/ss_noindex_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./strong_scaling/results/ss_noindex_nomanaged.txt > ./strong_scaling/results/build/ss_noindex_nomanaged.txt
-# tail -n +$(cat ./strong_scaling/results/ss_noindex_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./strong_scaling/results/ss_noindex_nomanaged.txt > ./strong_scaling/results/intersect/ss_noindex_nomanaged.txt
-# 
-# echo "weak scaling"
-# jsrun -n 1 -g 6 $wspath/weak_scaling.sh 8 > ./weak_scaling/results/ws_noindex_nomanaged.txt
-# head -n -$(cat ./weak_scaling/results/ws_noindex_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./weak_scaling/results/ws_noindex_nomanaged.txt > ./weak_scaling/results/build/ws_noindex_nomanaged.txt
-# tail -n +$(cat ./weak_scaling/results/ws_noindex_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./weak_scaling/results/ws_noindex_nomanaged.txt > ./weak_scaling/results/intersect/ws_noindex_nomanaged.txt
-# 
-# echo "duplicate keys"
-# jsrun -n 1 -g 6 $dkpath/duplicate_keys.sh 8 > ./duplicate_keys/results/dk_noindex_nomanaged.txt
-# head -n -$(cat ./duplicate_keys/results/dk_noindex_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./duplicate_keys/results/dk_noindex_nomanaged.txt > ./duplicate_keys/results/build/dk_noindex_nomanaged.txt
-# tail -n +$(cat ./duplicate_keys/results/dk_noindex_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./duplicate_keys/results/dk_noindex_nomanaged.txt > ./duplicate_keys/results/intersect/dk_noindex_nomanaged.txt
-# 
-# 
-# echo "index, no managed memory"
-# 
-# sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
-# sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-# 
-# make -C $buildpath multi-hash
-# 
-# echo "strong scaling"
-# jsrun -n 1 -g 6 $sspath/strong_scaling.sh 16 > ./strong_scaling/results/ss_index_nomanaged.txt
-# head -n -$(cat ./strong_scaling/results/ss_index_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./strong_scaling/results/ss_index_nomanaged.txt > ./strong_scaling/results/build/ss_index_nomanaged.txt
-# tail -n +$(cat ./strong_scaling/results/ss_index_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./strong_scaling/results/ss_index_nomanaged.txt > ./strong_scaling/results/intersect/ss_index_nomanaged.txt
-# 
-# echo "weak scaling"
-# jsrun -n 1 -g 6 $wspath/weak_scaling.sh 16 > ./weak_scaling/results/ws_index_nomanaged.txt
-# head -n -$(cat ./weak_scaling/results/ws_index_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./weak_scaling/results/ws_index_nomanaged.txt > ./weak_scaling/results/build/ws_index_nomanaged.txt
-# tail -n +$(cat ./weak_scaling/results/ws_index_nomanaged.txt | grep -n intersect | cut -f1 -d:) ./weak_scaling/results/ws_index_nomanaged.txt > ./weak_scaling/results/intersect/ws_index_nomanaged.txt
-# 
-# echo "duplicate keys"
-# jsrun -n 1 -g 6 $dkpath/duplicate_keys.sh 16 > ./duplicate_keys/results/dk_index_nomanaged.txt
-# 
-# 
-# echo "no index, managed memory"
-# 
-# sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
-# sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
-# 
-# make -C $buildpath multi-hash
-# 
-# echo "strong scaling"
-# jsrun -n 1 -g 6 $sspath/strong_scaling.sh 8 > ./strong_scaling/results/ss_noindex_managed.txt
-# 
-# echo "weak scaling"
-# jsrun -n 1 -g 6 $wspath/weak_scaling.sh 8 > ./weak_scaling/results/ws_noindex_managed.txt
-# 
-# echo "duplicate keys"
-# jsrun -n 1 -g 6 $dkpath/duplicate_keys.sh 8 > ./duplicate_keys/results/dk_noindex_managed.txt
-# 
-# 
-# echo "index, managed memory"
-# 
-# sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
-# sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
-# 
-# make -C $buildpath multi-hash
-# 
-# echo "strong scaling"
-# jsrun -n 1 -g 6 $sspath/strong_scaling.sh 16 > ./strong_scaling/results/ss_index_managed.txt
-# 
-# echo "weak scaling"
-# jsrun -n 1 -g 6 $wspath/weak_scaling.sh 16 > ./weak_scaling/results/ws_index_managed.txt
-# 
-# echo "duplicate keys"
-# jsrun -n 1 -g 6 $dkpath/duplicate_keys.sh 16 > ./duplicate_keys/results/dk_index_managed.txt
+    for exp in "${exps[@]}"
+      do
+        echo $exp
+        jsrun -n 1 -g 6 ./$exp/$exp.sh $bytes > ./$exp/results/$exp\_$mode.txt
+        head -n -$(cat ./$exp/results/$exp\_$mode.txt | grep -n intersect | cut -f1 -d:) ./$exp/results/$exp\_$mode.txt > ./$exp/results/build/$exp\_$mode.txt
+        tail -n +$(cat ./$exp/results/$exp\_$mode.txt | grep -n intersect | cut -f1 -d:) ./$exp/results/$exp\_$mode.txt > ./$exp/results/intersect/$exp\_$mode.txt
+      done
+  done

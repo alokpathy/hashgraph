@@ -26,7 +26,7 @@ for i in "${tablesizes[@]}"
 
         # echo "tableSize: ${ts}"
         # internal cuda malloc + keys + hashes + keyBinBuff
-        let gigs=$((echo "(($kc * $1) + ($kc * 8) + (2 * $kc * $1) + (2 * $ts * 8)) + ($kc * 8) + ($kc * 8) + ($kc * $1)) / 2^30") | bc)
+        let gigs=$((echo "((($kc * $1) + ($kc * 8) + (2 * $kc * $1) + (2 * $ts * 8)) + ($kc * 8) + ($kc * 8) + ($kc * $1)) / 2^30") | bc)
         let gpureq=$((echo "($gigs + 16) / 16") | bc)
 
         if (( $gpureq > $gc )) ; then
