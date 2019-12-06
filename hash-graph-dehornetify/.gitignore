@@ -1,4 +1,4 @@
-build/
+/build/
 .files_for_cscope
 cscope.out
 .*.swp
