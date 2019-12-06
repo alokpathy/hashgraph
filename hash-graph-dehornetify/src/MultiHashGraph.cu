@@ -616,10 +616,9 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
                     
 #ifdef CUDA_PROFILE
   cudaProfilerStop();
+  CHECK_ERROR("end of build");
 #endif
     
-  CHECK_ERROR("end of build");
-
   cudaSetDevice(0);
 }
 
