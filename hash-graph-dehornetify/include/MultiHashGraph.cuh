@@ -143,7 +143,7 @@ class MultiHashGraph {
 public:
     MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t maxkey, 
                       // context_t &context, int64_t tableSize,
-                      int64_t tableSize,
+                      HashKey tableSize,
                       uint64_t binCount, index_t lrbBins, uint64_t gpuCount); ~MultiHashGraph();
 
     void build(bool buildSplits, uint64_t tid);
@@ -172,7 +172,8 @@ public:
     int64_t **h_dGlobalCounter;
 
     int64_t countSize;
-    int64_t tableSize;
+    // int64_t tableSize;
+    HashKey tableSize;
     uint64_t gpuCount;
 
     // Public for correctness check

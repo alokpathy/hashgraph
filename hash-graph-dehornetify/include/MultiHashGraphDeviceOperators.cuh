@@ -72,7 +72,8 @@ __forceinline__  __host__ __device__ uint32_t hash_murmur(const HashKey& key) {
   return h1;
 }
 
-__global__ void basicHashD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, int64_t tableSize) {
+// __global__ void basicHashD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, int64_t tableSize) {
+__global__ void basicHashD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, HashKey tableSize) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
 
@@ -82,7 +83,8 @@ __global__ void basicHashD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr,
 }
 
 // __global__ void hashValuesD(uint64_t valCount, keyval *valsArr, keyval *hashArr, int64_t tableSize) {
-__global__ void hashValuesD(uint64_t valCount, keyval *valsArr, HashKey *hashArr, int64_t tableSize,
+// __global__ void hashValuesD(uint64_t valCount, keyval *valsArr, HashKey *hashArr, int64_t tableSize,
+__global__ void hashValuesD(index_t valCount, keyval *valsArr, HashKey *hashArr, HashKey tableSize,
                                 uint64_t devNum) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
@@ -93,7 +95,8 @@ __global__ void hashValuesD(uint64_t valCount, keyval *valsArr, HashKey *hashArr
   }    
 }
 
-__global__ void countHashD(uint64_t valCount, HashKey *hashArr, index_t *countArr) {
+// __global__ void countHashD(uint64_t valCount, HashKey *hashArr, index_t *countArr) {
+__global__ void countHashD(index_t valCount, HashKey *hashArr, index_t *countArr) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
@@ -110,8 +113,9 @@ __global__ void countHashD32(uint64_t valCount, HashKey *hashArr, int32_t *count
   }    
 }
 
-__global__ void copyToGraphD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, index_t *countArr,
-                                index_t *offsetArr, keyval *edges, uint64_t tableSize) {
+// __global__ void copyToGraphD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, index_t *countArr,
+__global__ void copyToGraphD(index_t valCount, hkey_t *valsArr, HashKey *hashArr, index_t *countArr,
+                                index_t *offsetArr, keyval *edges, HashKey tableSize) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;

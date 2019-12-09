@@ -60,7 +60,7 @@ uint64_t tidFocused = 2;
 
 MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t maxkey, 
                                     // context_t &context, int64_t tableSize, 
-                                    int64_t tableSize, 
+                                    HashKey tableSize, 
                                     uint64_t binCount, index_t lrbBins, 
                                     uint64_t gpuCount) {
 
@@ -527,7 +527,7 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
               h_hKeyBinOff, h_hFinalCounter, gpuCount, tid);
 
   // #pragma omp barrier
-  cudaDeviceSynchronize();
+  // cudaDeviceSynchronize();
 
 #ifdef HOST_PROFILE
   if (tid == tidFocused) {
