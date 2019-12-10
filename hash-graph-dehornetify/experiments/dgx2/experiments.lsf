@@ -39,7 +39,7 @@ for mode in "${modes[@]}"
     for exp in "${exps[@]}"
       do
         echo $exp
-        jsrun -n 1 -g 6 ./$exp/$exp.sh $bytes > ./$exp/results/$exp\_$mode.txt
+        ./$exp/$exp.sh $bytes > ./$exp/results/$exp\_$mode.txt
         head -n -$(cat ./$exp/results/$exp\_$mode.txt | grep -n intersect | cut -f1 -d:) ./$exp/results/$exp\_$mode.txt > ./$exp/results/build/$exp\_$mode.txt
         tail -n +$(cat ./$exp/results/$exp\_$mode.txt | grep -n intersect | cut -f1 -d:) ./$exp/results/$exp\_$mode.txt > ./$exp/results/intersect/$exp\_$mode.txt
       done
