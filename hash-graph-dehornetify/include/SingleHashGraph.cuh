@@ -93,6 +93,7 @@ public:
     ~SingleHashGraph();
 
     // void build(int64_t countSize, context_t &context, int64_t tableSize);
+    void build(int64_t countSize, int64_t tableSize);
 
 private:
 
@@ -102,4 +103,9 @@ private:
     // mem_t<index_t>  d_offset;
     // mem_t<keyval>   d_edges;
 
+    hkey_t*  d_vals;
+    HashKey*  d_hash;
+    index_t*  d_counter;
+    index_t*  d_offset;
+    keyval*   d_edges;
 };

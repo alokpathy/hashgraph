@@ -39,15 +39,15 @@ int main(int argc, char **argv) {
   cudaEventCreate(&stop);
   float buildTime = 0.0f; // milliseoncds
 
-  rmm_mgpu_context_t context;
+  // rmm_mgpu_context_t context;
 
-  std::cout << "before1" << std::endl;
-  SingleHashGraph shg(countSize, maxkey, context, tableSize); 
-  std::cout << "after1" << std::endl;
+  // SingleHashGraph shg(countSize, maxkey, context, tableSize); 
+  SingleHashGraph shg(countSize, maxkey, tableSize); 
 
   cudaEventRecord(start);
 
-  shg.build(countSize, context, tableSize);
+  // shg.build(countSize, context, tableSize);
+  shg.build(countSize, tableSize);
 
   cudaEventRecord(stop);
   cudaEventSynchronize(stop);

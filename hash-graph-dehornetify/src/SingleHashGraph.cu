@@ -20,6 +20,11 @@
 #include <vector>
 #include <set>
 
+#include <thrust/random.h>
+#include <thrust/device_vector.h>
+#include <thrust/transform.h>
+#include <thrust/iterator/counting_iterator.h>
+
 #include <cuda_profiler_api.h> //--profile-from-start off
 
 // #include <moderngpu/memory.hxx>
@@ -54,17 +59,53 @@ using HashKey = uint32_t;
 int BLOCK_COUNT = -1;
 int BLOCK_SIZE_OP2 = 256; // TODO: Double check this.
 
+#define SEQ_KEYS
+
+struct prg {
+  hkey_t lo, hi;
+
+  __host__ __device__ prg(hkey_t _lo=0, hkey_t _hi=0) : lo(_lo), hi(_hi) {};
+
+  __host__ __device__ hkey_t operator()(unsigned long long index) const {
+    thrust::default_random_engine rng(index);
+    thrust::uniform_int_distribution<hkey_t> dist(lo, hi);
+    rng.discard(index);
+    return dist(rng);
+  }
+};
+
 SingleHashGraph::SingleHashGraph(int64_t countSize, int64_t maxkey, // context_t &context, 
                                     int64_t tableSize)
                                       // : 
-                                        // d_hash(countSize, context, memory_space_device),
-                                        // d_edges(countSize, context, memory_space_device)
+                                      //   d_hash(countSize, context, memory_space_device),
+                                      //  d_edges(countSize, context, memory_space_device)
                                       {
 
   // d_vals = fill_random_64((hkey_t)0, maxkey, countSize, false, context);
   // d_vals = fill_sequence((hkey_t)0, maxkey, context);
   // d_counter = fill((index_t)0, (size_t)(tableSize + 1), context);
   // d_offset = fill((index_t)0, (size_t)(tableSize + 1), context);
+
+  cudaMalloc(&d_vals, countSize * sizeof(hkey_t));
+  cudaMalloc(&d_hash, countSize * sizeof(HashKey));
+  cudaMalloc(&d_counter, (tableSize + 1) * sizeof(index_t));
+  cudaMalloc(&d_offset, (tableSize + 1) * sizeof(index_t));
+  cudaMalloc(&d_edges, countSize * sizeof(keyval));
+
+  cudaMemset(d_counter, 0, (tableSize + 1) * sizeof(index_t));
+  cudaMemset(d_offset, 0, (tableSize + 1) * sizeof(index_t));
+
+#ifdef SEQ_KEYS
+  HashKey *h_hash = new HashKey[countSize]();
+  for (HashKey i = 0; i < countSize; i++) {
+    h_hash[i] = i;
+  }
+  cudaMemcpy(d_hash, h_hash, countSize * sizeof(HashKey), cudaMemcpyHostToDevice);
+#else
+  thrust::counting_iterator<hkey_t> index_sequence_begin(seed);
+  thrust::transform(thrust::device, index_sequence_begin, index_sequence_begin + countSize,
+                      d_vals, prg(0, maxkey));
+#endif
 
   BLOCK_COUNT = std::ceil(countSize / ((float) BLOCK_SIZE_OP2));
 
@@ -77,32 +118,39 @@ SingleHashGraph::~SingleHashGraph() {
 // void buildTable(mem_t<hkey_t> &d_vals, mem_t<HashKey> &d_hash, mem_t<index_t> &d_counter, 
 // 	            mem_t<index_t> &d_offSet, mem_t<keyval> &d_edges, index_t valCount, 
 //                     index_t tableSize, context_t& context, int32_t valsOffset=0) {
-// 
-//   void*  _d_temp_storage     { nullptr };
-//   size_t _temp_storage_bytes { 0 };
-// 
-//   hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals.data() + valsOffset, 
-//                                                     d_hash.data(), (HashKey) tableSize);
-// 
-//   countHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash.data(), d_counter.data());
-// 
-//   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter.data(), 
-//                                     d_offSet.data(), tableSize);
-//   cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
-//   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter.data(), 
-//                                     d_offSet.data(), tableSize);
-//   d_counter = fill(0, (size_t)tableSize, context);
-//   cudaMemcpy(d_offSet.data()+tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
-//   cudaFree(_d_temp_storage);
-// 
-//   copyToGraphD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals.data() + valsOffset, 
-//                                     d_hash.data(), d_counter.data(), d_offSet.data(), 
-//                                     d_edges.data(), tableSize);
-// }
-// 
+void buildTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter, 
+	            index_t *d_offSet, keyval *d_edges, index_t valCount, 
+                    index_t tableSize, int32_t valsOffset=0) {
+
+  void*  _d_temp_storage     { nullptr };
+  size_t _temp_storage_bytes { 0 };
+
+  hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
+                                                    d_hash, (HashKey) tableSize);
+
+  countHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash, d_counter);
+
+  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes, d_counter, 
+                                    d_offSet, tableSize);
+  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes, d_counter, 
+                                    d_offSet, tableSize);
+
+  // d_counter = fill(0, (size_t)tableSize, context);
+  cudaMemset(d_counter, 0, tableSize * sizeof(index_t));
+  cudaMemcpy(d_offSet + tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
+  cudaFree(_d_temp_storage);
+
+  copyToGraphD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals + valsOffset, 
+                                    d_hash, d_counter, d_offSet, 
+                                    d_edges, tableSize);
+}
+
 // void SingleHashGraph::build(int64_t countSize, context_t &context, int64_t tableSize) {
-// 
-//   buildTable(d_vals, d_hash, d_counter, d_offset, d_edges, (index_t)countSize, 
-//                 (index_t) tableSize, context);
-// 
-// }
+void SingleHashGraph::build(int64_t countSize, int64_t tableSize) {
+
+  buildTable(d_vals, d_hash, d_counter, d_offset, d_edges, (index_t)countSize, 
+                (index_t) tableSize);
+                // (index_t) tableSize, context);
+
+}
