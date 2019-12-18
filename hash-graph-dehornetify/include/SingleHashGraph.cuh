@@ -46,7 +46,7 @@ using HashKey = uint32_t;
 struct keyval
 {
   hkey_t  key;
-  index_t ind; 
+  // index_t ind; 
 };
 
 // Overload Modern GPU memory allocation and free to use RMM
@@ -89,7 +89,7 @@ struct keyval
 class SingleHashGraph {
 public:
     // SingleHashGraph(int64_t countSize, int64_t maxkey, context_t &context, int64_t tableSize);
-    SingleHashGraph(int64_t countSize, int64_t maxkey, int64_t tableSize);
+    SingleHashGraph(int64_t countSize, int64_t maxkey, int64_t tableSize, int64_t lrbBins);
     ~SingleHashGraph();
 
     // void build(int64_t countSize, context_t &context, int64_t tableSize);
@@ -108,4 +108,9 @@ private:
     index_t*  d_counter;
     index_t*  d_offset;
     keyval*   d_edges;
+
+    int64_t lrbBins;
+    index_t *d_lrbCounter;
+    index_t *d_lrbCounterPrefix;
+    keyval *d_lrbArray;
 };

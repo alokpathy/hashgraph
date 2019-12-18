@@ -20,18 +20,21 @@ int main(int argc, char **argv) {
   int64_t countSize = 1L << 24;
   int64_t maxkey = 1L << 26;
   int64_t tableSize = maxkey;
+  int64_t lrbBins = 16000;
 
-  if (argc >= 2 && argc < 3) {
+  if (argc >= 3 && argc < 4) {
     std::cerr << "Please specify all arguments.\n";
     return 1;
   }
 
-  if (argc >= 2) {
+  if (argc >= 3) {
     countSize = atoi(argv[1]);
     // countSize = 1L << sizeExp;
 
     maxkey = atoi(argv[2]);
     // maxkey = 1L << keyExp;
+
+    lrbBins = atoi(argv[3]);
   } 
   
   cudaEvent_t start, stop;
@@ -42,7 +45,7 @@ int main(int argc, char **argv) {
   // rmm_mgpu_context_t context;
 
   // SingleHashGraph shg(countSize, maxkey, context, tableSize); 
-  SingleHashGraph shg(countSize, maxkey, tableSize); 
+  SingleHashGraph shg(countSize, maxkey, tableSize, lrbBins); 
 
   cudaEventRecord(start);
 

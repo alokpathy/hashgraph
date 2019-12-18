@@ -61,6 +61,8 @@ int BLOCK_SIZE_OP2 = 256; // TODO: Double check this.
 
 #define SEQ_KEYS
 
+#define LRB_BUILD
+
 struct prg {
   hkey_t lo, hi;
 
@@ -75,7 +77,7 @@ struct prg {
 };
 
 SingleHashGraph::SingleHashGraph(int64_t countSize, int64_t maxkey, // context_t &context, 
-                                    int64_t tableSize)
+                                    int64_t tableSize, int64_t lrBins)
                                       // : 
                                       //   d_hash(countSize, context, memory_space_device),
                                       //  d_edges(countSize, context, memory_space_device)
@@ -91,6 +93,14 @@ SingleHashGraph::SingleHashGraph(int64_t countSize, int64_t maxkey, // context_t
   cudaMalloc(&d_counter, (tableSize + 1) * sizeof(index_t));
   cudaMalloc(&d_offset, (tableSize + 1) * sizeof(index_t));
   cudaMalloc(&d_edges, countSize * sizeof(keyval));
+
+#ifdef LRB_BUILD
+  cudaMalloc(&d_lrbCounter, (lrbBins + 2) * sizeof(index_t));
+  cudaMalloc(&d_lrbCounterPrefix, (lrbBins + 2) * sizeof(index_t));
+  cudaMalloc(&d_lrbArray, countSize * sizeof(keyval));
+
+  cudaMemset(d_lrbCounter, 0, (lrbBins + 2) * sizeof(index_t));
+#endif
 
   cudaMemset(d_counter, 0, (tableSize + 1) * sizeof(index_t));
   cudaMemset(d_offset, 0, (tableSize + 1) * sizeof(index_t));
@@ -113,6 +123,60 @@ SingleHashGraph::SingleHashGraph(int64_t countSize, int64_t maxkey, // context_t
 }
 
 SingleHashGraph::~SingleHashGraph() {
+}
+
+void lrbBuildTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter, 
+                      index_t *d_offSet, keyval *d_edges,
+                      index_t valCount, index_t tableSize,
+                      keyval *d_lrbArray, index_t *d_lrbCounters, 
+                      index_t *d_lrbCountersPrefix, index_t lrbBins, index_t lrbBinSize) {
+
+  cudaMemset(d_counter, 0, (tableSize + 1) * sizeof(index_t));
+  void*  _d_temp_storage     { nullptr };
+  size_t _temp_storage_bytes { 0 };
+
+
+  hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
+                                                  (HashKey) tableSize);
+
+  lrbCountHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash, d_lrbCounters, 
+                                                    lrbBinSize);
+  _d_temp_storage = nullptr; _temp_storage_bytes = 0;
+
+  cub::DeviceScan::ExclusiveSum(NULL, _temp_storage_bytes, d_lrbCounters, 
+                                    d_lrbCountersPrefix, lrbBins + 1);
+
+  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes, d_lrbCounters, 
+                                    d_lrbCountersPrefix, lrbBins + 1);
+
+  cudaMemcpy(d_lrbCountersPrefix + lrbBins, &lrbBins, sizeof(index_t), 
+                cudaMemcpyHostToDevice);
+
+  cudaMemset(d_lrbCounters, 0, (lrbBins + 1) * sizeof(index_t));
+
+  lrbRehashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
+                                                    d_lrbCounters, d_lrbArray, 
+                                                    d_lrbCountersPrefix, lrbBinSize);
+
+  lrbCountHashGlobalD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, 
+                                                            d_lrbArray, tableSize);
+
+  _d_temp_storage = nullptr; _temp_storage_bytes = 0;
+  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
+                                    d_offSet, tableSize);
+  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+  // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
+  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
+                                     d_offSet, tableSize);
+  cudaMemcpy(d_offSet + tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
+  cudaFree(_d_temp_storage);
+  // RMM_FREE(_d_temp_storage, 0);
+
+  cudaMemset(d_counter, 0, tableSize * sizeof(index_t));
+
+  lrbCopyToGraphD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, d_offSet, 
+                                                      d_edges, d_lrbArray, tableSize);
 }
 
 // template<typename hkey_t, typename HashKey,  typename index_t, typename keyval>
@@ -150,8 +214,18 @@ void buildTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter,
 // void SingleHashGraph::build(int64_t countSize, context_t &context, int64_t tableSize) {
 void SingleHashGraph::build(int64_t countSize, int64_t tableSize) {
 
+#ifdef LRB_BUILD
+  index_t lrbBinSize = std::ceil(tableSize / (float)(lrbBins));
+
+  lrbBuildTable(d_vals, d_hash, d_counter, 
+                  d_offset, d_edges,
+                  (index_t)countSize, (index_t)tableSize,
+                  d_lrbArray, d_lrbCounter, 
+                  d_lrbCounterPrefix, lrbBins, lrbBinSize);
+
+#else
   buildTable(d_vals, d_hash, d_counter, d_offset, d_edges, (index_t)countSize, 
                 (index_t) tableSize);
                 // (index_t) tableSize, context);
-
+#endif
 }

@@ -72,7 +72,9 @@ __global__ void hashValuesD(index_t valCount, hkey_t *valsArr, HashKey *hashArr,
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
+    // hashArr[i] = hash_murmur(valsArr[i]) % tableSize;
     hashArr[i] = hash_murmur(valsArr[i]) % tableSize;
+    // hashArr[i] = (HashKey)(hash_murmur(valsArr[i].key) % tableSize);
   }    
 }
 
@@ -92,6 +94,61 @@ __global__ void copyToGraphD(index_t valCount, hkey_t *valsArr, HashKey *hashArr
   for (auto i = id; i < valCount; i += stride) {
     HashKey hashVal=hashArr[i];
     int pos = atomicAdd(countArr + hashVal,1)+offsetArr[hashVal];
-    edges[pos]={valsArr[i],i};
+    // edges[pos]={valsArr[i],i};
+    edges[pos]={valsArr[i]};
+  }    
+}
+
+__global__ void lrbCountHashD(index_t valCount, HashKey *hashArr, int32_t *d_lrbCounters, 
+                                  index_t lrbBinSize) {
+  int     id = blockIdx.x * blockDim.x + threadIdx.x;
+  int stride = blockDim.x * gridDim.x;
+  
+  for (auto i = id; i < valCount; i += stride) {
+      index_t ha = (index_t)(hashArr[i]/lrbBinSize);
+      atomicAdd(d_lrbCounters + ha,1);
+  }    
+}
+
+__global__ void lrbRehashD(index_t valCount, hkey_t *valsArr, HashKey *hashArr, 
+// __global__ void lrbRehashD(index_t valCount, keyval *valsArr, HashKey *hashArr, 
+                              int32_t *d_lrbCounters, keyval *d_lrbHashReordered, 
+                              int32_t *d_lrbCountersPrefix, index_t lrbBinSize) {
+
+  int     id = blockIdx.x * blockDim.x + threadIdx.x;
+  int stride = blockDim.x * gridDim.x;
+  for (auto i = id; i < valCount; i += stride) {
+      HashKey ha = hashArr[i]/lrbBinSize;
+      // if(blockIdx.x==0)
+      //     printf("%d ", ha);
+      index_t pos = atomicAdd(d_lrbCounters + ha,1)+ d_lrbCountersPrefix[ha];
+      // d_lrbHashReordered[pos]={valsArr[i],i};
+      d_lrbHashReordered[pos] = { valsArr[i] };
+  }    
+}
+
+__global__ void lrbCountHashGlobalD(index_t valCount, int32_t *countArr, 
+                                        keyval *d_lrbHashReordered, index_t tableSize) {
+
+  int     id = blockIdx.x * blockDim.x + threadIdx.x;
+  int stride = blockDim.x * gridDim.x;
+  for (auto i = id; i < valCount; i += stride) {
+      HashKey ha = hash_murmur(d_lrbHashReordered[i].key)%tableSize;
+      // HashKey ha = d_lrbHashReordered[i].key;
+      atomicAdd(countArr + ha,1);
+  }    
+}
+
+__global__ void lrbCopyToGraphD(index_t valCount, int32_t *countArr, index_t *offsetArr, 
+                                    keyval *edges, keyval *d_lrbHashReordered, 
+                                    index_t tableSize) {
+
+  int     id = blockIdx.x * blockDim.x + threadIdx.x;
+  int stride = blockDim.x * gridDim.x;
+  for (auto i = id; i < valCount; i += stride) {
+      HashKey hashVal = hash_murmur(d_lrbHashReordered[i].key)%tableSize;
+      // HashKey hashVal=d_lrbHashReordered[i].key;
+      int pos = atomicAdd(countArr + hashVal,1)+offsetArr[hashVal];
+      edges[pos]=d_lrbHashReordered[i];
   }    
 }
