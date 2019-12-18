@@ -27,11 +27,11 @@ int main(int argc, char **argv) {
   }
 
   if (argc >= 2) {
-    uint32_t sizeExp = atoi(argv[1]);
-    countSize = 1L << sizeExp;
+    countSize = atoi(argv[1]);
+    // countSize = 1L << sizeExp;
 
-    uint32_t keyExp = atoi(argv[2]);
-    maxkey = 1L << keyExp;
+    maxkey = atoi(argv[2]);
+    // maxkey = 1L << keyExp;
   } 
   
   cudaEvent_t start, stop;
