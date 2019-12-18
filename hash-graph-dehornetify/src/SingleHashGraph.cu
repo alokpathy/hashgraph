@@ -102,6 +102,7 @@ SingleHashGraph::SingleHashGraph(int64_t countSize, int64_t maxkey, // context_t
   }
   cudaMemcpy(d_hash, h_hash, countSize * sizeof(HashKey), cudaMemcpyHostToDevice);
 #else
+  hkey_t seed = 0;
   thrust::counting_iterator<hkey_t> index_sequence_begin(seed);
   thrust::transform(thrust::device, index_sequence_begin, index_sequence_begin + countSize,
                       d_vals, prg(0, maxkey));

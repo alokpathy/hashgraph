@@ -102,6 +102,12 @@ void generateInput(inputData *h_dVals, int64_t countSize, int64_t maxkey, uint32
     thrust::counting_iterator<hkey_t> index_sequence_begin(seed);
     thrust::transform(thrust::device, index_sequence_begin, index_sequence_begin + keyCount,
                         h_dVals[i].d_keys, prg(0, maxkey));
+#else
+    hkey_t *h_tmpKeys = new hkey_t[keyCount]();
+    for (uint64_t i = lo; i < hi; i++) {
+      h_tmpKeys[i - lo] = i;
+    }
+    cudaMemcpy(h_dVals[i].d_keys, h_tmpKeys, keyCount * sizeof(hkey_t), cudaMemcpyHostToDevice);
 #endif
 
     h_dVals[i].len = keyCount;
