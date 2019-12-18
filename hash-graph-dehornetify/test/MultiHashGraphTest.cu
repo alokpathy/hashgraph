@@ -18,7 +18,7 @@
 #include <algorithm>
 #include <unistd.h>
 
-#define RAND_KEYS
+// #define RAND_KEYS
 // #define PRINT_KEYS
 
 // #define BUILD_TEST
@@ -104,8 +104,8 @@ void generateInput(inputData *h_dVals, int64_t countSize, int64_t maxkey, uint32
                         h_dVals[i].d_keys, prg(0, maxkey));
 #else
     hkey_t *h_tmpKeys = new hkey_t[keyCount]();
-    for (uint64_t i = lo; i < hi; i++) {
-      h_tmpKeys[i - lo] = i;
+    for (uint64_t j = lo; j < hi; j++) {
+      h_tmpKeys[j - lo] = j;
     }
     cudaMemcpy(h_dVals[i].d_keys, h_tmpKeys, keyCount * sizeof(hkey_t), cudaMemcpyHostToDevice);
 #endif
