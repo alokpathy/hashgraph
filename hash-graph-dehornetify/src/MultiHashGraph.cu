@@ -173,7 +173,8 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
 
   h_dExSumTemp = new size_t*[gpuCount]();
   // exSumTempBytes = 1279;
-  exSumTempBytes = 2000;
+  // exSumTempBytes = 2000;
+  exSumTempBytes = 3000000;
   for (int64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
     cudaMalloc(&h_dExSumTemp[i], exSumTempBytes);
@@ -342,10 +343,17 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
   _d_temp_storage = nullptr; _temp_storage_bytes = 0;
   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
                                     d_offSet, tableSize);
-  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
-  // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
-  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
-                                     d_offSet, tableSize);
+  // cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+  // // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
+  // cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
+  //                                    d_offSet, tableSize);
+
+  if (_temp_storage_bytes > exSumTempBytes) {
+    std::cerr << "ERROR: NOT ENOUGH TEMP SPACE ALLOCATED" << std::endl;
+    std::cerr << _temp_storage_bytes << " " << exSumTempBytes << std::endl;
+  }
+  cub::DeviceScan::ExclusiveSum(d_exSumTemp, _temp_storage_bytes,d_counter, 
+                                      d_offSet, tableSize);
   cudaMemcpy(d_offSet + tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
   cudaFree(_d_temp_storage);
   // RMM_FREE(_d_temp_storage, 0);
@@ -718,10 +726,6 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
   // forAll (tableSize,simpleIntersect<false>{d_offSetA.data(),d_edgesA.data(),
   //         d_offSetB.data(),d_edgesB.data(),d_outputPositions.data(),
   //         d_output.data()});
-
-#ifdef CUDA_PROFILE
-  cudaProfilerStop();
-#endif
 
 #ifdef ERROR_CHECK
   cudaDeviceSynchronize();
