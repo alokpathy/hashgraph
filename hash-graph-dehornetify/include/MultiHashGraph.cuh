@@ -61,7 +61,7 @@ using HashKey = int64_t;
 	{cudaDeviceSynchronize(); cudaError_t err; err = cudaGetLastError(); if(err!=0) {printf("ERROR %s:  %d %s\n", str, err, cudaGetErrorString(err)); fflush(stdout); exit(0);}}
 
 // #define HOST_PROFILE
-// #define CUDA_PROFILE
+#define CUDA_PROFILE
 
 // #define INDEX_TRACK
 #define MANAGED_MEM
@@ -187,6 +187,10 @@ public:
     uint64_t totalSize;
     uint64_t totalSizeIntersect;
 
+    size_t **h_dExSumTemp;
+    size_t exSumTempBytes;
+
+
 private:
 
     // mem_t<hkey_t>  d_vals;
@@ -276,9 +280,6 @@ private:
     int64_t maxkey;
     uint64_t binCount;
     index_t lrbBins;
-
-    size_t **h_dExSumTemp;
-    size_t exSumTempBytes;
 
     bool multiDestroyed = false;
 };

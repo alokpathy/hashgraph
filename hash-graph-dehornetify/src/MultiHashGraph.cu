@@ -407,10 +407,6 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
   high_resolution_clock::time_point t1;
   high_resolution_clock::time_point t2;
 
-#ifdef CUDA_PROFILE
-  cudaProfilerStart();
-#endif
-
   // Hash all keys on each device.
   cudaSetDevice(tid);
 
@@ -622,11 +618,6 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
 
 #endif
                     
-#ifdef CUDA_PROFILE
-  cudaProfilerStop();
-  CHECK_ERROR("end of build");
-#endif
-    
   cudaSetDevice(0);
 }
 
@@ -647,6 +638,9 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
 
   int64_t *d_Common = mhgA.h_dCommon[tid];
   int64_t *d_GlobalCounter = mhgA.h_dGlobalCounter[tid];
+
+  size_t *d_exSumTemp = mhgA.h_dExSumTemp[tid];
+  size_t exSumTempBytes = mhgA.exSumTempBytes;
 
   uint64_t tableSize = mhgA.h_binSplits[tid + 1] - mhgA.h_binSplits[tid];
   if (tableSize != mhgB.h_binSplits[tid + 1] - mhgB.h_binSplits[tid]) {
@@ -689,24 +683,29 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64
   _d_temp_storage=nullptr; _temp_storage_bytes=0;
   cub::DeviceReduce::Sum(_d_temp_storage, _temp_storage_bytes, d_countCommon, 
                               d_Common, tableSize);
-  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+
+  if (_temp_storage_bytes > exSumTempBytes) {
+    std::cerr << "ERROR: NOT ENOUGH TEMP SPACE ALLOCATED" << std::endl;
+  }
   // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
-  cub::DeviceReduce::Sum(_d_temp_storage, _temp_storage_bytes, d_countCommon, 
+  cub::DeviceReduce::Sum(d_exSumTemp, _temp_storage_bytes, d_countCommon, 
                               d_Common, tableSize);
   cudaMemcpy(&h_Common[tid], d_Common, 1 * sizeof(int64_t), cudaMemcpyDeviceToHost);
   // gpu::copyToHost<int32_t>(d_Common.data(), 1, &h_Common);
-  cudaFree(_d_temp_storage);
   // RMM_FREE(_d_temp_storage, 0);
   // gpu::free(_d_temp_storage);
 
   _d_temp_storage=nullptr; _temp_storage_bytes=0;
   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes, d_countCommon, 
                               d_outputPositions, tableSize);
-  cudaMalloc(&_d_temp_storage, _temp_storage_bytes);
+
+  if (_temp_storage_bytes > exSumTempBytes) {
+    std::cerr << "ERROR: NOT ENOUGH TEMP SPACE ALLOCATED" << std::endl;
+  }
+
   // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
-  cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes, d_countCommon, 
+  cub::DeviceScan::ExclusiveSum(d_exSumTemp, _temp_storage_bytes, d_countCommon, 
                               d_outputPositions, tableSize);
-  cudaFree(_d_temp_storage);
   // RMM_FREE(_d_temp_storage, 0);
   // gpu::free(_d_temp_storage);
 

@@ -223,6 +223,10 @@ int main(int argc, char **argv) {
 
     omp_set_num_threads(gpuCount);
 
+#ifdef CUDA_PROFILE
+    cudaProfilerStart();
+#endif
+
     cudaSetDevice(0);
     cudaEventRecord(start);
 
@@ -237,6 +241,11 @@ int main(int argc, char **argv) {
 
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&buildTime, start, stop);
+
+#ifdef CUDA_PROFILE
+    cudaProfilerStop();
+    CHECK_ERROR("end of build");
+#endif
 
     std::cout << "multi buildTable() time: " << (buildTime / 1000.0) << "\n"; // seconds
 
@@ -271,6 +280,10 @@ int main(int argc, char **argv) {
     int64_t *h_Common = new int64_t[gpuCount]();
 
     omp_set_num_threads(gpuCount);
+
+#ifdef CUDA_PROFILE
+    cudaProfilerStart();
+#endif
 
     cudaSetDevice(0);
     cudaEventRecord(start);
@@ -314,6 +327,11 @@ int main(int argc, char **argv) {
     cudaSetDevice(0);
     cudaEventRecord(stop);
 
+#ifdef CUDA_PROFILE
+    cudaProfilerStop();
+    CHECK_ERROR("end of intersect");
+#endif
+    
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&buildTime, start, stop);
 
