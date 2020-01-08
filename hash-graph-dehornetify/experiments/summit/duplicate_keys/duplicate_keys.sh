@@ -25,12 +25,12 @@ for i in "${tablesizes[@]}"
         let ts=$((echo 2^$i) | bc)
 
         # echo "tableSize: ${ts}"
-        # internal cuda malloc + keys + hashes + keyBinBuff
-        let gigs=$((echo "((($kc * $1) + ($kc * 8) + (2 * $kc * $1) + (2 * $ts * 8)) + ($kc * 8) + ($kc * 8) + ($kc * $1)) / 2^30") | bc)
+        # internal cuda malloc + keys + hashes + keyBinBuff + temp space
+        let gigs=$((echo "((($kc * $1) + ($kc * 8) + (2 * $kc * $1) + (2 * $ts * 8)) + ($kc * 8) + ($kc * 8) + ($kc * $1) + ($ts * 8)) / 2^30") | bc)
         let gpureq=$((echo "($gigs + 16) / 16") | bc)
 
         if (( $gpureq > $gc )) ; then
-          echo "${kc},${gc},oom"
+          echo "${kc},${ts},${gc},oom"
           continue
         fi
 
@@ -55,12 +55,12 @@ for i in "${tablesizes[@]}"
         let ts=$((echo 2^$i) | bc)
 
         # echo "tableSize: ${ts}"
-        # internal cuda malloc + keys + hashes + keyBinBuff
-        let gigs=$((echo "((($kc * $1) + ($kc * 8) + (2 * $kc * $1) + (2 * $ts * 8)) + ($kc * 8) + ($kc * 8) + ($kc * $1)) / 2^30") | bc)
+        # internal cuda malloc + keys + hashes + keyBinBuff + temp space
+        let gigs=$((echo "((($kc * $1) + ($kc * 8) + (2 * $kc * $1) + (2 * $ts * 8)) + ($kc * 8) + ($kc * 8) + ($kc * $1) + ($ts * 8)) / 2^30") | bc)
         let gpureq=$((echo "($gigs * 2 + 16) / 16") | bc)
 
         if (( $gpureq > $gc )) ; then
-          echo "${kc},${gc},oom"
+          echo "${kc},${ts},${gc},oom"
           continue
         fi
         ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc intersect | grep "time")

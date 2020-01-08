@@ -175,7 +175,7 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
   // exSumTempBytes = 1279;
   // exSumTempBytes = 2000;
   // exSumTempBytes = 3000000;
-  exSumTempBytes = tableSize / 200;
+  exSumTempBytes = tableSize / 10;
   for (int64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
     cudaMalloc(&h_dExSumTemp[i], exSumTempBytes);
