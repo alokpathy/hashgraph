@@ -59,7 +59,7 @@ using HashKey = uint32_t;
 int BLOCK_COUNT = -1;
 int BLOCK_SIZE_OP2 = 256; // TODO: Double check this.
 
-#define SEQ_KEYS
+// #define SEQ_KEYS
 
 #define LRB_BUILD
 
@@ -77,7 +77,7 @@ struct prg {
 };
 
 SingleHashGraph::SingleHashGraph(int64_t countSize, int64_t maxkey, // context_t &context, 
-                                    int64_t tableSize, int64_t lrBins)
+                                    int64_t tableSize, int64_t lrbBins)
                                       // : 
                                       //   d_hash(countSize, context, memory_space_device),
                                       //  d_edges(countSize, context, memory_space_device)
@@ -100,17 +100,18 @@ SingleHashGraph::SingleHashGraph(int64_t countSize, int64_t maxkey, // context_t
   cudaMalloc(&d_lrbArray, countSize * sizeof(keyval));
 
   cudaMemset(d_lrbCounter, 0, (lrbBins + 2) * sizeof(index_t));
+  this->lrbBins = lrbBins;
 #endif
 
   cudaMemset(d_counter, 0, (tableSize + 1) * sizeof(index_t));
   cudaMemset(d_offset, 0, (tableSize + 1) * sizeof(index_t));
 
 #ifdef SEQ_KEYS
-  HashKey *h_hash = new HashKey[countSize]();
+  HashKey *h_vals = new HashKey[countSize]();
   for (HashKey i = 0; i < countSize; i++) {
-    h_hash[i] = i;
+    h_vals[i] = i;
   }
-  cudaMemcpy(d_hash, h_hash, countSize * sizeof(HashKey), cudaMemcpyHostToDevice);
+  cudaMemcpy(d_vals, h_vals, countSize * sizeof(HashKey), cudaMemcpyHostToDevice);
 #else
   hkey_t seed = 0;
   thrust::counting_iterator<hkey_t> index_sequence_begin(seed);
