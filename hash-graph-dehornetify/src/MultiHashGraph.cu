@@ -54,10 +54,6 @@ using namespace std::chrono;
 
 // #define DEBUG
 
-#ifdef HOST_PROFILE
-uint64_t tidFocused = 2;
-#endif
-
 MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t maxkey, 
                                     // context_t &context, int64_t tableSize, 
                                     HashKey tableSize, 
@@ -356,7 +352,7 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
   cub::DeviceScan::ExclusiveSum(d_exSumTemp, _temp_storage_bytes,d_counter, 
                                       d_offSet, tableSize);
   cudaMemcpy(d_offSet + tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
-  cudaFree(_d_temp_storage);
+  // cudaFree(_d_temp_storage);
   // RMM_FREE(_d_temp_storage, 0);
 
   cudaMemset(d_counter, 0, tableSize * sizeof(index_t));
@@ -420,20 +416,9 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
 #endif
 
   if (findSplits) {
-#ifdef HOST_PROFILE
-    t1 = high_resolution_clock::now();
-#endif
     // Count the number of keys in each key bin and determine the hash range per device.
     countBinSizes(h_dVals, h_hBinSizes, h_dBinSizes, h_binSizes, h_psBinSizes, h_binSplits,
                       h_dBinSplits, countSize, tableSize, binRange, binCount, gpuCount, tid);
-#ifdef HOST_PROFILE
-    if (tid == tidFocused) {
-      cudaDeviceSynchronize();
-      t2 = high_resolution_clock::now();
-      buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-      std::cout << "countBinSizes time: " << (buildTime / 1000.0) << std::endl;
-    }
-#endif
 
 #ifdef ERROR_CHECK
     cudaDeviceSynchronize();
@@ -443,52 +428,22 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
 
   // Count the number of keys that each GPU needs to ship to each other GPU based
   // on ranges.
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    t1 = high_resolution_clock::now();
-  }
-#endif
   countKeyBuffSizes(h_dVals, h_dBinSplits, h_bufferCounter, h_dBufferCounter, gpuCount, tid);
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    cudaDeviceSynchronize();
-    t2 = high_resolution_clock::now();
-    buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "countKeyBuff time: " << (buildTime / 1000.0) << std::endl;
-  }
-#endif
+
 #ifdef ERROR_CHECK
   cudaDeviceSynchronize();
   CHECK_ERROR("countKeyBuffSizes");
 #endif
 
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    t1 = high_resolution_clock::now();
-  }
-#endif
   // On each GPU, buffer all the keys going to each other GPU.
   populateKeyBuffs(h_dVals, h_dKeyBinBuff, h_dKeyBinOff, h_hKeyBinOff, 
                       h_dBufferCounter, h_bufferCounter, h_dBinSplits, h_dExSumTemp,
                       exSumTempBytes, gpuCount, tid);
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    cudaDeviceSynchronize();
-    t2 = high_resolution_clock::now();
-    buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "populateKeyBuffs time: " << (buildTime / 1000.0) << std::endl;
-  }
-#endif
 #ifdef ERROR_CHECK
   cudaDeviceSynchronize();
   CHECK_ERROR("populateKeyBuffs");
 #endif
 
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    t1 = high_resolution_clock::now();
-  }
-#endif
 
 #ifdef INDEX_TRACK
   cudaFree(h_dVals[tid].d_keys);
@@ -506,23 +461,10 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
   countFinalKeys(h_bufferCounter, h_dFinalKeys, h_hFinalCounter,
                     h_hFinalOffset, h_dFinalOffset, h_binSplits, gpuCount, tid);
 #endif
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    cudaDeviceSynchronize();
-    t2 = high_resolution_clock::now();
-    buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "countFinalKeys time: " << (buildTime / 1000.0) << std::endl;
-  }
-#endif
+
 #ifdef ERROR_CHECK
   cudaDeviceSynchronize();
   CHECK_ERROR("countFinalKeys");
-#endif
-
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    t1 = high_resolution_clock::now();
-  }
 #endif
 
   #pragma omp barrier
@@ -534,24 +476,11 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
   // #pragma omp barrier
   // cudaDeviceSynchronize();
 
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    cudaDeviceSynchronize();
-    t2 = high_resolution_clock::now();
-    buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "allToAll time: " << (buildTime / 1000.0) << std::endl;
-  }
-#endif
 #ifdef ERROR_CHECK
   cudaDeviceSynchronize();
   CHECK_ERROR("allToAll");
 #endif
 
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    t1 = high_resolution_clock::now();
-  }
-#endif
   // Build hashgraph on each GPU.
   uint64_t hashRange = h_binSplits[tid + 1] - h_binSplits[tid];
   // cudaMalloc(&h_dOffsets[tid], 2 * (hashRange + 1) * sizeof(index_t));
@@ -567,19 +496,6 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
     exit(0);
   }
 
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    cudaDeviceSynchronize();
-    t2 = high_resolution_clock::now();
-    buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "building init time: " << (buildTime / 1000.0) << std::endl;
-  }
-#endif
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    t1 = high_resolution_clock::now();
-  }
-#endif
   h_hashOff[tid] = keyCount * sizeof(keyval);
   h_counterOff[tid] = (keyCount * sizeof(keyval)) +
                         (keyCount * sizeof(HashKey)) +
@@ -604,14 +520,6 @@ void MultiHashGraph::build(bool findSplits, uint64_t tid) {
                           h_dLrbCounter[tid], 
                           h_dLrbCountersPrefix[tid], h_dExSumTemp[tid], exSumTempBytes, 
                           lrbBins, lrbBinSize, tid);
-#ifdef HOST_PROFILE
-  if (tid == tidFocused) {
-    cudaDeviceSynchronize();
-    t2 = high_resolution_clock::now();
-    buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "building time: " << (buildTime / 1000.0) << std::endl;
-  }
-#endif
 #else
 
   buildMultiTable(h_dFinalKeys[tid], h_dFinalHash[tid], h_dCounter[tid], h_dOffsets[tid], 

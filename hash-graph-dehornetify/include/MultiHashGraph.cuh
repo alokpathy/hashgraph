@@ -60,10 +60,9 @@ using HashKey = int64_t;
 #define CHECK_ERROR(str) \
 	{cudaDeviceSynchronize(); cudaError_t err; err = cudaGetLastError(); if(err!=0) {printf("ERROR %s:  %d %s\n", str, err, cudaGetErrorString(err)); fflush(stdout); exit(0);}}
 
-// #define HOST_PROFILE
-#define CUDA_PROFILE
+// #define CUDA_PROFILE
 
-#define INDEX_TRACK
+// #define INDEX_TRACK
 #define MANAGED_MEM
 
 struct keyval_key

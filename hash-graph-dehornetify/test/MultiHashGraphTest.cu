@@ -195,7 +195,7 @@ int main(int argc, char **argv) {
   cudaEventCreate(&stop);
   float buildTime = 0.0f; // milliseoncds
 
-  // enablePeerAccess(gpuCount);
+  enablePeerAccess(gpuCount);
 
   // rmmOptions_t rmmO;
 
