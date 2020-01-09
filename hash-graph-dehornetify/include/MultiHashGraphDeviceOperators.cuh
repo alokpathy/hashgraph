@@ -198,22 +198,51 @@ __global__ void countBufferSizes(uint64_t *hashSplits, uint64_t size, uint64_t *
   }
 }
 
-__global__ void countKeyBuffSizes(HashKey *hashVals, uint64_t size, uint64_t *counter, 
-                                      uint64_t *splits, uint64_t gpuCount) {
+// __global__ void countKeyBuffSizes(HashKey *hashVals, uint64_t size, uint64_t *counter, 
+//                                       uint64_t *splits, uint64_t gpuCount) {
+// 
+//   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
+//   int64_t stride = blockDim.x * gridDim.x;
+//   for (auto i = id; i < size; i += stride) {
+//     HashKey hash = hashVals[i];
+//     // TODO: This might make things slow.
+//     for (uint64_t j = 0; j < gpuCount; j++) {
+//       if (hash < splits[j + 1]) {
+//         atomicAdd((unsigned long long int*)(&counter[j]), 1);
+//         break;
+//       }
+//     }
+//   }
+// }
 
-  int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
-  int64_t stride = blockDim.x * gridDim.x;
+__global__ void countKeyBuffSizes(HashKey *hashVals, uint64_t size_, uint64_t *counter, 
+                                      uint64_t *splits, uint64_t gpuCount_) {
+  int32_t     id = blockIdx.x * blockDim.x + threadIdx.x;
+  int32_t stride = blockDim.x * gridDim.x;
+  uint32_t gpuCount = gpuCount_;
+  uint32_t size=size_;
+  __shared__ uint64_t internalCounters[16];
+  if(threadIdx.x<gpuCount){
+    internalCounters[threadIdx.x]=0;
+  }
+  __syncthreads();
   for (auto i = id; i < size; i += stride) {
     HashKey hash = hashVals[i];
     // TODO: This might make things slow.
-    for (uint64_t j = 0; j < gpuCount; j++) {
+    for (uint32_t j = 0; j < gpuCount; j++) {
       if (hash < splits[j + 1]) {
-        atomicAdd((unsigned long long int*)(&counter[j]), 1);
+        // atomicAdd((unsigned long long int*)(&counter[j]), 1);
+        atomicAdd((unsigned long long int*)(&internalCounters[j]), 1);
         break;
       }
     }
   }
+  __syncthreads();
+  if(threadIdx.x<gpuCount){
+      atomicAdd((unsigned long long int*)(&counter[threadIdx.x]), internalCounters[threadIdx.x]);
+  }
 }
+
 
 __global__ void binKeyValues(uint64_t size, hkey_t *keys, hkey_t *keyBuff, uint64_t *offsets, 
                                   uint64_t *splits, uint64_t *counter, uint64_t gpuCount) {
@@ -233,36 +262,86 @@ __global__ void binKeyValues(uint64_t size, hkey_t *keys, hkey_t *keyBuff, uint6
   }
 }
 
+// __global__ void binHashValues(uint64_t size, hkey_t *keys, HashKey *hashes, 
+//                                   // hkey_t *keyBuff, uint64_t *offsets, 
+//                                   keyval *keyBuff, uint64_t *offsets, 
+//                                   uint64_t *hashSplits, uint64_t *counter, 
+//                                   uint64_t gpuCount, uint64_t tid) {
+// 
+//   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
+//   int64_t stride = blockDim.x * gridDim.x;
+//   for (auto i = id; i < size; i += stride) {
+//     hkey_t key = keys[i];
+//     HashKey hash = hashes[i];
+//     for (uint64_t j = 0; j < gpuCount; j++) {
+//       if (hash < hashSplits[j + 1]) {
+//         uint64_t pos = atomicAdd((unsigned long long int*)(&counter[j]), 1);
+//         uint64_t off = offsets[j];
+// #ifdef INDEX_TRACK
+//         keyBuff[off + pos] = {key, i};
+// #else
+//         keyBuff[off + pos] = { key };
+// #endif
+//         // keyBuff[off + pos] = {key, gpuCount, i};
+//         // keyBuff[off + pos] = {key, i};
+//         break;
+//       }
+//     }
+//   }
+//   if (id == 0) {
+//     offsets[gpuCount] = size;
+//   }
+// }
 __global__ void binHashValues(uint64_t size, hkey_t *keys, HashKey *hashes, 
                                   // hkey_t *keyBuff, uint64_t *offsets, 
                                   keyval *keyBuff, uint64_t *offsets, 
                                   uint64_t *hashSplits, uint64_t *counter, 
                                   uint64_t gpuCount, uint64_t tid) {
-
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
+  __shared__ uint64_t internalCounters[16];
+  __shared__ uint64_t posGPUs[16];
+  if(threadIdx.x<gpuCount){
+    internalCounters[threadIdx.x]=0;
+  }
+  __syncthreads();
   for (auto i = id; i < size; i += stride) {
     hkey_t key = keys[i];
     HashKey hash = hashes[i];
     for (uint64_t j = 0; j < gpuCount; j++) {
       if (hash < hashSplits[j + 1]) {
-        uint64_t pos = atomicAdd((unsigned long long int*)(&counter[j]), 1);
-        uint64_t off = offsets[j];
-#ifdef INDEX_TRACK
-        keyBuff[off + pos] = {key, i};
-#else
-        keyBuff[off + pos] = { key };
-#endif
-        // keyBuff[off + pos] = {key, gpuCount, i};
-        // keyBuff[off + pos] = {key, i};
+        uint64_t pos = atomicAdd((unsigned long long int*)(&internalCounters[j]), 1);
         break;
       }
     }
+  }
+  __syncthreads();
+  if(threadIdx.x<gpuCount){
+        posGPUs[threadIdx.x] = atomicAdd((unsigned long long int*)(&counter[threadIdx.x]), internalCounters[threadIdx.x]);
+  }
+  __syncthreads();
+  for (auto i = id; i < size; i += stride) {
+    hkey_t key = keys[i];
+    HashKey hash = hashes[i];
+    uint64_t pos, off;
+    for (uint64_t j = 0; j < gpuCount; j++) {
+      if (hash < hashSplits[j + 1]) {
+        pos = atomicAdd((unsigned long long int*)(&posGPUs[j]), 1);
+        off = offsets[j];
+        break;
+      }
+    }
+#ifdef INDEX_TRACK
+    keyBuff[off + pos] = {key, i};
+#else
+    keyBuff[off + pos] = { key };
+#endif
   }
   if (id == 0) {
     offsets[gpuCount] = size;
   }
 }
+
 // __global__ void binHashValues(keyhash *buffer, hkey_t *keys, uint64_t size, uint64_t *hashes, 
 // __global__ void binHashValues(hkey_t *keyBuff, HashKey *hashBuff, hkey_t *keys, uint64_t size, 
 //                                   HashKey *hashes, uint64_t *hashSplits, uint64_t *counter, 

@@ -63,7 +63,7 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
   
   uint64_t binRange = std::ceil(maxkey / ((float)binCount));
   BLOCK_COUNT = std::ceil(countSize / ((float) BLOCK_SIZE_OP2));
-  BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
+  // BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
 
   std::cout << "bin_count: " << binCount << std::endl;
   std::cout << "bin_range: " << binRange << std::endl;

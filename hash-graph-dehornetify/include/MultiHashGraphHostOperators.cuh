@@ -1,7 +1,7 @@
 #include "MultiHashGraph.cuh"
 
 int BLOCK_COUNT = -1;
-int BLOCK_SIZE_OP2 = 256; // TODO: Double check this.
+int BLOCK_SIZE_OP2 = 128; // TODO: Double check this.
 
 // A recursive binary search function. It returns location of x in given array arr[l..r] is present, 
 // otherwise it returns the bin id with the smallest value larger than x
