@@ -134,6 +134,8 @@ void countKeyBuffSizes(inputData *h_dVals, uint64_t **h_dBinSplits,
   cudaMemcpy(h_bufferCounter[tid], h_dBufferCounter[tid], gpuCount * sizeof(uint64_t),
                         cudaMemcpyDeviceToHost);
 
+  #pragma omp barrier
+
 #ifdef DEBUG
   std::cout << "h_keyBins" << std::endl;
   for (uint64_t i = 0; i < binCount; i++) {
