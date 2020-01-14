@@ -155,7 +155,9 @@ __global__ void countBinSizes(HashKey *d_vals, uint64_t size, uint64_t *d_binSiz
 
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
+
   for (uint64_t i = id; i < size; i += stride) {
+    // uint64_t bin = d_vals[i] / binRange;
     uint64_t bin = d_vals[i] / binRange;
     atomicAdd((unsigned long long int*)(&d_binSizes[bin]), 1);
   }

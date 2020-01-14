@@ -1,7 +1,7 @@
 #include "MultiHashGraph.cuh"
 
 int BLOCK_COUNT = -1;
-int BLOCK_SIZE_OP2 = 128; // TODO: Double check this.
+int BLOCK_SIZE_OP2 = 256; // TODO: Double check this.
 
 // A recursive binary search function. It returns location of x in given array arr[l..r] is present, 
 // otherwise it returns the bin id with the smallest value larger than x
@@ -130,7 +130,8 @@ void countKeyBuffSizes(inputData *h_dVals, uint64_t **h_dBinSplits,
                                                         h_dBinSplits[tid], 
                                                         gpuCount);
 
-  cudaMemcpyAsync(h_bufferCounter[tid], h_dBufferCounter[tid], gpuCount * sizeof(uint64_t),
+  // cudaMemcpyAsync(h_bufferCounter[tid], h_dBufferCounter[tid], gpuCount * sizeof(uint64_t),
+  cudaMemcpy(h_bufferCounter[tid], h_dBufferCounter[tid], gpuCount * sizeof(uint64_t),
                         cudaMemcpyDeviceToHost);
 
 #ifdef DEBUG
@@ -171,7 +172,8 @@ void populateKeyBuffs(inputData *h_dVals, keyval **h_dKeyBinBuff,
   cub::DeviceScan::ExclusiveSum(h_dExSumTemp[tid], _temp_storage_bytes, h_dBufferCounter[tid], 
                                     h_dKeyBinOff[tid], gpuCount);
 
-  cudaMemcpyAsync(h_hKeyBinOff[tid], h_dKeyBinOff[tid], (gpuCount + 1) * sizeof(uint64_t),
+  // cudaMemcpyAsync(h_hKeyBinOff[tid], h_dKeyBinOff[tid], (gpuCount + 1) * sizeof(uint64_t),
+  cudaMemcpy(h_hKeyBinOff[tid], h_dKeyBinOff[tid], (gpuCount + 1) * sizeof(uint64_t),
                     cudaMemcpyDeviceToHost);
 
   // Reset counters to 0 to actually fill buffers.
@@ -187,7 +189,8 @@ void populateKeyBuffs(inputData *h_dVals, keyval **h_dKeyBinBuff,
                                                     h_dBufferCounter[tid], gpuCount, tid);
 
   // Copy counters and offsets to host
-  cudaMemcpyAsync(h_bufferCounter[tid], h_dBufferCounter[tid], gpuCount * sizeof(uint64_t),
+  // cudaMemcpyAsync(h_bufferCounter[tid], h_dBufferCounter[tid], gpuCount * sizeof(uint64_t),
+  cudaMemcpy(h_bufferCounter[tid], h_dBufferCounter[tid], gpuCount * sizeof(uint64_t),
                     cudaMemcpyDeviceToHost);
 
 #ifdef DEBUG
