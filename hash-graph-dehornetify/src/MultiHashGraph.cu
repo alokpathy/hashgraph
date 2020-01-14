@@ -63,7 +63,7 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
   
   uint64_t binRange = std::ceil(maxkey / ((float)binCount));
   BLOCK_COUNT = std::ceil(countSize / ((float) BLOCK_SIZE_OP2));
-  BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
+  // BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
 
   std::cout << "bin_count: " << binCount << std::endl;
   std::cout << "bin_range: " << binRange << std::endl;
@@ -231,11 +231,11 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
   uvmPtr = nullptr;
 
   cudaMallocManaged(&uvmPtr, size);
-  // uint64_t equalChunk = size / gpuCount;
-  // for (uint64_t i = 0; i < gpuCount; i++) {
-  //   cudaSetDevice(i);
-  //   cudaMemPrefetchAsync(uvmPtr + equalChunk * i, equalChunk, i);
-  // }
+  uint64_t equalChunk = size / gpuCount;
+  for (uint64_t i = 0; i < gpuCount; i++) {
+    cudaSetDevice(i);
+    cudaMemPrefetchAsync(uvmPtr + equalChunk * i, equalChunk, i);
+  }
   prefixArray = new uint64_t[gpuCount + 1]();
   
   h_dCountCommon = new char*[gpuCount]();
