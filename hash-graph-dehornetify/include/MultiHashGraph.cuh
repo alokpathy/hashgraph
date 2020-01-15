@@ -51,10 +51,6 @@
 
 #include <cub/cub.cuh>
 
-using hkey_t = int64_t;
-using index_t = int64_t;
-using HashKey = int64_t;
-
 // using namespace mgpu;
 
 #define CHECK_ERROR(str) \
@@ -62,8 +58,20 @@ using HashKey = int64_t;
 
 // #define CUDA_PROFILE
 
-// #define INDEX_TRACK
+#define INDEX_TRACK
 // #define MANAGED_MEM
+//#define B32
+
+#ifdef B32
+using hkey_t = uint32_t;
+using index_t = int64_t;
+using HashKey = uint32_t;
+#else
+using hkey_t = int64_t;
+using index_t = int64_t;
+using HashKey = int64_t;
+#endif
+
 
 struct keyval_key
 {
@@ -87,7 +95,7 @@ struct inputData
 {
   hkey_t *d_keys;
   HashKey *d_hash;
-  uint64_t len;
+  index_t len;
 };
 
 #ifdef INDEX_TRACK
@@ -140,40 +148,40 @@ inline bool operator==(const keyval &kv1, const keyval &kv2) {
 
 class MultiHashGraph {
 public:
-    MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t maxkey, 
-                      // context_t &context, int64_t tableSize,
+    MultiHashGraph(inputData *h_dVals, index_t countSize, index_t maxkey, 
+                      // context_t &context, index_t tableSize,
                       HashKey tableSize,
-                      uint64_t binCount, index_t lrbBins, uint64_t gpuCount); ~MultiHashGraph();
+                      index_t binCount, index_t lrbBins, index_t gpuCount); ~MultiHashGraph();
 
-    void build(bool buildSplits, uint64_t tid);
+    void build(bool buildSplits, index_t tid);
     void buildSingle();
 
-    static void intersect(MultiHashGraph &mgA, MultiHashGraph &mgB, int64_t *h_Common,
-                              keypair **h_dOutput, uint64_t tid);
+    static void intersect(MultiHashGraph &mgA, MultiHashGraph &mgB, index_t *h_Common,
+                              keypair **h_dOutput, index_t tid);
 
     void destroyMulti();
 
     char **h_dFinalKeys;
-    uint64_t *h_hashOff;
-    uint64_t *h_counterOff;
-    uint64_t *h_offsetOff;
-    uint64_t *h_edgesOff;
-    uint64_t *h_lrbOff;
+    index_t *h_hashOff;
+    index_t *h_counterOff;
+    index_t *h_offsetOff;
+    index_t *h_edgesOff;
+    index_t *h_lrbOff;
 
     // Structures for allocating bins to GPUs.
     // Public so that another HG can use the same splits.
-    uint64_t *h_binSplits;
-    uint64_t **h_dBinSplits;
+    index_t *h_binSplits;
+    index_t **h_dBinSplits;
 
     // int64_t *d_Common;
     // int64_t *d_GlobalCounter;
-    int64_t **h_dCommon;
-    int64_t **h_dGlobalCounter;
+    index_t **h_dCommon;
+    index_t **h_dGlobalCounter;
 
-    int64_t countSize;
+    index_t countSize;
     // int64_t tableSize;
     HashKey tableSize;
-    uint64_t gpuCount;
+    index_t gpuCount;
 
     // Public for correctness check
     hkey_t *h_vals;
@@ -181,10 +189,10 @@ public:
     char **h_dCountCommon;
     char *uvmPtr;
     char *uvmPtrIntersect;
-    uint64_t *prefixArray;
-    uint64_t *prefixArrayIntersect;
-    uint64_t totalSize;
-    uint64_t totalSizeIntersect;
+    index_t *prefixArray;
+    index_t *prefixArrayIntersect;
+    index_t totalSize;
+    index_t totalSizeIntersect;
 
     size_t **h_dExSumTemp;
     size_t exSumTempBytes;
@@ -203,56 +211,56 @@ private:
 
 
     // Structures for initial binning
-    uint64_t *h_binSizes;
-    // uint64_t *d_binSizes;
-    uint64_t **h_dBinSizes;
-    uint64_t **h_hBinSizes;
+    index_t *h_binSizes;
+    // index_t *d_binSizes;
+    index_t **h_dBinSizes;
+    index_t **h_hBinSizes;
 
-    uint64_t *h_psBinSizes;
-    uint64_t *d_psBinSizes;
+    index_t *h_psBinSizes;
+    index_t *d_psBinSizes;
 
     // Allocating physical bins for binning keys
     hkey_t **h_keyBins;
-    uint64_t *d_binCounter;
-    uint64_t *h_binCounter;
+    index_t *d_binCounter;
+    index_t *h_binCounter;
 
     // Structures for keeping keys on each GPU.
     hkey_t **h_dKeys;
 
     // Structures for storing and binning hashes on each GPU.
     HashKey **h_dHashes;
-    uint64_t **h_dBinCounter;
-    uint64_t **h_hBinCounter;
+    index_t **h_dBinCounter;
+    index_t **h_hBinCounter;
 
     // Structures for prefix summing hash bins across GPUs (on host).
-    uint64_t *h_hashBinSize;
-    uint64_t *h_psHashBinSize;
+    index_t *h_hashBinSize;
+    index_t *h_psHashBinSize;
 
     // Structure for allocating hash bins for each GPU.
-    uint64_t *h_hashSplits;
+    index_t *h_hashSplits;
 
     // Structure for sending hash bin allocations to each GPU.
     // Keeps track of which bins go to which GPU.
-    uint64_t **h_dHashSplits;
+    index_t **h_dHashSplits;
 
     // Structures for counting the key/hash buffer sizes on each GPU.
-    uint64_t **h_dBufferCounter;
+    index_t **h_dBufferCounter;
 
-    uint64_t **h_bufferCounter;
+    index_t **h_bufferCounter;
 
     // Used for initial key binning
     // hkey_t **h_dKeyBinBuff; 
     keyval **h_dKeyBinBuff; 
     HashKey **h_dHashBinBuff; 
-    uint64_t **h_dKeyBinOff;
-    uint64_t **h_hKeyBinOff;
+    index_t **h_dKeyBinOff;
+    index_t **h_hKeyBinOff;
 
     // Actual key/hash buffers per GPU on each GPU for hash values.
     hkey_t **h_dKeyBuff;
 
     HashKey **h_dHashBuff;
-    uint64_t **h_dOffset;
-    uint64_t **h_hOffset;
+    index_t **h_dOffset;
+    index_t **h_hOffset;
 
     // size_t *h_keyPitches;
     // size_t *h_hashPitches;
@@ -260,11 +268,11 @@ private:
     // Final, consolidated list of key/hashes on each GPU.
     // hkey_t **h_dFinalKeys;
     HashKey **h_dFinalHash;
-    uint64_t **h_dFinalCounter;
-    uint64_t **h_hFinalCounter;
+    index_t **h_dFinalCounter;
+    index_t **h_hFinalCounter;
 
-    uint64_t **h_dFinalOffset;
-    uint64_t **h_hFinalOffset;
+    index_t **h_dFinalOffset;
+    index_t **h_hFinalOffset;
 
     // HashGraph construction structures.
     index_t **h_dOffsets;
@@ -276,8 +284,8 @@ private:
     index_t **h_dLrbCounter;
     index_t **h_dLrbCountersPrefix;
 
-    int64_t maxkey;
-    uint64_t binCount;
+    index_t maxkey;
+    index_t binCount;
     index_t lrbBins;
 
     bool multiDestroyed = false;
