@@ -48,7 +48,7 @@ using namespace std::chrono;
 // Uncomment once we remove "using namespace hornets_nest"
 // const int BLOCK_SIZE_OP2 = 256;
 
-#define ERROR_CHECK
+// #define ERROR_CHECK
 // #define PRINT_KEYS
 #define LRB_BUILD
 
@@ -335,13 +335,11 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
   cudaMemset(d_lrbCounters, 0, (lrbBins + 1) * sizeof(index_t));
 
-  CHECK_ERROR("before??");
   lrbRehashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
                                                     d_lrbCounters, d_lrbArray, 
                                                     d_lrbCountersPrefix, lrbBinSize,
                                                     devNum);
 
-  CHECK_ERROR("after??");
   lrbCountHashGlobalD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, 
                                                             d_lrbArray, d_splits, 
                                                             ogTableSize, devNum);
