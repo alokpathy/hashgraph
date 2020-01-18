@@ -28,7 +28,7 @@ struct prg {
 
   __host__ __device__ prg(hkey_t _lo=0, hkey_t _hi=0) : lo(_lo), hi(_hi) {};
 
-  __host__ __device__ hkey_t operator()(unsigned long long index) const {
+  __host__ __device__ hkey_t operator()(index_t index) const {
     thrust::default_random_engine rng(index);
     thrust::uniform_int_distribution<hkey_t> dist(lo, hi);
     rng.discard(index);
@@ -99,9 +99,9 @@ void generateInput(inputData *h_dVals, index_t countSize, index_t maxkey, uint32
 
 #ifdef RAND_KEYS
     // Randomly generate input keys on each device.
-    thrust::counting_iterator<hkey_t> index_sequence_begin(seed);
+    thrust::counting_iterator<index_t> index_sequence_begin(seed);
     thrust::transform(thrust::device, index_sequence_begin, index_sequence_begin + keyCount,
-                        h_dVals[i].d_keys, prg(0, maxkey));
+                        h_dVals[i].d_keys, prg(0, maxkey - 1));
 #else
     hkey_t *h_tmpKeys = new hkey_t[keyCount]();
     for (index_t j = lo; j < hi; j++) {
@@ -140,7 +140,7 @@ int main(int argc, char **argv) {
   std::cout << "hostname: " << hostname << std::endl;
 
   index_t countSizeA = 1L << 24;
-  HashKey maxkey = 1L << 26;
+  index_t maxkey = 1L << 26;
 
   uint32_t binCount = 16000;
   uint32_t gpuCount = 4;
@@ -182,7 +182,7 @@ int main(int argc, char **argv) {
     }
   } 
 
-  HashKey tableSize = maxkey;
+  index_t tableSize = maxkey;
 
   std::cout << "countSizeA: " << countSizeA << std::endl;
   std::cout << "maxkey: " << maxkey << std::endl;

@@ -38,19 +38,6 @@ void countBinSizes(inputData *h_dVals, index_t **h_hBinSizes, index_t **h_dBinSi
   // countBinSizes<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(h_dVals[tid].d_keys + h_dVals[tid].len, h_dVals[tid].len, 
                                                     h_dBinSizes[tid], binRange);
 
-#ifdef DEBUG
-  #pragma omp barrier
-  #pragma omp master
-  {
-    std::cout << "h_binSizes:" << std::endl;
-    for (index_t i = 0; i < binCount; i++) {
-      std::cout << h_binSizes[i] << " ";
-    }
-    std::cout << std::endl;
-  } // debug master
-  #pragma omp barrier
-#endif
-
   // Consolidate bin sizes across GPUs.
   cudaMemcpyAsync(h_hBinSizes[tid], h_dBinSizes[tid], binCount * sizeof(index_t), 
                       cudaMemcpyDeviceToHost);
@@ -73,6 +60,22 @@ void countBinSizes(inputData *h_dVals, index_t **h_hBinSizes, index_t **h_dBinSi
   } // master
 
   #pragma omp barrier
+
+
+#ifdef DEBUG
+  #pragma omp barrier
+  #pragma omp master
+  {
+    std::cout << "h_binSizes:" << std::endl;
+    for (index_t i = 0; i < binCount; i++) {
+      if (h_binSizes[i] > 0) {
+        std::cout << "i: " << i << " " << h_binSizes[i] << " ";
+      }
+    }
+    std::cout << std::endl;
+  } // debug master
+  #pragma omp barrier
+#endif
 
 #ifdef DEBUG
   #pragma omp barrier

@@ -21,7 +21,7 @@ echo "build tests"
 # $1 is sizeof(keyval)
 for i in "${keycounts[@]}"
     do
-        let kc=$((echo 2^$i) | bc)
+        let kc=$((echo 2^$i - 1) | bc)
         # echo "keycount: ${kc}"
         for j in "${gpucounts[@]}"
             do
@@ -51,7 +51,7 @@ echo "intersect tests"
 # echo "intersect tests" >> $resultsfile
 for i in "${keycounts[@]}"
     do
-        let kc=$((echo 2^$i) | bc)
+        let kc=$((echo 2^$i - 1) | bc)
         kc=$((kc / 2))
         # echo "keycount: ${kc}"
         for j in "${gpucounts[@]}"

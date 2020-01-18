@@ -14,7 +14,7 @@ declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index
 # declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
 declare -a exps=("strong_scaling" "weak_scaling")
 
-# 64-bit section
+64-bit section
 sed -i 's/^#define B32/\/\/&/' $includepath/MultiHashGraph.cuh
 keysize=8
 echo "64-bit keys"
@@ -66,6 +66,7 @@ for mode in "${modes[@]}"
       sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
       sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
       bytes=12
+      continue
     elif [ "$mode" == "noindex_managed" ]; then
       sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
       sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
@@ -73,6 +74,7 @@ for mode in "${modes[@]}"
       sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
       sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
       bytes=12
+      continue
     fi
 
     make -C $buildpath multi-hash

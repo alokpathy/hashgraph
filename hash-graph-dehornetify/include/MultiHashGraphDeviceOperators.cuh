@@ -73,7 +73,7 @@ __forceinline__  __host__ __device__ uint32_t hash_murmur(const HashKey& key) {
 }
 
 // __global__ void basicHashD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, int64_t tableSize) {
-__global__ void basicHashD(index_t valCount, hkey_t *valsArr, HashKey *hashArr, HashKey tableSize) {
+__global__ void basicHashD(index_t valCount, hkey_t *valsArr, HashKey *hashArr, index_t tableSize) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
 
@@ -84,7 +84,7 @@ __global__ void basicHashD(index_t valCount, hkey_t *valsArr, HashKey *hashArr, 
 
 // __global__ void hashValuesD(uint64_t valCount, keyval *valsArr, keyval *hashArr, int64_t tableSize) {
 // __global__ void hashValuesD(uint64_t valCount, keyval *valsArr, HashKey *hashArr, int64_t tableSize,
-__global__ void hashValuesD(index_t valCount, keyval *valsArr, HashKey *hashArr, HashKey tableSize,
+__global__ void hashValuesD(index_t valCount, keyval *valsArr, HashKey *hashArr, index_t tableSize,
                                 index_t devNum) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;

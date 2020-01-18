@@ -56,7 +56,7 @@ using namespace std::chrono;
 
 MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t maxkey, 
                                     // context_t &context, index_t tableSize, 
-                                    HashKey tableSize, 
+                                    index_t tableSize, 
                                     index_t binCount, index_t lrbBins, 
                                     index_t gpuCount) {
 
@@ -335,13 +335,13 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
   cudaMemset(d_lrbCounters, 0, (lrbBins + 1) * sizeof(index_t));
 
-  CHECK_ERROR("before");
+  CHECK_ERROR("before??");
   lrbRehashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
                                                     d_lrbCounters, d_lrbArray, 
                                                     d_lrbCountersPrefix, lrbBinSize,
                                                     devNum);
 
-  CHECK_ERROR("after1");
+  CHECK_ERROR("after??");
   lrbCountHashGlobalD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, 
                                                             d_lrbArray, d_splits, 
                                                             ogTableSize, devNum);
@@ -366,11 +366,9 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
   cudaMemset(d_counter, 0, tableSize * sizeof(index_t));
 
-  CHECK_ERROR("after2");
   lrbCopyToGraphD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, d_offSet, 
                                                       d_edges, d_lrbArray, d_splits, 
                                                       ogTableSize, devNum);
-  CHECK_ERROR("after2");
 }
 
 #ifndef LRB_BUILD

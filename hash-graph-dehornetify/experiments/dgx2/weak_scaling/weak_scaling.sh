@@ -1,4 +1,4 @@
-keycounts=($(seq 24 1 34))
+keycounts=($(seq 24 1 33))
 # gpucounts=($(seq 0 1 4))
 gpucounts=(1 2 4 8 16)
 # gpucounts=(1 2 4 8)
@@ -20,7 +20,7 @@ echo "build tests"
 
 for i in "${keycounts[@]}"
     do
-        let kcdev=$((echo 2^$i) | bc)
+        let kcdev=$((echo 2^$i - 1) | bc)
         # echo "keycount / dev: ${kcdev}"
         for j in "${gpucounts[@]}"
             do
@@ -53,7 +53,7 @@ echo "intersect tests"
 
 for i in "${keycounts[@]}"
     do
-        let kcdev=$((echo 2^$i) | bc)
+        let kcdev=$((echo 2^$i - 1) | bc)
         kcdev=$((kcdev / 2))
         # echo "keycount / dev : ${kcdev}"
         for j in "${gpucounts[@]}"

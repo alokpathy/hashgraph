@@ -58,7 +58,7 @@
 
 // #define CUDA_PROFILE
 
-#define INDEX_TRACK
+// #define INDEX_TRACK
 // #define MANAGED_MEM
 //#define B32
 
@@ -150,7 +150,7 @@ class MultiHashGraph {
 public:
     MultiHashGraph(inputData *h_dVals, index_t countSize, index_t maxkey, 
                       // context_t &context, index_t tableSize,
-                      HashKey tableSize,
+                      index_t tableSize,
                       index_t binCount, index_t lrbBins, index_t gpuCount); ~MultiHashGraph();
 
     void build(bool buildSplits, index_t tid);
@@ -180,7 +180,7 @@ public:
 
     index_t countSize;
     // int64_t tableSize;
-    HashKey tableSize;
+    index_t tableSize;
     index_t gpuCount;
 
     // Public for correctness check
