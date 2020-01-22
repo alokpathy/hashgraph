@@ -18,6 +18,7 @@ echo "build tests"
 # echo "build tests" >> $resultsfile
 
 # $1 is sizeof(keyval)
+# $2 is 32-bit vs 64-bit
 for i in "${keycounts[@]}"
     do
         let kc=$((echo 2^$i - 1) | bc)

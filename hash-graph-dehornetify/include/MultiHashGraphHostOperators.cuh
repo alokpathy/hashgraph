@@ -104,6 +104,7 @@ void countBinSizes(inputData *h_dVals, index_t **h_hBinSizes, index_t **h_dBinSi
 
   cudaMemcpyAsync(h_dBinSplits[tid], h_binSplits, (gpuCount + 1) * sizeof(index_t),
                       cudaMemcpyHostToDevice);
+
 #ifdef DEBUG
   #pragma omp barrier
   #pragma omp master
@@ -137,7 +138,6 @@ void countKeyBuffSizes(inputData *h_dVals, index_t **h_dBinSplits,
   cudaMemcpy(h_bufferCounter[tid], h_dBufferCounter[tid], gpuCount * sizeof(index_t),
                         cudaMemcpyDeviceToHost);
 
-  #pragma omp barrier
 
 #ifdef DEBUG
   std::cout << "h_keyBins" << std::endl;
@@ -228,6 +228,7 @@ void countFinalKeys(index_t **h_bufferCounter, char **h_dFinalKeys,
 
   // h_hFinalCounters is the transpose of h_bufferCounter
   // h_hFinalCounters[i][j] is the number of keys GPU i receives from GPU j.
+  // #pragma omp barrier
   for (index_t j = 0; j < gpuCount; j++) {
     h_hFinalCounters[tid][j] = h_bufferCounter[j][tid];
   }

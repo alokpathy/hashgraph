@@ -58,9 +58,9 @@
 
 // #define CUDA_PROFILE
 
-// #define INDEX_TRACK
-// #define MANAGED_MEM
-//#define B32
+#define INDEX_TRACK
+#define MANAGED_MEM
+#define B32
 
 #ifdef B32
 using hkey_t = uint32_t;
