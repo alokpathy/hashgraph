@@ -77,19 +77,6 @@ void countBinSizes(inputData *h_dVals, index_t **h_hBinSizes, index_t **h_dBinSi
   #pragma omp barrier
 #endif
 
-#ifdef DEBUG
-  #pragma omp barrier
-  #pragma omp master
-  {
-    std::cout << "h_binSizes:" << std::endl;
-    for (index_t i = 0; i < binCount; i++) {
-      std::cout << h_binSizes[i] << "\n";
-    }
-    std::cout << std::endl;
-  } // debug master
-  #pragma omp barrier
-#endif
-
   // Find split points in prefix sum to determine what bins should go to each GPU.
   // TODO: This can probably be parallelized (maybe on device?)
   // might not be worth though, not a lot of work
