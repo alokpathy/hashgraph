@@ -20,7 +20,7 @@ echo "build tests"
 
 for i in "${keycounts[@]}"
     do
-        let kcdev=$((echo 2^$i - 1) | bc)
+        let kcdev=$((echo 2^$i) | bc)
         # echo "keycount / dev: ${kcdev}"
         for j in "${gpucounts[@]}"
             do
@@ -53,7 +53,7 @@ echo "intersect tests"
 
 for i in "${keycounts[@]}"
     do
-        let kcdev=$((echo 2^$i - 1) | bc)
+        let kcdev=$((echo 2^$i) | bc)
         kcdev=$((kcdev / 2))
         # echo "keycount / dev : ${kcdev}"
         for j in "${gpucounts[@]}"

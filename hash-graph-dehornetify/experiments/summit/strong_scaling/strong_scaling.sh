@@ -22,7 +22,7 @@ echo "build tests"
 # $2 is 32-bit vs 64-bit
 for i in "${keycounts[@]}"
     do
-        let kc=$((echo 2^$i - 1) | bc)
+        let kc=$((echo 2^$i) | bc)
         # echo "keycount: ${kc}"
         for j in "${gpucounts[@]}"
             do
@@ -52,7 +52,7 @@ echo "intersect tests"
 # echo "intersect tests" >> $resultsfile
 for i in "${keycounts[@]}"
     do
-        let kc=$((echo 2^$i - 1) | bc)
+        let kc=$((echo 2^$i) | bc)
         kc=$((kc / 2))
         # echo "keycount: ${kc}"
         for j in "${gpucounts[@]}"

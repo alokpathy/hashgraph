@@ -228,7 +228,7 @@ void countFinalKeys(index_t **h_bufferCounter, char **h_dFinalKeys,
 
   // h_hFinalCounters is the transpose of h_bufferCounter
   // h_hFinalCounters[i][j] is the number of keys GPU i receives from GPU j.
-  // #pragma omp barrier
+  #pragma omp barrier
   for (index_t j = 0; j < gpuCount; j++) {
     h_hFinalCounters[tid][j] = h_bufferCounter[j][tid];
   }
