@@ -73,7 +73,7 @@ __forceinline__  __host__ __device__ uint32_t hash_murmur(const HashKey& key) {
 }
 
 // __global__ void basicHashD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, int64_t tableSize) {
-__global__ void basicHashD(index_t valCount, hkey_t *valsArr, HashKey *hashArr, index_t tableSize) {
+__global__ void basicHashD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, HashKey tableSize) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
 
@@ -84,8 +84,8 @@ __global__ void basicHashD(index_t valCount, hkey_t *valsArr, HashKey *hashArr, 
 
 // __global__ void hashValuesD(uint64_t valCount, keyval *valsArr, keyval *hashArr, int64_t tableSize) {
 // __global__ void hashValuesD(uint64_t valCount, keyval *valsArr, HashKey *hashArr, int64_t tableSize,
-__global__ void hashValuesD(index_t valCount, keyval *valsArr, HashKey *hashArr, index_t tableSize,
-                                index_t devNum) {
+__global__ void hashValuesD(index_t valCount, keyval *valsArr, HashKey *hashArr, HashKey tableSize,
+                                uint64_t devNum) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
 
@@ -105,7 +105,7 @@ __global__ void countHashD(index_t valCount, HashKey *hashArr, index_t *countArr
   }    
 }
 
-__global__ void countHashD32(index_t valCount, HashKey *hashArr, int32_t *countArr) {
+__global__ void countHashD32(uint64_t valCount, HashKey *hashArr, int32_t *countArr) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
@@ -131,8 +131,8 @@ __global__ void copyToGraphD(index_t valCount, hkey_t *valsArr, HashKey *hashArr
   }    
 }
 
-__global__ void copyToGraphD32(index_t valCount, hkey_t *valsArr, HashKey *hashArr, int32_t *countArr,
-                                index_t *offsetArr, keyval *edges, index_t tableSize) {
+__global__ void copyToGraphD32(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, int32_t *countArr,
+                                index_t *offsetArr, keyval *edges, uint64_t tableSize) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
@@ -150,15 +150,15 @@ __global__ void copyToGraphD32(index_t valCount, hkey_t *valsArr, HashKey *hashA
   }    
 }
 
-__global__ void countBinSizes(HashKey *d_vals, index_t size, index_t *d_binSizes, 
-                                index_t binRange) {
+__global__ void countBinSizes(HashKey *d_vals, uint64_t size, uint64_t *d_binSizes, 
+                                uint64_t binRange) {
 
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
 
-  for (index_t i = id; i < size; i += stride) {
-    // index_t bin = d_vals[i] / binRange;
-    index_t bin = d_vals[i] / binRange;
+  for (uint64_t i = id; i < size; i += stride) {
+    // uint64_t bin = d_vals[i] / binRange;
+    uint64_t bin = d_vals[i] / binRange;
     atomicAdd((unsigned long long int*)(&d_binSizes[bin]), 1);
   }
 }
@@ -172,26 +172,26 @@ __global__ void fillSequence(hkey_t *d_vals, int64_t size) {
   }
 }
 
-__global__ void countHashBinSizes(HashKey *d_vals, index_t size, index_t *d_binSizes, 
-                                index_t binRange) {
+__global__ void countHashBinSizes(HashKey *d_vals, uint64_t size, uint64_t *d_binSizes, 
+                                uint64_t binRange) {
 
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < size; i += stride) {
-    index_t bin = d_vals[i] / binRange;
+    uint64_t bin = d_vals[i] / binRange;
     atomicAdd((unsigned long long int*)(&d_binSizes[bin]), 1);
   }
 }
 
-__global__ void countBufferSizes(index_t *hashSplits, index_t size, index_t *bufferCounter, 
-                                    index_t gpuCount, HashKey *hashVals) {
+__global__ void countBufferSizes(uint64_t *hashSplits, uint64_t size, uint64_t *bufferCounter, 
+                                    uint64_t gpuCount, HashKey *hashVals) {
 
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < size; i += stride) {
     HashKey hash = hashVals[i];
     // TODO: This might make things slow.
-    for (index_t j = 0; j < gpuCount; j++) {
+    for (uint64_t j = 0; j < gpuCount; j++) {
       if (hashSplits[j] <= hash && hash < hashSplits[j + 1]) {
         atomicAdd((unsigned long long int*)(&bufferCounter[j]), 1);
         break;
@@ -200,15 +200,15 @@ __global__ void countBufferSizes(index_t *hashSplits, index_t size, index_t *buf
   }
 }
 
-// __global__ void countKeyBuffSizes(HashKey *hashVals, index_t size, index_t *counter, 
-//                                       index_t *splits, index_t gpuCount) {
+// __global__ void countKeyBuffSizes(HashKey *hashVals, uint64_t size, uint64_t *counter, 
+//                                       uint64_t *splits, uint64_t gpuCount) {
 // 
 //   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
 //   int64_t stride = blockDim.x * gridDim.x;
 //   for (auto i = id; i < size; i += stride) {
 //     HashKey hash = hashVals[i];
 //     // TODO: This might make things slow.
-//     for (index_t j = 0; j < gpuCount; j++) {
+//     for (uint64_t j = 0; j < gpuCount; j++) {
 //       if (hash < splits[j + 1]) {
 //         atomicAdd((unsigned long long int*)(&counter[j]), 1);
 //         break;
@@ -217,13 +217,13 @@ __global__ void countBufferSizes(index_t *hashSplits, index_t size, index_t *buf
 //   }
 // }
 
-__global__ void countKeyBuffSizes(HashKey *hashVals, index_t size_, index_t *counter, 
-                                      index_t *splits, index_t gpuCount_) {
+__global__ void countKeyBuffSizes(HashKey *hashVals, uint64_t size_, uint64_t *counter, 
+                                      uint64_t *splits, uint64_t gpuCount_) {
   int32_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int32_t stride = blockDim.x * gridDim.x;
   uint32_t gpuCount = gpuCount_;
   uint32_t size=size_;
-  __shared__ index_t internalCounters[16];
+  __shared__ uint64_t internalCounters[16];
   if(threadIdx.x<gpuCount){
     internalCounters[threadIdx.x]=0;
   }
@@ -246,17 +246,17 @@ __global__ void countKeyBuffSizes(HashKey *hashVals, index_t size_, index_t *cou
 }
 
 
-__global__ void binKeyValues(index_t size, hkey_t *keys, hkey_t *keyBuff, index_t *offsets, 
-                                  index_t *splits, index_t *counter, index_t gpuCount) {
+__global__ void binKeyValues(uint64_t size, hkey_t *keys, hkey_t *keyBuff, uint64_t *offsets, 
+                                  uint64_t *splits, uint64_t *counter, uint64_t gpuCount) {
 
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < size; i += stride) {
     hkey_t key = keys[i];
-    for (index_t j = 0; j < gpuCount; j++) {
+    for (uint64_t j = 0; j < gpuCount; j++) {
       if (splits[j] <= key && key < splits[j + 1]) {
-        index_t pos = atomicAdd((unsigned long long int*)(&counter[j]), 1);
-        index_t off = offsets[j];
+        uint64_t pos = atomicAdd((unsigned long long int*)(&counter[j]), 1);
+        uint64_t off = offsets[j];
         keyBuff[off + pos] = key;
         break;
       }
@@ -264,21 +264,21 @@ __global__ void binKeyValues(index_t size, hkey_t *keys, hkey_t *keyBuff, index_
   }
 }
 
-// __global__ void binHashValues(index_t size, hkey_t *keys, HashKey *hashes, 
-//                                   // hkey_t *keyBuff, index_t *offsets, 
-//                                   keyval *keyBuff, index_t *offsets, 
-//                                   index_t *hashSplits, index_t *counter, 
-//                                   index_t gpuCount, index_t tid) {
+// __global__ void binHashValues(uint64_t size, hkey_t *keys, HashKey *hashes, 
+//                                   // hkey_t *keyBuff, uint64_t *offsets, 
+//                                   keyval *keyBuff, uint64_t *offsets, 
+//                                   uint64_t *hashSplits, uint64_t *counter, 
+//                                   uint64_t gpuCount, uint64_t tid) {
 // 
 //   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
 //   int64_t stride = blockDim.x * gridDim.x;
 //   for (auto i = id; i < size; i += stride) {
 //     hkey_t key = keys[i];
 //     HashKey hash = hashes[i];
-//     for (index_t j = 0; j < gpuCount; j++) {
+//     for (uint64_t j = 0; j < gpuCount; j++) {
 //       if (hash < hashSplits[j + 1]) {
-//         index_t pos = atomicAdd((unsigned long long int*)(&counter[j]), 1);
-//         index_t off = offsets[j];
+//         uint64_t pos = atomicAdd((unsigned long long int*)(&counter[j]), 1);
+//         uint64_t off = offsets[j];
 // #ifdef INDEX_TRACK
 //         keyBuff[off + pos] = {key, i};
 // #else
@@ -294,15 +294,15 @@ __global__ void binKeyValues(index_t size, hkey_t *keys, hkey_t *keyBuff, index_
 //     offsets[gpuCount] = size;
 //   }
 // }
-__global__ void binHashValues(index_t size, hkey_t *keys, HashKey *hashes, 
-                                  // hkey_t *keyBuff, index_t *offsets, 
-                                  keyval *keyBuff, index_t *offsets, 
-                                  index_t *hashSplits, index_t *counter, 
-                                  index_t gpuCount, index_t tid) {
+__global__ void binHashValues(uint64_t size, hkey_t *keys, HashKey *hashes, 
+                                  // hkey_t *keyBuff, uint64_t *offsets, 
+                                  keyval *keyBuff, uint64_t *offsets, 
+                                  uint64_t *hashSplits, uint64_t *counter, 
+                                  uint64_t gpuCount, uint64_t tid) {
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
-  __shared__ index_t internalCounters[16];
-  __shared__ index_t posGPUs[16];
+  __shared__ uint64_t internalCounters[16];
+  __shared__ uint64_t posGPUs[16];
   if(threadIdx.x<gpuCount){
     internalCounters[threadIdx.x]=0;
   }
@@ -310,9 +310,9 @@ __global__ void binHashValues(index_t size, hkey_t *keys, HashKey *hashes,
   for (auto i = id; i < size; i += stride) {
     hkey_t key = keys[i];
     HashKey hash = hashes[i];
-    for (index_t j = 0; j < gpuCount; j++) {
+    for (uint64_t j = 0; j < gpuCount; j++) {
       if (hash < hashSplits[j + 1]) {
-        index_t pos = atomicAdd((unsigned long long int*)(&internalCounters[j]), 1);
+        uint64_t pos = atomicAdd((unsigned long long int*)(&internalCounters[j]), 1);
         break;
       }
     }
@@ -325,8 +325,8 @@ __global__ void binHashValues(index_t size, hkey_t *keys, HashKey *hashes,
   for (auto i = id; i < size; i += stride) {
     hkey_t key = keys[i];
     HashKey hash = hashes[i];
-    index_t pos, off;
-    for (index_t j = 0; j < gpuCount; j++) {
+    uint64_t pos, off;
+    for (uint64_t j = 0; j < gpuCount; j++) {
       if (hash < hashSplits[j + 1]) {
         pos = atomicAdd((unsigned long long int*)(&posGPUs[j]), 1);
         off = offsets[j];
@@ -344,20 +344,20 @@ __global__ void binHashValues(index_t size, hkey_t *keys, HashKey *hashes,
   }
 }
 
-// __global__ void binHashValues(keyhash *buffer, hkey_t *keys, index_t size, index_t *hashes, 
-// __global__ void binHashValues(hkey_t *keyBuff, HashKey *hashBuff, hkey_t *keys, index_t size, 
-//                                   HashKey *hashes, index_t *hashSplits, index_t *counter, 
-//                                   index_t gpuCount, size_t keyPitch, size_t hashPitch) {
+// __global__ void binHashValues(keyhash *buffer, hkey_t *keys, uint64_t size, uint64_t *hashes, 
+// __global__ void binHashValues(hkey_t *keyBuff, HashKey *hashBuff, hkey_t *keys, uint64_t size, 
+//                                   HashKey *hashes, uint64_t *hashSplits, uint64_t *counter, 
+//                                   uint64_t gpuCount, size_t keyPitch, size_t hashPitch) {
 // 
 //   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
 //   int64_t stride = blockDim.x * gridDim.x;
 //   for (auto i = id; i < size; i += stride) {
-//     index_t key = keys[i];
-//     index_t hash = hashes[i];
+//     uint64_t key = keys[i];
+//     uint64_t hash = hashes[i];
 //     // TODO: This might make things slow.
-//     for (index_t j = 0; j < gpuCount; j++) {
+//     for (uint64_t j = 0; j < gpuCount; j++) {
 //       if (hashSplits[j] <= hash && hash < hashSplits[j + 1]) {
-//         index_t pos = atomicAdd(&counter[j], 1);
+//         uint64_t pos = atomicAdd(&counter[j], 1);
 //         hkey_t *keyRow = (hkey_t*)((char*)keyBuff + j * keyPitch);
 //         HashKey *hashRow = (HashKey*)((char*)hashBuff + j * hashPitch);
 //         keyRow[pos] = key;
@@ -367,29 +367,29 @@ __global__ void binHashValues(index_t size, hkey_t *keys, HashKey *hashes,
 //   }
 // }
 
-// __global__ void decrHash(hkey_t *vals, HashKey *hashes, size_t size, index_t *splits, index_t devNum) {
-__global__ void decrHash(HashKey *hashes, size_t size, index_t *splits, index_t devNum) {
+// __global__ void decrHash(hkey_t *vals, HashKey *hashes, size_t size, uint64_t *splits, uint64_t devNum) {
+__global__ void decrHash(HashKey *hashes, size_t size, uint64_t *splits, uint64_t devNum) {
 
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < size; i += stride) {
-    index_t minHash = splits[devNum];
+    uint64_t minHash = splits[devNum];
     // hashes[i].key -= minHash;
     hashes[i] -= minHash;
   }
 }
 
-__global__ void binKeyValues(hkey_t *keyBuff, hkey_t *keys, size_t size, index_t *counter, 
-                                index_t binRange, size_t pitch) {
+__global__ void binKeyValues(hkey_t *keyBuff, hkey_t *keys, size_t size, uint64_t *counter, 
+                                uint64_t binRange, size_t pitch) {
 
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < size; i += stride) {
     hkey_t key = keys[i];
-    index_t bin = key / binRange;
+    uint64_t bin = key / binRange;
 
     hkey_t *row = (hkey_t*)((char*)keyBuff + bin * pitch);
-    index_t pos = atomicAdd((unsigned long long int*)(&counter[bin]), 1);
+    uint64_t pos = atomicAdd((unsigned long long int*)(&counter[bin]), 1);
     row[pos] = key;
   }
 }
@@ -413,7 +413,7 @@ __global__ void lrbRehashD(index_t valCount, keyval *valsArr, HashKey *hashArr,
                               index_t *d_lrbCounters, keyval *d_lrbHashReordered, 
                               // index_t *d_lrbCounters, hkey_t *d_lrbHashReordered, 
                               index_t *d_lrbCountersPrefix, index_t lrbBinSize,
-                              index_t devNum) {
+                              uint64_t devNum) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
@@ -428,8 +428,8 @@ __global__ void lrbRehashD(index_t valCount, keyval *valsArr, HashKey *hashArr,
 }
 
 __global__ void lrbCountHashGlobalD(index_t valCount, index_t *countArr, 
-                                        keyval *d_lrbHashReordered, index_t *splits,
-                                        index_t tableSize, index_t devNum) {
+                                        keyval *d_lrbHashReordered, uint64_t *splits,
+                                        index_t tableSize, uint64_t devNum) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
@@ -442,8 +442,8 @@ __global__ void lrbCountHashGlobalD(index_t valCount, index_t *countArr,
 }
 
 __global__ void lrbCopyToGraphD(index_t valCount, index_t *countArr, index_t *offsetArr, 
-                                    keyval *edges, keyval *d_lrbHashReordered, index_t *splits,
-                                    index_t tableSize, index_t devNum) {
+                                    keyval *edges, keyval *d_lrbHashReordered, uint64_t *splits,
+                                    index_t tableSize, uint64_t devNum) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
@@ -511,7 +511,7 @@ __global__ void lrbCopyToGraphD32(index_t valCount, int32_t *countArr, index_t *
 
 /*** INTERSECTION-specific KERNELS ***/
 __global__ void simpleIntersect(index_t valCount, index_t *offsetA, keyval *edgesA,
-                                    index_t *offsetB, keyval *edgesB, index_t  *counter,
+                                    index_t *offsetB, keyval *edgesB, int64_t *counter,
                                     keypair *pairs, bool countOnly) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
@@ -543,18 +543,18 @@ __global__ void simpleIntersect(index_t valCount, index_t *offsetA, keyval *edge
 }
 
 #if 0
-__global__ void lrbCountHashD(index_t valCount, HashKey *hashArr, index_t *d_lrbCounters, index_t lrbBinSize) {
+__global__ void lrbCountHashD(uint64_t valCount, HashKey *hashArr, uint64_t *d_lrbCounters, uint64_t lrbBinSize) {
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
-      index_t ha = index_t(hashArr[i]/lrbBinSize);
+      uint64_t ha = uint64_t(hashArr[i]/lrbBinSize);
       atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1);
   }    
 }
 
-__global__ void lrbRehashD(index_t valCount, hkey_t *valsArr, HashKey *hashArr, 
-                              index_t *d_lrbCounters, keyval *d_lrbHashReordered, 
-                              index_t *d_lrbCountersPrefix, index_t lrbBinSize) {
+__global__ void lrbRehashD(uint64_t valCount, hkey_t *valsArr, HashKey *hashArr, 
+                              uint64_t *d_lrbCounters, keyval *d_lrbHashReordered, 
+                              uint64_t *d_lrbCountersPrefix, uint64_t lrbBinSize) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
@@ -562,12 +562,12 @@ __global__ void lrbRehashD(index_t valCount, hkey_t *valsArr, HashKey *hashArr,
       HashKey ha = hashArr[i]/lrbBinSize;
       // if(blockIdx.x==0)
       //     printf("%d ", ha);
-      index_t pos = atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
+      uint64_t pos = atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
       d_lrbHashReordered[pos]={valsArr[i],i};
   }    
 }
 
-__global__ void lrbCountHashGlobalD(index_t valCount, index_t *countArr, keyval *d_lrbHashReordered, index_t tableSize) {
+__global__ void lrbCountHashGlobalD(uint64_t valCount, uint64_t *countArr, keyval *d_lrbHashReordered, uint64_t tableSize) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
@@ -578,8 +578,8 @@ __global__ void lrbCountHashGlobalD(index_t valCount, index_t *countArr, keyval 
   }    
 }
 
-__global__ void lrbCopyToGraphD(index_t valCount, index_t *countArr, index_t *offsetArr, keyval *edges, 
-                                      keyval *d_lrbHashReordered, index_t tableSize) {
+__global__ void lrbCopyToGraphD(uint64_t valCount, uint64_t *countArr, uint64_t *offsetArr, keyval *edges, 
+                                      keyval *d_lrbHashReordered, uint64_t tableSize) {
 
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;

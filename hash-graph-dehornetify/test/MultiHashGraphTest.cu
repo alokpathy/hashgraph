@@ -28,7 +28,7 @@ struct prg {
 
   __host__ __device__ prg(hkey_t _lo=0, hkey_t _hi=0) : lo(_lo), hi(_hi) {};
 
-  __host__ __device__ hkey_t operator()(index_t index) const {
+  __host__ __device__ hkey_t operator()(unsigned long long index) const {
     thrust::default_random_engine rng(index);
     thrust::uniform_int_distribution<hkey_t> dist(lo, hi);
     rng.discard(index);
@@ -61,9 +61,9 @@ int64_t binarySearch(hkey_t *bins, int32_t l, int64_t r, int32_t x) {
 
 void enablePeerAccess(uint32_t gpuCount) {
   // Enable P2P access between each pair of GPUs.
-  for (index_t j = 0; j < gpuCount; j++) {
+  for (int64_t j = 0; j < gpuCount; j++) {
     cudaSetDevice(j);
-    for (index_t i = 0; i < gpuCount; i++) {
+    for (int64_t i = 0; i < gpuCount; i++) {
       if (j != i) {
         int isCapable;
         cudaDeviceCanAccessPeer(&isCapable, j, i);
@@ -78,19 +78,19 @@ void enablePeerAccess(uint32_t gpuCount) {
   }
 } 
 
-void generateInput(inputData *h_dVals, index_t countSize, index_t maxkey, uint32_t gpuCount,
-                        index_t seed) {
+void generateInput(inputData *h_dVals, int64_t countSize, int64_t maxkey, uint32_t gpuCount,
+                        uint64_t seed) {
   std::cout << "generating input" << std::endl;
 
-  index_t avgKeyCount = std::ceil(countSize / ((double) gpuCount));
-  for (index_t i = 0; i < gpuCount; i++) {
+  uint64_t avgKeyCount = std::ceil(countSize / ((double) gpuCount));
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
 
-    index_t lo = avgKeyCount * i;
-    index_t hi = avgKeyCount * (i + 1);
+    int64_t lo = avgKeyCount * i;
+    int64_t hi = avgKeyCount * (i + 1);
     hi = std::min(hi, countSize);
 
-    index_t keyCount = hi - lo;
+    uint64_t keyCount = hi - lo;
 
     cudaMalloc(&h_dVals[i].d_keys, keyCount * sizeof(hkey_t));
     cudaMalloc(&h_dVals[i].d_hash, keyCount * sizeof(HashKey));
@@ -99,12 +99,12 @@ void generateInput(inputData *h_dVals, index_t countSize, index_t maxkey, uint32
 
 #ifdef RAND_KEYS
     // Randomly generate input keys on each device.
-    thrust::counting_iterator<index_t> index_sequence_begin(seed);
+    thrust::counting_iterator<hkey_t> index_sequence_begin(seed);
     thrust::transform(thrust::device, index_sequence_begin, index_sequence_begin + keyCount,
-                        h_dVals[i].d_keys, prg(0, maxkey - 1));
+                        h_dVals[i].d_keys, prg(0, maxkey));
 #else
     hkey_t *h_tmpKeys = new hkey_t[keyCount]();
-    for (index_t j = lo; j < hi; j++) {
+    for (uint64_t j = lo; j < hi; j++) {
       h_tmpKeys[j - lo] = j;
     }
     cudaMemcpy(h_dVals[i].d_keys, h_tmpKeys, keyCount * sizeof(hkey_t), cudaMemcpyHostToDevice);
@@ -139,8 +139,8 @@ int main(int argc, char **argv) {
 
   std::cout << "hostname: " << hostname << std::endl;
 
-  index_t countSizeA = 1L << 24;
-  index_t maxkey = 1L << 26;
+  int64_t countSizeA = 1L << 24;
+  HashKey maxkey = 1L << 26;
 
   uint32_t binCount = 16000;
   uint32_t gpuCount = 4;
@@ -150,7 +150,7 @@ int main(int argc, char **argv) {
   bool checkCorrectness = false;
   bool buildTest = false;
 
-  index_t countSizeB = 1L << 22;
+  int64_t countSizeB = 1L << 22;
 
   if (argc >= 2 && argc < 9) {
     std::cerr << "Please specify all arguments.\n";
@@ -158,10 +158,10 @@ int main(int argc, char **argv) {
   }
 
   if (argc >= 3) {
-    index_t size = strtoull(argv[1], NULL, 0);
+    int64_t size = strtoull(argv[1], NULL, 0);
     countSizeA = size;
 
-    index_t key = strtoull(argv[2], NULL, 0);
+    int64_t key = strtoull(argv[2], NULL, 0);
     maxkey = key;
 
     binCount = atoi(argv[3]);
@@ -182,7 +182,7 @@ int main(int argc, char **argv) {
     }
   } 
 
-  index_t tableSize = maxkey;
+  HashKey tableSize = maxkey;
 
   std::cout << "countSizeA: " << countSizeA << std::endl;
   std::cout << "maxkey: " << maxkey << std::endl;
@@ -195,7 +195,7 @@ int main(int argc, char **argv) {
   cudaEventCreate(&stop);
   float buildTime = 0.0f; // milliseoncds
 
-  // enablePeerAccess(gpuCount);
+  enablePeerAccess(gpuCount);
 
   // rmmOptions_t rmmO;
 
@@ -205,7 +205,7 @@ int main(int argc, char **argv) {
   // rmmO.num_devices = 16;
 
   // int *devices = (int *)malloc(gpuCount * sizeof(int));
-  // for (index_t i = 0; i < gpuCount; i++) {
+  // for (int64_t i = 0; i < gpuCount; i++) {
   //   devices[i] = i;
   // }
   // 
@@ -232,7 +232,7 @@ int main(int argc, char **argv) {
 
     #pragma omp parallel
     {
-      index_t tid = omp_get_thread_num();
+      uint64_t tid = omp_get_thread_num();
       mhg.build(true, tid);
     } // pragma
 
@@ -269,15 +269,15 @@ int main(int argc, char **argv) {
 
 #ifdef MANAGED_MEM
     std::cout << "managed mem constructors" << std::endl;
-    index_t size = 2 * (tableSize + gpuCount) * sizeof(index_t);
+    uint64_t size = 2 * (tableSize + gpuCount) * sizeof(int64_t);
     cudaMallocManaged(&mhgA.uvmPtrIntersect, size);
-    mhgA.prefixArrayIntersect = new index_t[gpuCount + 1]();
+    mhgA.prefixArrayIntersect = new uint64_t[gpuCount + 1]();
     mhgA.totalSizeIntersect = size;
     std::cout << "done managed mem constructors" << std::endl;
 #endif
 
     keypair **h_dOutput = new keypair*[gpuCount]();
-    index_t *h_Common = new index_t[gpuCount]();
+    int64_t *h_Common = new int64_t[gpuCount]();
 
     omp_set_num_threads(gpuCount);
 
@@ -290,7 +290,7 @@ int main(int argc, char **argv) {
 
     #pragma omp parallel
     {
-      index_t tid = omp_get_thread_num();
+      uint64_t tid = omp_get_thread_num();
       mhgA.build(true, tid);
 
       #pragma omp master
@@ -300,15 +300,15 @@ int main(int argc, char **argv) {
 
 #ifdef MANAGED_MEM
         mhgA.prefixArrayIntersect[0] = 0;
-        for (index_t i = 1; i < gpuCount; i++) {
-          index_t tidHashRange = mhgA.h_binSplits[i] - mhgA.h_binSplits[i - 1];
-          index_t size = 2 * (tidHashRange + 1) * sizeof(index_t);
+        for (uint64_t i = 1; i < gpuCount; i++) {
+          uint64_t tidHashRange = mhgA.h_binSplits[i] - mhgA.h_binSplits[i - 1];
+          uint64_t size = 2 * (tidHashRange + 1) * sizeof(int64_t);
           mhgA.prefixArrayIntersect[i] = mhgA.prefixArrayIntersect[i - 1] + size;
         }
         mhgA.prefixArrayIntersect[gpuCount] = mhgA.totalSizeIntersect;
 
         mhgA.h_dCountCommon[0] = mhgA.uvmPtrIntersect;
-        for (index_t i = 1; i < gpuCount; i++) {
+        for (uint64_t i = 1; i < gpuCount; i++) {
           mhgA.h_dCountCommon[i] = mhgA.uvmPtrIntersect + 
                                         mhgA.prefixArrayIntersect[i];
         }
@@ -341,14 +341,14 @@ int main(int argc, char **argv) {
       mhgA.buildSingle();
       mhgB.buildSingle();
       
-      index_t outputSize = 0;
-      for (index_t i = 0; i < gpuCount; i++) {
+      int64_t outputSize = 0;
+      for (int64_t i = 0; i < gpuCount; i++) {
         outputSize += h_Common[i];
       }
 
       keypair *h_output = new keypair[outputSize]();
-      index_t h_idx = 0;
-      for (index_t i = 0; i < gpuCount; i++) {
+      int64_t h_idx = 0;
+      for (int64_t i = 0; i < gpuCount; i++) {
         cudaSetDevice(i);
         cudaMemcpy(h_output + h_idx, h_dOutput[i], h_Common[i] * sizeof(keypair),
                             cudaMemcpyDeviceToHost);
@@ -357,7 +357,7 @@ int main(int argc, char **argv) {
 
       std::vector<hkey_t> result;
       result.reserve(outputSize);
-      for (index_t i = 0; i < outputSize; i++) {
+      for (int64_t i = 0; i < outputSize; i++) {
         result.push_back(h_output[i].right);
       }
 
@@ -371,10 +371,10 @@ int main(int argc, char **argv) {
 
       std::vector<hkey_t> ans;
       ans.reserve(outputSize);
-      for (index_t i = 0; i < countSizeA; i++) {
-        index_t ogIdx = binarySearch(mhgB.h_vals, 0, countSizeB - 1, mhgA.h_vals[i]);
+      for (int64_t i = 0; i < countSizeA; i++) {
+        int64_t ogIdx = binarySearch(mhgB.h_vals, 0, countSizeB - 1, mhgA.h_vals[i]);
 
-        index_t idx = ogIdx;
+        int64_t idx = ogIdx;
         while (idx >= 0 && mhgB.h_vals[idx] == mhgA.h_vals[i]) {
           ans.push_back(mhgA.h_vals[i]);
           idx--;
@@ -385,7 +385,7 @@ int main(int argc, char **argv) {
           ans.push_back(mhgA.h_vals[i]);
           idx++;
         }
-        // for (index_t j = 0; j < countSizeB; j++) {
+        // for (int64_t j = 0; j < countSizeB; j++) {
         //   if (mhgA.h_vals[i] == mhgB.h_vals[j]) {
         //     ans.push_back(mhgA.h_vals[i]);
         //   }

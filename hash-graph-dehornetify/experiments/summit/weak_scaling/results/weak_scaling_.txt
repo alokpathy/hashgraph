@@ -1,3 +1,0 @@
-weak_scaling
-keycount,gpucount,time
-build tests

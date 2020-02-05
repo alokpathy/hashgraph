@@ -54,14 +54,14 @@ using namespace std::chrono;
 
 // #define DEBUG
 
-MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t maxkey, 
-                                    // context_t &context, index_t tableSize, 
-                                    index_t tableSize, 
-                                    index_t binCount, index_t lrbBins, 
-                                    index_t gpuCount) {
+MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t maxkey, 
+                                    // context_t &context, int64_t tableSize, 
+                                    HashKey tableSize, 
+                                    uint64_t binCount, index_t lrbBins, 
+                                    uint64_t gpuCount) {
 
   
-  index_t binRange = std::ceil(maxkey / ((float)binCount));
+  uint64_t binRange = std::ceil(maxkey / ((float)binCount));
   BLOCK_COUNT = std::ceil(countSize / ((float) BLOCK_SIZE_OP2));
   // BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
 
@@ -74,21 +74,21 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
   h_vals = new hkey_t[countSize]();
 
   // Input is arrays of key on different devices.
-  index_t avgKeyCount = std::ceil(countSize / ((double) gpuCount));
-  index_t h_valIdx = 0;
+  uint64_t avgKeyCount = std::ceil(countSize / ((double) gpuCount));
+  uint64_t h_valIdx = 0;
 
   // h_dKeyBinBuff = new hkey_t*[gpuCount]();
   h_dKeyBinBuff = new keyval*[gpuCount]();
 
-  index_t seed = 0;
-  for (index_t i = 0; i < gpuCount; i++) {
+  uint64_t seed = 0;
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
 
-    index_t lo = avgKeyCount * i;
-    index_t hi = avgKeyCount * (i + 1);
+    int64_t lo = avgKeyCount * i;
+    int64_t hi = avgKeyCount * (i + 1);
     hi = std::min(hi, countSize);
 
-    index_t keyCount = hi - lo;
+    uint64_t keyCount = hi - lo;
 
     cudaMemcpy(h_vals + h_valIdx, h_dVals[i].d_keys, keyCount * sizeof(hkey_t),
                   cudaMemcpyDeviceToHost);
@@ -108,59 +108,59 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
 #endif
 
   // Structures for initial binning
-  h_binSizes = new index_t[binCount](); // Consolidated bin sizes across devices
-  h_hBinSizes = new index_t*[gpuCount](); // Bin sizes per device
-  h_dBinSizes = new index_t*[gpuCount]();
-  for (index_t i = 0; i < gpuCount; i++) {
+  h_binSizes = new uint64_t[binCount](); // Consolidated bin sizes across devices
+  h_hBinSizes = new uint64_t*[gpuCount](); // Bin sizes per device
+  h_dBinSizes = new uint64_t*[gpuCount]();
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
-    cudaMalloc(&h_dBinSizes[i], binCount * sizeof(index_t));
-    h_hBinSizes[i] = new index_t[binCount]();
+    cudaMalloc(&h_dBinSizes[i], binCount * sizeof(uint64_t));
+    h_hBinSizes[i] = new uint64_t[binCount]();
   }
 
-  h_psBinSizes = new index_t[binCount + 1]();
+  h_psBinSizes = new uint64_t[binCount + 1]();
 
   // Structures for allocating bins to GPUs (i.e. hash ranges).
-  h_binSplits = new index_t[gpuCount + 1]();
-  h_dBinSplits = new index_t*[gpuCount]();
-  for (index_t i = 0; i < gpuCount; i++) {
+  h_binSplits = new uint64_t[gpuCount + 1]();
+  h_dBinSplits = new uint64_t*[gpuCount]();
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
-    cudaMalloc(&h_dBinSplits[i], (gpuCount + 1) * sizeof(index_t));
+    cudaMalloc(&h_dBinSplits[i], (gpuCount + 1) * sizeof(uint64_t));
   }
   cudaSetDevice(0);
 
   // Structures for counting the key/hash buffer sizes on each GPU.
-  h_bufferCounter = new index_t*[gpuCount]();
-  for (index_t i = 0; i < gpuCount; i++) {
-    h_bufferCounter[i] = new index_t[gpuCount]();
+  h_bufferCounter = new uint64_t*[gpuCount]();
+  for (uint64_t i = 0; i < gpuCount; i++) {
+    h_bufferCounter[i] = new uint64_t[gpuCount]();
   }
 
-  h_dBufferCounter = new index_t*[gpuCount]();
-  for (index_t i = 0; i < gpuCount; i++) {
+  h_dBufferCounter = new uint64_t*[gpuCount]();
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
-    cudaMalloc(&h_dBufferCounter[i], gpuCount * sizeof(index_t));
-    cudaMemset(h_dBufferCounter[i], 0, gpuCount * sizeof(index_t));
+    cudaMalloc(&h_dBufferCounter[i], gpuCount * sizeof(uint64_t));
+    cudaMemset(h_dBufferCounter[i], 0, gpuCount * sizeof(uint64_t));
   }
   cudaSetDevice(0);
 
-  h_hKeyBinOff = new index_t*[gpuCount]();
-  h_dKeyBinOff = new index_t*[gpuCount]();
-  for (index_t i = 0; i < gpuCount; i++) {
+  h_hKeyBinOff = new uint64_t*[gpuCount]();
+  h_dKeyBinOff = new uint64_t*[gpuCount]();
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
-    cudaMalloc(&h_dKeyBinOff[i], (gpuCount + 1) * sizeof(index_t));
-    h_hKeyBinOff[i] = new index_t[gpuCount + 1]();
+    cudaMalloc(&h_dKeyBinOff[i], (gpuCount + 1) * sizeof(uint64_t));
+    h_hKeyBinOff[i] = new uint64_t[gpuCount + 1]();
   }
 
   // h_dFinalKeys = new hkey_t*[gpuCount]();
   h_dFinalKeys = new char*[gpuCount]();
 
-  h_hFinalCounter = new index_t*[gpuCount]();
-  h_dFinalOffset = new index_t*[gpuCount]();
-  h_hFinalOffset = new index_t*[gpuCount]();
-  for (index_t i = 0; i < gpuCount; i++) {
+  h_hFinalCounter = new uint64_t*[gpuCount]();
+  h_dFinalOffset = new uint64_t*[gpuCount]();
+  h_hFinalOffset = new uint64_t*[gpuCount]();
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
-    h_hFinalCounter[i] = new index_t[gpuCount]();
-    h_hFinalOffset[i] = new index_t[gpuCount]();
-    cudaMalloc(&h_dFinalOffset[i], (gpuCount + 1) * sizeof(index_t));
+    h_hFinalCounter[i] = new uint64_t[gpuCount]();
+    h_hFinalOffset[i] = new uint64_t[gpuCount]();
+    cudaMalloc(&h_dFinalOffset[i], (gpuCount + 1) * sizeof(uint64_t));
   }
 
   h_dOffsets = new index_t*[gpuCount]();
@@ -171,9 +171,8 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
   // exSumTempBytes = 1279;
   // exSumTempBytes = 2000;
   // exSumTempBytes = 3000000;
-  exSumTempBytes = std::max(2048L, (long)(tableSize / 10));
-  // exSumTempBytes = tableSize / 10;
-  for (index_t i = 0; i < gpuCount; i++) {
+  exSumTempBytes = std::max(2048L, tableSize / 10);
+  for (int64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
     cudaMalloc(&h_dExSumTemp[i], exSumTempBytes);
   }
@@ -186,33 +185,33 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
   this->lrbBins = lrbBins;
   this->gpuCount = gpuCount;
 
-  h_hashOff = new index_t[gpuCount]();
-  h_counterOff = new index_t[gpuCount]();
-  h_offsetOff = new index_t[gpuCount]();
-  h_edgesOff = new index_t[gpuCount]();
-  h_lrbOff = new index_t[gpuCount]();
+  h_hashOff = new uint64_t[gpuCount]();
+  h_counterOff = new uint64_t[gpuCount]();
+  h_offsetOff = new uint64_t[gpuCount]();
+  h_edgesOff = new uint64_t[gpuCount]();
+  h_lrbOff = new uint64_t[gpuCount]();
 
-  // cudaMalloc(&d_Common, 1 * sizeof(index_t));
-  // cudaMemset(d_Common, 0, 1 * sizeof(index_t));
+  // cudaMalloc(&d_Common, 1 * sizeof(int64_t));
+  // cudaMemset(d_Common, 0, 1 * sizeof(int64_t));
 
-  // cudaMalloc(&d_GlobalCounter, 1 * sizeof(index_t));
-  // cudaMemset(d_GlobalCounter, 0, 1 * sizeof(index_t));
-  h_dCommon = new index_t*[gpuCount]();
-  h_dGlobalCounter = new index_t*[gpuCount]();
-  for (index_t i = 0; i < gpuCount; i++) {
+  // cudaMalloc(&d_GlobalCounter, 1 * sizeof(int64_t));
+  // cudaMemset(d_GlobalCounter, 0, 1 * sizeof(int64_t));
+  h_dCommon = new int64_t*[gpuCount]();
+  h_dGlobalCounter = new int64_t*[gpuCount]();
+  for (int64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
-    cudaMalloc(&h_dCommon[i], 1 * sizeof(index_t));
-    cudaMemset(h_dCommon[i], 0, 1 * sizeof(index_t));
+    cudaMalloc(&h_dCommon[i], 1 * sizeof(int64_t));
+    cudaMemset(h_dCommon[i], 0, 1 * sizeof(int64_t));
 
-    cudaMalloc(&h_dGlobalCounter[i], 1 * sizeof(index_t));
-    cudaMemset(h_dGlobalCounter[i], 0, 1 * sizeof(index_t));
+    cudaMalloc(&h_dGlobalCounter[i], 1 * sizeof(int64_t));
+    cudaMemset(h_dGlobalCounter[i], 0, 1 * sizeof(int64_t));
   }
 
 #ifdef LRB_BUILD
   h_dLrbCounter = new index_t*[gpuCount]();
   h_dLrbCountersPrefix = new index_t*[gpuCount]();
 
-  for (index_t i = 0; i < gpuCount; i++) {
+  for (int64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
     cudaMalloc(&h_dLrbCounter[i], (lrbBins + 2) * sizeof(index_t));
     cudaMemset(h_dLrbCounter[i], 0, (lrbBins + 2) * sizeof(index_t));
@@ -223,7 +222,7 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
 #endif
 
 #ifdef MANAGED_MEM
-  index_t size = countSize * sizeof(keyval) + 
+  uint64_t size = countSize * sizeof(keyval) + 
                      countSize * sizeof(HashKey) +
                      (2 * countSize * sizeof(keyval)) +
                      (2 * (tableSize + gpuCount) * sizeof(index_t));
@@ -232,12 +231,12 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
   uvmPtr = nullptr;
 
   cudaMallocManaged(&uvmPtr, size);
-  index_t equalChunk = size / gpuCount;
-  for (index_t i = 0; i < gpuCount; i++) {
+  uint64_t equalChunk = size / gpuCount;
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
     cudaMemPrefetchAsync(uvmPtr + equalChunk * i, equalChunk, i);
   }
-  prefixArray = new index_t[gpuCount + 1]();
+  prefixArray = new uint64_t[gpuCount + 1]();
   
   h_dCountCommon = new char*[gpuCount]();
 #endif
@@ -260,7 +259,7 @@ void MultiHashGraph::destroyMulti() {
 #if 0
   cudaFree(d_psBinSizes);
 
-  for (uindex_t i = 0; i < gpuCount; i++) {
+  for (uint64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
     cudaFree(h_dKeys[i]);
     cudaFree(h_dBinCounter[i]);
@@ -277,7 +276,7 @@ void MultiHashGraph::destroyMulti() {
   delete[] h_hBinCounter;
   delete[] h_dBufferCounter;
 
-  for (uindex_t i = 0; i < binCount; i++) {
+  for (uint64_t i = 0; i < binCount; i++) {
     delete[] h_keyBins[i];
   }
 
@@ -298,17 +297,16 @@ bool compareByKey(const keyval &kv1, const keyval &kv2) {
 // void lrbBuildMultiTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter, 
 void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter, 
 // void lrbBuildMultiTable(keyval *d_vals, keyval *d_hash, index_t *d_counter, 
-                          index_t *d_offSet, keyval *d_edges, index_t *d_splits, 
+                          index_t *d_offSet, keyval *d_edges, uint64_t *d_splits, 
                           index_t valCount, index_t tableSize, index_t ogTableSize, 
                           keyval *d_lrbArray, index_t *d_lrbCounters, 
                           index_t *d_lrbCountersPrefix, size_t *d_exSumTemp,
                           size_t exSumTempBytes, index_t lrbBins, index_t lrbBinSize, 
-                          index_t devNum) {
+                          uint64_t devNum) {
 
   cudaMemset(d_counter, 0, (tableSize + 1) * sizeof(index_t));
   void*  _d_temp_storage     { nullptr };
   size_t _temp_storage_bytes { 0 };
-
 
 
   hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
@@ -326,7 +324,6 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
   if (_temp_storage_bytes > exSumTempBytes) {
     std::cerr << "ERROR: NOT ENOUGH TEMP SPACE ALLOCATED" << std::endl;
   }
-
 
   cub::DeviceScan::ExclusiveSum(d_exSumTemp, _temp_storage_bytes, d_lrbCounters, 
                                     d_lrbCountersPrefix, lrbBins + 1);
@@ -372,8 +369,8 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
 #ifndef LRB_BUILD
 void buildMultiTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter, 
-	              index_t *d_offSet, keyval *d_edges, index_t *d_splits, index_t valCount, 
-                      index_t tableSize, index_t devNum) {
+	              index_t *d_offSet, keyval *d_edges, uint64_t *d_splits, uint64_t valCount, 
+                      uint64_t tableSize, uint64_t devNum) {
 
   void*  _d_temp_storage     { nullptr };
   size_t _temp_storage_bytes { 0 };
@@ -390,7 +387,7 @@ void buildMultiTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter,
                                     d_offSet, tableSize);
   // d_counter = fill(0, (size_t)tableSize, context);
   cudaMemset(d_counter, 0, tableSize * sizeof(index_t));
-  cudaMemcpy(d_offSet + tableSize, &valCount, sizeof(index_t), cudaMemcpyHostToDevice);
+  cudaMemcpy(d_offSet + tableSize, &valCount, sizeof(uint64_t), cudaMemcpyHostToDevice);
 
   if (_d_temp_storage > 0) {
     cudaFree(_d_temp_storage);
@@ -401,9 +398,9 @@ void buildMultiTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter,
 }
 #endif
 
-void MultiHashGraph::build(bool findSplits, index_t tid) {
-  // index_t binRange = std::ceil(maxkey / ((float)binCount));
-  index_t binRange = std::ceil(tableSize / ((float)binCount));
+void MultiHashGraph::build(bool findSplits, uint64_t tid) {
+  // uint64_t binRange = std::ceil(maxkey / ((float)binCount));
+  uint64_t binRange = std::ceil(tableSize / ((float)binCount));
   
   cudaSetDevice(0);
   cudaEvent_t start, stop;
@@ -490,17 +487,17 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
 #endif
 
   // Build hashgraph on each GPU.
-  index_t hashRange = h_binSplits[tid + 1] - h_binSplits[tid];
+  uint64_t hashRange = h_binSplits[tid + 1] - h_binSplits[tid];
   // cudaMalloc(&h_dOffsets[tid], 2 * (hashRange + 1) * sizeof(index_t));
 
-  index_t keyCount = h_hFinalOffset[tid][gpuCount];
+  uint64_t keyCount = h_hFinalOffset[tid][gpuCount];
 
 #ifdef LRB_BUILD
   index_t lrbBinSize = std::ceil(hashRange / (float)(lrbBins));
   
   if (lrbBinSize == 0) {
     // std::cout << "ERROR: TOO MANY LRB BINS" << std::endl;
-    printf("ERROR tid: %ld hashRange: %ld\n", tid, hashRange);
+    printf("tid: %ld hashRange: %ld\n", tid, hashRange);
     exit(0);
   }
 
@@ -536,16 +533,12 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
 #endif
                     
   cudaSetDevice(0);
-#ifdef ERROR_CHECK
-  cudaDeviceSynchronize();
-  CHECK_ERROR("build error");
-#endif
 }
 
-void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index_t *h_Common,
-                                    keypair **h_dOutput, index_t tid) {
+void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, int64_t *h_Common,
+                                    keypair **h_dOutput, uint64_t tid) {
 
-  index_t gpuCount = mhgA.gpuCount;
+  uint64_t gpuCount = mhgA.gpuCount;
 
   cudaSetDevice(tid);
 
@@ -557,40 +550,40 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
   keyval  *d_edgesB   = (keyval  *)(mhgB.h_dFinalKeys[tid] + mhgB.h_edgesOff[tid]);
   index_t *d_counterB = (index_t *)(mhgB.h_dFinalKeys[tid] + mhgB.h_counterOff[tid]);
 
-  index_t *d_Common = mhgA.h_dCommon[tid];
-  index_t *d_GlobalCounter = mhgA.h_dGlobalCounter[tid];
+  int64_t *d_Common = mhgA.h_dCommon[tid];
+  int64_t *d_GlobalCounter = mhgA.h_dGlobalCounter[tid];
 
   size_t *d_exSumTemp = mhgA.h_dExSumTemp[tid];
   size_t exSumTempBytes = mhgA.exSumTempBytes;
 
-  index_t tableSize = mhgA.h_binSplits[tid + 1] - mhgA.h_binSplits[tid];
+  uint64_t tableSize = mhgA.h_binSplits[tid + 1] - mhgA.h_binSplits[tid];
   if (tableSize != mhgB.h_binSplits[tid + 1] - mhgB.h_binSplits[tid]) {
     std::cerr << "ERROR: TABLE SIZE NOT SAME BETWEN TWO HG'S" << std::endl;
     exit(0);
   }
 
   // TODO: might be able to reuse stuff from cudaMalloc() from building.
-  index_t *d_countCommon = nullptr;
-  index_t *d_outputPositions = nullptr;
+  int64_t *d_countCommon = nullptr;
+  int64_t *d_outputPositions = nullptr;
 
-  // cudaMalloc(&d_countCommon, (size_t)(tableSize + 1) * sizeof(index_t));
-  // cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(index_t));
+  // cudaMalloc(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t));
+  // cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t));
 #ifdef MANAGED_MEM
-  d_countCommon = (index_t *) mhgA.h_dCountCommon[tid];
+  d_countCommon = (int64_t *) mhgA.h_dCountCommon[tid];
   cudaMemPrefetchAsync(d_countCommon, 
                             mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
                             tid);
 #else
-  cudaMalloc(&d_countCommon, (size_t)(2 * ((tableSize + 1) * sizeof(index_t))));
+  cudaMalloc(&d_countCommon, (size_t)(2 * ((tableSize + 1) * sizeof(int64_t))));
 #endif
   d_outputPositions = d_countCommon + tableSize + 1;
 
-  // RMM_ALLOC(&d_countCommon, (size_t)(tableSize + 1) * sizeof(index_t), 0);
-  // RMM_ALLOC(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(index_t), 0);
+  // RMM_ALLOC(&d_countCommon, (size_t)(tableSize + 1) * sizeof(int64_t), 0);
+  // RMM_ALLOC(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(int64_t), 0);
 
-  // cudaMemsetAsync(d_countCommon, 0, (size_t)(tableSize + 1) * sizeof(index_t));
-  // cudaMemsetAsync(d_outputPositions, 0, (size_t)(tableSize + 1) * sizeof(index_t));
-  cudaMemsetAsync(d_countCommon, 0, (size_t)(2 * ((tableSize + 1) * sizeof(index_t))));
+  // cudaMemsetAsync(d_countCommon, 0, (size_t)(tableSize + 1) * sizeof(int64_t));
+  // cudaMemsetAsync(d_outputPositions, 0, (size_t)(tableSize + 1) * sizeof(int64_t));
+  cudaMemsetAsync(d_countCommon, 0, (size_t)(2 * ((tableSize + 1) * sizeof(int64_t))));
 
   simpleIntersect<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(tableSize, d_offsetA, d_edgesA, d_offsetB,
                                                         d_edgesB, d_countCommon, NULL, true);
@@ -598,7 +591,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
   //                                              d_edgesB.data(),d_countCommon.data(),NULL});
 
 
-  // index_t h_Common;
+  // int64_t h_Common;
   void *_d_temp_storage=nullptr; size_t _temp_storage_bytes=0;
 
   _d_temp_storage=nullptr; _temp_storage_bytes=0;
@@ -611,7 +604,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
   // RMM_ALLOC(&_d_temp_storage, _temp_storage_bytes, 0);
   cub::DeviceReduce::Sum(d_exSumTemp, _temp_storage_bytes, d_countCommon, 
                               d_Common, tableSize);
-  cudaMemcpy(&h_Common[tid], d_Common, 1 * sizeof(index_t), cudaMemcpyDeviceToHost);
+  cudaMemcpy(&h_Common[tid], d_Common, 1 * sizeof(int64_t), cudaMemcpyDeviceToHost);
   // gpu::copyToHost<int32_t>(d_Common.data(), 1, &h_Common);
   // RMM_FREE(_d_temp_storage, 0);
   // gpu::free(_d_temp_storage);
@@ -708,11 +701,11 @@ void MultiHashGraph::buildSingle() {
                         cudaMemcpyDeviceToHost);
 
     // Everything in multi-GPU HG is in single-GPU HG
-    for (index_t i = 0; i < gpuCount; i++) {
+    for (uint64_t i = 0; i < gpuCount; i++) {
       cudaSetDevice(i);
 
-      index_t hashRange = h_binSplits[i + 1] - h_binSplits[i];
-      index_t keyCount = h_hFinalOffset[i][gpuCount];
+      uint64_t hashRange = h_binSplits[i + 1] - h_binSplits[i];
+      uint64_t keyCount = h_hFinalOffset[i][gpuCount];
 
       index_t *h_hOffsets = new index_t[hashRange + 1]();
       keyval *h_hEdges = new keyval[keyCount]();
@@ -725,9 +718,9 @@ void MultiHashGraph::buildSingle() {
                                              keyCount * sizeof(keyval), 
                                              cudaMemcpyDeviceToHost);
 
-      for (index_t j = 0; j < hashRange; j++) {
+      for (uint64_t j = 0; j < hashRange; j++) {
 
-        index_t hash = j + h_binSplits[i];
+        uint64_t hash = j + h_binSplits[i];
 
         index_t multiDegree = h_hOffsets[j + 1] - h_hOffsets[j];
         index_t singleDegree = h_offset[hash + 1] - h_offset[hash];
@@ -738,13 +731,13 @@ void MultiHashGraph::buildSingle() {
         }
 
         std::vector<hkey_t> multiGPU;
-        for (index_t k = h_hOffsets[j]; k < h_hOffsets[j + 1]; k++) {
+        for (uint64_t k = h_hOffsets[j]; k < h_hOffsets[j + 1]; k++) {
           keyval edge = h_hEdges[k];
           multiGPU.push_back(edge.key);
         }
 
         std::vector<hkey_t> singleGPU;
-        for (index_t k = h_offset[hash]; k < h_offset[hash + 1]; k++) {
+        for (uint64_t k = h_offset[hash]; k < h_offset[hash + 1]; k++) {
           keyval edge = h_edges[k];
           singleGPU.push_back(edge.key);
         }
