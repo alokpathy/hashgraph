@@ -219,8 +219,8 @@ __global__ void countBufferSizes(index_t *hashSplits, index_t size, index_t *buf
 
 __global__ void countKeyBuffSizes(HashKey *hashVals, index_t size_, index_t *counter, 
                                       index_t *splits, index_t gpuCount_) {
-  int32_t     id = blockIdx.x * blockDim.x + threadIdx.x;
-  int32_t stride = blockDim.x * gridDim.x;
+  int     id = blockIdx.x * blockDim.x + threadIdx.x;
+  int stride = blockDim.x * gridDim.x;
   uint32_t gpuCount = gpuCount_;
   uint32_t size=size_;
   __shared__ index_t internalCounters[16];
