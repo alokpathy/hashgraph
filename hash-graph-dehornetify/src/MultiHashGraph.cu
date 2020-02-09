@@ -63,7 +63,7 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
   
   uint64_t binRange = std::ceil(maxkey / ((float)binCount));
   BLOCK_COUNT = std::ceil(countSize / ((float) BLOCK_SIZE_OP2));
-  // BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
+  BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
 
   std::cout << "bin_count: " << binCount << std::endl;
   std::cout << "bin_range: " << binRange << std::endl;
@@ -171,7 +171,7 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
   // exSumTempBytes = 1279;
   // exSumTempBytes = 2000;
   // exSumTempBytes = 3000000;
-  exSumTempBytes = std::max(2048L, tableSize / 10);
+  exSumTempBytes = tableSize / 10;
   for (int64_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
     cudaMalloc(&h_dExSumTemp[i], exSumTempBytes);
@@ -231,11 +231,11 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, int64_t countSize, int64_t ma
   uvmPtr = nullptr;
 
   cudaMallocManaged(&uvmPtr, size);
-  uint64_t equalChunk = size / gpuCount;
-  for (uint64_t i = 0; i < gpuCount; i++) {
-    cudaSetDevice(i);
-    cudaMemPrefetchAsync(uvmPtr + equalChunk * i, equalChunk, i);
-  }
+  // uint64_t equalChunk = size / gpuCount;
+  // for (uint64_t i = 0; i < gpuCount; i++) {
+  //   cudaSetDevice(i);
+  //   cudaMemPrefetchAsync(uvmPtr + equalChunk * i, equalChunk, i);
+  // }
   prefixArray = new uint64_t[gpuCount + 1]();
   
   h_dCountCommon = new char*[gpuCount]();
@@ -728,6 +728,11 @@ void MultiHashGraph::buildSingle() {
         if (multiDegree != singleDegree) {
          std::cerr << "Degree error hash: " << hash  << " multi: " << 
               multiDegree << " single: " << singleDegree << "\n";
+
+          if (hash == 0 || hash == 7) {
+            std::cerr << "offset[i]: " << h_offset[hash] << " offset[i + 1]: " << 
+                h_offset[hash + 1] << std::endl;
+          }    
         }
 
         std::vector<hkey_t> multiGPU;
