@@ -223,6 +223,7 @@ void countFinalKeys(uint64_t **h_bufferCounter, char **h_dFinalKeys,
 
   // h_hFinalCounters is the transpose of h_bufferCounter
   // h_hFinalCounters[i][j] is the number of keys GPU i receives from GPU j.
+  #pragma omp barrier
   for (uint64_t j = 0; j < gpuCount; j++) {
     h_hFinalCounters[tid][j] = h_bufferCounter[j][tid];
   }
