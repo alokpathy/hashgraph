@@ -222,7 +222,7 @@ __global__ void countKeyBuffSizes(HashKey *hashVals, index_t size_, index_t *cou
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   uint32_t gpuCount = gpuCount_;
-  uint32_t size=size_;
+  int size=size_;
   __shared__ index_t internalCounters[16];
   if(threadIdx.x<gpuCount){
     internalCounters[threadIdx.x]=0;
