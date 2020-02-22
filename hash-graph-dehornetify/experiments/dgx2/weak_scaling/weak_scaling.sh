@@ -29,6 +29,10 @@ for i in "${keycounts[@]}"
                 # echo "gpucount: ${gc}"
 
                 let kc=$(($kcdev * $gc))
+                let ts=$kc
+                if [ $2 -eq 4 ] ; then
+                    ts=$(($kc < (2**($2 * 8)) ? $kc : 2**($2 * 8)))
+                fi
 
                 # internal cuda malloc + keys + hashes + keyBinBuff
                 let gigs=$((echo "((($kc * $1) + ($kc * $2) + (2 * $kc * $1) + (2 * $kc * 8)) + ($kc * $2) + ($kc * $2) + ($kc * $1)) / 2^30") | bc)
@@ -39,7 +43,8 @@ for i in "${keycounts[@]}"
                   continue
                 fi
 
-                ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc build | grep "time")
+                # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc build | grep "time")
+                ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc build | grep "time")
                 tokens=( $ans )
                 time=${tokens[3]}
 
@@ -63,6 +68,10 @@ for i in "${keycounts[@]}"
                 # echo "gpucount: ${gc}"
 
                 let kc=$(($kcdev * $gc))
+                let ts=$kc
+                if [ $2 -eq 4 ] ; then
+                    ts=$(($kc < (2**($2 * 8)) ? $kc : 2**($2 * 8)))
+                fi
 
                 # # internal cuda malloc + keys + hashes + keyBinBuff
                 let gigs=$((echo "((($kc * $1) + ($kc * $2) + (2 * $kc * $1) + (2 * $kc * 8)) + ($kc * $2) + ($kc * $2) + ($kc * $1)) / 2^30") | bc)
@@ -73,7 +82,8 @@ for i in "${keycounts[@]}"
                   continue
                 fi
 
-                ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc intersect | grep "time")
+                # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc intersect | grep "time")
+                ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc intersect | grep "time")
                 tokens=( $ans )
                 time=${tokens[3]}
 
