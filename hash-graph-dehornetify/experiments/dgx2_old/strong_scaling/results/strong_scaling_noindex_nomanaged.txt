@@ -1,0 +1,6 @@
+strong_scaling
+keycount,gpucount,time
+build tests
+16777216,1,0.0869712
+16777216,2,0.0935405
+16777216,4,0.146539

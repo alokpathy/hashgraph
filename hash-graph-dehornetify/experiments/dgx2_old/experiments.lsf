@@ -1,0 +1,91 @@
+#!/bin/bash
+#BSUB -P BIF115
+#BSUB -W 2:00
+#BSUB -nnodes 1
+#BSUB -alloc_flags gpumps
+#BSUB -J snmg-hg-experiments
+#BSUB -o snmg-hg-experiments.%J
+#BSUB -e snmg-hg-experiments.%J
+
+buildpath="../../build"
+includepath="../../include"
+
+declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
+# declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
+declare -a exps=("strong_scaling" "weak_scaling")
+
+# 64-bit section
+sed -i 's/^#define B32/\/\/&/' $includepath/MultiHashGraph.cuh
+keysize=8
+echo "64-bit keys"
+
+for mode in "${modes[@]}"
+  do
+    bytes=8
+    if [ "$mode" == "noindex_nomanaged" ]; then
+      sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+    elif [ "$mode" == "index_nomanaged" ]; then
+      sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+      bytes=16
+    elif [ "$mode" == "noindex_managed" ]; then
+      sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+    elif [ "$mode" == "index_managed" ]; then
+      sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+      bytes=16
+    fi
+
+    make -C $buildpath multi-hash
+
+    echo $mode
+
+    for exp in "${exps[@]}"
+      do
+        echo $exp
+        ./$exp/$exp.sh $bytes $keysize > ./$exp/results/$exp\_$mode.txt
+        head -n -$(cat ./$exp/results/$exp\_$mode.txt | grep -n intersect | cut -f1 -d:) ./$exp/results/$exp\_$mode.txt > ./$exp/results/build/$exp\_$mode.txt
+        tail -n +$(cat ./$exp/results/$exp\_$mode.txt | grep -n intersect | cut -f1 -d:) ./$exp/results/$exp\_$mode.txt > ./$exp/results/intersect/$exp\_$mode.txt
+      done
+  done
+
+# 32-bit section
+sed -i 's/^\/\/.*#define B32/#define B32/' $includepath/MultiHashGraph.cuh
+keysize=4
+echo "32-bit keys"
+
+for mode in "${modes[@]}"
+  do
+    bytes=8
+    if [ "$mode" == "noindex_nomanaged" ]; then
+      sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+    elif [ "$mode" == "index_nomanaged" ]; then
+      sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+      bytes=12
+      continue
+    elif [ "$mode" == "noindex_managed" ]; then
+      sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+    elif [ "$mode" == "index_managed" ]; then
+      sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+      sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+      bytes=12
+      continue
+    fi
+
+    make -C $buildpath multi-hash
+
+    echo $mode
+
+    for exp in "${exps[@]}"
+      do
+        echo $exp
+        ./$exp/$exp.sh $bytes $keysize > ./$exp/results/$exp\_$mode\_32.txt
+        head -n -$(cat ./$exp/results/$exp\_$mode\_32.txt | grep -n intersect | cut -f1 -d:) ./$exp/results/$exp\_$mode\_32.txt > ./$exp/results/build/$exp\_$mode\_32.txt
+        tail -n +$(cat ./$exp/results/$exp\_$mode\_32.txt | grep -n intersect | cut -f1 -d:) ./$exp/results/$exp\_$mode\_32.txt > ./$exp/results/intersect/$exp\_$mode\_32.txt
+      done
+  done
