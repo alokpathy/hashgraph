@@ -31,7 +31,7 @@ for i in "${keycounts[@]}"
                 let kc=$(($kcdev * $gc))
                 let ts=$kc
                 if [ $2 -eq 4 ] ; then
-                    ts=$(($kc < (2**($2 * 8)) ? $kc : 2**($2 * 8)))
+                    ts=$(($kc < (2**($2 * 8 - 1)) ? $kc : 2**($2 * 8 - 1)))
                 fi
 
                 # internal cuda malloc + keys + hashes + keyBinBuff
@@ -70,10 +70,10 @@ for i in "${keycounts[@]}"
                 let kc=$(($kcdev * $gc))
                 let ts=$kc
                 if [ $2 -eq 4 ] ; then
-                    ts=$(($kc < (2**($2 * 8)) ? $kc : 2**($2 * 8)))
+                    ts=$(($kc < (2**($2 * 8 - 1)) ? $kc : 2**($2 * 8 - 1)))
                 fi
 
-                # # internal cuda malloc + keys + hashes + keyBinBuff
+                # internal cuda malloc + keys + hashes + keyBinBuff
                 let gigs=$((echo "((($kc * $1) + ($kc * $2) + (2 * $kc * $1) + (2 * $kc * 8)) + ($kc * $2) + ($kc * $2) + ($kc * $1)) / 2^30") | bc)
                 let gpureq=$((echo "($gigs * 2 + 32) / 32") | bc)
 
