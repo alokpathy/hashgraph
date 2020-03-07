@@ -1,6 +1,0 @@
-[submodule "maxflow/gunrock"]
-	path = maxflow/gunrock
-	url = https://github.com/nsakharnykh/gunrock
-[submodule "maxflow/cub"]
-	path = maxflow/cub
-	url = https://github.com/NVlabs/cub

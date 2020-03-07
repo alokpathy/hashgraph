@@ -1,8 +1,0 @@
-*.swc
-*.swo
-*.swp
-*.o
-data/
-benchmarks/bench_log.csv
-*.dat
-galois/build

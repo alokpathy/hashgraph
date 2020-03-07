@@ -1,6 +1,0 @@
-[submodule "gunrock"]
-	path = gunrock
-	url = https://github.com/nsakharnykh/gunrock
-[submodule "cub"]
-	path = cub
-	url = https://github.com/NVlabs/cub
