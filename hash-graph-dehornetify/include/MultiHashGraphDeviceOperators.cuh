@@ -16,7 +16,7 @@
 
 #include <cuda_runtime_api.h>
 
-#define ID_HASH
+// #define ID_HASH
 
 __forceinline__  __host__ __device__ uint32_t rotl32( uint32_t x, int8_t r ) {
   return (x << r) | (x >> (32 - r));

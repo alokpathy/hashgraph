@@ -1,0 +1,242 @@
+64-bit keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphDeviceOperators.cuh(311): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(83): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(409): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(409): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(411): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(412): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(413): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(548): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(554): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(558): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(561): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+noindex_nomanaged
+strong_scaling
+weak_scaling
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphDeviceOperators.cuh(311): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(83): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(409): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(409): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(411): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(412): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(413): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(548): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(554): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(558): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(561): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+index_nomanaged
+strong_scaling
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch504-17-2020 03:47:33:637 128487 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphDeviceOperators.cuh(311): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(83): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(409): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(409): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(411): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(412): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(413): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(548): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(554): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(558): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(561): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+noindex_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch504-17-2020 03:47:56:532 128803 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch504-17-2020 03:47:58:077 128862 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphDeviceOperators.cuh(311): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(83): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(409): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(409): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(411): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(412): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(413): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(548): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(554): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(558): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(561): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+index_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch504-17-2020 03:48:20:744 129186 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch504-17-2020 03:48:22:282 129251 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch5>
+Subject: Job 41036: <snmg-hg-experiments> in cluster <summit> Exited
+
+Job <snmg-hg-experiments> was submitted from host <batch5> by user <alokt> in cluster <summit> at Fri Apr 17 03:40:08 2020
+Job was executed on host(s) <1*batch5>, in queue <batch>, as user <alokt> in cluster <summit> at Fri Apr 17 03:40:38 2020
+                            <42*h50n08>
+</ccs/home/alokt> was used as the home directory.
+</autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/experiments/summit> was used as the working directory.
+Started at Fri Apr 17 03:40:38 2020
+Terminated at Fri Apr 17 03:48:23 2020
+Results reported at Fri Apr 17 03:48:23 2020
+
+The output (if any) is above this job summary.
+

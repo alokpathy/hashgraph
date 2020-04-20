@@ -1,6 +1,6 @@
-keycount=26
+keycount=29
 gpucount=6
-tablesizes=($(seq 21 1 31))
+tablesizes=($(seq 20 1 30))
 
 execpath="../../build"
 resultsfile=$1
