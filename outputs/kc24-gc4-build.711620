@@ -1,0 +1,28 @@
+[ 60%] Built target alg
+[100%] Built target multi-hash
+countSizeA: 16777216
+maxkey: 16777216
+generating input
+done generating input
+bin_count: 16000
+bin_range: 1049
+table_size: 16777216
+BLOCK_COUNT: 65535 BLOCKS_SIZE: 256
+multi buildTable() time: 0.0368671
+mv: cannot stat '../test-snmg*': No such file or directory
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch4>
+Subject: Job 711620: <kc24-gc4-build> in cluster <summit> Exited
+
+Job <kc24-gc4-build> was submitted from host <login3> by user <alokt> in cluster <summit> at Wed Oct 30 15:52:15 2019
+Job was executed on host(s) <1*batch4>, in queue <batch>, as user <alokt> in cluster <summit> at Wed Oct 30 15:52:26 2019
+                            <42*h36n18>
+</ccs/home/alokt> was used as the home directory.
+</ccs/home/alokt/code-share/hash-graph-dehornetify> was used as the working directory.
+Started at Wed Oct 30 15:52:26 2019
+Terminated at Wed Oct 30 15:52:31 2019
+Results reported at Wed Oct 30 15:52:31 2019
+
+The output (if any) is above this job summary.
+

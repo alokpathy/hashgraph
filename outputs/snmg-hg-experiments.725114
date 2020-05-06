@@ -1,0 +1,299 @@
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(161): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(396): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(396): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(398): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(399): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(400): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(630): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(636): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(640): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(643): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Building CUDA object CMakeFiles/alg.dir/src/SingleHashGraph.cu.o
+[ 60%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+tableSize: 2097152
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 4194304
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 8388608
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 16777216
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 33554432
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 67108864
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 134217728
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 268435456
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 536870912
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 1073741824
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 2147483648
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+intersect tests
+tableSize: 2097152
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 4194304
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 8388608
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 16777216
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 33554432
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 67108864
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 134217728
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 268435456
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 536870912
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 1073741824
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 2147483648
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+tableSize: 2097152
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 4194304
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 8388608
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 16777216
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 33554432
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 67108864
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 134217728
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 268435456
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 536870912
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 1073741824
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 2147483648
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+intersect tests
+tableSize: 2097152
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 4194304
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 8388608
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 16777216
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 33554432
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 67108864
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 134217728
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 268435456
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 536870912
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 1073741824
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+tableSize: 2147483648
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+no index, managed memory
+strong scaling
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(161): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(236): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(237): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(396): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(396): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(398): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(399): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(400): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(630): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(636): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(640): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(643): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+keycount: 16777216
+gpucount: 1
+gpucount: 2
+gpucount: 4
+gpucount: 6
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+keycount: 33554432
+gpucount: 1
+gpucount: 2
+gpucount: 4
+gpucount: 6
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+keycount: 67108864
+gpucount: 1
+gpucount: 2
+gpucount: 4
+gpucount: 6
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+keycount: 134217728
+gpucount: 1
+gpucount: 2
+gpucount: 4
+gpucount: 6
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+keycount: 268435456
+gpucount: 1
+gpucount: 2
+gpucount: 4
+gpucount: 6
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorInvalidDevice: invalid device ordinal
+keycount: 536870912
+gpucount: 1
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch3>
+Subject: Job 725114: <snmg-hg-experiments> in cluster <summit> Exited
+
+Job <snmg-hg-experiments> was submitted from host <login5> by user <alokt> in cluster <summit> at Thu Nov  7 18:13:52 2019
+Job was executed on host(s) <1*batch3>, in queue <batch>, as user <alokt> in cluster <summit> at Thu Nov  7 18:20:02 2019
+                            <42*e13n05>
+</ccs/home/alokt> was used as the home directory.
+</autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/experiments> was used as the working directory.
+Started at Thu Nov  7 18:20:02 2019
+Terminated at Thu Nov  7 18:43:49 2019
+Results reported at Thu Nov  7 18:43:49 2019
+
+The output (if any) is above this job summary.
+

@@ -1,0 +1,16 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch5>
+Subject: Job 712197: <kc24-gc5-build> in cluster <summit> Exited
+
+Job <kc24-gc5-build> was submitted from host <login5> by user <alokt> in cluster <summit> at Wed Oct 30 19:54:06 2019
+Job was executed on host(s) <1*batch5>, in queue <batch>, as user <alokt> in cluster <summit> at Wed Oct 30 19:54:24 2019
+                            <42*c09n18>
+</ccs/home/alokt> was used as the home directory.
+</autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify> was used as the working directory.
+Started at Wed Oct 30 19:54:24 2019
+Terminated at Wed Oct 30 19:54:30 2019
+Results reported at Wed Oct 30 19:54:30 2019
+
+The output (if any) is above this job summary.
+

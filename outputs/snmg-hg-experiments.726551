@@ -1,0 +1,27 @@
+sed: couldn't open temporary file ../include/sedj1Lni1: Read-only file system
+sed: couldn't open temporary file ../include/sedOIzQd4: Read-only file system
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+rm: cannot remove './duplicate_keys/results/dk_noindex_nomanaged.txt': Read-only file system
+./duplicate_keys/duplicate_keys.sh: line 15: ./duplicate_keys/results/dk_noindex_nomanaged.txt: Read-only file system
+build tests
+./duplicate_keys/duplicate_keys.sh: line 17: ./duplicate_keys/results/dk_noindex_nomanaged.txt: Read-only file system
+tableSize: 2097152
+./duplicate_keys/duplicate_keys.sh: line 32: ./duplicate_keys/results/dk_noindex_nomanaged.txt: Read-only file system
+tableSize: 4194304
+./duplicate_keys/duplicate_keys.sh: line 32: ./duplicate_keys/results/dk_noindex_nomanaged.txt: Read-only file system
+tableSize: 8388608
+./duplicate_keys/duplicate_keys.sh: line 32: ./duplicate_keys/results/dk_noindex_nomanaged.txt: Read-only file system
+tableSize: 16777216
+Could not read jskill result from pmix server

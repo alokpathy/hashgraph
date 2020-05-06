@@ -1,0 +1,4 @@
+[ 60%] Built target alg
+[100%] Built target multi-hash
+Resources unavailable:  GPU: avail 6 requested 7 [ slots 1 x gpus_per_rs 7 ]
+rm: cannot remove 'kc24*': No such file or directory

@@ -1,0 +1,16 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch2>
+Subject: Job 725246: <snmg-hg-experiments> in cluster <summit> Exited
+
+Job <snmg-hg-experiments> was submitted from host <login5> by user <alokt> in cluster <summit> at Thu Nov  7 18:46:11 2019
+Job was executed on host(s) <1*batch2>, in queue <batch>, as user <alokt> in cluster <summit> at Thu Nov  7 18:46:29 2019
+                            <42*e13n04>
+</ccs/home/alokt> was used as the home directory.
+</autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/experiments> was used as the working directory.
+Started at Thu Nov  7 18:46:29 2019
+Terminated at Thu Nov  7 18:57:56 2019
+Results reported at Thu Nov  7 18:57:56 2019
+
+The output (if any) is above this job summary.
+

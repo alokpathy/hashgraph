@@ -1,0 +1,1909 @@
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+nvcc warning : The -std=c++14 flag is not supported with the configured host compiler. Flag will be ignored.
+In file included from /usr/include/c++/4.8.2/chrono:35:0,
+                 from /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu:24:
+/usr/include/c++/4.8.2/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support for the \
+  ^
+make[3]: *** [CMakeFiles/alg.dir/src/MultiHashGraph.cu.o] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/alg.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+tableSize: 2097152
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 4194304
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 8388608
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 16777216
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 33554432
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 67108864
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 134217728
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 268435456
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 536870912
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 1073741824
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 2147483648
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+intersect tests
+tableSize: 2097152
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 4194304
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 8388608
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 16777216
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 33554432
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 67108864
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 134217728
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 268435456
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 536870912
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 1073741824
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 2147483648
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+nvcc warning : The -std=c++14 flag is not supported with the configured host compiler. Flag will be ignored.
+In file included from /usr/include/c++/4.8.2/chrono:35:0,
+                 from /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu:24:
+/usr/include/c++/4.8.2/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support for the \
+  ^
+make[3]: *** [CMakeFiles/alg.dir/src/MultiHashGraph.cu.o] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/alg.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+tableSize: 2097152
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 4194304
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 8388608
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 16777216
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 33554432
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 67108864
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 134217728
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 268435456
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 536870912
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 1073741824
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 2147483648
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+intersect tests
+tableSize: 2097152
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 4194304
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 8388608
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 16777216
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 33554432
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 67108864
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 134217728
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 268435456
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 536870912
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 1073741824
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 2147483648
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+no index, managed memory
+strong scaling
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+nvcc warning : The -std=c++14 flag is not supported with the configured host compiler. Flag will be ignored.
+In file included from /usr/include/c++/4.8.2/chrono:35:0,
+                 from /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu:24:
+/usr/include/c++/4.8.2/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support for the \
+  ^
+make[3]: *** [CMakeFiles/alg.dir/src/MultiHashGraph.cu.o] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/alg.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+keycount: 16777216
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 33554432
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 67108864
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 134217728
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 268435456
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 536870912
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 1073741824
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 2147483648
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 4294967296
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 8589934592
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+intersect tests
+keycount: 8388608
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 16777216
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 33554432
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 67108864
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 134217728
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 268435456
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 536870912
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 1073741824
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 2147483648
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 4294967296
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+weak scaling
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+nvcc warning : The -std=c++14 flag is not supported with the configured host compiler. Flag will be ignored.
+In file included from /usr/include/c++/4.8.2/chrono:35:0,
+                 from /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu:24:
+/usr/include/c++/4.8.2/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support for the \
+  ^
+make[3]: *** [CMakeFiles/alg.dir/src/MultiHashGraph.cu.o] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/alg.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+keycount / dev: 16777216
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 33554432
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 67108864
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 134217728
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 268435456
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 536870912
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 1073741824
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 2147483648
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 4294967296
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 8589934592
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+intersect tests
+keycount / dev : 8388608
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 16777216
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 33554432
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 67108864
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 134217728
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 268435456
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 536870912
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 1073741824
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 2147483648
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 4294967296
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+nvcc warning : The -std=c++14 flag is not supported with the configured host compiler. Flag will be ignored.
+In file included from /usr/include/c++/4.8.2/chrono:35:0,
+                 from /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu:24:
+/usr/include/c++/4.8.2/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support for the \
+  ^
+make[3]: *** [CMakeFiles/alg.dir/src/MultiHashGraph.cu.o] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/alg.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+tableSize: 2097152
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 4194304
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 8388608
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 16777216
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 33554432
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 67108864
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 134217728
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 268435456
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 536870912
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 1073741824
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 2147483648
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+intersect tests
+tableSize: 2097152
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 4194304
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 8388608
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 16777216
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 33554432
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 67108864
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 134217728
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 268435456
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 536870912
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 1073741824
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 2147483648
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+index, managed memory
+strong scaling
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+nvcc warning : The -std=c++14 flag is not supported with the configured host compiler. Flag will be ignored.
+In file included from /usr/include/c++/4.8.2/chrono:35:0,
+                 from /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu:24:
+/usr/include/c++/4.8.2/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support for the \
+  ^
+make[3]: *** [CMakeFiles/alg.dir/src/MultiHashGraph.cu.o] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/alg.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+keycount: 16777216
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 33554432
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 67108864
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 134217728
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 268435456
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 536870912
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 1073741824
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 2147483648
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 4294967296
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 8589934592
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+intersect tests
+keycount: 8388608
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 16777216
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 33554432
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 67108864
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 134217728
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 268435456
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 536870912
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 1073741824
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 2147483648
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount: 4294967296
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+weak scaling
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+nvcc warning : The -std=c++14 flag is not supported with the configured host compiler. Flag will be ignored.
+In file included from /usr/include/c++/4.8.2/chrono:35:0,
+                 from /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu:24:
+/usr/include/c++/4.8.2/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support for the \
+  ^
+make[3]: *** [CMakeFiles/alg.dir/src/MultiHashGraph.cu.o] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/alg.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+keycount / dev: 16777216
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 33554432
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 67108864
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 134217728
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 268435456
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 536870912
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 1073741824
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 2147483648
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 4294967296
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev: 8589934592
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+intersect tests
+keycount / dev : 8388608
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 16777216
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 33554432
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 67108864
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 134217728
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 268435456
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 536870912
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 1073741824
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 2147483648
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+keycount / dev : 4294967296
+gpucount: 1
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 2
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 4
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+gpucount: 6
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+nvcc warning : The -std=c++14 flag is not supported with the configured host compiler. Flag will be ignored.
+In file included from /usr/include/c++/4.8.2/chrono:35:0,
+                 from /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu:24:
+/usr/include/c++/4.8.2/bits/c++0x_warning.h:32:2: error: #error This file requires compiler and library support for the ISO C++ 2011 standard. This support is currently experimental, and must be enabled with the -std=c++11 or -std=gnu++11 compiler options.
+ #error This file requires compiler and library support for the \
+  ^
+make[3]: *** [CMakeFiles/alg.dir/src/MultiHashGraph.cu.o] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/alg.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+tableSize: 2097152
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 4194304
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 8388608
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 16777216
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 33554432
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 67108864
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 134217728
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 268435456
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 536870912
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 1073741824
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 2147483648
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+intersect tests
+tableSize: 2097152
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 4194304
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 8388608
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 16777216
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 33554432
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 67108864
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 134217728
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 268435456
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 536870912
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 1073741824
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)
+tableSize: 2147483648
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8' not found (required by ./../build/multi-hash)
+./../build/multi-hash: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./../build/multi-hash)

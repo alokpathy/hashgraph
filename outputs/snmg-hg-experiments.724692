@@ -1,0 +1,135 @@
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include/MultiHashGraphHostOperators.cuh(161): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(396): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(396): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(398): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(399): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(400): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(630): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(636): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(640): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu(643): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+/usr/bin/ld: final link failed: Stale file handle
+/usr/bin/sha1sum: multi-hash: No such file or directory
+collect2: error: ld returned 1 exit status
+make[3]: *** [multi-hash] Error 1
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: *** [CMakeFiles/multi-hash.dir/all] Error 2
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: *** [CMakeFiles/multi-hash.dir/rule] Error 2
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: *** [multi-hash] Error 2
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+tableSize: 2097152
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 4194304
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 8388608
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 16777216
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 33554432
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 67108864
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 134217728
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 268435456
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 536870912
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 1073741824
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+tableSize: 2147483648
+./duplicate_keys/duplicate_keys.sh: line 27: ./../build/multi-hash: No such file or directory
+intersect tests
+tableSize: 2097152
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 4194304
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 8388608
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 16777216
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 33554432
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 67108864
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 134217728
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 268435456
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 536870912
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 1073741824
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+tableSize: 2147483648
+./duplicate_keys/duplicate_keys.sh: line 47: ./../build/multi-hash: No such file or directory
+duplicate keys
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[ 20%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build'
+build tests
+tableSize: 2097152
+tableSize: 4194304
+tableSize: 8388608
+tableSize: 16777216
+tableSize: 33554432
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch5>
+Subject: Job 724692: <snmg-hg-experiments> in cluster <summit> Exited
+
+Job <snmg-hg-experiments> was submitted from host <login5> by user <alokt> in cluster <summit> at Thu Nov  7 15:01:45 2019
+Job was executed on host(s) <1*batch5>, in queue <batch>, as user <alokt> in cluster <summit> at Thu Nov  7 15:01:54 2019
+                            <42*h16n15>
+</ccs/home/alokt> was used as the home directory.
+</autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/experiments> was used as the working directory.
+Started at Thu Nov  7 15:01:54 2019
+Terminated at Thu Nov  7 15:02:22 2019
+Results reported at Thu Nov  7 15:02:22 2019
+
+The output (if any) is above this job summary.
+

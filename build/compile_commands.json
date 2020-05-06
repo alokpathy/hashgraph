@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build",
+  "command": "/sw/summit/cuda/10.1.243/bin/nvcc   -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/cub-1.8.0 -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/test -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/moderngpu-oded/src -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/rmm/include   -Xcompiler -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_70,code=sm_70 --gpu-architecture=compute_70 --gpu-code=sm_70 --expt-extended-lambda --expt-relaxed-constexpr -Werror cross-execution-space-call -Xcompiler -DCUB_WRAPPER -Xcompiler=-fopenmp --define-macro USE_NVTX -G -O0 -g   -std=c++14 -x cu -c /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/test/SingleHashGraphTest.cu -o CMakeFiles/sing-hash.dir/test/SingleHashGraphTest.cu.o",
+  "file": "/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/test/SingleHashGraphTest.cu"
+},
+{
+  "directory": "/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build",
+  "command": "/sw/summit/cuda/10.1.243/bin/nvcc   -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/cub-1.8.0 -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/test -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/moderngpu-oded/src -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/rmm/include   -Xcompiler -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_70,code=sm_70 --gpu-architecture=compute_70 --gpu-code=sm_70 --expt-extended-lambda --expt-relaxed-constexpr -Werror cross-execution-space-call -Xcompiler -DCUB_WRAPPER -Xcompiler=-fopenmp --define-macro USE_NVTX -G -O0 -g   -std=c++14 -x cu -c /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/test/MultiHashGraphTest.cu -o CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o",
+  "file": "/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/test/MultiHashGraphTest.cu"
+},
+{
+  "directory": "/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build",
+  "command": "/sw/summit/cuda/10.1.243/bin/nvcc   -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/cub-1.8.0 -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/test -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/moderngpu-oded/src -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/rmm/include   -Xcompiler -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_70,code=sm_70 --gpu-architecture=compute_70 --gpu-code=sm_70 --expt-extended-lambda --expt-relaxed-constexpr -Werror cross-execution-space-call -Xcompiler -DCUB_WRAPPER -Xcompiler=-fopenmp --define-macro USE_NVTX -G -O0 -g   -std=c++14 -x cu -c /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu -o CMakeFiles/alg.dir/src/MultiHashGraph.cu.o",
+  "file": "/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu"
+},
+{
+  "directory": "/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build",
+  "command": "/sw/summit/cuda/10.1.243/bin/nvcc   -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/cub-1.8.0 -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/include -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/test -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/moderngpu-oded/src -I/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/externals/rmm/include   -Xcompiler -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_70,code=sm_70 --gpu-architecture=compute_70 --gpu-code=sm_70 --expt-extended-lambda --expt-relaxed-constexpr -Werror cross-execution-space-call -Xcompiler -DCUB_WRAPPER -Xcompiler=-fopenmp --define-macro USE_NVTX -G -O0 -g   -std=c++14 -x cu -c /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/SingleHashGraph.cu -o CMakeFiles/alg.dir/src/SingleHashGraph.cu.o",
+  "file": "/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/SingleHashGraph.cu"
+}
+]

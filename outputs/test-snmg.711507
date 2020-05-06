@@ -1,0 +1,14 @@
+[ 60%] Built target alg
+[100%] Built target multi-hash
+countSizeA: 1048576
+maxkey: 1048576
+generating input
+done generating input
+bin_count: 16000
+bin_range: 66
+table_size: 1048576
+BLOCK_COUNT: 4096 BLOCKS_SIZE: 256
+multi buildTable() time: 0.00378982
+single countSize: 1048576
+single tableSize: 1048576
+single buildTable() time: 0.000786304

@@ -1,0 +1,9 @@
+[ 60%] Built target alg
+[100%] Built target multi-hash
+countSizeA: 16777216
+maxkey: 16777216
+generating input
+terminate called after throwing an instance of 'thrust::system::system_error'
+  what():  parallel_for failed: cudaErrorPeerAccessUnsupported: peer access is not supported between these two devices
+/ccs/home/alokt/.lsbatch/1572465574.711637.shell: line 10: 81577 Aborted                 (core dumped) ./multi-hash $(echo "2^24" | bc) $(echo "2^24" | bc) 16000 5 16000 nocheck $(echo "2^24" | bc) build
+rm: cannot remove 'kc24*': No such file or directory
