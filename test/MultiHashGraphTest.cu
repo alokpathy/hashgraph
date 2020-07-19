@@ -195,7 +195,7 @@ int main(int argc, char **argv) {
   cudaEventCreate(&stop);
   float buildTime = 0.0f; // milliseoncds
 
-  // enablePeerAccess(gpuCount);
+  enablePeerAccess(gpuCount);
 
   // rmmOptions_t rmmO;
 
@@ -223,31 +223,46 @@ int main(int argc, char **argv) {
 
     omp_set_num_threads(gpuCount);
 
+#ifdef HOST_PROFILE
+    std::cout << "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total\n"; // seconds
+    std::cout << "times: ";
+#else
+    std::cout << "total_time\n"; // seconds
+    std::cout << "times: ";
+#endif
+
 #ifdef CUDA_PROFILE
     cudaProfilerStart();
 #endif
 
-    cudaSetDevice(0);
-    cudaEventRecord(start);
-
     #pragma omp parallel
     {
       index_t tid = omp_get_thread_num();
+      #pragma omp barrier
+      if (tid == 0) {
+        cudaSetDevice(0);
+        cudaEventRecord(start);
+      }
+      
+
       mhg.build(true, tid);
+
+      #pragma omp barrier
+      if (tid == 0) {
+        cudaSetDevice(0);
+        cudaEventRecord(stop);
+        cudaEventSynchronize(stop);
+        cudaEventElapsedTime(&buildTime, start, stop);
+      }
+
     } // pragma
 
-    cudaSetDevice(0);
-    cudaEventRecord(stop);
-
-    cudaEventSynchronize(stop);
-    cudaEventElapsedTime(&buildTime, start, stop);
+    std::cout << (buildTime / 1000.0) << "\n"; // seconds
 
 #ifdef CUDA_PROFILE
     cudaProfilerStop();
     CHECK_ERROR("end of build");
 #endif
-
-    std::cout << "multi buildTable() time: " << (buildTime / 1000.0) << "\n"; // seconds
 
     if (checkCorrectness) {
       mhg.destroyMulti();

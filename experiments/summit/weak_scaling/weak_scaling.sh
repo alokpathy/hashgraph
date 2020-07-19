@@ -18,6 +18,7 @@ echo "keycount,gpucount,time"
 echo "build tests"
 # echo "build tests" >> $resultsfile
 
+echo "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total"
 for i in "${keycounts[@]}"
     do
         let kcdev=$((echo 2^$i) | bc)
@@ -40,11 +41,11 @@ for i in "${keycounts[@]}"
                 fi
 
                 ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc build | grep "time")
-                tokens=( $ans )
-                time=${tokens[3]}
+                # tokens=( $ans )
+                # time=${tokens[3]}
 
                 # echo "${kc},${gc},${time}" >> $resultsfile
-                echo "${kc},${gc},${time}"
+                echo -e "${kc},${gc},\n${ans}"
             done
     done
 
@@ -74,11 +75,11 @@ for i in "${keycounts[@]}"
                 fi
 
                 ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc intersect | grep "time")
-                tokens=( $ans )
-                time=${tokens[3]}
+                # tokens=( $ans )
+                # time=${tokens[3]}
 
                 # echo "${kc},${gc},${time}" >> $resultsfile
-                echo "${kc},${gc},${time}"
+                echo -e "${kc},${gc},\n${ans}"
             done
     done
 

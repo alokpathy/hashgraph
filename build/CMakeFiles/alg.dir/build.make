@@ -43,10 +43,10 @@ RM = /autofs/nccs-svm1_sw/summit/.swci/0-core/opt/spack/20180914/linux-rhel7-ppc
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify
+CMAKE_SOURCE_DIR = /autofs/nccs-svm1_home1/alokt/hashgraph
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build
+CMAKE_BINARY_DIR = /autofs/nccs-svm1_home1/alokt/hashgraph/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/alg.dir/depend.make
@@ -59,8 +59,8 @@ include CMakeFiles/alg.dir/flags.make
 
 CMakeFiles/alg.dir/src/MultiHashGraph.cu.o: CMakeFiles/alg.dir/flags.make
 CMakeFiles/alg.dir/src/MultiHashGraph.cu.o: ../src/MultiHashGraph.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o"
-	/sw/summit/cuda/10.1.243/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/MultiHashGraph.cu -o CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/autofs/nccs-svm1_home1/alokt/hashgraph/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o"
+	/sw/summit/cuda/10.1.243/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu -o CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
 
 CMakeFiles/alg.dir/src/MultiHashGraph.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/alg.dir/src/MultiHashGraph.cu.i"
@@ -72,8 +72,8 @@ CMakeFiles/alg.dir/src/MultiHashGraph.cu.s: cmake_force
 
 CMakeFiles/alg.dir/src/SingleHashGraph.cu.o: CMakeFiles/alg.dir/flags.make
 CMakeFiles/alg.dir/src/SingleHashGraph.cu.o: ../src/SingleHashGraph.cu
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/alg.dir/src/SingleHashGraph.cu.o"
-	/sw/summit/cuda/10.1.243/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/src/SingleHashGraph.cu -o CMakeFiles/alg.dir/src/SingleHashGraph.cu.o
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/autofs/nccs-svm1_home1/alokt/hashgraph/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/alg.dir/src/SingleHashGraph.cu.o"
+	/sw/summit/cuda/10.1.243/bin/nvcc  $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -x cu -c /autofs/nccs-svm1_home1/alokt/hashgraph/src/SingleHashGraph.cu -o CMakeFiles/alg.dir/src/SingleHashGraph.cu.o
 
 CMakeFiles/alg.dir/src/SingleHashGraph.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CUDA source to CMakeFiles/alg.dir/src/SingleHashGraph.cu.i"
@@ -95,7 +95,7 @@ libalg.a: CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
 libalg.a: CMakeFiles/alg.dir/src/SingleHashGraph.cu.o
 libalg.a: CMakeFiles/alg.dir/build.make
 libalg.a: CMakeFiles/alg.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CUDA static library libalg.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/autofs/nccs-svm1_home1/alokt/hashgraph/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CUDA static library libalg.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/alg.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/alg.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/alg.dir/clean:
 .PHONY : CMakeFiles/alg.dir/clean
 
 CMakeFiles/alg.dir/depend:
-	cd /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build /autofs/nccs-svm1_home1/alokt/code-share/hash-graph-dehornetify/build/CMakeFiles/alg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /autofs/nccs-svm1_home1/alokt/hashgraph/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /autofs/nccs-svm1_home1/alokt/hashgraph /autofs/nccs-svm1_home1/alokt/hashgraph /autofs/nccs-svm1_home1/alokt/hashgraph/build /autofs/nccs-svm1_home1/alokt/hashgraph/build /autofs/nccs-svm1_home1/alokt/hashgraph/build/CMakeFiles/alg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/alg.dir/depend
 

@@ -16,7 +16,9 @@
 
 #include <cuda_runtime_api.h>
 
-// #define ID_HASH
+#include "MultiHashGraph.cuh"
+
+//#define ID_HASH
 
 __forceinline__  __host__ __device__ uint32_t rotl32( uint32_t x, int8_t r ) {
   return (x << r) | (x >> (32 - r));
@@ -69,6 +71,7 @@ __forceinline__  __host__ __device__ uint32_t hash_murmur(const HashKey& key) {
   // finalization
   h1 ^= len;
   h1 = fmix32(h1);
+
   return h1;
 }
 
@@ -91,7 +94,12 @@ __global__ void hashValuesD(index_t valCount, keyval *valsArr, HashKey *hashArr,
 
   for (auto i = id; i < valCount; i += stride) {
     // hashArr[i].key = (HashKey)(hash_murmur(valsArr[i].key) % tableSize);
+#ifdef INDEX_TRACK
     hashArr[i] = (HashKey)(hash_murmur(valsArr[i].key) % tableSize);
+#else
+    hashArr[i] = (HashKey)(hash_murmur(valsArr[i]) % tableSize);
+#endif
+    // hashArr[i] = (HashKey)(((uint32_t)valsArr[i].key) % tableSize);
   }    
 }
 
@@ -126,7 +134,8 @@ __global__ void copyToGraphD(index_t valCount, hkey_t *valsArr, HashKey *hashArr
 #ifdef INDEX_TRACK
     edges[pos]={valsArr[i],i};
 #else
-    edges[pos] = { valsArr[i] };
+    // edges[pos] = { valsArr[i] };
+    edges[pos] = valsArr[i];
 #endif
   }    
 }
@@ -144,7 +153,8 @@ __global__ void copyToGraphD32(index_t valCount, hkey_t *valsArr, HashKey *hashA
 #ifdef INDEX_TRACK
     edges[pos]={valsArr[i],i};
 #else
-    edges[pos] = { valsArr[i] };
+    // edges[pos] = { valsArr[i] };
+    edges[pos] = valsArr[i];
 #endif
     // edges[pos]={valsArr[i], 0, i};
   }    
@@ -434,7 +444,11 @@ __global__ void lrbCountHashGlobalD(index_t valCount, index_t *countArr,
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
+#ifdef INDEX_TRACK
       HashKey hash = hash_murmur(d_lrbHashReordered[i].key);
+#else
+      HashKey hash = hash_murmur(d_lrbHashReordered[i]);
+#endif
       HashKey ha = (hash % tableSize) - splits[devNum];
       atomicAdd((unsigned long long int*)(countArr + ha),1);
       // atomicAdd((countArr + ha),1);
@@ -448,7 +462,11 @@ __global__ void lrbCopyToGraphD(index_t valCount, index_t *countArr, index_t *of
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
+#ifdef INDEX_TRACK
       HashKey hash = hash_murmur(d_lrbHashReordered[i].key);
+#else
+      HashKey hash = hash_murmur(d_lrbHashReordered[i]);
+#endif
       HashKey hashVal = (hash % tableSize) - splits[devNum];
       // HashKey hashVal=d_lrbHashReordered[i].key;
       int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
@@ -489,7 +507,11 @@ __global__ void lrbCountHashGlobalD32(index_t valCount, int32_t *countArr,
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
+#ifdef INDEX_TRACK
       HashKey ha = hash_murmur(d_lrbHashReordered[i].key)%tableSize;
+#else
+      HashKey ha = hash_murmur(d_lrbHashReordered[i])%tableSize;
+#endif
       // HashKey ha = d_lrbHashReordered[i].key;
       atomicAdd(countArr + ha,1);
   }    
@@ -502,7 +524,11 @@ __global__ void lrbCopyToGraphD32(index_t valCount, int32_t *countArr, index_t *
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
+#ifdef INDEX_TRACK
       HashKey hashVal = hash_murmur(d_lrbHashReordered[i].key)%tableSize;
+#else
+      HashKey hashVal = hash_murmur(d_lrbHashReordered[i])%tableSize;
+#endif
       // HashKey hashVal=d_lrbHashReordered[i].key;
       int pos = atomicAdd(countArr + hashVal,1)+offsetArr[hashVal];
       edges[pos]=d_lrbHashReordered[i];
@@ -524,9 +550,17 @@ __global__ void simpleIntersect(index_t valCount, index_t *offsetA, keyval *edge
     }
 
     for (index_t ia = 0; ia < sizeA; ia++) {
+#ifdef INDEX_TRACK
       hkey_t aKey = edgesA[offsetA[i] + ia].key;
+#else
+      hkey_t aKey = edgesA[offsetA[i] + ia];
+#endif
       for (index_t ib = 0; ib < sizeB; ib++) {
+#ifdef INDEX_TRACK
         hkey_t bKey = edgesB[offsetB[i] + ib].key;
+#else
+        hkey_t bKey = edgesB[offsetB[i] + ib];
+#endif
 
         if (aKey == bKey) {
           if (countOnly) {
@@ -534,7 +568,11 @@ __global__ void simpleIntersect(index_t valCount, index_t *offsetA, keyval *edge
           } else {
             // pairs[counter[i]++] = {i, edgesB[offsetB[i] + ib].ind};
             // pairs[counter[i]++] = {i, edgesB[offsetB[i] + ib].key};
+#ifdef INDEX_TRACK 
             pairs[counter[i]++] = { edgesB[offsetB[i] + ib].key };
+#else
+            pairs[counter[i]++] = { edgesB[offsetB[i] + ib] };
+#endif
           }
         }
       }

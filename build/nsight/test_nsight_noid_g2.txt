@@ -1,0 +1,387 @@
+deviceCount: 2
+hostname: a22n01
+countSizeA: 134217728
+maxkey: 134217728
+generating input
+done generating input
+bin_count: 16000
+bin_range: 8389
+table_size: 134217728
+BLOCK_COUNT: 65535 BLOCKS_SIZE: 64
+managed alloc size: 6442450976
+==PROF== Connected to process 55103 (/autofs/nccs-svm1_home1/alokt/hashgraph/build/multi-hash)
+==PROF== Profiling "basicHashD" - 1: 0%....50%....100% - 17 passes
+==PROF== Profiling "basicHashD" - 2: 0%....50%....100% - 17 passes
+==PROF== Profiling "countBinSizes" - 3: 0%....50%....100% - 17 passes
+==PROF== Profiling "countBinSizes" - 4: 0%....50%....100% - 17 passes
+==PROF== Profiling "countKeyBuffSizes" - 5: 0%....50%....100% - 17 passes
+==PROF== Profiling "countKeyBuffSizes" - 6: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanInitKernel" - 7: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanInitKernel" - 8: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanKernel" - 9: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanKernel" - 10: 0%....50%....100% - 17 passes
+==PROF== Profiling "binHashValues" - 11: 0%....50%....100% - 17 passes
+==PROF== Profiling "binHashValues" - 12: 0%....50%....100% - 17 passes
+==PROF== Profiling "hashValuesD" - 13: 0%....50%....100% - 17 passes
+==PROF== Profiling "hashValuesD" - 14: 0%....50%....100% - 17 passes
+==PROF== Profiling "decrHash" - 15: 0%....50%....100% - 17 passes
+==PROF== Profiling "decrHash" - 16: 0%....50%....100% - 17 passes
+==PROF== Profiling "lrbCountHashD" - 17: 0%....50%....100% - 17 passes
+==PROF== Profiling "lrbCountHashD" - 18: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanInitKernel" - 19: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanInitKernel" - 20: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanKernel" - 21: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanKernel" - 22: 0%....50%....100% - 17 passes
+==PROF== Profiling "lrbRehashD" - 23: 0%....50%....100% - 17 passes
+==PROF== Profiling "lrbRehashD" - 24: 0%....50%....100% - 17 passes
+==PROF== Profiling "lrbCountHashGlobalD" - 25: 0%....50%....100% - 17 passes
+==PROF== Profiling "lrbCountHashGlobalD" - 26: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanInitKernel" - 27: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanKernel" - 28: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanInitKernel" - 29: 0%....50%....100% - 17 passes
+==PROF== Profiling "lrbCopyToGraphD" - 30: 0%....50%....100% - 17 passes
+==PROF== Profiling "DeviceScanKernel" - 31: 0%....50%....100%multi buildTable() time: 38.979
+ - 17 passes
+==PROF== Disconnected from process 55103
+[55103] multi-hash@127.0.0.1
+  basicHashD(long,long*,long*,long), 2020-May-13 19:18:48, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         808.36
+    Mem Busy                                                                             %                          31.82
+    Max Bandwidth                                                                        %                          90.08
+    L2 Hit Rate                                                                          %                          50.00
+    Mem Pipes Busy                                                                       %                           4.71
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  basicHashD(long,long*,long*,long), 2020-May-13 19:18:49, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         811.51
+    Mem Busy                                                                             %                          31.69
+    Max Bandwidth                                                                        %                          90.41
+    L2 Hit Rate                                                                          %                          50.00
+    Mem Pipes Busy                                                                       %                           4.73
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  countBinSizes(long*,long,long*,long), 2020-May-13 19:18:50, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         364.89
+    Mem Busy                                                                             %                          70.85
+    Max Bandwidth                                                                        %                          61.97
+    L2 Hit Rate                                                                          %                          79.96
+    Mem Pipes Busy                                                                       %                          20.11
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  countBinSizes(long*,long,long*,long), 2020-May-13 19:18:51, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         365.76
+    Mem Busy                                                                             %                          71.24
+    Max Bandwidth                                                                        %                          62.32
+    L2 Hit Rate                                                                          %                          79.96
+    Mem Pipes Busy                                                                       %                          20.09
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  countKeyBuffSizes(long*,long,long*,long*,long), 2020-May-13 19:18:52, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         214.35
+    Mem Busy                                                                             %                          92.49
+    Max Bandwidth                                                                        %                          61.08
+    L2 Hit Rate                                                                          %                           0.39
+    Mem Pipes Busy                                                                       %                          73.62
+    L1 Hit Rate                                                                          %                          19.94
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  countKeyBuffSizes(long*,long,long*,long*,long), 2020-May-13 19:18:53, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         213.30
+    Mem Busy                                                                             %                          92.62
+    Max Bandwidth                                                                        %                          61.13
+    L2 Hit Rate                                                                          %                           0.39
+    Mem Pipes Busy                                                                       %                          73.86
+    L1 Hit Rate                                                                          %                          19.94
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<long,bool=1>>(long,int), 2020-May-13 19:18:54, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Mbyte/second                         526.79
+    Mem Busy                                                                             %                           0.17
+    Max Bandwidth                                                                        %                           0.19
+    L2 Hit Rate                                                                          %                          85.42
+    Mem Pipes Busy                                                                       %                           0.00
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<long,bool=1>>(long,int), 2020-May-13 19:18:55, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Mbyte/second                         587.72
+    Mem Busy                                                                             %                           0.18
+    Max Bandwidth                                                                        %                           0.19
+    L2 Hit Rate                                                                          %                          85.42
+    Mem Pipes Busy                                                                       %                           0.00
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanKernel<cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*,long*,cub::ScanTileState<long,bool=1>,cub::Sum,long,int>(long*,cub::Sum,long,int,int,cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*), 2020-May-13 19:18:57, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Mbyte/second                         262.63
+    Mem Busy                                                                             %                           0.12
+    Max Bandwidth                                                                        %                           0.13
+    L2 Hit Rate                                                                          %                          78.79
+    Mem Pipes Busy                                                                       %                           0.05
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanKernel<cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*,long*,cub::ScanTileState<long,bool=1>,cub::Sum,long,int>(long*,cub::Sum,long,int,int,cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*), 2020-May-13 19:18:58, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Mbyte/second                            280
+    Mem Busy                                                                             %                           0.13
+    Max Bandwidth                                                                        %                           0.13
+    L2 Hit Rate                                                                          %                          78.79
+    Mem Pipes Busy                                                                       %                           0.05
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  binHashValues(long,long*,long*,long*,long*,long*,long*,long,long), 2020-May-13 19:18:59, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         421.57
+    Mem Busy                                                                             %                          94.01
+    Max Bandwidth                                                                        %                          59.30
+    L2 Hit Rate                                                                          %                          33.81
+    Mem Pipes Busy                                                                       %                          71.23
+    L1 Hit Rate                                                                          %                          26.70
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  binHashValues(long,long*,long*,long*,long*,long*,long*,long,long), 2020-May-13 19:19:00, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         420.01
+    Mem Busy                                                                             %                          94.22
+    Max Bandwidth                                                                        %                          59.34
+    L2 Hit Rate                                                                          %                          33.79
+    Mem Pipes Busy                                                                       %                          71.49
+    L1 Hit Rate                                                                          %                          26.73
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  hashValuesD(long,long*,long*,long,long), 2020-May-13 19:19:01, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         725.44
+    Mem Busy                                                                             %                          30.30
+    Max Bandwidth                                                                        %                          81.46
+    L2 Hit Rate                                                                          %                          53.63
+    Mem Pipes Busy                                                                       %                           4.04
+    L1 Hit Rate                                                                          %                           9.24
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  hashValuesD(long,long*,long*,long,long), 2020-May-13 19:19:03, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         800.70
+    Mem Busy                                                                             %                          31.90
+    Max Bandwidth                                                                        %                          89.22
+    L2 Hit Rate                                                                          %                          54.18
+    Mem Pipes Busy                                                                       %                           4.64
+    L1 Hit Rate                                                                          %                          11.00
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  decrHash(long*,unsigned long,long*,long), 2020-May-13 19:19:04, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         765.17
+    Mem Busy                                                                             %                          32.64
+    Max Bandwidth                                                                        %                          85.07
+    L2 Hit Rate                                                                          %                          57.11
+    Mem Pipes Busy                                                                       %                           4.44
+    L1 Hit Rate                                                                          %                          50.30
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  decrHash(long*,unsigned long,long*,long), 2020-May-13 19:19:06, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         757.73
+    Mem Busy                                                                             %                          36.24
+    Max Bandwidth                                                                        %                          84.35
+    L2 Hit Rate                                                                          %                          50.00
+    Mem Pipes Busy                                                                       %                           4.41
+    L1 Hit Rate                                                                          %                          50.13
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  lrbCountHashD(long,long*,long*,long), 2020-May-13 19:19:06, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         356.02
+    Mem Busy                                                                             %                          68.92
+    Max Bandwidth                                                                        %                          62.09
+    L2 Hit Rate                                                                          %                          79.96
+    Mem Pipes Busy                                                                       %                          19.57
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  lrbCountHashD(long,long*,long*,long), 2020-May-13 19:19:08, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         357.87
+    Mem Busy                                                                             %                          70.44
+    Max Bandwidth                                                                        %                          62.49
+    L2 Hit Rate                                                                          %                          81.45
+    Mem Pipes Busy                                                                       %                          19.64
+    L1 Hit Rate                                                                          %                           1.35
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<long,bool=1>>(long,int), 2020-May-13 19:19:09, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Mbyte/second                         595.24
+    Mem Busy                                                                             %                           0.16
+    Max Bandwidth                                                                        %                           0.18
+    L2 Hit Rate                                                                          %                          87.50
+    Mem Pipes Busy                                                                       %                           0.00
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<long,bool=1>>(long,int), 2020-May-13 19:19:11, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Mbyte/second                            632
+    Mem Busy                                                                             %                           0.18
+    Max Bandwidth                                                                        %                           0.19
+    L2 Hit Rate                                                                          %                          87.50
+    Mem Pipes Busy                                                                       %                           0.00
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanKernel<cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*,long*,cub::ScanTileState<long,bool=1>,cub::Sum,long,int>(long*,cub::Sum,long,int,int,cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*), 2020-May-13 19:19:12, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                          38.62
+    Mem Busy                                                                             %                           1.79
+    Max Bandwidth                                                                        %                           6.12
+    L2 Hit Rate                                                                          %                          53.56
+    Mem Pipes Busy                                                                       %                           0.66
+    L1 Hit Rate                                                                          %                           0.02
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanKernel<cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*,long*,cub::ScanTileState<long,bool=1>,cub::Sum,long,int>(long*,cub::Sum,long,int,int,cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*), 2020-May-13 19:19:14, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                          37.98
+    Mem Busy                                                                             %                           1.72
+    Max Bandwidth                                                                        %                           5.96
+    L2 Hit Rate                                                                          %                          53.38
+    Mem Pipes Busy                                                                       %                           0.63
+    L1 Hit Rate                                                                          %                           0.02
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  lrbRehashD(long,long*,long*,long*,long*,long*,long,long), 2020-May-13 19:19:14, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         224.10
+    Mem Busy                                                                             %                          23.73
+    Max Bandwidth                                                                        %                          26.25
+    L2 Hit Rate                                                                          %                          78.74
+    Mem Pipes Busy                                                                       %                           5.42
+    L1 Hit Rate                                                                          %                           7.39
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  lrbRehashD(long,long*,long*,long*,long*,long*,long,long), 2020-May-13 19:19:16, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         219.90
+    Mem Busy                                                                             %                          23.16
+    Max Bandwidth                                                                        %                          25.80
+    L2 Hit Rate                                                                          %                          78.67
+    Mem Pipes Busy                                                                       %                           5.32
+    L1 Hit Rate                                                                          %                           7.22
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  lrbCountHashGlobalD(long,long*,long*,long*,long,long), 2020-May-13 19:19:17, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         444.09
+    Mem Busy                                                                             %                          17.97
+    Max Bandwidth                                                                        %                          51.78
+    L2 Hit Rate                                                                          %                          58.82
+    Mem Pipes Busy                                                                       %                           4.19
+    L1 Hit Rate                                                                          %                           2.49
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  lrbCountHashGlobalD(long,long*,long*,long*,long,long), 2020-May-13 19:19:18, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         462.62
+    Mem Busy                                                                             %                          17.64
+    Max Bandwidth                                                                        %                          51.30
+    L2 Hit Rate                                                                          %                          58.42
+    Mem Pipes Busy                                                                       %                           4.14
+    L1 Hit Rate                                                                          %                           3.85
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<long,bool=1>>(long,int), 2020-May-13 19:19:20, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         225.61
+    Mem Busy                                                                             %                          11.40
+    Max Bandwidth                                                                        %                          30.91
+    L2 Hit Rate                                                                          %                          99.98
+    Mem Pipes Busy                                                                       %                           2.17
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanKernel<cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*,long*,cub::ScanTileState<long,bool=1>,cub::Sum,long,int>(long*,cub::Sum,long,int,int,cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*), 2020-May-13 19:19:20, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         787.03
+    Mem Busy                                                                             %                          38.17
+    Max Bandwidth                                                                        %                          87.76
+    L2 Hit Rate                                                                          %                          64.02
+    Mem Pipes Busy                                                                       %                          13.35
+    L1 Hit Rate                                                                          %                          16.37
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<long,bool=1>>(long,int), 2020-May-13 19:19:22, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         219.14
+    Mem Busy                                                                             %                          11.51
+    Max Bandwidth                                                                        %                          31.09
+    L2 Hit Rate                                                                          %                          99.99
+    Mem Pipes Busy                                                                       %                           2.17
+    L1 Hit Rate                                                                          %                              0
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  lrbCopyToGraphD(long,long*,long*,long*,long*,long*,long,long), 2020-May-13 19:19:24, Context 2, Stream 15
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         376.27
+    Mem Busy                                                                             %                          11.40
+    Max Bandwidth                                                                        %                          42.03
+    L2 Hit Rate                                                                          %                          41.37
+    Mem Pipes Busy                                                                       %                           2.21
+    L1 Hit Rate                                                                          %                           3.28
+    ---------------------------------------------------------------------- --------------- ------------------------------
+
+  void cub::DeviceScanKernel<cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*,long*,cub::ScanTileState<long,bool=1>,cub::Sum,long,int>(long*,cub::Sum,long,int,int,cub::DispatchScan<long*,long*,cub::Sum,long,int>::PtxAgentScanPolicy,long*), 2020-May-13 19:19:25, Context 1, Stream 7
+    Section: Memory Workload Analysis
+    ---------------------------------------------------------------------- --------------- ------------------------------
+    Memory Throughput                                                         Gbyte/second                         805.27
+    Mem Busy                                                                             %                          37.47
+    Max Bandwidth                                                                        %                          89.95
+    L2 Hit Rate                                                                          %                          60.89
+    Mem Pipes Busy                                                                       %                          14.18
+    L1 Hit Rate                                                                          %                          13.53
+    ---------------------------------------------------------------------- --------------- ------------------------------
+

@@ -1,0 +1,124 @@
+strong_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.0377478
+16777216,2,
+total_time
+times: 0.0342756
+16777216,4,
+total_time
+times: 0.0577735
+16777216,6,
+total_time
+times: 0.0771757
+33554432,1,
+total_time
+times: 0.0713261
+33554432,2,
+total_time
+times: 0.0589053
+33554432,4,
+total_time
+times: 0.0881456
+33554432,6,
+total_time
+times: 0.125662
+67108864,1,
+total_time
+times: 0.125001
+67108864,2,
+total_time
+times: 0.116881
+67108864,4,
+total_time
+times: 0.161595
+67108864,6,
+total_time
+times: 0.218938
+134217728,1,
+total_time
+times: 0.248115
+134217728,2,
+total_time
+times: 0.220362
+134217728,4,
+total_time
+times: 0.293832
+134217728,6,
+total_time
+times: 0.391373
+268435456,1,oom
+268435456,2,
+total_time
+times: 0.410915
+268435456,4,
+total_time
+times: 0.553312
+268435456,6,
+total_time
+times: 0.737799
+536870912,1,oom
+536870912,2,oom
+536870912,4,
+total_time
+times: 1.08993
+536870912,6,
+total_time
+times: 1.39057
+1073741824,1,oom
+1073741824,2,oom
+1073741824,4,oom
+1073741824,6,oom
+intersect tests
+8388608,1,
+multi intersect() time: 0.0402838
+8388608,2,
+multi intersect() time: 0.0435964
+8388608,4,
+multi intersect() time: 0.0823411
+8388608,6,
+multi intersect() time: 0.135297
+16777216,1,
+multi intersect() time: 0.0748885
+16777216,2,
+multi intersect() time: 0.0741592
+16777216,4,
+multi intersect() time: 0.120741
+16777216,6,
+multi intersect() time: 0.188316
+33554432,1,
+multi intersect() time: 0.141954
+33554432,2,
+multi intersect() time: 0.139685
+33554432,4,
+multi intersect() time: 0.203509
+33554432,6,
+multi intersect() time: 0.290137
+67108864,1,
+multi intersect() time: 0.277442
+67108864,2,
+multi intersect() time: 0.257914
+67108864,4,
+multi intersect() time: 0.350017
+67108864,6,
+multi intersect() time: 0.501908
+134217728,1,oom
+134217728,2,
+multi intersect() time: 0.477488
+134217728,4,
+multi intersect() time: 0.672954
+134217728,6,
+multi intersect() time: 0.902918
+268435456,1,oom
+268435456,2,oom
+268435456,4,
+multi intersect() time: 1.29473
+268435456,6,
+multi intersect() time: 1.7229
+536870912,1,oom
+536870912,2,oom
+536870912,4,oom
+536870912,6,oom

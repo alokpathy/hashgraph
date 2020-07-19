@@ -1,0 +1,1 @@
+ERROR:  One or more process (first noticed rank 0) terminated with signal 2

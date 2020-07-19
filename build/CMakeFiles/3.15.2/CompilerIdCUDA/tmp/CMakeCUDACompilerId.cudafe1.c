@@ -22,4 +22,4 @@ const char *info_arch = ((const char *)"INFO:arch[]");
 
 
 
-const char *info_language_dialect_default = ((const char *)"INFO:dialect_default[98]");
+const char *info_language_dialect_default = ((const char *)"INFO:dialect_default[14]");

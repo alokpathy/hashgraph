@@ -1,0 +1,14 @@
+==75073== NVPROF is profiling process 75073, command: ./multi-hash 536870912 536870912 16000 4 16000 nocheck 33554432 build
+deviceCount: 4
+hostname: batch2
+countSizeA: 536870912
+maxkey: 536870912
+generating input
+done generating input
+bin_count: 16000
+bin_range: 33555
+table_size: 536870912
+BLOCK_COUNT: 65535 BLOCKS_SIZE: 64
+managed alloc size: 25769803840
+==75073== Generated result file: /autofs/nccs-svm1_home1/alokt/hashgraph/build/prof_noid_norand_g4.prof
+multi buildTable() time: 1.13837

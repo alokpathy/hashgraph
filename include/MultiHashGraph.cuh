@@ -57,10 +57,10 @@
 	{cudaDeviceSynchronize(); cudaError_t err; err = cudaGetLastError(); if(err!=0) {printf("ERROR %s:  %d %s\n", str, err, cudaGetErrorString(err)); fflush(stdout); exit(0);}}
 
 // #define CUDA_PROFILE
-// #define HOST_PROFILE
+#define HOST_PROFILE
 
 #define INDEX_TRACK
-//#define MANAGED_MEM
+#define MANAGED_MEM
 // #define B32
 
 #ifdef B32
@@ -102,13 +102,18 @@ struct inputData
 #ifdef INDEX_TRACK
 typedef keyval_ind keyval;
 #else
-typedef keyval_key keyval;
+// typedef keyval_key keyval;
+typedef hkey_t keyval;
 #endif
 
-inline bool operator==(const keyval &kv1, const keyval &kv2) {
-  // return kv1.key == kv2.key && kv1.ind == kv2.ind;
-  return kv1.key == kv2.key;
-}
+// inline bool operator==(const keyval &kv1, const keyval &kv2) {
+//   // return kv1.key == kv2.key && kv1.ind == kv2.ind;
+// #ifdef INDEX_TRACK
+//   return kv1.key == kv2.key;
+// #else
+//   return kv1 == kv2;
+// #endif
+// }
 
 // Overload Modern GPU memory allocation and free to use RMM
 // class rmm_mgpu_context_t : public mgpu::standard_context_t

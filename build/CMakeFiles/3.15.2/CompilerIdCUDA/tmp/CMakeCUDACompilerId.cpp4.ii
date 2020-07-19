@@ -366,9 +366,9 @@ struct __attribute__((device_builtin)) dim3
     unsigned int x, y, z;
 
 
+    __attribute__((host)) __attribute__((device)) constexpr dim3(unsigned int vx = 1, unsigned int vy = 1, unsigned int vz = 1) : x(vx), y(vy), z(vz) {}
 
 
-    __attribute__((host)) __attribute__((device)) dim3(unsigned int vx = 1, unsigned int vy = 1, unsigned int vz = 1) : x(vx), y(vy), z(vz) {}
 
     __attribute__((host)) __attribute__((device)) dim3(uint3 v) : x(v.x), y(v.y), z(v.z) {}
     __attribute__((host)) __attribute__((device)) operator uint3(void) { uint3 t; t.x = x; t.y = y; t.z = z; return t; }
@@ -378,17 +378,17 @@ struct __attribute__((device_builtin)) dim3
 typedef __attribute__((device_builtin)) struct dim3 dim3;
 # 60 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/driver_types.h" 2
 # 77 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/driver_types.h"
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include-fixed/limits.h" 1 3 4
-# 34 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include-fixed/limits.h" 3 4
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include-fixed/syslimits.h" 1 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed/limits.h" 1 3 4
+# 34 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed/limits.h" 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed/syslimits.h" 1 3 4
 
 
 
 
 
 
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include-fixed/limits.h" 1 3 4
-# 168 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include-fixed/limits.h" 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed/limits.h" 1 3 4
+# 168 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed/limits.h" 3 4
 # 1 "/usr/include/limits.h" 1 3 4
 # 144 "/usr/include/limits.h" 3 4
 # 1 "/usr/include/bits/posix1_lim.h" 1 3 4
@@ -412,17 +412,29 @@ typedef __attribute__((device_builtin)) struct dim3 dim3;
 # 1 "/usr/include/bits/stdio_lim.h" 1 3 4
 # 34 "/usr/include/bits/xopen_lim.h" 2 3 4
 # 153 "/usr/include/limits.h" 2 3 4
-# 169 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include-fixed/limits.h" 2 3 4
-# 8 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include-fixed/syslimits.h" 2 3 4
-# 35 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include-fixed/limits.h" 2 3 4
+# 169 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed/limits.h" 2 3 4
+# 8 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed/syslimits.h" 2 3 4
+# 35 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed/limits.h" 2 3 4
 # 78 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/driver_types.h" 2
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 1 3 4
-# 149 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 1 3 4
+# 149 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 3 4
 
-# 149 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 3 4
+# 149 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 3 4
 typedef long int ptrdiff_t;
-# 216 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 3 4
+# 216 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 3 4
 typedef long unsigned int size_t;
+# 426 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 3 4
+typedef struct {
+  long long __max_align_ll __attribute__((__aligned__(__alignof__(long long))));
+  long double __max_align_ld __attribute__((__aligned__(__alignof__(long double))));
+} max_align_t;
+
+
+
+
+
+
+  typedef decltype(nullptr) nullptr_t;
 # 79 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/driver_types.h" 2
 # 189 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/driver_types.h"
 
@@ -3404,7 +3416,7 @@ extern "C" {
 
 
 
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 1 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 1 3 4
 # 33 "/usr/include/string.h" 2 3 4
 
 
@@ -3859,7 +3871,7 @@ extern "C" {
 
 
 
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 1 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 1 3 4
 # 38 "/usr/include/time.h" 2 3 4
 
 
@@ -5352,9 +5364,565 @@ extern __attribute__((host)) __attribute__((device)) __attribute__((device_built
 }
 
 
-# 1 "/usr/include/math.h" 1 3 4
-# 29 "/usr/include/math.h" 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/math.h" 1 3
+# 36 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/math.h" 3
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 1 3
+# 39 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+       
+# 40 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
 
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 1 3
+# 199 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
+
+# 199 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
+namespace std
+{
+  typedef long unsigned int size_t;
+  typedef long int ptrdiff_t;
+
+
+  typedef decltype(nullptr) nullptr_t;
+
+}
+# 221 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
+namespace std
+{
+  inline namespace __cxx11 __attribute__((__abi_tag__ ("cxx11"))) { }
+}
+namespace __gnu_cxx
+{
+  inline namespace __cxx11 __attribute__((__abi_tag__ ("cxx11"))) { }
+}
+# 400 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
+namespace std
+{
+  inline namespace __gnu_cxx_ldbl128 { }
+}
+# 507 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/os_defines.h" 1 3
+# 508 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 2 3
+
+
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/cpu_defines.h" 1 3
+# 511 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 2 3
+# 42 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 2 3
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/bits/cpp_type_traits.h" 1 3
+# 35 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/bits/cpp_type_traits.h" 3
+       
+# 36 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/bits/cpp_type_traits.h" 3
+# 67 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/bits/cpp_type_traits.h" 3
+extern "C++" {
+
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+
+
+  struct __true_type { };
+  struct __false_type { };
+
+  template<bool>
+    struct __truth_type
+    { typedef __false_type __type; };
+
+  template<>
+    struct __truth_type<true>
+    { typedef __true_type __type; };
+
+
+
+  template<class _Sp, class _Tp>
+    struct __traitor
+    {
+      enum { __value = bool(_Sp::__value) || bool(_Tp::__value) };
+      typedef typename __truth_type<__value>::__type __type;
+    };
+
+
+  template<typename, typename>
+    struct __are_same
+    {
+      enum { __value = 0 };
+      typedef __false_type __type;
+    };
+
+  template<typename _Tp>
+    struct __are_same<_Tp, _Tp>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+  template<typename _Tp>
+    struct __is_void
+    {
+      enum { __value = 0 };
+      typedef __false_type __type;
+    };
+
+  template<>
+    struct __is_void<void>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+
+
+  template<typename _Tp>
+    struct __is_integer
+    {
+      enum { __value = 0 };
+      typedef __false_type __type;
+    };
+
+
+
+
+
+  template<>
+    struct __is_integer<bool>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<char>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<signed char>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<unsigned char>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+  template<>
+    struct __is_integer<wchar_t>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+
+  template<>
+    struct __is_integer<char16_t>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<char32_t>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+  template<>
+    struct __is_integer<short>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<unsigned short>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<int>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<unsigned int>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<long>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<unsigned long>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<long long>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_integer<unsigned long long>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+# 261 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/bits/cpp_type_traits.h" 3
+template<> struct __is_integer<__int128> { enum { __value = 1 }; typedef __true_type __type; }; template<> struct __is_integer<unsigned __int128> { enum { __value = 1 }; typedef __true_type __type; };
+# 278 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/bits/cpp_type_traits.h" 3
+  template<typename _Tp>
+    struct __is_floating
+    {
+      enum { __value = 0 };
+      typedef __false_type __type;
+    };
+
+
+  template<>
+    struct __is_floating<float>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_floating<double>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_floating<long double>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+
+
+  template<typename _Tp>
+    struct __is_pointer
+    {
+      enum { __value = 0 };
+      typedef __false_type __type;
+    };
+
+  template<typename _Tp>
+    struct __is_pointer<_Tp*>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+
+
+  template<typename _Tp>
+    struct __is_arithmetic
+    : public __traitor<__is_integer<_Tp>, __is_floating<_Tp> >
+    { };
+
+
+
+
+  template<typename _Tp>
+    struct __is_scalar
+    : public __traitor<__is_arithmetic<_Tp>, __is_pointer<_Tp> >
+    { };
+
+
+
+
+  template<typename _Tp>
+    struct __is_char
+    {
+      enum { __value = 0 };
+      typedef __false_type __type;
+    };
+
+  template<>
+    struct __is_char<char>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+  template<>
+    struct __is_char<wchar_t>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+  template<typename _Tp>
+    struct __is_byte
+    {
+      enum { __value = 0 };
+      typedef __false_type __type;
+    };
+
+  template<>
+    struct __is_byte<char>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_byte<signed char>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+  template<>
+    struct __is_byte<unsigned char>
+    {
+      enum { __value = 1 };
+      typedef __true_type __type;
+    };
+
+
+
+
+  template<typename _Tp>
+    struct __is_move_iterator
+    {
+      enum { __value = 0 };
+      typedef __false_type __type;
+    };
+
+
+
+  template<typename _Iterator>
+    inline _Iterator
+    __miter_base(_Iterator __it)
+    { return __it; }
+
+
+}
+}
+# 43 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 2 3
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/ext/type_traits.h" 1 3
+# 32 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/ext/type_traits.h" 3
+       
+# 33 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/ext/type_traits.h" 3
+
+
+
+
+extern "C++" {
+
+namespace __gnu_cxx __attribute__ ((__visibility__ ("default")))
+{
+
+
+
+  template<bool, typename>
+    struct __enable_if
+    { };
+
+  template<typename _Tp>
+    struct __enable_if<true, _Tp>
+    { typedef _Tp __type; };
+
+
+
+  template<bool _Cond, typename _Iftrue, typename _Iffalse>
+    struct __conditional_type
+    { typedef _Iftrue __type; };
+
+  template<typename _Iftrue, typename _Iffalse>
+    struct __conditional_type<false, _Iftrue, _Iffalse>
+    { typedef _Iffalse __type; };
+
+
+
+  template<typename _Tp>
+    struct __add_unsigned
+    {
+    private:
+      typedef __enable_if<std::__is_integer<_Tp>::__value, _Tp> __if_type;
+
+    public:
+      typedef typename __if_type::__type __type;
+    };
+
+  template<>
+    struct __add_unsigned<char>
+    { typedef unsigned char __type; };
+
+  template<>
+    struct __add_unsigned<signed char>
+    { typedef unsigned char __type; };
+
+  template<>
+    struct __add_unsigned<short>
+    { typedef unsigned short __type; };
+
+  template<>
+    struct __add_unsigned<int>
+    { typedef unsigned int __type; };
+
+  template<>
+    struct __add_unsigned<long>
+    { typedef unsigned long __type; };
+
+  template<>
+    struct __add_unsigned<long long>
+    { typedef unsigned long long __type; };
+
+
+  template<>
+    struct __add_unsigned<bool>;
+
+  template<>
+    struct __add_unsigned<wchar_t>;
+
+
+
+  template<typename _Tp>
+    struct __remove_unsigned
+    {
+    private:
+      typedef __enable_if<std::__is_integer<_Tp>::__value, _Tp> __if_type;
+
+    public:
+      typedef typename __if_type::__type __type;
+    };
+
+  template<>
+    struct __remove_unsigned<char>
+    { typedef signed char __type; };
+
+  template<>
+    struct __remove_unsigned<unsigned char>
+    { typedef signed char __type; };
+
+  template<>
+    struct __remove_unsigned<unsigned short>
+    { typedef short __type; };
+
+  template<>
+    struct __remove_unsigned<unsigned int>
+    { typedef int __type; };
+
+  template<>
+    struct __remove_unsigned<unsigned long>
+    { typedef long __type; };
+
+  template<>
+    struct __remove_unsigned<unsigned long long>
+    { typedef long long __type; };
+
+
+  template<>
+    struct __remove_unsigned<bool>;
+
+  template<>
+    struct __remove_unsigned<wchar_t>;
+
+
+
+  template<typename _Type>
+    inline bool
+    __is_null_pointer(_Type* __ptr)
+    { return __ptr == 0; }
+
+  template<typename _Type>
+    inline bool
+    __is_null_pointer(_Type)
+    { return false; }
+
+
+  inline bool
+  __is_null_pointer(std::nullptr_t)
+  { return true; }
+
+
+
+  template<typename _Tp, bool = std::__is_integer<_Tp>::__value>
+    struct __promote
+    { typedef double __type; };
+
+
+
+
+  template<typename _Tp>
+    struct __promote<_Tp, false>
+    { };
+
+  template<>
+    struct __promote<long double>
+    { typedef long double __type; };
+
+  template<>
+    struct __promote<double>
+    { typedef double __type; };
+
+  template<>
+    struct __promote<float>
+    { typedef float __type; };
+
+  template<typename _Tp, typename _Up,
+           typename _Tp2 = typename __promote<_Tp>::__type,
+           typename _Up2 = typename __promote<_Up>::__type>
+    struct __promote_2
+    {
+      typedef __typeof__(_Tp2() + _Up2()) __type;
+    };
+
+  template<typename _Tp, typename _Up, typename _Vp,
+           typename _Tp2 = typename __promote<_Tp>::__type,
+           typename _Up2 = typename __promote<_Up>::__type,
+           typename _Vp2 = typename __promote<_Vp>::__type>
+    struct __promote_3
+    {
+      typedef __typeof__(_Tp2() + _Up2() + _Vp2()) __type;
+    };
+
+  template<typename _Tp, typename _Up, typename _Vp, typename _Wp,
+           typename _Tp2 = typename __promote<_Tp>::__type,
+           typename _Up2 = typename __promote<_Up>::__type,
+           typename _Vp2 = typename __promote<_Vp>::__type,
+           typename _Wp2 = typename __promote<_Wp>::__type>
+    struct __promote_4
+    {
+      typedef __typeof__(_Tp2() + _Up2() + _Vp2() + _Wp2()) __type;
+    };
+
+
+}
+}
+# 44 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 2 3
+
+# 1 "/usr/include/math.h" 1 3 4
 # 29 "/usr/include/math.h" 3 4
 extern "C" {
 
@@ -6386,10 +6954,1639 @@ struct __exception
 extern int matherr (struct __exception *__exc) throw ();
 # 475 "/usr/include/math.h" 3 4
 }
+# 46 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 2 3
+# 77 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+extern "C++"
+{
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+
+
+
+  inline constexpr double
+  abs(double __x)
+  { return __builtin_fabs(__x); }
+
+
+
+  inline constexpr float
+  abs(float __x)
+  { return __builtin_fabsf(__x); }
+
+  inline constexpr long double
+  abs(long double __x)
+  { return __builtin_fabsl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    abs(_Tp __x)
+    { return __builtin_fabs(__x); }
+
+  using ::acos;
+
+
+  inline constexpr float
+  acos(float __x)
+  { return __builtin_acosf(__x); }
+
+  inline constexpr long double
+  acos(long double __x)
+  { return __builtin_acosl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    acos(_Tp __x)
+    { return __builtin_acos(__x); }
+
+  using ::asin;
+
+
+  inline constexpr float
+  asin(float __x)
+  { return __builtin_asinf(__x); }
+
+  inline constexpr long double
+  asin(long double __x)
+  { return __builtin_asinl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    asin(_Tp __x)
+    { return __builtin_asin(__x); }
+
+  using ::atan;
+
+
+  inline constexpr float
+  atan(float __x)
+  { return __builtin_atanf(__x); }
+
+  inline constexpr long double
+  atan(long double __x)
+  { return __builtin_atanl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    atan(_Tp __x)
+    { return __builtin_atan(__x); }
+
+  using ::atan2;
+
+
+  inline constexpr float
+  atan2(float __y, float __x)
+  { return __builtin_atan2f(__y, __x); }
+
+  inline constexpr long double
+  atan2(long double __y, long double __x)
+  { return __builtin_atan2l(__y, __x); }
+
+
+  template<typename _Tp, typename _Up>
+    inline constexpr
+    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    atan2(_Tp __y, _Up __x)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return atan2(__type(__y), __type(__x));
+    }
+
+  using ::ceil;
+
+
+  inline constexpr float
+  ceil(float __x)
+  { return __builtin_ceilf(__x); }
+
+  inline constexpr long double
+  ceil(long double __x)
+  { return __builtin_ceill(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    ceil(_Tp __x)
+    { return __builtin_ceil(__x); }
+
+  using ::cos;
+
+
+  inline constexpr float
+  cos(float __x)
+  { return __builtin_cosf(__x); }
+
+  inline constexpr long double
+  cos(long double __x)
+  { return __builtin_cosl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    cos(_Tp __x)
+    { return __builtin_cos(__x); }
+
+  using ::cosh;
+
+
+  inline constexpr float
+  cosh(float __x)
+  { return __builtin_coshf(__x); }
+
+  inline constexpr long double
+  cosh(long double __x)
+  { return __builtin_coshl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    cosh(_Tp __x)
+    { return __builtin_cosh(__x); }
+
+  using ::exp;
+
+
+  inline constexpr float
+  exp(float __x)
+  { return __builtin_expf(__x); }
+
+  inline constexpr long double
+  exp(long double __x)
+  { return __builtin_expl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    exp(_Tp __x)
+    { return __builtin_exp(__x); }
+
+  using ::fabs;
+
+
+  inline constexpr float
+  fabs(float __x)
+  { return __builtin_fabsf(__x); }
+
+  inline constexpr long double
+  fabs(long double __x)
+  { return __builtin_fabsl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    fabs(_Tp __x)
+    { return __builtin_fabs(__x); }
+
+  using ::floor;
+
+
+  inline constexpr float
+  floor(float __x)
+  { return __builtin_floorf(__x); }
+
+  inline constexpr long double
+  floor(long double __x)
+  { return __builtin_floorl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    floor(_Tp __x)
+    { return __builtin_floor(__x); }
+
+  using ::fmod;
+
+
+  inline constexpr float
+  fmod(float __x, float __y)
+  { return __builtin_fmodf(__x, __y); }
+
+  inline constexpr long double
+  fmod(long double __x, long double __y)
+  { return __builtin_fmodl(__x, __y); }
+
+
+  template<typename _Tp, typename _Up>
+    inline constexpr
+    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    fmod(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return fmod(__type(__x), __type(__y));
+    }
+
+  using ::frexp;
+
+
+  inline float
+  frexp(float __x, int* __exp)
+  { return __builtin_frexpf(__x, __exp); }
+
+  inline long double
+  frexp(long double __x, int* __exp)
+  { return __builtin_frexpl(__x, __exp); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    frexp(_Tp __x, int* __exp)
+    { return __builtin_frexp(__x, __exp); }
+
+  using ::ldexp;
+
+
+  inline constexpr float
+  ldexp(float __x, int __exp)
+  { return __builtin_ldexpf(__x, __exp); }
+
+  inline constexpr long double
+  ldexp(long double __x, int __exp)
+  { return __builtin_ldexpl(__x, __exp); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    ldexp(_Tp __x, int __exp)
+    { return __builtin_ldexp(__x, __exp); }
+
+  using ::log;
+
+
+  inline constexpr float
+  log(float __x)
+  { return __builtin_logf(__x); }
+
+  inline constexpr long double
+  log(long double __x)
+  { return __builtin_logl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    log(_Tp __x)
+    { return __builtin_log(__x); }
+
+  using ::log10;
+
+
+  inline constexpr float
+  log10(float __x)
+  { return __builtin_log10f(__x); }
+
+  inline constexpr long double
+  log10(long double __x)
+  { return __builtin_log10l(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    log10(_Tp __x)
+    { return __builtin_log10(__x); }
+
+  using ::modf;
+
+
+  inline float
+  modf(float __x, float* __iptr)
+  { return __builtin_modff(__x, __iptr); }
+
+  inline long double
+  modf(long double __x, long double* __iptr)
+  { return __builtin_modfl(__x, __iptr); }
+
+
+  using ::pow;
+
+
+  inline constexpr float
+  pow(float __x, float __y)
+  { return __builtin_powf(__x, __y); }
+
+  inline constexpr long double
+  pow(long double __x, long double __y)
+  { return __builtin_powl(__x, __y); }
+# 435 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+  template<typename _Tp, typename _Up>
+    inline constexpr
+    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    pow(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return pow(__type(__x), __type(__y));
+    }
+
+  using ::sin;
+
+
+  inline constexpr float
+  sin(float __x)
+  { return __builtin_sinf(__x); }
+
+  inline constexpr long double
+  sin(long double __x)
+  { return __builtin_sinl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    sin(_Tp __x)
+    { return __builtin_sin(__x); }
+
+  using ::sinh;
+
+
+  inline constexpr float
+  sinh(float __x)
+  { return __builtin_sinhf(__x); }
+
+  inline constexpr long double
+  sinh(long double __x)
+  { return __builtin_sinhl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    sinh(_Tp __x)
+    { return __builtin_sinh(__x); }
+
+  using ::sqrt;
+
+
+  inline constexpr float
+  sqrt(float __x)
+  { return __builtin_sqrtf(__x); }
+
+  inline constexpr long double
+  sqrt(long double __x)
+  { return __builtin_sqrtl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    sqrt(_Tp __x)
+    { return __builtin_sqrt(__x); }
+
+  using ::tan;
+
+
+  inline constexpr float
+  tan(float __x)
+  { return __builtin_tanf(__x); }
+
+  inline constexpr long double
+  tan(long double __x)
+  { return __builtin_tanl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    tan(_Tp __x)
+    { return __builtin_tan(__x); }
+
+  using ::tanh;
+
+
+  inline constexpr float
+  tanh(float __x)
+  { return __builtin_tanhf(__x); }
+
+  inline constexpr long double
+  tanh(long double __x)
+  { return __builtin_tanhl(__x); }
+
+
+  template<typename _Tp>
+    inline constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    double>::__type
+    tanh(_Tp __x)
+    { return __builtin_tanh(__x); }
+
+
+}
+# 559 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+
+
+
+
+
+  constexpr int
+  fpclassify(float __x)
+  { return __builtin_fpclassify(0, 1, 4,
+    3, 2, __x); }
+
+  constexpr int
+  fpclassify(double __x)
+  { return __builtin_fpclassify(0, 1, 4,
+    3, 2, __x); }
+
+  constexpr int
+  fpclassify(long double __x)
+  { return __builtin_fpclassify(0, 1, 4,
+    3, 2, __x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              int>::__type
+    fpclassify(_Tp __x)
+    { return __x != 0 ? 4 : 2; }
+
+
+
+  constexpr bool
+  isfinite(float __x)
+  { return __builtin_isfinite(__x); }
+
+  constexpr bool
+  isfinite(double __x)
+  { return __builtin_isfinite(__x); }
+
+  constexpr bool
+  isfinite(long double __x)
+  { return __builtin_isfinite(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              bool>::__type
+    isfinite(_Tp __x)
+    { return true; }
+
+
+
+  constexpr bool
+  isinf(float __x)
+  { return __builtin_isinf(__x); }
+
+
+
+  using ::isinf;
+
+
+
+
+
+
+  constexpr bool
+  isinf(long double __x)
+  { return __builtin_isinf(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              bool>::__type
+    isinf(_Tp __x)
+    { return false; }
+
+
+
+  constexpr bool
+  isnan(float __x)
+  { return __builtin_isnan(__x); }
+
+
+
+  using ::isnan;
+
+
+
+
+
+
+  constexpr bool
+  isnan(long double __x)
+  { return __builtin_isnan(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              bool>::__type
+    isnan(_Tp __x)
+    { return false; }
+
+
+
+  constexpr bool
+  isnormal(float __x)
+  { return __builtin_isnormal(__x); }
+
+  constexpr bool
+  isnormal(double __x)
+  { return __builtin_isnormal(__x); }
+
+  constexpr bool
+  isnormal(long double __x)
+  { return __builtin_isnormal(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              bool>::__type
+    isnormal(_Tp __x)
+    { return __x != 0 ? true : false; }
+
+
+
+
+  constexpr bool
+  signbit(float __x)
+  { return __builtin_signbit(__x); }
+
+  constexpr bool
+  signbit(double __x)
+  { return __builtin_signbit(__x); }
+
+  constexpr bool
+  signbit(long double __x)
+  { return __builtin_signbit(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              bool>::__type
+    signbit(_Tp __x)
+    { return __x < 0 ? true : false; }
+
+
+
+  constexpr bool
+  isgreater(float __x, float __y)
+  { return __builtin_isgreater(__x, __y); }
+
+  constexpr bool
+  isgreater(double __x, double __y)
+  { return __builtin_isgreater(__x, __y); }
+
+  constexpr bool
+  isgreater(long double __x, long double __y)
+  { return __builtin_isgreater(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename
+    __gnu_cxx::__enable_if<(__is_arithmetic<_Tp>::__value
+       && __is_arithmetic<_Up>::__value), bool>::__type
+    isgreater(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return __builtin_isgreater(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr bool
+  isgreaterequal(float __x, float __y)
+  { return __builtin_isgreaterequal(__x, __y); }
+
+  constexpr bool
+  isgreaterequal(double __x, double __y)
+  { return __builtin_isgreaterequal(__x, __y); }
+
+  constexpr bool
+  isgreaterequal(long double __x, long double __y)
+  { return __builtin_isgreaterequal(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename
+    __gnu_cxx::__enable_if<(__is_arithmetic<_Tp>::__value
+       && __is_arithmetic<_Up>::__value), bool>::__type
+    isgreaterequal(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return __builtin_isgreaterequal(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr bool
+  isless(float __x, float __y)
+  { return __builtin_isless(__x, __y); }
+
+  constexpr bool
+  isless(double __x, double __y)
+  { return __builtin_isless(__x, __y); }
+
+  constexpr bool
+  isless(long double __x, long double __y)
+  { return __builtin_isless(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename
+    __gnu_cxx::__enable_if<(__is_arithmetic<_Tp>::__value
+       && __is_arithmetic<_Up>::__value), bool>::__type
+    isless(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return __builtin_isless(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr bool
+  islessequal(float __x, float __y)
+  { return __builtin_islessequal(__x, __y); }
+
+  constexpr bool
+  islessequal(double __x, double __y)
+  { return __builtin_islessequal(__x, __y); }
+
+  constexpr bool
+  islessequal(long double __x, long double __y)
+  { return __builtin_islessequal(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename
+    __gnu_cxx::__enable_if<(__is_arithmetic<_Tp>::__value
+       && __is_arithmetic<_Up>::__value), bool>::__type
+    islessequal(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return __builtin_islessequal(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr bool
+  islessgreater(float __x, float __y)
+  { return __builtin_islessgreater(__x, __y); }
+
+  constexpr bool
+  islessgreater(double __x, double __y)
+  { return __builtin_islessgreater(__x, __y); }
+
+  constexpr bool
+  islessgreater(long double __x, long double __y)
+  { return __builtin_islessgreater(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename
+    __gnu_cxx::__enable_if<(__is_arithmetic<_Tp>::__value
+       && __is_arithmetic<_Up>::__value), bool>::__type
+    islessgreater(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return __builtin_islessgreater(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr bool
+  isunordered(float __x, float __y)
+  { return __builtin_isunordered(__x, __y); }
+
+  constexpr bool
+  isunordered(double __x, double __y)
+  { return __builtin_isunordered(__x, __y); }
+
+  constexpr bool
+  isunordered(long double __x, long double __y)
+  { return __builtin_isunordered(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename
+    __gnu_cxx::__enable_if<(__is_arithmetic<_Tp>::__value
+       && __is_arithmetic<_Up>::__value), bool>::__type
+    isunordered(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return __builtin_isunordered(__type(__x), __type(__y));
+    }
+# 980 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+
+}
+# 1096 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+namespace std __attribute__ ((__visibility__ ("default")))
+{
+
+
+
+  using ::double_t;
+  using ::float_t;
+
+
+  using ::acosh;
+  using ::acoshf;
+  using ::acoshl;
+
+  using ::asinh;
+  using ::asinhf;
+  using ::asinhl;
+
+  using ::atanh;
+  using ::atanhf;
+  using ::atanhl;
+
+  using ::cbrt;
+  using ::cbrtf;
+  using ::cbrtl;
+
+  using ::copysign;
+  using ::copysignf;
+  using ::copysignl;
+
+  using ::erf;
+  using ::erff;
+  using ::erfl;
+
+  using ::erfc;
+  using ::erfcf;
+  using ::erfcl;
+
+  using ::exp2;
+  using ::exp2f;
+  using ::exp2l;
+
+  using ::expm1;
+  using ::expm1f;
+  using ::expm1l;
+
+  using ::fdim;
+  using ::fdimf;
+  using ::fdiml;
+
+  using ::fma;
+  using ::fmaf;
+  using ::fmal;
+
+  using ::fmax;
+  using ::fmaxf;
+  using ::fmaxl;
+
+  using ::fmin;
+  using ::fminf;
+  using ::fminl;
+
+  using ::hypot;
+  using ::hypotf;
+  using ::hypotl;
+
+  using ::ilogb;
+  using ::ilogbf;
+  using ::ilogbl;
+
+  using ::lgamma;
+  using ::lgammaf;
+  using ::lgammal;
+
+  using ::llrint;
+  using ::llrintf;
+  using ::llrintl;
+
+  using ::llround;
+  using ::llroundf;
+  using ::llroundl;
+
+  using ::log1p;
+  using ::log1pf;
+  using ::log1pl;
+
+  using ::log2;
+  using ::log2f;
+  using ::log2l;
+
+  using ::logb;
+  using ::logbf;
+  using ::logbl;
+
+  using ::lrint;
+  using ::lrintf;
+  using ::lrintl;
+
+  using ::lround;
+  using ::lroundf;
+  using ::lroundl;
+
+  using ::nan;
+  using ::nanf;
+  using ::nanl;
+
+  using ::nearbyint;
+  using ::nearbyintf;
+  using ::nearbyintl;
+
+  using ::nextafter;
+  using ::nextafterf;
+  using ::nextafterl;
+
+  using ::nexttoward;
+  using ::nexttowardf;
+  using ::nexttowardl;
+
+  using ::remainder;
+  using ::remainderf;
+  using ::remainderl;
+
+  using ::remquo;
+  using ::remquof;
+  using ::remquol;
+
+  using ::rint;
+  using ::rintf;
+  using ::rintl;
+
+  using ::round;
+  using ::roundf;
+  using ::roundl;
+
+  using ::scalbln;
+  using ::scalblnf;
+  using ::scalblnl;
+
+  using ::scalbn;
+  using ::scalbnf;
+  using ::scalbnl;
+
+  using ::tgamma;
+  using ::tgammaf;
+  using ::tgammal;
+
+  using ::trunc;
+  using ::truncf;
+  using ::truncl;
+
+
+
+  constexpr float
+  acosh(float __x)
+  { return __builtin_acoshf(__x); }
+
+  constexpr long double
+  acosh(long double __x)
+  { return __builtin_acoshl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    acosh(_Tp __x)
+    { return __builtin_acosh(__x); }
+
+
+
+  constexpr float
+  asinh(float __x)
+  { return __builtin_asinhf(__x); }
+
+  constexpr long double
+  asinh(long double __x)
+  { return __builtin_asinhl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    asinh(_Tp __x)
+    { return __builtin_asinh(__x); }
+
+
+
+  constexpr float
+  atanh(float __x)
+  { return __builtin_atanhf(__x); }
+
+  constexpr long double
+  atanh(long double __x)
+  { return __builtin_atanhl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    atanh(_Tp __x)
+    { return __builtin_atanh(__x); }
+
+
+
+  constexpr float
+  cbrt(float __x)
+  { return __builtin_cbrtf(__x); }
+
+  constexpr long double
+  cbrt(long double __x)
+  { return __builtin_cbrtl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    cbrt(_Tp __x)
+    { return __builtin_cbrt(__x); }
+
+
+
+  constexpr float
+  copysign(float __x, float __y)
+  { return __builtin_copysignf(__x, __y); }
+
+  constexpr long double
+  copysign(long double __x, long double __y)
+  { return __builtin_copysignl(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    copysign(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return copysign(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr float
+  erf(float __x)
+  { return __builtin_erff(__x); }
+
+  constexpr long double
+  erf(long double __x)
+  { return __builtin_erfl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    erf(_Tp __x)
+    { return __builtin_erf(__x); }
+
+
+
+  constexpr float
+  erfc(float __x)
+  { return __builtin_erfcf(__x); }
+
+  constexpr long double
+  erfc(long double __x)
+  { return __builtin_erfcl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    erfc(_Tp __x)
+    { return __builtin_erfc(__x); }
+
+
+
+  constexpr float
+  exp2(float __x)
+  { return __builtin_exp2f(__x); }
+
+  constexpr long double
+  exp2(long double __x)
+  { return __builtin_exp2l(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    exp2(_Tp __x)
+    { return __builtin_exp2(__x); }
+
+
+
+  constexpr float
+  expm1(float __x)
+  { return __builtin_expm1f(__x); }
+
+  constexpr long double
+  expm1(long double __x)
+  { return __builtin_expm1l(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    expm1(_Tp __x)
+    { return __builtin_expm1(__x); }
+
+
+
+  constexpr float
+  fdim(float __x, float __y)
+  { return __builtin_fdimf(__x, __y); }
+
+  constexpr long double
+  fdim(long double __x, long double __y)
+  { return __builtin_fdiml(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    fdim(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return fdim(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr float
+  fma(float __x, float __y, float __z)
+  { return __builtin_fmaf(__x, __y, __z); }
+
+  constexpr long double
+  fma(long double __x, long double __y, long double __z)
+  { return __builtin_fmal(__x, __y, __z); }
+
+
+
+  template<typename _Tp, typename _Up, typename _Vp>
+    constexpr typename __gnu_cxx::__promote_3<_Tp, _Up, _Vp>::__type
+    fma(_Tp __x, _Up __y, _Vp __z)
+    {
+      typedef typename __gnu_cxx::__promote_3<_Tp, _Up, _Vp>::__type __type;
+      return fma(__type(__x), __type(__y), __type(__z));
+    }
+
+
+
+  constexpr float
+  fmax(float __x, float __y)
+  { return __builtin_fmaxf(__x, __y); }
+
+  constexpr long double
+  fmax(long double __x, long double __y)
+  { return __builtin_fmaxl(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    fmax(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return fmax(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr float
+  fmin(float __x, float __y)
+  { return __builtin_fminf(__x, __y); }
+
+  constexpr long double
+  fmin(long double __x, long double __y)
+  { return __builtin_fminl(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    fmin(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return fmin(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr float
+  hypot(float __x, float __y)
+  { return __builtin_hypotf(__x, __y); }
+
+  constexpr long double
+  hypot(long double __x, long double __y)
+  { return __builtin_hypotl(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    hypot(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return hypot(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr int
+  ilogb(float __x)
+  { return __builtin_ilogbf(__x); }
+
+  constexpr int
+  ilogb(long double __x)
+  { return __builtin_ilogbl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr
+    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                    int>::__type
+    ilogb(_Tp __x)
+    { return __builtin_ilogb(__x); }
+
+
+
+  constexpr float
+  lgamma(float __x)
+  { return __builtin_lgammaf(__x); }
+
+  constexpr long double
+  lgamma(long double __x)
+  { return __builtin_lgammal(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    lgamma(_Tp __x)
+    { return __builtin_lgamma(__x); }
+
+
+
+  constexpr long long
+  llrint(float __x)
+  { return __builtin_llrintf(__x); }
+
+  constexpr long long
+  llrint(long double __x)
+  { return __builtin_llrintl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              long long>::__type
+    llrint(_Tp __x)
+    { return __builtin_llrint(__x); }
+
+
+
+  constexpr long long
+  llround(float __x)
+  { return __builtin_llroundf(__x); }
+
+  constexpr long long
+  llround(long double __x)
+  { return __builtin_llroundl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              long long>::__type
+    llround(_Tp __x)
+    { return __builtin_llround(__x); }
+
+
+
+  constexpr float
+  log1p(float __x)
+  { return __builtin_log1pf(__x); }
+
+  constexpr long double
+  log1p(long double __x)
+  { return __builtin_log1pl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    log1p(_Tp __x)
+    { return __builtin_log1p(__x); }
+
+
+
+
+  constexpr float
+  log2(float __x)
+  { return __builtin_log2f(__x); }
+
+  constexpr long double
+  log2(long double __x)
+  { return __builtin_log2l(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    log2(_Tp __x)
+    { return __builtin_log2(__x); }
+
+
+
+  constexpr float
+  logb(float __x)
+  { return __builtin_logbf(__x); }
+
+  constexpr long double
+  logb(long double __x)
+  { return __builtin_logbl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    logb(_Tp __x)
+    { return __builtin_logb(__x); }
+
+
+
+  constexpr long
+  lrint(float __x)
+  { return __builtin_lrintf(__x); }
+
+  constexpr long
+  lrint(long double __x)
+  { return __builtin_lrintl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              long>::__type
+    lrint(_Tp __x)
+    { return __builtin_lrint(__x); }
+
+
+
+  constexpr long
+  lround(float __x)
+  { return __builtin_lroundf(__x); }
+
+  constexpr long
+  lround(long double __x)
+  { return __builtin_lroundl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              long>::__type
+    lround(_Tp __x)
+    { return __builtin_lround(__x); }
+
+
+
+  constexpr float
+  nearbyint(float __x)
+  { return __builtin_nearbyintf(__x); }
+
+  constexpr long double
+  nearbyint(long double __x)
+  { return __builtin_nearbyintl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    nearbyint(_Tp __x)
+    { return __builtin_nearbyint(__x); }
+
+
+
+  constexpr float
+  nextafter(float __x, float __y)
+  { return __builtin_nextafterf(__x, __y); }
+
+  constexpr long double
+  nextafter(long double __x, long double __y)
+  { return __builtin_nextafterl(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    nextafter(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return nextafter(__type(__x), __type(__y));
+    }
+
+
+
+  constexpr float
+  nexttoward(float __x, long double __y)
+  { return __builtin_nexttowardf(__x, __y); }
+
+  constexpr long double
+  nexttoward(long double __x, long double __y)
+  { return __builtin_nexttowardl(__x, __y); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    nexttoward(_Tp __x, long double __y)
+    { return __builtin_nexttoward(__x, __y); }
+
+
+
+  constexpr float
+  remainder(float __x, float __y)
+  { return __builtin_remainderf(__x, __y); }
+
+  constexpr long double
+  remainder(long double __x, long double __y)
+  { return __builtin_remainderl(__x, __y); }
+
+
+
+  template<typename _Tp, typename _Up>
+    constexpr typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    remainder(_Tp __x, _Up __y)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return remainder(__type(__x), __type(__y));
+    }
+
+
+
+  inline float
+  remquo(float __x, float __y, int* __pquo)
+  { return __builtin_remquof(__x, __y, __pquo); }
+
+  inline long double
+  remquo(long double __x, long double __y, int* __pquo)
+  { return __builtin_remquol(__x, __y, __pquo); }
+
+
+
+  template<typename _Tp, typename _Up>
+    inline typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+    remquo(_Tp __x, _Up __y, int* __pquo)
+    {
+      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+      return remquo(__type(__x), __type(__y), __pquo);
+    }
+
+
+
+  constexpr float
+  rint(float __x)
+  { return __builtin_rintf(__x); }
+
+  constexpr long double
+  rint(long double __x)
+  { return __builtin_rintl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    rint(_Tp __x)
+    { return __builtin_rint(__x); }
+
+
+
+  constexpr float
+  round(float __x)
+  { return __builtin_roundf(__x); }
+
+  constexpr long double
+  round(long double __x)
+  { return __builtin_roundl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    round(_Tp __x)
+    { return __builtin_round(__x); }
+
+
+
+  constexpr float
+  scalbln(float __x, long __ex)
+  { return __builtin_scalblnf(__x, __ex); }
+
+  constexpr long double
+  scalbln(long double __x, long __ex)
+  { return __builtin_scalblnl(__x, __ex); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    scalbln(_Tp __x, long __ex)
+    { return __builtin_scalbln(__x, __ex); }
+
+
+
+  constexpr float
+  scalbn(float __x, int __ex)
+  { return __builtin_scalbnf(__x, __ex); }
+
+  constexpr long double
+  scalbn(long double __x, int __ex)
+  { return __builtin_scalbnl(__x, __ex); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    scalbn(_Tp __x, int __ex)
+    { return __builtin_scalbn(__x, __ex); }
+
+
+
+  constexpr float
+  tgamma(float __x)
+  { return __builtin_tgammaf(__x); }
+
+  constexpr long double
+  tgamma(long double __x)
+  { return __builtin_tgammal(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    tgamma(_Tp __x)
+    { return __builtin_tgamma(__x); }
+
+
+
+  constexpr float
+  trunc(float __x)
+  { return __builtin_truncf(__x); }
+
+  constexpr long double
+  trunc(long double __x)
+  { return __builtin_truncl(__x); }
+
+
+
+  template<typename _Tp>
+    constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+                                              double>::__type
+    trunc(_Tp __x)
+    { return __builtin_trunc(__x); }
+
+
+
+}
+# 1889 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+}
+# 37 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/math.h" 2 3
+
+using std::abs;
+using std::acos;
+using std::asin;
+using std::atan;
+using std::atan2;
+using std::cos;
+using std::sin;
+using std::tan;
+using std::cosh;
+using std::sinh;
+using std::tanh;
+using std::exp;
+using std::frexp;
+using std::ldexp;
+using std::log;
+using std::log10;
+using std::modf;
+using std::pow;
+using std::sqrt;
+using std::ceil;
+using std::fabs;
+using std::floor;
+using std::fmod;
+
+
+using std::fpclassify;
+using std::isfinite;
+using std::isinf;
+using std::isnan;
+using std::isnormal;
+using std::signbit;
+using std::isgreater;
+using std::isgreaterequal;
+using std::isless;
+using std::islessequal;
+using std::islessgreater;
+using std::isunordered;
+
+
+
+using std::acosh;
+using std::asinh;
+using std::atanh;
+using std::cbrt;
+using std::copysign;
+using std::erf;
+using std::erfc;
+using std::exp2;
+using std::expm1;
+using std::fdim;
+using std::fma;
+using std::fmax;
+using std::fmin;
+using std::hypot;
+using std::ilogb;
+using std::lgamma;
+using std::llrint;
+using std::llround;
+using std::log1p;
+using std::log2;
+using std::logb;
+using std::lrint;
+using std::lround;
+using std::nearbyint;
+using std::nextafter;
+using std::nexttoward;
+using std::remainder;
+using std::remquo;
+using std::rint;
+using std::round;
+using std::scalbln;
+using std::scalbn;
+using std::tgamma;
+using std::trunc;
 # 8860 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h" 2
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/stdlib.h" 1 3
+# 36 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/stdlib.h" 3
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 1 3
+# 39 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
+       
+# 40 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
+# 75 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
 # 1 "/usr/include/stdlib.h" 1 3 4
 # 32 "/usr/include/stdlib.h" 3 4
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 1 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 1 3 4
 # 33 "/usr/include/stdlib.h" 2 3 4
 
 extern "C" {
@@ -6714,7 +8911,7 @@ typedef __suseconds_t suseconds_t;
 
 
 
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 1 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 1 3 4
 # 147 "/usr/include/sys/types.h" 2 3 4
 
 
@@ -7180,7 +9377,7 @@ extern void cfree (void *__ptr) throw ();
 
 # 1 "/usr/include/alloca.h" 1 3 4
 # 24 "/usr/include/alloca.h" 3 4
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/lib/gcc/powerpc64le-none-linux-gnu/5.4.0/include/stddef.h" 1 3 4
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include/stddef.h" 1 3 4
 # 25 "/usr/include/alloca.h" 2 3 4
 
 extern "C" {
@@ -7545,1144 +9742,10 @@ extern int getloadavg (double __loadavg[], int __nelem)
 # 952 "/usr/include/stdlib.h" 2 3 4
 # 964 "/usr/include/stdlib.h" 3 4
 }
-# 8861 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h" 2
-
-
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 1 3
-# 39 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 3
-       
-# 40 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 3
-
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 1 3
-# 194 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
-namespace std
+# 76 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 2 3
+# 118 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
+extern "C++"
 {
-  typedef long unsigned int size_t;
-  typedef long int ptrdiff_t;
-
-
-
-
-}
-# 216 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
-namespace std
-{
-  inline namespace __cxx11 __attribute__((__abi_tag__ ("cxx11"))) { }
-}
-namespace __gnu_cxx
-{
-  inline namespace __cxx11 __attribute__((__abi_tag__ ("cxx11"))) { }
-}
-# 393 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
-namespace std
-{
-  inline namespace __gnu_cxx_ldbl128 { }
-}
-# 482 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 3
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/os_defines.h" 1 3
-# 483 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 2 3
-
-
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/cpu_defines.h" 1 3
-# 486 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/powerpc64le-none-linux-gnu/bits/c++config.h" 2 3
-# 42 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 2 3
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/bits/cpp_type_traits.h" 1 3
-# 35 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/bits/cpp_type_traits.h" 3
-       
-# 36 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/bits/cpp_type_traits.h" 3
-# 68 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/bits/cpp_type_traits.h" 3
-namespace __gnu_cxx __attribute__ ((__visibility__ ("default")))
-{
-
-
-  template<typename _Iterator, typename _Container>
-    class __normal_iterator;
-
-
-}
-
-namespace std __attribute__ ((__visibility__ ("default")))
-{
-
-
-  struct __true_type { };
-  struct __false_type { };
-
-  template<bool>
-    struct __truth_type
-    { typedef __false_type __type; };
-
-  template<>
-    struct __truth_type<true>
-    { typedef __true_type __type; };
-
-
-
-  template<class _Sp, class _Tp>
-    struct __traitor
-    {
-      enum { __value = bool(_Sp::__value) || bool(_Tp::__value) };
-      typedef typename __truth_type<__value>::__type __type;
-    };
-
-
-  template<typename, typename>
-    struct __are_same
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-
-  template<typename _Tp>
-    struct __are_same<_Tp, _Tp>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-  template<typename _Tp>
-    struct __is_void
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-
-  template<>
-    struct __is_void<void>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-
-
-  template<typename _Tp>
-    struct __is_integer
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-
-
-
-
-
-  template<>
-    struct __is_integer<bool>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<char>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<signed char>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<unsigned char>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-  template<>
-    struct __is_integer<wchar_t>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-# 199 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/bits/cpp_type_traits.h" 3
-  template<>
-    struct __is_integer<short>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<unsigned short>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<int>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<unsigned int>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<long>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<unsigned long>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<long long>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_integer<unsigned long long>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-# 270 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/bits/cpp_type_traits.h" 3
-template<> struct __is_integer<__int128> { enum { __value = 1 }; typedef __true_type __type; }; template<> struct __is_integer<unsigned __int128> { enum { __value = 1 }; typedef __true_type __type; };
-# 287 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/bits/cpp_type_traits.h" 3
-  template<typename _Tp>
-    struct __is_floating
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-
-
-  template<>
-    struct __is_floating<float>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_floating<double>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_floating<long double>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-
-
-  template<typename _Tp>
-    struct __is_pointer
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-
-  template<typename _Tp>
-    struct __is_pointer<_Tp*>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-
-
-  template<typename _Tp>
-    struct __is_normal_iterator
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-
-  template<typename _Iterator, typename _Container>
-    struct __is_normal_iterator< __gnu_cxx::__normal_iterator<_Iterator,
-             _Container> >
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-
-
-  template<typename _Tp>
-    struct __is_arithmetic
-    : public __traitor<__is_integer<_Tp>, __is_floating<_Tp> >
-    { };
-
-
-
-
-  template<typename _Tp>
-    struct __is_scalar
-    : public __traitor<__is_arithmetic<_Tp>, __is_pointer<_Tp> >
-    { };
-
-
-
-
-  template<typename _Tp>
-    struct __is_char
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-
-  template<>
-    struct __is_char<char>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-  template<>
-    struct __is_char<wchar_t>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-  template<typename _Tp>
-    struct __is_byte
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-
-  template<>
-    struct __is_byte<char>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_byte<signed char>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-  template<>
-    struct __is_byte<unsigned char>
-    {
-      enum { __value = 1 };
-      typedef __true_type __type;
-    };
-
-
-
-
-  template<typename _Tp>
-    struct __is_move_iterator
-    {
-      enum { __value = 0 };
-      typedef __false_type __type;
-    };
-# 443 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/bits/cpp_type_traits.h" 3
-
-}
-# 43 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 2 3
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/ext/type_traits.h" 1 3
-# 32 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/ext/type_traits.h" 3
-       
-# 33 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/ext/type_traits.h" 3
-
-
-
-
-namespace __gnu_cxx __attribute__ ((__visibility__ ("default")))
-{
-
-
-
-  template<bool, typename>
-    struct __enable_if
-    { };
-
-  template<typename _Tp>
-    struct __enable_if<true, _Tp>
-    { typedef _Tp __type; };
-
-
-
-  template<bool _Cond, typename _Iftrue, typename _Iffalse>
-    struct __conditional_type
-    { typedef _Iftrue __type; };
-
-  template<typename _Iftrue, typename _Iffalse>
-    struct __conditional_type<false, _Iftrue, _Iffalse>
-    { typedef _Iffalse __type; };
-
-
-
-  template<typename _Tp>
-    struct __add_unsigned
-    {
-    private:
-      typedef __enable_if<std::__is_integer<_Tp>::__value, _Tp> __if_type;
-
-    public:
-      typedef typename __if_type::__type __type;
-    };
-
-  template<>
-    struct __add_unsigned<char>
-    { typedef unsigned char __type; };
-
-  template<>
-    struct __add_unsigned<signed char>
-    { typedef unsigned char __type; };
-
-  template<>
-    struct __add_unsigned<short>
-    { typedef unsigned short __type; };
-
-  template<>
-    struct __add_unsigned<int>
-    { typedef unsigned int __type; };
-
-  template<>
-    struct __add_unsigned<long>
-    { typedef unsigned long __type; };
-
-  template<>
-    struct __add_unsigned<long long>
-    { typedef unsigned long long __type; };
-
-
-  template<>
-    struct __add_unsigned<bool>;
-
-  template<>
-    struct __add_unsigned<wchar_t>;
-
-
-
-  template<typename _Tp>
-    struct __remove_unsigned
-    {
-    private:
-      typedef __enable_if<std::__is_integer<_Tp>::__value, _Tp> __if_type;
-
-    public:
-      typedef typename __if_type::__type __type;
-    };
-
-  template<>
-    struct __remove_unsigned<char>
-    { typedef signed char __type; };
-
-  template<>
-    struct __remove_unsigned<unsigned char>
-    { typedef signed char __type; };
-
-  template<>
-    struct __remove_unsigned<unsigned short>
-    { typedef short __type; };
-
-  template<>
-    struct __remove_unsigned<unsigned int>
-    { typedef int __type; };
-
-  template<>
-    struct __remove_unsigned<unsigned long>
-    { typedef long __type; };
-
-  template<>
-    struct __remove_unsigned<unsigned long long>
-    { typedef long long __type; };
-
-
-  template<>
-    struct __remove_unsigned<bool>;
-
-  template<>
-    struct __remove_unsigned<wchar_t>;
-
-
-
-  template<typename _Type>
-    inline bool
-    __is_null_pointer(_Type* __ptr)
-    { return __ptr == 0; }
-
-  template<typename _Type>
-    inline bool
-    __is_null_pointer(_Type)
-    { return false; }
-# 165 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/ext/type_traits.h" 3
-  template<typename _Tp, bool = std::__is_integer<_Tp>::__value>
-    struct __promote
-    { typedef double __type; };
-
-
-
-
-  template<typename _Tp>
-    struct __promote<_Tp, false>
-    { };
-
-  template<>
-    struct __promote<long double>
-    { typedef long double __type; };
-
-  template<>
-    struct __promote<double>
-    { typedef double __type; };
-
-  template<>
-    struct __promote<float>
-    { typedef float __type; };
-
-  template<typename _Tp, typename _Up,
-           typename _Tp2 = typename __promote<_Tp>::__type,
-           typename _Up2 = typename __promote<_Up>::__type>
-    struct __promote_2
-    {
-      typedef __typeof__(_Tp2() + _Up2()) __type;
-    };
-
-  template<typename _Tp, typename _Up, typename _Vp,
-           typename _Tp2 = typename __promote<_Tp>::__type,
-           typename _Up2 = typename __promote<_Up>::__type,
-           typename _Vp2 = typename __promote<_Vp>::__type>
-    struct __promote_3
-    {
-      typedef __typeof__(_Tp2() + _Up2() + _Vp2()) __type;
-    };
-
-  template<typename _Tp, typename _Up, typename _Vp, typename _Wp,
-           typename _Tp2 = typename __promote<_Tp>::__type,
-           typename _Up2 = typename __promote<_Up>::__type,
-           typename _Vp2 = typename __promote<_Vp>::__type,
-           typename _Wp2 = typename __promote<_Wp>::__type>
-    struct __promote_4
-    {
-      typedef __typeof__(_Tp2() + _Up2() + _Vp2() + _Wp2()) __type;
-    };
-
-
-}
-# 44 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 2 3
-# 75 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 3
-namespace std __attribute__ ((__visibility__ ("default")))
-{
-
-
-
-  inline double
-  abs(double __x)
-  { return __builtin_fabs(__x); }
-
-
-
-  inline float
-  abs(float __x)
-  { return __builtin_fabsf(__x); }
-
-  inline long double
-  abs(long double __x)
-  { return __builtin_fabsl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    abs(_Tp __x)
-    { return __builtin_fabs(__x); }
-
-  using ::acos;
-
-
-  inline float
-  acos(float __x)
-  { return __builtin_acosf(__x); }
-
-  inline long double
-  acos(long double __x)
-  { return __builtin_acosl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    acos(_Tp __x)
-    { return __builtin_acos(__x); }
-
-  using ::asin;
-
-
-  inline float
-  asin(float __x)
-  { return __builtin_asinf(__x); }
-
-  inline long double
-  asin(long double __x)
-  { return __builtin_asinl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    asin(_Tp __x)
-    { return __builtin_asin(__x); }
-
-  using ::atan;
-
-
-  inline float
-  atan(float __x)
-  { return __builtin_atanf(__x); }
-
-  inline long double
-  atan(long double __x)
-  { return __builtin_atanl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    atan(_Tp __x)
-    { return __builtin_atan(__x); }
-
-  using ::atan2;
-
-
-  inline float
-  atan2(float __y, float __x)
-  { return __builtin_atan2f(__y, __x); }
-
-  inline long double
-  atan2(long double __y, long double __x)
-  { return __builtin_atan2l(__y, __x); }
-
-
-  template<typename _Tp, typename _Up>
-    inline
-    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
-    atan2(_Tp __y, _Up __x)
-    {
-      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
-      return atan2(__type(__y), __type(__x));
-    }
-
-  using ::ceil;
-
-
-  inline float
-  ceil(float __x)
-  { return __builtin_ceilf(__x); }
-
-  inline long double
-  ceil(long double __x)
-  { return __builtin_ceill(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    ceil(_Tp __x)
-    { return __builtin_ceil(__x); }
-
-  using ::cos;
-
-
-  inline float
-  cos(float __x)
-  { return __builtin_cosf(__x); }
-
-  inline long double
-  cos(long double __x)
-  { return __builtin_cosl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    cos(_Tp __x)
-    { return __builtin_cos(__x); }
-
-  using ::cosh;
-
-
-  inline float
-  cosh(float __x)
-  { return __builtin_coshf(__x); }
-
-  inline long double
-  cosh(long double __x)
-  { return __builtin_coshl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    cosh(_Tp __x)
-    { return __builtin_cosh(__x); }
-
-  using ::exp;
-
-
-  inline float
-  exp(float __x)
-  { return __builtin_expf(__x); }
-
-  inline long double
-  exp(long double __x)
-  { return __builtin_expl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    exp(_Tp __x)
-    { return __builtin_exp(__x); }
-
-  using ::fabs;
-
-
-  inline float
-  fabs(float __x)
-  { return __builtin_fabsf(__x); }
-
-  inline long double
-  fabs(long double __x)
-  { return __builtin_fabsl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    fabs(_Tp __x)
-    { return __builtin_fabs(__x); }
-
-  using ::floor;
-
-
-  inline float
-  floor(float __x)
-  { return __builtin_floorf(__x); }
-
-  inline long double
-  floor(long double __x)
-  { return __builtin_floorl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    floor(_Tp __x)
-    { return __builtin_floor(__x); }
-
-  using ::fmod;
-
-
-  inline float
-  fmod(float __x, float __y)
-  { return __builtin_fmodf(__x, __y); }
-
-  inline long double
-  fmod(long double __x, long double __y)
-  { return __builtin_fmodl(__x, __y); }
-
-
-  template<typename _Tp, typename _Up>
-    inline
-    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
-    fmod(_Tp __x, _Up __y)
-    {
-      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
-      return fmod(__type(__x), __type(__y));
-    }
-
-  using ::frexp;
-
-
-  inline float
-  frexp(float __x, int* __exp)
-  { return __builtin_frexpf(__x, __exp); }
-
-  inline long double
-  frexp(long double __x, int* __exp)
-  { return __builtin_frexpl(__x, __exp); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    frexp(_Tp __x, int* __exp)
-    { return __builtin_frexp(__x, __exp); }
-
-  using ::ldexp;
-
-
-  inline float
-  ldexp(float __x, int __exp)
-  { return __builtin_ldexpf(__x, __exp); }
-
-  inline long double
-  ldexp(long double __x, int __exp)
-  { return __builtin_ldexpl(__x, __exp); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    ldexp(_Tp __x, int __exp)
-    { return __builtin_ldexp(__x, __exp); }
-
-  using ::log;
-
-
-  inline float
-  log(float __x)
-  { return __builtin_logf(__x); }
-
-  inline long double
-  log(long double __x)
-  { return __builtin_logl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    log(_Tp __x)
-    { return __builtin_log(__x); }
-
-  using ::log10;
-
-
-  inline float
-  log10(float __x)
-  { return __builtin_log10f(__x); }
-
-  inline long double
-  log10(long double __x)
-  { return __builtin_log10l(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    log10(_Tp __x)
-    { return __builtin_log10(__x); }
-
-  using ::modf;
-
-
-  inline float
-  modf(float __x, float* __iptr)
-  { return __builtin_modff(__x, __iptr); }
-
-  inline long double
-  modf(long double __x, long double* __iptr)
-  { return __builtin_modfl(__x, __iptr); }
-
-
-  using ::pow;
-
-
-  inline float
-  pow(float __x, float __y)
-  { return __builtin_powf(__x, __y); }
-
-  inline long double
-  pow(long double __x, long double __y)
-  { return __builtin_powl(__x, __y); }
-
-
-
-
-  inline double
-  pow(double __x, int __i)
-  { return __builtin_powi(__x, __i); }
-
-  inline float
-  pow(float __x, int __n)
-  { return __builtin_powif(__x, __n); }
-
-  inline long double
-  pow(long double __x, int __n)
-  { return __builtin_powil(__x, __n); }
-
-
-
-  template<typename _Tp, typename _Up>
-    inline
-    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
-    pow(_Tp __x, _Up __y)
-    {
-      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
-      return pow(__type(__x), __type(__y));
-    }
-
-  using ::sin;
-
-
-  inline float
-  sin(float __x)
-  { return __builtin_sinf(__x); }
-
-  inline long double
-  sin(long double __x)
-  { return __builtin_sinl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    sin(_Tp __x)
-    { return __builtin_sin(__x); }
-
-  using ::sinh;
-
-
-  inline float
-  sinh(float __x)
-  { return __builtin_sinhf(__x); }
-
-  inline long double
-  sinh(long double __x)
-  { return __builtin_sinhl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    sinh(_Tp __x)
-    { return __builtin_sinh(__x); }
-
-  using ::sqrt;
-
-
-  inline float
-  sqrt(float __x)
-  { return __builtin_sqrtf(__x); }
-
-  inline long double
-  sqrt(long double __x)
-  { return __builtin_sqrtl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    sqrt(_Tp __x)
-    { return __builtin_sqrt(__x); }
-
-  using ::tan;
-
-
-  inline float
-  tan(float __x)
-  { return __builtin_tanf(__x); }
-
-  inline long double
-  tan(long double __x)
-  { return __builtin_tanl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    tan(_Tp __x)
-    { return __builtin_tan(__x); }
-
-  using ::tanh;
-
-
-  inline float
-  tanh(float __x)
-  { return __builtin_tanhf(__x); }
-
-  inline long double
-  tanh(long double __x)
-  { return __builtin_tanhl(__x); }
-
-
-  template<typename _Tp>
-    inline
-    typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
-                                    double>::__type
-    tanh(_Tp __x)
-    { return __builtin_tanh(__x); }
-
-
-}
-# 555 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 3
-namespace std __attribute__ ((__visibility__ ("default")))
-{
-
-# 831 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cmath" 3
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    fpclassify(_Tp __f)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_fpclassify(0, 1, 4,
-      3, 2, __type(__f));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    isfinite(_Tp __f)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_isfinite(__type(__f));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    isinf(_Tp __f)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_isinf(__type(__f));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    isnan(_Tp __f)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_isnan(__type(__f));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    isnormal(_Tp __f)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_isnormal(__type(__f));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    signbit(_Tp __f)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return sizeof(__type) == sizeof(float)
- ? __builtin_signbitf(__type(__f))
- : sizeof(__type) == sizeof(double)
- ? __builtin_signbit(__type(__f))
- : __builtin_signbitl(__type(__f));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    isgreater(_Tp __f1, _Tp __f2)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_isgreater(__type(__f1), __type(__f2));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    isgreaterequal(_Tp __f1, _Tp __f2)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_isgreaterequal(__type(__f1), __type(__f2));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    isless(_Tp __f1, _Tp __f2)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_isless(__type(__f1), __type(__f2));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    islessequal(_Tp __f1, _Tp __f2)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_islessequal(__type(__f1), __type(__f2));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    islessgreater(_Tp __f1, _Tp __f2)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_islessgreater(__type(__f1), __type(__f2));
-    }
-
-  template<typename _Tp>
-    inline typename __gnu_cxx::__enable_if<__is_arithmetic<_Tp>::__value,
-        int>::__type
-    isunordered(_Tp __f1, _Tp __f2)
-    {
-      typedef typename __gnu_cxx::__promote<_Tp>::__type __type;
-      return __builtin_isunordered(__type(__f1), __type(__f2));
-    }
-
-
-
-
-}
-# 8864 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h" 2
-# 1 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cstdlib" 1 3
-# 39 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cstdlib" 3
-       
-# 40 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cstdlib" 3
-# 114 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cstdlib" 3
 namespace std __attribute__ ((__visibility__ ("default")))
 {
 
@@ -8695,7 +9758,7 @@ namespace std __attribute__ ((__visibility__ ("default")))
   using ::atexit;
 
 
-
+  using ::at_quick_exit;
 
 
   using ::atof;
@@ -8718,7 +9781,7 @@ namespace std __attribute__ ((__visibility__ ("default")))
   using ::qsort;
 
 
-
+  using ::quick_exit;
 
 
   using ::rand;
@@ -8749,10 +9812,10 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
   inline __int128
   abs(__int128 __x) { return __x >= 0 ? __x : -__x; }
-# 195 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cstdlib" 3
+# 201 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
 
 }
-# 209 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cstdlib" 3
+# 215 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
 namespace __gnu_cxx __attribute__ ((__visibility__ ("default")))
 {
 
@@ -8775,7 +9838,7 @@ namespace __gnu_cxx __attribute__ ((__visibility__ ("default")))
   { lldiv_t __q; __q.quot = __n / __d; __q.rem = __n % __d; return __q; }
 
   using ::lldiv;
-# 241 "/autofs/nccs-svm1_sw/summit/gcc/5.4.0/include/c++/5.4.0/cstdlib" 3
+# 247 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
   using ::atoll;
   using ::strtoll;
   using ::strtoull;
@@ -8803,60 +9866,96 @@ namespace std
   using ::__gnu_cxx::strtoull;
   using ::__gnu_cxx::strtold;
 }
+
+
+
+}
+# 37 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/stdlib.h" 2 3
+
+using std::abort;
+using std::atexit;
+using std::exit;
+
+
+  using std::at_quick_exit;
+
+
+  using std::quick_exit;
+
+
+
+
+using std::div_t;
+using std::ldiv_t;
+
+using std::abs;
+using std::atof;
+using std::atoi;
+using std::atol;
+using std::bsearch;
+using std::calloc;
+using std::div;
+using std::free;
+using std::getenv;
+using std::labs;
+using std::ldiv;
+using std::malloc;
+
+using std::mblen;
+using std::mbstowcs;
+using std::mbtowc;
+
+using std::qsort;
+using std::rand;
+using std::realloc;
+using std::srand;
+using std::strtod;
+using std::strtol;
+using std::strtoul;
+using std::system;
+
+using std::wcstombs;
+using std::wctomb;
+# 8861 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h" 2
+
+
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 1 3
+# 39 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+       
+# 40 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cmath" 3
+# 8864 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h" 2
+# 1 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 1 3
+# 39 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
+       
+# 40 "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/cstdlib" 3
 # 8865 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h" 2
-# 8984 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
+# 8934 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
 
-# 8984 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int signbit(float x);
-
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int signbit(double x);
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int signbit(long double x);
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isfinite(float x);
-
+# 8934 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
+namespace std {
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool signbit(float x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool signbit(double x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool signbit(long double x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool isfinite(float x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool isfinite(double x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool isfinite(long double x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool isnan(float x);
 
 
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isfinite(double x);
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isfinite(long double x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isnan(double x) throw();
 
 
 
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool isnan(long double x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool isinf(float x);
+
+
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isinf(double x) throw();
 
 
 
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isnan(float x);
-
-
-
-
-
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isnan(double x) throw();
-
-
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isnan(long double x);
-
-
-
-
-
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isinf(float x);
-# 9035 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isinf(double x) throw();
-
-
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isinf(long double x);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr bool isinf(long double x);
+}
 # 9098 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
 namespace std
 {
@@ -8902,9 +10001,16 @@ extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_built
 extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float floor(float);
 extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float sqrt(float);
 extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float pow(float, float);
-# 9528 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
-extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float pow(float, int);
-extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) double pow(double, int);
+
+
+
+
+template<typename _Tp, typename _Up>
+extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin))
+typename __gnu_cxx::__promote_2<_Tp, _Up>::__type pow(_Tp, _Up);
+
+
+
 
 
 
@@ -8928,72 +10034,42 @@ extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_built
 extern __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float tanh(float);
 # 9624 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
 }
-# 9761 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float logb(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int ilogb(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float scalbn(float a, int b);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float scalbln(float a, long int b);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float exp2(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float expm1(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float log2(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float log1p(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float acosh(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float asinh(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float atanh(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float hypot(float a, float b);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float cbrt(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float erf(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float erfc(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float lgamma(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float tgamma(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float copysign(float a, float b);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float nextafter(float a, float b);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float remainder(float a, float b);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float remquo(float a, float b, int *quo);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float round(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) long int lround(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) long long int llround(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float trunc(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float rint(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) long int lrint(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) long long int llrint(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float nearbyint(float a);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float fdim(float a, float b);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float fma(float a, float b, float c);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float fmax(float a, float b);
-
-static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float fmin(float a, float b);
+# 9725 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
+namespace std {
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float logb(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr int ilogb(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float scalbn(float a, int b);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float scalbln(float a, long int b);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float exp2(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float expm1(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float log2(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float log1p(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float acosh(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float asinh(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float atanh(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float hypot(float a, float b);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float cbrt(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float erf(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float erfc(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float lgamma(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float tgamma(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float copysign(float a, float b);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float nextafter(float a, float b);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float remainder(float a, float b);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float remquo(float a, float b, int *quo);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float round(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr long int lround(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr long long int llround(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float trunc(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float rint(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr long int lrint(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr long long int llrint(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float nearbyint(float a);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float fdim(float a, float b);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float fma(float a, float b, float c);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float fmax(float a, float b);
+__attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) constexpr float fmin(float a, float b);
+}
 # 9864 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.h"
 static inline __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) float exp10(float a);
 
@@ -9105,209 +10181,7 @@ static inline __attribute__((host)) __attribute__((device)) __attribute__((cudar
 # 78 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.hpp" 2
 # 1 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/host_defines.h" 1
 # 79 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.hpp" 2
-# 327 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.hpp"
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int signbit(float x) { return __signbitf(x); }
-
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int signbit(double x) { return __signbit(x); }
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int signbit(long double x) { return __signbitl(x);}
-# 344 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.hpp"
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isfinite(float x) { return __finitef(x); }
-# 359 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.hpp"
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isfinite(double x) { return __finite(x); }
-# 372 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.hpp"
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isfinite(long double x) { return __finitel(x); }
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isnan(float x) { return __isnanf(x); }
-
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isnan(double x) throw() { return __isnan(x); }
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isnan(long double x) { return __isnanl(x); }
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isinf(float x) { return __isinff(x); }
-
-
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isinf(double x) throw() { return __isinf(x); }
-
-__inline__ __attribute__((always_inline)) __attribute__((host)) __attribute__((device)) __attribute__((cudart_builtin)) int isinf(long double x) { return __isinfl(x); }
-# 585 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.hpp"
-static inline __attribute__((host)) __attribute__((device)) float logb(float a)
-{
-  return logbf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) int ilogb(float a)
-{
-  return ilogbf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float scalbn(float a, int b)
-{
-  return scalbnf(a, b);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float scalbln(float a, long int b)
-{
-  return scalblnf(a, b);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float exp2(float a)
-{
-  return exp2f(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float expm1(float a)
-{
-  return expm1f(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float log2(float a)
-{
-  return log2f(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float log1p(float a)
-{
-  return log1pf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float acosh(float a)
-{
-  return acoshf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float asinh(float a)
-{
-  return asinhf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float atanh(float a)
-{
-  return atanhf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float hypot(float a, float b)
-{
-  return hypotf(a, b);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float cbrt(float a)
-{
-  return cbrtf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float erf(float a)
-{
-  return erff(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float erfc(float a)
-{
-  return erfcf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float lgamma(float a)
-{
-  return lgammaf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float tgamma(float a)
-{
-  return tgammaf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float copysign(float a, float b)
-{
-  return copysignf(a, b);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float nextafter(float a, float b)
-{
-  return nextafterf(a, b);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float remainder(float a, float b)
-{
-  return remainderf(a, b);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float remquo(float a, float b, int *quo)
-{
-  return remquof(a, b, quo);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float round(float a)
-{
-  return roundf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) long int lround(float a)
-{
-  return lroundf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) long long int llround(float a)
-{
-  return llroundf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float trunc(float a)
-{
-  return truncf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float rint(float a)
-{
-  return rintf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) long int lrint(float a)
-{
-  return lrintf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) long long int llrint(float a)
-{
-  return llrintf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float nearbyint(float a)
-{
-  return nearbyintf(a);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float fdim(float a, float b)
-{
-  return fdimf(a, b);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float fma(float a, float b, float c)
-{
-  return fmaf(a, b, c);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float fmax(float a, float b)
-{
-  return fmaxf(a, b);
-}
-
-static inline __attribute__((host)) __attribute__((device)) float fmin(float a, float b)
-{
-  return fminf(a, b);
-}
-
-
-
-
-
-
-
+# 756 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/crt/math_functions.hpp"
 static inline __attribute__((host)) __attribute__((device)) float exp10(float a)
 {
   return exp10f(a);
@@ -13738,8 +14612,16 @@ char const* info_arch = "INFO" ":" "arch[" "]";
 
 
 const char* info_language_dialect_default = "INFO" ":" "dialect_default["
-# 335 "CMakeCUDACompilerId.cu"
-  "98"
+
+
+
+
+
+  "14"
+
+
+
+
 
 "]";
 

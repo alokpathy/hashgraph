@@ -53,7 +53,7 @@ using namespace std::chrono;
 #define LRB_BUILD
 
 #ifdef HOST_PROFILE
-uint64_t tidFocused = 2;
+uint64_t tidFocused = 0;
 #endif
 
 // #define DEBUG
@@ -296,7 +296,11 @@ void MultiHashGraph::destroyMulti() {
 }
 
 bool compareByKey(const keyval &kv1, const keyval &kv2) {
+#ifdef INDEX_TRACK
   return kv1.key < kv2.key;
+#else
+  return kv1 < kv2;
+#endif
 }
 
 // void lrbBuildMultiTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter, 
@@ -313,10 +317,8 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
   void*  _d_temp_storage     { nullptr };
   size_t _temp_storage_bytes { 0 };
 
-
-
   hashValuesD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
-                                                  (HashKey) ogTableSize, devNum);
+                                                 (HashKey) ogTableSize, devNum);
   decrHash<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(d_hash, valCount, d_splits, 
                                                 devNum);
 
@@ -419,6 +421,10 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
   // Hash all keys on each device.
   cudaSetDevice(tid);
 
+#ifdef CUDA_PROFILE
+  cudaProfilerStart();
+#endif
+
   basicHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(h_dVals[tid].len, h_dVals[tid].d_keys,
                                                   // h_dVals[tid].d_keys + h_dVals[tid].len, tableSize);
                                                   h_dVals[tid].d_hash, tableSize);
@@ -439,7 +445,8 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
       cudaDeviceSynchronize();
       t2 = high_resolution_clock::now();
       buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-      std::cout << "countBinSizes time: " << (buildTime / 1000.0) << std::endl;
+      // std::cout << "multi countBinSizes time: " << (buildTime / 1000.0) << std::endl;
+      std::cout << (buildTime / 1000.0) << ",";
     }
 #endif
 
@@ -462,7 +469,8 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
     cudaDeviceSynchronize();
     t2 = high_resolution_clock::now();
     buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "countKeyBuff time: " << (buildTime / 1000.0) << std::endl;
+    // std::cout << "countKeyBuff time: " << (buildTime / 1000.0) << std::endl;
+    std::cout << (buildTime / 1000.0) << ",";
   }
 #endif
 
@@ -486,7 +494,8 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
     cudaDeviceSynchronize();
     t2 = high_resolution_clock::now();
     buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "populateKeyBuffs time: " << (buildTime / 1000.0) << std::endl;
+    // std::cout << "populateKeyBuffs time: " << (buildTime / 1000.0) << std::endl;
+    std::cout << (buildTime / 1000.0) << ",";
   }
 #endif
 #ifdef ERROR_CHECK
@@ -523,7 +532,8 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
     cudaDeviceSynchronize();
     t2 = high_resolution_clock::now();
     buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "countFinalKeys time: " << (buildTime / 1000.0) << std::endl;
+    // std::cout << "countFinalKeys time: " << (buildTime / 1000.0) << std::endl;
+    std::cout << (buildTime / 1000.0) << ",";
   }
 #endif
 #ifdef ERROR_CHECK
@@ -548,7 +558,8 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
     cudaDeviceSynchronize();
     t2 = high_resolution_clock::now();
     buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "allToAll time: " << (buildTime / 1000.0) << std::endl;
+    // std::cout << "allToAll time: " << (buildTime / 1000.0) << std::endl;
+    std::cout << (buildTime / 1000.0) << ",";
   }
 #endif
 
@@ -610,7 +621,8 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
     cudaDeviceSynchronize();
     t2 = high_resolution_clock::now();
     buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
-    std::cout << "building time: " << (buildTime / 1000.0) << std::endl;
+    // std::cout << "building time: " << (buildTime / 1000.0) << std::endl;
+    std::cout << (buildTime / 1000.0) << ",";
   }
 #endif
 
@@ -626,6 +638,11 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
   cudaDeviceSynchronize();
   CHECK_ERROR("build error");
 #endif
+
+#ifdef CUDA_PROFILE
+  cudaProfilerStop();
+#endif
+
 }
 
 void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index_t *h_Common,
@@ -826,13 +843,21 @@ void MultiHashGraph::buildSingle() {
         std::vector<hkey_t> multiGPU;
         for (index_t k = h_hOffsets[j]; k < h_hOffsets[j + 1]; k++) {
           keyval edge = h_hEdges[k];
+#ifdef INDEX_TRACK
           multiGPU.push_back(edge.key);
+#else
+          multiGPU.push_back(edge);
+#endif
         }
 
         std::vector<hkey_t> singleGPU;
         for (index_t k = h_offset[hash]; k < h_offset[hash + 1]; k++) {
           keyval edge = h_edges[k];
+#ifdef INDEX_TRACK
           singleGPU.push_back(edge.key);
+#else
+          singleGPU.push_back(edge);
+#endif
         }
 
         std::sort(multiGPU.begin(), multiGPU.end());
@@ -858,5 +883,5 @@ void MultiHashGraph::buildSingle() {
     cudaSetDevice(0);
 
     cudaFree(d_vals);
-    CHECK_ERROR("buildSingle");
+    CHECK_ERROR("buildSingle"); 
 }
