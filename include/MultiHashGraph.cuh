@@ -59,7 +59,7 @@
 // #define CUDA_PROFILE
 #define HOST_PROFILE
 
-#define INDEX_TRACK
+//#define INDEX_TRACK
 #define MANAGED_MEM
 // #define B32
 

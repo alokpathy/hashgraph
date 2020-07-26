@@ -19,6 +19,7 @@ echo "build tests"
 
 # $1 is sizeof(keyval)
 # $2 is 32-bit vs 64-bit
+echo "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total"
 for i in "${keycounts[@]}"
     do
         let kc=$((echo 2^$i) | bc)
@@ -31,7 +32,7 @@ for i in "${keycounts[@]}"
 
                 let ts=$kc
                 if [ $2 -eq 4 ] ; then
-                    ts=$(($kc < (2**($2 * 8)) ? $kc : 2**($2 * 8)))
+                    ts=$(($kc < (2**($2 * 8 - 1)) ? $kc : 2**($2 * 8 - 1)))
                 fi
 
                 # internal cuda malloc + keys + hashes + keyBinBuff
@@ -45,11 +46,12 @@ for i in "${keycounts[@]}"
                 
                 # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc build | grep "time")
                 ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc build | grep "time")
-                tokens=( $ans )
-                time=${tokens[3]}
+                # tokens=( $ans )
+                # time=${tokens[3]}
 
                 # echo "${kc},${gc},${time}" >> $resultsfile
-                echo "${kc},${gc},${time}"
+                # echo "${kc},${gc},${time}"
+                echo -e "${kc},${gc},\n${ans}"
             done
     done
 
@@ -68,7 +70,7 @@ for i in "${keycounts[@]}"
 
                 let ts=$kc
                 if [ $2 -eq 4 ] ; then
-                    ts=$(($kc < (2**($2 * 8)) ? $kc : 2**($2 * 8)))
+                    ts=$(($kc < (2**($2 * 8 - 1)) ? $kc : 2**($2 * 8 - 1)))
                 fi
 
                 # internal cuda malloc + keys + hashes + keyBinBuff
@@ -82,11 +84,12 @@ for i in "${keycounts[@]}"
 
                 # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc intersect | grep "time")
                 ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc intersect | grep "time")
-                tokens=( $ans )
-                time=${tokens[3]}
+                # tokens=( $ans )
+                # time=${tokens[3]}
 
                 # echo "${kc},${gc},${time}" >> $resultsfile
-                echo "${kc},${gc},${time}"
+                # echo "${kc},${gc},${time}"
+                echo -e "${kc},${gc},\n${ans}"
             done
     done
 

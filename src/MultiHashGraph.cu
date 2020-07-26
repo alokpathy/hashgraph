@@ -736,16 +736,47 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
 
   // printf("Size of the ouput is : %ld\n", h_Common[tid]); fflush(stdout);
 
+#ifdef HOST_PROFILE
+  float buildTime = 0.0f; // milliseoncds
+  high_resolution_clock::time_point t1;
+  high_resolution_clock::time_point t2;
+  if (tid == tidFocused) {
+    t1 = high_resolution_clock::now();
+  }
+#endif
   if (h_Common[tid] > 0) {
     // d_output =  mem_t<keypair>(h_Common,context,memory_space_device);
     cudaMalloc(&h_dOutput[tid], h_Common[tid] * sizeof(keypair));
     // RMM_ALLOC(&h_dOutput[tid], h_Common[tid] * sizeof(keypair), 0);
   }
+#ifdef HOST_PROFILE
+  if (tid == tidFocused) {
+    cudaDeviceSynchronize();
+    t2 = high_resolution_clock::now();
+    buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
+    // std::cout << "building time: " << (buildTime / 1000.0) << std::endl;
+    std::cout << (buildTime / 1000.0) << ",";
+  }
+#endif
 
 
+#ifdef HOST_PROFILE
+  if (tid == tidFocused) {
+    t1 = high_resolution_clock::now();
+  }
+#endif
   simpleIntersect<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(tableSize, d_offsetA, d_edgesA, d_offsetB,
                                                         d_edgesB, d_outputPositions, 
                                                         h_dOutput[tid], false);
+#ifdef HOST_PROFILE
+  if (tid == tidFocused) {
+    cudaDeviceSynchronize();
+    t2 = high_resolution_clock::now();
+    buildTime = duration_cast<milliseconds>( t2 - t1 ).count();
+    // std::cout << "building time: " << (buildTime / 1000.0) << std::endl;
+    std::cout << (buildTime / 1000.0) << ",";
+  }
+#endif
   // forAll (tableSize,simpleIntersect<false>{d_offSetA.data(),d_edgesA.data(),
   //         d_offSetB.data(),d_edgesB.data(),d_outputPositions.data(),
   //         d_output.data()});

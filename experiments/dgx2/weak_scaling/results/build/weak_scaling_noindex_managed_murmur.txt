@@ -1,0 +1,75 @@
+weak_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.0118374
+33554432,2,
+total_time
+times: 0.0416676
+67108864,4,
+total_time
+times: 0.111263
+134217728,8,
+total_time
+times: 0.189563
+268435456,16,
+total_time
+times: 0.376618
+33554432,1,
+total_time
+times: 0.0290652
+67108864,2,
+total_time
+times: 0.0732867
+134217728,4,
+total_time
+times: 0.211383
+268435456,8,
+total_time
+times: 0.403828
+536870912,16,
+total_time
+times: 0.748482
+67108864,1,
+total_time
+times: 0.0765317
+134217728,2,
+total_time
+times: 0.186363
+268435456,4,
+total_time
+times: 0.439108
+536870912,8,
+total_time
+times: 0.682862
+1073741824,16,
+total_time
+times: 1.44644
+134217728,1,
+total_time
+times: 0.178389
+268435456,2,
+total_time
+times: 0.427099
+536870912,4,
+total_time
+times: 0.77938
+1073741824,8,
+total_time
+times: 1.61489
+2147483648,16,
+total_time
+times: 3.0237
+268435456,1,
+total_time
+times: 0.443172
+536870912,2,
+total_time
+times: 0.805944
+1073741824,4,
+total_time
+times: 1.88683
+2147483648,8,
+total_time

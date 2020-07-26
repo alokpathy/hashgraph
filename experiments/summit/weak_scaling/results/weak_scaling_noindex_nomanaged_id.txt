@@ -4,52 +4,52 @@ build tests
 countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
 16777216,1,
 total_time
-times: 0.0272668
+times: 0.0243641
 33554432,2,
 total_time
-times: 0.0433098
+times: 0.0420178
 67108864,4,
 total_time
-times: 0.102786
+times: 0.100862
 100663296,6,
 total_time
-times: 0.200895
+times: 0.198898
 33554432,1,
 total_time
-times: 0.0513291
+times: 0.0457349
 67108864,2,
 total_time
-times: 0.0812943
+times: 0.0743946
 134217728,4,
 total_time
-times: 0.193959
+times: 0.190142
 201326592,6,
 total_time
-times: 0.384288
+times: 0.364484
 67108864,1,
 total_time
-times: 0.0965136
+times: 0.08674
 134217728,2,
 total_time
-times: 0.151752
+times: 0.140791
 268435456,4,
 total_time
-times: 0.368482
+times: 0.371242
 402653184,6,
 total_time
-times: 0.686584
+times: 0.696772
 134217728,1,
 total_time
-times: 0.176754
+times: 0.189511
 268435456,2,
 total_time
-times: 0.27781
+times: 0.292256
 536870912,4,
 total_time
-times: 0.692039
+times: 0.698804
 805306368,6,
 total_time
-times: 1.36556
+times: 1.3723
 268435456,1,oom
 536870912,2,oom
 1073741824,4,oom
@@ -76,37 +76,37 @@ times: 1.36556
 51539607552,6,oom
 intersect tests
 8388608,1,
-multi intersect() time: 0.0300753
+multi intersect() time: 0.0300964
 16777216,2,
-multi intersect() time: 0.0547533
+multi intersect() time: 0.0532499
 33554432,4,
-multi intersect() time: 0.139933
+multi intersect() time: 0.140787
 50331648,6,
-multi intersect() time: 0.274526
+multi intersect() time: 0.278061
 16777216,1,
-multi intersect() time: 0.0623008
+multi intersect() time: 0.0574731
 33554432,2,
-multi intersect() time: 0.0995395
+multi intersect() time: 0.0967884
 67108864,4,
-multi intersect() time: 0.257363
+multi intersect() time: 0.247018
 100663296,6,
-multi intersect() time: 0.482211
+multi intersect() time: 0.492176
 33554432,1,
-multi intersect() time: 0.112497
+multi intersect() time: 0.104603
 67108864,2,
-multi intersect() time: 0.177378
+multi intersect() time: 0.176288
 134217728,4,
-multi intersect() time: 0.454351
+multi intersect() time: 0.458713
 201326592,6,
-multi intersect() time: 0.926294
+multi intersect() time: 0.926965
 67108864,1,
-multi intersect() time: 0.20137
+multi intersect() time: 0.201144
 134217728,2,
-multi intersect() time: 0.35004
+multi intersect() time: 0.336085
 268435456,4,
-multi intersect() time: 0.913814
+multi intersect() time: 0.880186
 402653184,6,
-multi intersect() time: 1.73115
+multi intersect() time: 1.72655
 134217728,1,oom
 268435456,2,oom
 536870912,4,oom

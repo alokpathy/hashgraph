@@ -224,7 +224,7 @@ int main(int argc, char **argv) {
     omp_set_num_threads(gpuCount);
 
 #ifdef HOST_PROFILE
-    std::cout << "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total\n"; // seconds
+    std::cout << "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total"; // seconds
     std::cout << "times: ";
 #else
     std::cout << "total_time\n"; // seconds
@@ -269,26 +269,23 @@ int main(int argc, char **argv) {
       mhg.buildSingle();
     }
   } else {
+
     inputData *h_dValsA = new inputData[gpuCount]();
     inputData *h_dValsB = new inputData[gpuCount]();
 
     generateInput(h_dValsA, countSizeA, maxkey, gpuCount, 0);
     generateInput(h_dValsB, countSizeB, maxkey, gpuCount, countSizeA);
 
-    std::cout << "hashgraph constructors" << std::endl;
     // MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, contextA, tableSize, binCount, lrbBins, gpuCount);
     // MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, contextB, tableSize, binCount, lrbBins, gpuCount);
     MultiHashGraph mhgA(h_dValsA, countSizeA, maxkey, tableSize, binCount, lrbBins, gpuCount);
     MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, tableSize, binCount, lrbBins, gpuCount);
-    std::cout << "done hashgraph constructors" << std::endl;
 
 #ifdef MANAGED_MEM
-    std::cout << "managed mem constructors" << std::endl;
     index_t size = 2 * (tableSize + gpuCount) * sizeof(index_t);
     cudaMallocManaged(&mhgA.uvmPtrIntersect, size);
     mhgA.prefixArrayIntersect = new index_t[gpuCount + 1]();
     mhgA.totalSizeIntersect = size;
-    std::cout << "done managed mem constructors" << std::endl;
 #endif
 
     keypair **h_dOutput = new keypair*[gpuCount]();
@@ -296,6 +293,14 @@ int main(int argc, char **argv) {
 
     omp_set_num_threads(gpuCount);
 
+#ifdef HOST_PROFILE
+    std::cout << "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,"; // seconds
+    std::cout << "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,outputalloc,intersect,total\n"; // seconds
+    std::cout << "times: ";
+#else
+    std::cout << "total_time\n"; // seconds
+    std::cout << "times: ";
+#endif
 #ifdef CUDA_PROFILE
     cudaProfilerStart();
 #endif
@@ -350,7 +355,7 @@ int main(int argc, char **argv) {
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&buildTime, start, stop);
 
-    std::cout << "multi intersect() time: " << (buildTime / 1000.0) << "\n"; // seconds
+    std::cout << (buildTime / 1000.0) << "\n"; // seconds
 
     if (checkCorrectness) {
       mhgA.buildSingle();
