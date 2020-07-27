@@ -1,0 +1,70 @@
+duplicate_keys
+keycount,tablesize,gpucount,time
+build tests
+536870912,6,
+total_time
+times: 0.730605
+536870912,6,
+total_time
+times: 0.745084
+536870912,6,
+total_time
+times: 0.750287
+536870912,6,
+total_time
+times: 0.762334
+536870912,6,
+total_time
+times: 0.767274
+536870912,6,
+total_time
+times: 0.757847
+536870912,6,
+total_time
+times: 0.786484
+536870912,6,
+total_time
+times: 0.797952
+536870912,6,
+total_time
+times: 0.87998
+536870912,6,
+total_time
+times: 0.954255
+536870912,6,
+total_time
+times: 1.20371
+intersect tests
+268435456,6,
+total_time
+times: 12.3156
+268435456,6,
+total_time
+times: 6.07592
+268435456,6,
+total_time
+times: 2.66787
+268435456,6,
+total_time
+times: 1.55144
+268435456,6,
+total_time
+times: 1.22603
+268435456,6,
+total_time
+times: 1.00936
+268435456,6,
+total_time
+times: 0.94662
+268435456,6,
+total_time
+times: 1.06261
+268435456,6,
+total_time
+times: 1.23412
+268435456,6,
+total_time
+times: 0
+268435456,6,
+total_time
+times: 0

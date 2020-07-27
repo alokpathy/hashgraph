@@ -1,0 +1,103 @@
+strong_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.002,0.001,0.002,0.022,0,0.007,0.0378342
+16777216,2,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.023,0.001,0.004,0.0355
+16777216,4,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.002,0,0,0.038,0,0.002,0.0530236
+16777216,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0,0.044,0.01,0.001,0.076766
+33554432,1,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.005,0.002,0.004,0.043,0.001,0.012,0.0716024
+33554432,2,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.004,0,0.002,0.044,0,0.006,0.062237
+33554432,4,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.003,0,0.001,0.075,0,0.003,0.0925916
+33554432,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.004,0,0,0.085,0.018,0.002,0.125498
+67108864,1,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.007,0.003,0.007,0.076,0.002,0.023,0.125202
+67108864,2,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.006,0.001,0.003,0.085,0.001,0.012,0.11674
+67108864,4,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.005,0,0.002,0.129,0,0.006,0.155742
+67108864,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.006,0,0.001,0.167,0.022,0.005,0.218215
+134217728,1,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.01,0.007,0.016,0.152,0.005,0.051,0.248378
+134217728,2,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.008,0.003,0.007,0.157,0.003,0.023,0.209857
+134217728,4,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.008,0.001,0.003,0.251,0.001,0.011,0.290075
+134217728,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.009,0.004,0.002,0.333,0.001,0.008,0.392285
+268435456,1,oom
+268435456,2,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.01,0.007,0.016,0.31,0.006,0.052,0.411961
+268435456,4,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.009,0.003,0.007,0.488,0.014,0.023,0.566954
+268435456,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.014,0.002,0.005,0.651,0.005,0.016,0.734205
+536870912,1,oom
+536870912,2,oom
+536870912,4,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.011,0.007,0.016,0.947,0.005,0.052,1.06688
+536870912,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.029,0.005,0.012,1.187,0.112,0.038,1.44642
+1073741824,1,oom
+1073741824,2,oom
+1073741824,4,oom
+1073741824,6,oom
+intersect tests
+8388608,1,
+times: 0.001,0,0.001,0.01,0,0.004,0,0.001,0.01,0,0.003,0.001,0,0.0425029
+8388608,2,
+times: 0,0,0,0.011,0,0.001,0,0,0.011,0.001,0.001,0.002,0,0.0452064
+8388608,4,
+times: 0,0,0,0.015,0.005,0.001,0,0,0.022,0,0.001,0.005,0,0.0813976
+8388608,6,
+times: 0.001,0,0,0.023,0.009,0,0,0,0.066,0.001,0,0.016,0,0.168932
+16777216,1,
+times: 0.002,0,0.002,0.02,0,0.007,0.001,0.002,0.02,0,0.007,0.002,0.001,0.0793086
+16777216,2,
+times: 0.001,0,0.001,0.023,0,0.004,0,0.001,0.023,0,0.004,0.003,0.001,0.0787396
+16777216,4,
+times: 0.002,0,0,0.036,0,0.001,0,0,0.037,0,0.001,0.01,0,0.123329
+16777216,6,
+times: 0.003,0,0,0.042,0.009,0.001,0,0,0.051,0.005,0.001,0.017,0,0.192062
+33554432,1,
+times: 0.004,0.001,0.003,0.038,0.001,0.011,0.002,0.003,0.038,0.001,0.011,0.004,0.003,0.145878
+33554432,2,
+times: 0.004,0,0.002,0.043,0,0.006,0.001,0.002,0.043,0,0.006,0.006,0.002,0.140654
+33554432,4,
+times: 0.004,0,0.001,0.066,0,0.003,0,0.001,0.066,0,0.003,0.012,0,0.203782
+33554432,6,
+times: 0.005,0,0,0.091,0,0.002,0,0,0.099,0,0.002,0.037,0,0.312081
+67108864,1,
+times: 0.007,0.003,0.007,0.076,0.002,0.023,0.004,0.007,0.076,0.002,0.024,0.009,0.007,0.299335
+67108864,2,
+times: 0.006,0.001,0.003,0.084,0.001,0.012,0.002,0.003,0.084,0.001,0.012,0.01,0.003,0.264464
+67108864,4,
+times: 0.004,0,0.002,0.124,0,0.006,0.001,0.002,0.125,0,0.006,0.01,0.001,0.348696
+67108864,6,
+times: 0.009,0,0.001,0.171,0,0.005,0,0.001,0.17,0,0.005,0.031,0.001,0.535115
+134217728,1,oom
+134217728,2,
+times: 0.008,0.003,0.007,0.158,0.003,0.023,0.004,0.007,0.157,0.003,0.024,0.018,0.007,0.483484
+134217728,4,
+times: 0.008,0.001,0.003,0.249,0.001,0.011,0.002,0.004,0.251,0.001,0.011,0.034,0.003,0.675222
+134217728,6,
+times: 0.009,0.001,0.002,0.343,0.001,0.008,0.005,0.002,0.338,0.003,0.008,0.076,0.002,0.948977
+268435456,1,oom
+268435456,2,oom
+268435456,4,
+times: 0.009,0.004,0.009,0.504,0.002,0.024,0.005,0.008,0.483,0.014,0.024,0.048,0.007,1.31823
+268435456,6,
+times: 0.02,0.002,0.005,0.654,0.006,0.016,0.003,0.005,0.588,0.055,0.016,0.046,0.004,1.74187
+536870912,1,oom
+536870912,2,oom
+536870912,4,oom
+536870912,6,oom

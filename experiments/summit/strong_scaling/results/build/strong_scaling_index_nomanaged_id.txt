@@ -4,46 +4,67 @@ build tests
 countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
 16777216,1,
 total_time
-times: 0.0377313
+times: 0.037699
 16777216,2,
 total_time
-times: 0.0351375
+times: 0.0351319
 16777216,4,
 total_time
-times: 0.052906
+times: 0.0515928
 16777216,6,
 total_time
-times: 0.0773151
+times: 0.0776232
 33554432,1,
 total_time
-times: 0.0725432
+times: 0.0714284
 33554432,2,
 total_time
-times: 0.0670423
+times: 0.0619798
 33554432,4,
 total_time
-times: 0.0908952
+times: 0.0921693
 33554432,6,
 total_time
-times: 0.124479
+times: 0.12429
 67108864,1,
 total_time
-times: 0.128824
+times: 0.124998
 67108864,2,
 total_time
-times: 0.115553
+times: 0.11597
 67108864,4,
 total_time
-times: 0.156763
+times: 0.158231
 67108864,6,
 total_time
-times: 0.22045
+times: 0.228499
 134217728,1,
 total_time
-times: 0.247832
+times: 0.248471
 134217728,2,
 total_time
-times: 0.215504
+times: 0.222383
 134217728,4,
 total_time
-times: 0.297361
+times: 0.293291
+134217728,6,
+total_time
+times: 0.39375
+268435456,1,oom
+268435456,2,
+total_time
+times: 0.40828
+268435456,4,
+total_time
+times: 0.557187
+268435456,6,
+total_time
+times: 0.748905
+536870912,1,oom
+536870912,2,oom
+536870912,4,
+total_time
+times: 1.08914
+536870912,6,
+total_time
+times: 1.42885

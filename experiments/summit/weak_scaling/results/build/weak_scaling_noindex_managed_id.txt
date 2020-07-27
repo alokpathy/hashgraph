@@ -4,52 +4,52 @@ build tests
 countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
 16777216,1,
 total_time
-times: 0.0127939
+times: 0.011563
 33554432,2,
 total_time
-times: 0.0160717
+times: 0.0160374
 67108864,4,
 total_time
-times: 0.0215788
+times: 0.0211451
 100663296,6,
 total_time
-times: 0.0315679
+times: 0.0312167
 33554432,1,
 total_time
-times: 0.0228813
+times: 0.0207783
 67108864,2,
 total_time
-times: 0.0293641
+times: 0.0264462
 134217728,4,
 total_time
-times: 0.0378358
+times: 0.0366442
 201326592,6,
 total_time
-times: 0.0525813
+times: 0.0536991
 67108864,1,
 total_time
-times: 0.040448
+times: 0.0402907
 134217728,2,
 total_time
-times: 0.051542
+times: 0.0517041
 268435456,4,
 total_time
-times: 0.0585964
+times: 0.0619494
 402653184,6,
 total_time
-times: 0.0863487
+times: 0.102178
 134217728,1,
 total_time
-times: 0.0749567
+times: 0.073136
 268435456,2,
 total_time
-times: 0.0979773
+times: 0.0976395
 536870912,4,
 total_time
-times: 0.125741
+times: 0.132467
 805306368,6,
 total_time
-times: 0.17197
+times: 0.181099
 268435456,1,oom
 536870912,2,oom
 1073741824,4,oom
@@ -70,8 +70,3 @@ times: 0.17197
 8589934592,2,oom
 17179869184,4,oom
 25769803776,6,oom
-8589934592,1,oom
-17179869184,2,oom
-34359738368,4,oom
-51539607552,6,oom
-intersect tests

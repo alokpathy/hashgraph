@@ -1,0 +1,34 @@
+intersect tests
+268435456,6,
+total_time
+times: 4.01491
+268435456,6,
+total_time
+times: 2.33439
+268435456,6,
+total_time
+times: 1.34716
+268435456,6,
+total_time
+times: 1.117
+268435456,6,
+total_time
+times: 0.847196
+268435456,6,
+total_time
+times: 0.852379
+268435456,6,
+total_time
+times: 0.847323
+268435456,6,
+total_time
+times: 0.878317
+268435456,6,
+total_time
+times: 0.970479
+268435456,6,
+total_time
+times: 0.964859
+268435456,6,
+total_time
+times: 1.19747

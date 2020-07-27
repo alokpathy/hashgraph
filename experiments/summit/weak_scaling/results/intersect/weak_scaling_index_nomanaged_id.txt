@@ -1,36 +1,52 @@
 intersect tests
 8388608,1,
-multi intersect() time: 0.0402833
+total_time
+times: 0.0403613
 16777216,2,
-multi intersect() time: 0.0742543
+total_time
+times: 0.0742008
 33554432,4,
-multi intersect() time: 0.20621
+total_time
+times: 0.200536
 50331648,6,
-multi intersect() time: 0.398988
+total_time
+times: 0.426136
 16777216,1,
-multi intersect() time: 0.0750397
+total_time
+times: 0.0750129
 33554432,2,
-multi intersect() time: 0.131836
+total_time
+times: 0.131624
 67108864,4,
-multi intersect() time: 0.362899
+total_time
+times: 0.387377
 100663296,6,
-multi intersect() time: 0.709417
+total_time
+times: 0.685623
 33554432,1,
-multi intersect() time: 0.148882
+total_time
+times: 0.141942
 67108864,2,
-multi intersect() time: 0.265706
+total_time
+times: 0.245818
 134217728,4,
-multi intersect() time: 0.675466
+total_time
+times: 0.659405
 201326592,6,
-multi intersect() time: 1.31131
+total_time
+times: 1.33773
 67108864,1,
-multi intersect() time: 0.277482
+total_time
+times: 0.330985
 134217728,2,
-multi intersect() time: 0.475025
+total_time
+times: 0.49656
 268435456,4,
-multi intersect() time: 1.31304
+total_time
+times: 1.3227
 402653184,6,
-multi intersect() time: 2.48486
+total_time
+times: 2.53057
 134217728,1,oom
 268435456,2,oom
 536870912,4,oom

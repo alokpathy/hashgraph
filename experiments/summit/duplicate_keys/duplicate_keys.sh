@@ -36,11 +36,12 @@ for i in "${tablesizes[@]}"
 
         ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc build | grep "time")
 
-        tokens=( $ans )
-        time=${tokens[3]}
+        # tokens=( $ans )
+        # time=${tokens[3]}
 
         # echo "${kc},${ts},${gc},${time}" >> $resultsfile
-        echo "${kc},${ts},${gc},${time}"
+        # echo "${kc},${ts},${gc},${time}"
+        echo -e "${kc},${ts},${gc},\n${ans}"
     done
 
 echo "intersect tests"
@@ -65,9 +66,10 @@ for i in "${tablesizes[@]}"
         fi
         ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc intersect | grep "time")
 
-        tokens=( $ans )
-        time=${tokens[3]}
+        # tokens=( $ans )
+        # time=${tokens[3]}
 
         # echo "${kc},${ts},${gc},${time}" >> $resultsfile
-        echo "${kc},${ts},${gc},${time}"
+        # echo "${kc},${ts},${gc},${time}"
+        echo -e "${kc},${ts},${gc},\n${ans}"
     done

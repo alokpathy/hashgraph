@@ -1,0 +1,33 @@
+duplicate_keys
+keycount,tablesize,gpucount,time
+build tests
+536870912,6,
+total_time
+times: 0.734461
+536870912,6,
+total_time
+times: 0.766203
+536870912,6,
+total_time
+times: 0.758422
+536870912,6,
+total_time
+times: 0.807874
+536870912,6,
+total_time
+times: 0.762783
+536870912,6,
+total_time
+times: 0.770646
+536870912,6,
+total_time
+times: 0.805522
+536870912,6,
+total_time
+times: 0.831688
+536870912,6,
+total_time
+times: 0.88893
+536870912,6,
+total_time
+times: 1.04433

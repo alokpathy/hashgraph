@@ -14,10 +14,10 @@ buildpath="../../build"
 includepath="../../include"
 
 declare -a hashes=("id" "murmur")
-# declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
-declare -a modes=("noindex_managed" "index_managed")
+declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
 # declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
-declare -a exps=("strong_scaling" "weak_scaling")
+# declare -a exps=("strong_scaling" "weak_scaling")
+declare -a exps=("duplicate_keys")
 
 keysize=8
 
@@ -99,7 +99,7 @@ for hash in "${hashes[@]}"
           do
             echo $exp
             jsrun -n 1 -g 6 ./$exp/$exp.sh $bytes $keysize > ./$exp/results/$exp\_$mode\_$hash.prof
-            head -n -$(cat ./$exp/results/$exp\_$mode\_$hash.prof | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.prof > ./$exp/results/build/$exp\_$mode\_$hash.prof
+            # head -n -$(cat ./$exp/results/$exp\_$mode\_$hash.prof | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.prof > ./$exp/results/build/$exp\_$mode\_$hash.prof
             tail -n +$(cat ./$exp/results/$exp\_$mode\_$hash.prof | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.prof > ./$exp/results/intersect/$exp\_$mode\_$hash.prof
           done
       done
