@@ -1,6 +1,6 @@
 keycount=30
 gpucount=16
-tablesizes=($(seq 23 1 33))
+tablesizes=($(seq 24 1 30))
 
 execpath="../../build"
 resultsfile=$1
@@ -30,17 +30,18 @@ for i in "${tablesizes[@]}"
         let gpureq=$((echo "($gigs + 32) / 32") | bc)
 
         if (( $gpureq > $gc )) ; then
-          echo "${kc},${gc},oom"
+          echo "${kc},${ts},${gc},oom"
           continue
         fi
 
         ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc build | grep "time")
 
-        tokens=( $ans )
-        time=${tokens[3]}
+        # tokens=( $ans )
+        # time=${tokens[3]}
 
         # echo "${kc},${ts},${gc},${time}" >> $resultsfile
-        echo "${kc},${ts},${gc},${time}"
+        # echo "${kc},${ts},${gc},${time}"
+        echo -e "${kc},${ts},${gc},\n${ans}"
     done
 
 echo "intersect tests"
@@ -65,9 +66,10 @@ for i in "${tablesizes[@]}"
         fi
         ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc intersect | grep "time")
 
-        tokens=( $ans )
-        time=${tokens[3]}
+        # tokens=( $ans )
+        # time=${tokens[3]}
 
         # echo "${kc},${ts},${gc},${time}" >> $resultsfile
-        echo "${kc},${ts},${gc},${time}"
+        # echo "${kc},${ts},${gc},${time}"
+        echo -e "${kc},${ts},${gc},\n${ans}"
     done

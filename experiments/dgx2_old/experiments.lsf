@@ -12,8 +12,8 @@ includepath="../../include"
 
 declare -a hashes=("id" "murmur")
 declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
-# declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
-declare -a exps=("strong_scaling" "weak_scaling")
+declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
+# declare -a exps=("strong_scaling" "weak_scaling")
 
 # 64-bit section
 sed -i 's/^#define B32/\/\/&/' $includepath/MultiHashGraph.cuh

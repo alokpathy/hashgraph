@@ -1,0 +1,76 @@
+intersect tests
+8388608,1,
+multi intersect() time: 0.0242176
+16777216,2,
+multi intersect() time: 0.0858921
+33554432,4,
+multi intersect() time: 0.232909
+67108864,8,
+multi intersect() time: 0.527271
+134217728,16,
+multi intersect() time: 1.51177
+16777216,1,
+multi intersect() time: 0.0806062
+33554432,2,
+multi intersect() time: 0.17735
+67108864,4,
+multi intersect() time: 0.458207
+134217728,8,
+multi intersect() time: 1.09291
+268435456,16,
+multi intersect() time: 2.0471
+33554432,1,
+multi intersect() time: 0.131557
+67108864,2,
+multi intersect() time: 0.417808
+134217728,4,
+multi intersect() time: 0.975989
+268435456,8,
+multi intersect() time: 1.6691
+536870912,16,
+multi intersect() time: 3.36063
+67108864,1,
+multi intersect() time: 0.267983
+134217728,2,
+multi intersect() time: 0.751594
+268435456,4,
+multi intersect() time: 1.8177
+536870912,8,
+multi intersect() time: 3.35814
+1073741824,16,
+multi intersect() time: 6.3978
+134217728,1,
+multi intersect() time: 0.661804
+268435456,2,
+multi intersect() time: 1.8696
+536870912,4,
+multi intersect() time: 3.4223
+1073741824,8,
+multi intersect() time: 6.52985
+2147483648,16,
+multi intersect() time: 11.0378
+268435456,1,oom
+536870912,2,oom
+1073741824,4,oom
+2147483648,8,oom
+4294967296,16,oom
+536870912,1,oom
+1073741824,2,oom
+2147483648,4,oom
+4294967296,8,oom
+8589934592,16,oom
+1073741824,1,oom
+2147483648,2,oom
+4294967296,4,oom
+8589934592,8,oom
+17179869184,16,oom
+2147483648,1,oom
+4294967296,2,oom
+8589934592,4,oom
+17179869184,8,oom
+34359738368,16,oom
+4294967296,1,oom
+8589934592,2,oom
+17179869184,4,oom
+34359738368,8,oom
+68719476736,16,oom

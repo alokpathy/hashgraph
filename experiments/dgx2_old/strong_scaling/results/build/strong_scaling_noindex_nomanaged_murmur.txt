@@ -1,0 +1,85 @@
+strong_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.0129782
+16777216,2,
+total_time
+times: 0.00920269
+16777216,4,
+total_time
+times: 0.046633
+16777216,8,
+total_time
+times: 0.035924
+16777216,16,
+total_time
+times: 0.121684
+33554432,1,
+total_time
+times: 0.0308541
+33554432,2,
+total_time
+times: 0.0178565
+33554432,4,
+total_time
+times: 0.0203633
+33554432,8,
+total_time
+times: 0.0399452
+33554432,16,
+total_time
+times: 0.127183
+67108864,1,
+total_time
+times: 0.0792832
+67108864,2,
+total_time
+times: 0.033749
+67108864,4,
+total_time
+times: 0.0887388
+67108864,8,
+total_time
+times: 0.302963
+67108864,16,
+total_time
+times: 0.415836
+134217728,1,
+total_time
+times: 0.193298
+134217728,2,
+total_time
+times: 0.0857989
+134217728,4,
+total_time
+times: 0.0941783
+134217728,8,
+total_time
+times: 0.0619899
+134217728,16,
+total_time
+times: 0.172197
+268435456,1,
+total_time
+times: 0.452624
+268435456,2,
+total_time
+times: 0.222365
+268435456,4,
+total_time
+times: 0.12326
+268435456,8,
+total_time
+times: 0.105437
+268435456,16,
+total_time
+times: 0.439523
+536870912,1,oom
+536870912,2,
+total_time
+times: 0.463665
+536870912,4,
+total_time
