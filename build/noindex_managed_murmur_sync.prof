@@ -1,0 +1,88 @@
+==149739== NVPROF is profiling process 149739, command: ./multi-hash 1073741824 1073741824 16000 6 16000 nocheck 1073741824 build
+deviceCount: 6
+hostname: h50n18
+countSizeA: 1073741824
+maxkey: 1073741824
+generating input
+done generating input
+bin_count: 16000
+bin_range: 67109
+table_size: 1073741824
+BLOCK_COUNT: 65535 BLOCKS_SIZE: 64
+managed alloc size: 51539607648
+==149739== Profiling application: ./multi-hash 1073741824 1073741824 16000 6 16000 nocheck 1073741824 build
+total_time
+times: 2.8535
+==149739== Warning: 31 records have invalid timestamps due to insufficient device buffer space. You can configure the buffer space using the option --device-buffer-size.
+==149739== Warning: 30 records have invalid timestamps due to insufficient semaphore pool size. You can configure the pool size using the option --profiling-semaphore-pool-size.
+==149739== Warning: Found 8172 invalid records in the result.
+==149739== Warning: This can happen if device ran out of memory or if a device kernel was stopped due to an assertion.
+==149739== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   76.06%  6.47683s         6  1.07947s  982.24ms  1.19411s  hashValuesD(long, long*, long*, long, long)
+                    8.76%  745.60ms         6  124.27ms  669.53us  208.59ms  [CUDA memcpy DtoD]
+                    7.09%  603.96ms         5  120.79ms  120.60ms  121.17ms  lrbCopyToGraphD(long, long*, long*, long*, long*, long*, long, long)
+                    3.24%  275.87ms         6  45.979ms  44.879ms  49.002ms  lrbCountHashGlobalD(long, long*, long*, long*, long, long)
+                    2.42%  206.12ms         6  34.353ms  33.778ms  34.918ms  lrbRehashD(long, long*, long*, long*, long*, long*, long, long)
+                    0.89%  76.199ms         6  12.700ms  12.673ms  12.734ms  binHashValues(long, long*, long*, long*, long*, long*, long*, long, long)
+                    0.29%  24.334ms         6  4.0557ms  4.0098ms  4.1028ms  decrHash(long*, unsigned long, long*, long)
+                    0.26%  22.471ms        18  1.2484ms  5.5040us  3.8327ms  void cub::DeviceScanKernel<cub::DispatchScan<long*, long*, cub::Sum, long, int>::PtxAgentScanPolicy, long*, long*, cub::ScanTileState<long, bool=1>, cub::Sum, long, int>(long*, cub::Sum, long, int, int, cub::DispatchScan<long*, long*, cub::Sum, long, int>::PtxAgentScanPolicy, long*)
+                    0.25%  21.586ms         6  3.5976ms  3.5858ms  3.6124ms  basicHashD(long, long*, long*, long)
+                    0.25%  21.009ms         6  3.5016ms  3.4329ms  3.5821ms  lrbCountHashD(long, long*, long*, long)
+                    0.24%  20.797ms         6  3.4662ms  3.3567ms  3.5658ms  countBinSizes(long*, long, long*, long)
+                    0.24%  20.024ms         6  3.3374ms  3.2353ms  3.4361ms  countKeyBuffSizes(long*, long, long*, long*, long)
+                    0.01%  469.21us        18  26.067us  1.1200us  102.27us  [CUDA memcpy HtoD]
+                    0.00%  79.136us        18  4.3960us  3.2320us  6.2400us  void cub::DeviceScanInitKernel<cub::ScanTileState<long, bool=1>>(long, int)
+                    0.00%  60.192us        24  2.5080us  1.2480us  5.7600us  [CUDA memcpy DtoH]
+                    0.00%  32.160us        30  1.0720us     800ns  1.4400us  [CUDA memset]
+      API calls:   49.75%  7.76375s        30  258.79ms  35.745us  1.20162s  cudaMemcpy
+                   47.52%  7.41604s         6  1.23601s  914.69ms  1.49046s  cudaDeviceSynchronize
+                    0.82%  128.14ms        30  4.2714ms  12.877us  81.916ms  cudaMemset
+                    0.59%  92.502ms         6  15.417ms  10.437ms  24.101ms  cudaMemPrefetchAsync
+                    0.55%  85.742ms        48  1.7863ms  16.974us  15.863ms  cudaMemcpyAsync
+                    0.34%  52.525ms        36  1.4590ms  15.333us  18.732ms  cudaStreamDestroy
+                    0.27%  41.990ms        96  437.40us  12.099us  9.5646ms  cudaLaunchKernel
+                    0.14%  21.990ms        36  610.83us  8.0850us  3.5327ms  cudaStreamCreate
+                    0.01%  2.1350ms        18  118.61us  3.1560us  2.0691ms  cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags
+                    0.00%  640.56us        36  17.793us  13.980us  20.639us  cudaFuncGetAttributes
+                    0.00%  131.20us        54  2.4290us  1.9310us  3.8120us  cudaDeviceGetAttribute
+                    0.00%  94.400us        36  2.6220us  2.0220us  3.7560us  cudaGetDevice
+                    0.00%  91.789us         6  15.298us  13.134us  16.456us  cudaEventRecord
+                    0.00%  53.740us         6  8.9560us  7.6850us  9.8390us  cudaEventSynchronize
+                    0.00%  42.210us         6  7.0350us  5.4350us  8.8160us  cudaEventCreate
+                    0.00%  35.227us        36     978ns     432ns  1.3260us  cudaPeekAtLastError
+                    0.00%  34.477us         6  5.7460us  4.0120us  13.287us  cudaEventDestroy
+                    0.00%  29.733us         8  3.7160us  1.8200us  7.2770us  cudaSetDevice
+                    0.00%  2.2070us         1  2.2070us  2.2070us  2.2070us  cudaProfilerStart
+
+==149739== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    1093         -         -         -           -  988.0788ms  Gpu page fault groups
+    1934  241.21KB  64.000KB  960.00KB  455.5625MB  19.44064ms  Transfers from Device
+    2915  236.48KB  64.000KB  960.00KB  673.1875MB  29.44512ms  Transfers to Device
+Device "Tesla V100-SXM2-16GB (1)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    1037         -         -         -           -   1.043753s  Gpu page fault groups
+    4130  232.49KB  64.000KB  1.0000MB  937.6875MB  35.36355ms  Transfers from Device
+    3217  227.31KB  64.000KB  960.00KB  714.1250MB  32.05114ms  Transfers to Device
+Device "Tesla V100-SXM2-16GB (2)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    1262         -         -         -           -  995.7584ms  Gpu page fault groups
+    4406  221.65KB  64.000KB  1.0000MB  953.6875MB  44.67277ms  Transfers from Device
+    4473  223.65KB  64.000KB  1.0000MB  976.9375MB  38.19642ms  Transfers to Device
+Device "Tesla V100-SXM2-16GB (3)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     919         -         -         -           -  665.4141ms  Gpu page fault groups
+    4240  227.98KB  64.000KB  960.00KB  944.0000MB  44.01130ms  Transfers from Device
+    2660  243.15KB  64.000KB  1.8750MB  631.6250MB  27.41734ms  Transfers to Device
+Device "Tesla V100-SXM2-16GB (4)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    1014         -         -         -           -  832.2031ms  Gpu page fault groups
+    3060  238.45KB  64.000KB  1.8750MB  712.5625MB  26.96150ms  Transfers from Device
+    2546  226.46KB  64.000KB  2.0000MB  563.0625MB  25.02131ms  Transfers to Device
+Device "Tesla V100-SXM2-16GB (5)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+    1274         -         -         -           -  835.7002ms  Gpu page fault groups
+    1936  232.30KB  64.000KB  2.0000MB  439.1875MB  18.44630ms  Transfers from Device
+    3895  232.34KB  64.000KB  1.0000MB  883.7500MB  36.76474ms  Transfers to Device

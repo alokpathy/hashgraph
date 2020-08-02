@@ -276,6 +276,7 @@ void countFinalKeys(index_t **h_bufferCounter, char **h_dFinalKeys,
   }
   #pragma omp barrier
 
+  cudaMemAdvise(h_dFinalKeys[tid], prefixArray[tid + 1] - prefixArray[tid], cudaMemAdviseSetPreferredLocation,tid);
   cudaMemPrefetchAsync(h_dFinalKeys[tid], prefixArray[tid + 1] - prefixArray[tid], tid);
 
 #else
@@ -297,6 +298,7 @@ void allToAll(inputData *h_dVals, char **h_dFinalKeys,
                   index_t **h_hKeyBinOff, index_t **h_hFinalCounters, index_t gpuCount,
                   index_t tid) {
 
+  /* Old code
   for (index_t j = 0; j < gpuCount; j++) {
     // Ship keys + hashes from GPU i to GPU j
     index_t keyCount = h_hFinalCounters[tid][j];
@@ -311,6 +313,42 @@ void allToAll(inputData *h_dVals, char **h_dFinalKeys,
                       keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
 
   }
+  */
+
+  // Oded code
+  cudaStream_t streams[gpuCount];
+  cudaEvent_t syncer;    
+  cudaEventCreate(&syncer);
+  cudaEventRecord(syncer,0);
+  for(int i=0;i<gpuCount; i++)
+    cudaStreamCreate ( &(streams[i]));
+
+  for (index_t j = 0; j < gpuCount; j++) {
+    // Ship keys + hashes from GPU i to GPU j
+    index_t keyCount = h_hFinalCounters[tid][j];
+    // index_t keyCount = h_hFinalCounters[j][tid];
+    // cudaMemcpyAsync(h_dFinalKeys[j] + h_hFinalOffset[j][tid], h_dKeyBinBuff[tid] + h_hKeyBinOff[tid][j],
+    //                  keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
+    // cudaMemcpyAsync(h_dFinalKeys[j] + (h_hFinalOffset[j][tid] * sizeof(keyval)),
+    //                   h_dKeyBinBuff[tid] + h_hKeyBinOff[tid][j],
+    //                   keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
+    cudaMemcpyAsync(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
+                      h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
+                      keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice,streams[j]);
+    // cudaMemcpyPeerAsync(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
+    //                   tid,
+    //                   h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
+    //                   j,
+    //                   keyCount * sizeof(keyval), streams[j]);
+    // cudaMemcpy(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
+    //                   h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
+    //                   keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
+  }
+
+  cudaEventSynchronize(syncer);      
+  for(int i=0;i<gpuCount; i++)
+    cudaStreamDestroy((streams[i]));
+  cudaEventDestroy(syncer);
 }
 
 template<typename hkey_t, typename HashKey,  typename index_t>

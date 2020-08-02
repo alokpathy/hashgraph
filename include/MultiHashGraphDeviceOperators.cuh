@@ -18,7 +18,7 @@
 
 #include "MultiHashGraph.cuh"
 
-//#define ID_HASH
+// #define ID_HASH
 
 __forceinline__  __host__ __device__ uint32_t rotl32( uint32_t x, int8_t r ) {
   return (x << r) | (x >> (32 - r));
@@ -37,6 +37,7 @@ __forceinline__  __host__ __device__ uint32_t hash_murmur(const HashKey& key) {
   return (uint32_t) key;
 #endif
 
+  // constexpr int len = sizeof(int);
   constexpr int len = sizeof(int);
   const uint8_t * const data = (const uint8_t*)&key;
   constexpr int nblocks = len / 4;

@@ -48,7 +48,7 @@ using namespace std::chrono;
 // Uncomment once we remove "using namespace hornets_nest"
 // const int BLOCK_SIZE_OP2 = 256;
 
-// #define ERROR_CHECK
+#define ERROR_CHECK
 // #define PRINT_KEYS
 #define LRB_BUILD
 
@@ -67,7 +67,9 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
   
   index_t binRange = std::ceil(maxkey / ((float)binCount));
   BLOCK_COUNT = std::ceil(countSize / ((float) BLOCK_SIZE_OP2));
-  BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
+  // BLOCK_COUNT = std::min(BLOCK_COUNT, 65535);
+  // BLOCK_COUNT = std::min(BLOCK_COUNT, 256);
+  BLOCK_COUNT = BLOCK_COUNT / (gpuCount * 4);
 
   std::cout << "bin_count: " << binCount << std::endl;
   std::cout << "bin_range: " << binRange << std::endl;
@@ -247,7 +249,6 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
 #endif
 
   CHECK_ERROR("constructor");
-
 }
 
 MultiHashGraph::~MultiHashGraph() {
@@ -547,6 +548,7 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
   }
 #endif
 
+  // cudaDeviceSynchronize();
   #pragma omp barrier
 
   // Ship all the keys to their respective GPUs.
@@ -680,6 +682,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
   // cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(index_t));
 #ifdef MANAGED_MEM
   d_countCommon = (index_t *) mhgA.h_dCountCommon[tid];
+  // cudaMemAdvise(d_countCommon, mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], cudaMemAdviseSetPreferredLocation, tid);
   cudaMemPrefetchAsync(d_countCommon, 
                             mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
                             tid);
