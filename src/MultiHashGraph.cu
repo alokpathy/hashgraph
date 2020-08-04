@@ -722,7 +722,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
   // cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(index_t));
 #ifdef MANAGED_MEM
   d_countCommon = (index_t *) mhgA.h_dCountCommon[tid];
-  // cudaMemAdvise(d_countCommon, mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], cudaMemAdviseSetPreferredLocation, tid);
+  cudaMemAdvise(d_countCommon, mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], cudaMemAdviseSetPreferredLocation, tid);
   cudaMemPrefetchAsync(d_countCommon, 
                             mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
                             tid);
