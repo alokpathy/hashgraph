@@ -3,68 +3,68 @@ keycount,tablesize,gpucount,time
 build tests
 536870912,1048576,6,
 total_time
-times: 0.300721
+times: 0.390729
 536870912,2097152,6,
 total_time
-times: 0.297389
+times: 0.321255
 536870912,4194304,6,
 total_time
-times: 0.283106
+times: 0.309617
 536870912,8388608,6,
 total_time
-times: 0.254533
+times: 0.328053
 536870912,16777216,6,
 total_time
-times: 0.294831
+times: 0.348
 536870912,33554432,6,
 total_time
-times: 0.384223
+times: 0.3908
 536870912,67108864,6,
 total_time
-times: 0.330569
+times: 0.353342
 536870912,134217728,6,
 total_time
-times: 0.356275
+times: 0.349758
 536870912,268435456,6,
 total_time
-times: 0.430756
+times: 0.386163
 536870912,536870912,6,
 total_time
-times: 0.175791
+times: 0.202902
 536870912,1073741824,6,
 total_time
-times: 0.517424
+times: 0.503977
 intersect tests
 268435456,1048576,6,
 total_time
-times: 4.13798
+times: 4.2105
 268435456,2097152,6,
 total_time
-times: 2.28396
+times: 2.37052
 268435456,4194304,6,
 total_time
-times: 1.3078
+times: 1.38897
 268435456,8388608,6,
 total_time
-times: 0.658009
+times: 0.665918
 268435456,16777216,6,
 total_time
-times: 0.51197
+times: 0.587106
 268435456,33554432,6,
 total_time
-times: 0.451623
+times: 0.551686
 268435456,67108864,6,
 total_time
-times: 0.466693
+times: 0.506958
 268435456,134217728,6,
 total_time
-times: 0.420094
+times: 0.512151
 268435456,268435456,6,
 total_time
-times: 0.262068
+times: 0.364272
 268435456,536870912,6,
 total_time
-times: 43.2398
+times: 62.2199
 268435456,1073741824,6,
 total_time
-times: 721.471
+times: 814.584

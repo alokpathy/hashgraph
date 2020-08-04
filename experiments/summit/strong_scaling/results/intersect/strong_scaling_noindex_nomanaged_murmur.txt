@@ -1,79 +1,79 @@
 intersect tests
 8388608,1,
 total_time
-times: 0.0230182
+times: 0.0229861
 8388608,2,
 total_time
-times: 0.0212666
+times: 0.0242911
 8388608,4,
 total_time
-times: 0.0331581
+times: 0.0476347
 8388608,6,
 total_time
-times: 0.034075
+times: 0.0848689
 16777216,1,
 total_time
-times: 0.0477544
+times: 0.0435161
 16777216,2,
 total_time
-times: 0.0394794
+times: 0.040558
 16777216,4,
 total_time
-times: 0.0466902
+times: 0.0685014
 16777216,6,
 total_time
-times: 0.0494888
+times: 0.111861
 33554432,1,
 total_time
-times: 0.0939947
+times: 0.0847276
 33554432,2,
 total_time
-times: 0.0740646
+times: 0.0719163
 33554432,4,
 total_time
-times: 0.0745911
+times: 0.111549
 33554432,6,
 total_time
-times: 0.0790484
+times: 0.216915
 67108864,1,
 total_time
-times: 0.183666
+times: 0.167809
 67108864,2,
 total_time
-times: 0.138183
+times: 0.135723
 67108864,4,
 total_time
-times: 0.128284
+times: 0.193267
 67108864,6,
 total_time
-times: 0.14274
+times: 0.273223
 134217728,1,
 total_time
-times: 0.342275
+times: 0.365447
 134217728,2,
 total_time
-times: 0.278101
+times: 0.281263
 134217728,4,
 total_time
-times: 0.261868
+times: 0.4018
 134217728,6,
 total_time
-times: 0.266053
+times: 0.488901
 268435456,1,oom
 268435456,2,
 total_time
-times: 0.531006
+times: 0.524695
 268435456,4,
 total_time
-times: 0.518214
+times: 0.71447
 268435456,6,
 total_time
-times: 0.509885
+times: 0.970547
 536870912,1,oom
 536870912,2,oom
 536870912,4,
 total_time
-times: 0.968085
+times: 1.34367
 536870912,6,
 total_time
-times: 1.01145
+times: 1.76493

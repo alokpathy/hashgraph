@@ -3,31 +3,31 @@ keycount,tablesize,gpucount,time
 build tests
 536870912,1048576,6,
 total_time
-times: 0.235335
+times: 0.376441
 536870912,2097152,6,
 total_time
-times: 0.230643
+times: 0.365158
 536870912,4194304,6,
 total_time
-times: 0.230058
+times: 0.364559
 536870912,8388608,6,
 total_time
-times: 0.231003
+times: 0.3829
 536870912,16777216,6,
 total_time
-times: 0.245877
+times: 0.393507
 536870912,33554432,6,
 total_time
-times: 0.240128
+times: 0.398155
 536870912,67108864,6,
 total_time
-times: 0.262097
+times: 0.410364
 536870912,134217728,6,
 total_time
-times: 0.272729
+times: 0.462601
 536870912,268435456,6,
 total_time
-times: 0.330758
+times: 0.540789
 536870912,536870912,6,
 total_time
-times: 0.406603
+times: 0.692084
