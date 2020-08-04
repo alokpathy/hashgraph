@@ -15450,33 +15450,33 @@ return (err == (cudaSuccess)) ? cudaBindSurfaceToArray(surf, array, desc) : err;
 #pragma GCC diagnostic pop
 # 40 "CMakeCUDACompilerId.cu"
 const char *info_compiler = ("INFO:compiler[NVIDIA]"); 
-# 272 "CMakeCUDACompilerId.cu"
+# 278 "CMakeCUDACompilerId.cu"
 const char info_version[] = {'I', 'N', 'F', 'O', ':', 'c', 'o', 'm', 'p', 'i', 'l', 'e', 'r', '_', 'v', 'e', 'r', 's', 'i', 'o', 'n', '[', (('0') + ((10 / 10000000) % 10)), (('0') + ((10 / 1000000) % 10)), (('0') + ((10 / 100000) % 10)), (('0') + ((10 / 10000) % 10)), (('0') + ((10 / 1000) % 10)), (('0') + ((10 / 100) % 10)), (('0') + ((10 / 10) % 10)), (('0') + (10 % 10)), '.', (('0') + ((1 / 10000000) % 10)), (('0') + ((1 / 1000000) % 10)), (('0') + ((1 / 100000) % 10)), (('0') + ((1 / 10000) % 10)), (('0') + ((1 / 1000) % 10)), (('0') + ((1 / 100) % 10)), (('0') + ((1 / 10) % 10)), (('0') + (1 % 10)), '.', (('0') + ((243 / 10000000) % 10)), (('0') + ((243 / 1000000) % 10)), (('0') + ((243 / 100000) % 10)), (('0') + ((243 / 10000) % 10)), (('0') + ((243 / 1000) % 10)), (('0') + ((243 / 100) % 10)), (('0') + ((243 / 10) % 10)), (('0') + (243 % 10)), ']', '\000'}; 
-# 319 "CMakeCUDACompilerId.cu"
+# 325 "CMakeCUDACompilerId.cu"
 const char *info_platform = ("INFO:platform[Linux]"); 
-# 320
+# 326
 const char *info_arch = ("INFO:arch[]"); 
-# 325
+# 331
 const char *info_language_dialect_default = ("INFO:dialect_default[14]"); 
-# 341
-int main(int argc, char *argv[]) 
-# 342
-{ 
-# 343
-int require = 0; 
-# 344
-require += (info_compiler[argc]); 
-# 345
-require += (info_platform[argc]); 
 # 347
+int main(int argc, char *argv[]) 
+# 348
+{ 
+# 349
+int require = 0; 
+# 350
+require += (info_compiler[argc]); 
+# 351
+require += (info_platform[argc]); 
+# 353
 require += (info_version[argc]); 
-# 355
+# 361
 require += (info_language_dialect_default[argc]); 
-# 356
+# 362
 (void)argv; 
-# 357
+# 363
 return require; 
-# 358
+# 364
 } 
 
 # 1 "CMakeCUDACompilerId.cudafe1.stub.c"

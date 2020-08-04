@@ -195,7 +195,7 @@ int main(int argc, char **argv) {
   cudaEventCreate(&stop);
   float buildTime = 0.0f; // milliseoncds
 
-  enablePeerAccess(gpuCount);
+  // enablePeerAccess(gpuCount);
 
   // rmmOptions_t rmmO;
 
@@ -282,9 +282,10 @@ int main(int argc, char **argv) {
     MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, tableSize, binCount, lrbBins, gpuCount);
 
 #ifdef MANAGED_MEM
-    index_t size = 2 * (tableSize + gpuCount) * sizeof(index_t);
+    size_t size = 2 * (tableSize + gpuCount) * sizeof(index_t);
     cudaMallocManaged(&mhgA.uvmPtrIntersect, size);
-    mhgA.prefixArrayIntersect = new index_t[gpuCount + 1]();
+    // mhgA.prefixArrayIntersect = new index_t[gpuCount + 1]();
+    mhgA.prefixArrayIntersect = new size_t[gpuCount + 1]();
     mhgA.totalSizeIntersect = size;
 #endif
 

@@ -205,7 +205,8 @@ void countFinalKeys(index_t **h_bufferCounter, char **h_dFinalKeys,
                         index_t **h_hFinalCounters, 
                         index_t **h_hFinalOffset, index_t **h_dFinalOffset, 
                         index_t *h_binSplits, index_t gpuCount, index_t tid,
-                        char *uvmPtr, index_t *prefixArray, index_t totalSize) {
+                        // char *uvmPtr, index_t *prefixArray, index_t totalSize) {
+                        char *uvmPtr, size_t *prefixArray, size_t totalSize) {
 #else
 void countFinalKeys(index_t **h_bufferCounter, char **h_dFinalKeys,
                         index_t **h_hFinalCounters, 
@@ -260,10 +261,41 @@ void countFinalKeys(index_t **h_bufferCounter, char **h_dFinalKeys,
     for (index_t i = 1; i < gpuCount; i++) {
       index_t tidKeyCount = h_hFinalOffset[i - 1][gpuCount];
       index_t tidHashRange = h_binSplits[i] - h_binSplits[i - 1];
-      index_t size = tidKeyCount * sizeof(keyval) + 
-                                 tidKeyCount * sizeof(HashKey) +
-                                 (2 * tidKeyCount * sizeof(keyval)) +
-                                 (2 * (tidHashRange + 1) * sizeof(index_t));
+      // index_t size = tidKeyCount * sizeof(keyval) + 
+      //                            tidKeyCount * sizeof(HashKey) +
+      //                            (2 * tidKeyCount * sizeof(keyval)) +
+      //                            (2 * (tidHashRange + 1) * sizeof(index_t));
+      
+      // keys
+      index_t size = tidKeyCount * sizeof(keyval);
+      if (size % 8 != 0) {
+        size += (8 - (size % 8));
+      }
+      // hash
+      size += tidKeyCount * sizeof(HashKey);
+      if (size % 8 != 0) {
+        size += (8 - (size % 8));
+      }
+      // edges
+      size += tidKeyCount * sizeof(keyval);
+      if (size % 8 != 0) {
+        size += (8 - (size % 8));
+      }
+      // lrbArray
+      size += tidKeyCount * sizeof(keyval);
+      if (size % 8 != 0) {
+        size += (8 - (size % 8));
+      }
+      // offset
+      size += (tidHashRange + 1) * sizeof(index_t);
+      if (size % 8 != 0) {
+        size += (8 - (size % 8));
+      }
+      // counter
+      size += (tidHashRange + 1) * sizeof(index_t);
+      if (size % 8 != 0) {
+        size += (8 - (size % 8));
+      }
 
       prefixArray[i] = prefixArray[i - 1] + size;
     }
@@ -298,7 +330,8 @@ void allToAll(inputData *h_dVals, char **h_dFinalKeys,
                   index_t **h_hKeyBinOff, index_t **h_hFinalCounters, index_t gpuCount,
                   index_t tid) {
 
-  /* Old code
+  /*
+  // Old code
   for (index_t j = 0; j < gpuCount; j++) {
     // Ship keys + hashes from GPU i to GPU j
     index_t keyCount = h_hFinalCounters[tid][j];

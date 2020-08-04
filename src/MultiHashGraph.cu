@@ -229,10 +229,13 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
 #endif
 
 #ifdef MANAGED_MEM
-  index_t size = countSize * sizeof(keyval) + 
+  size_t size = countSize * sizeof(keyval) + 
                      countSize * sizeof(HashKey) +
                      (2 * countSize * sizeof(keyval)) +
                      (2 * (tableSize + gpuCount) * sizeof(index_t));
+  size_t padding = 6 * gpuCount * 4; // #arrays_per_gpu * #gpus * padding
+  size += padding;
+
   std::cout << "managed alloc size: " << size << std::endl;
   this->totalSize = size;
   uvmPtr = nullptr;
@@ -243,7 +246,8 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
     cudaSetDevice(i);
     cudaMemPrefetchAsync(uvmPtr + equalChunk * i, equalChunk, i);
   }
-  prefixArray = new index_t[gpuCount + 1]();
+  // prefixArray = new index_t[gpuCount + 1]();
+  prefixArray = new size_t[gpuCount + 1]();
   
   h_dCountCommon = new char*[gpuCount]();
 #endif
@@ -323,8 +327,10 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
   decrHash<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(d_hash, valCount, d_splits, 
                                                 devNum);
 
+  CHECK_ERROR("before lrbCountHash");
   lrbCountHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash, d_lrbCounters, 
                                                     lrbBinSize);
+  CHECK_ERROR("after lrbCountHash");
   _d_temp_storage = nullptr; _temp_storage_bytes = 0;
 
   cub::DeviceScan::ExclusiveSum(NULL, _temp_storage_bytes, d_lrbCounters, 
@@ -343,14 +349,18 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
   cudaMemset(d_lrbCounters, 0, (lrbBins + 1) * sizeof(index_t));
 
+  CHECK_ERROR("before lrbRehash");
   lrbRehashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
                                                     d_lrbCounters, d_lrbArray, 
                                                     d_lrbCountersPrefix, lrbBinSize,
                                                     devNum);
+  CHECK_ERROR("after lrbRehash");
 
+  CHECK_ERROR("before lrbCountHashGlobal");
   lrbCountHashGlobalD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, 
                                                             d_lrbArray, d_splits, 
                                                             ogTableSize, devNum);
+  CHECK_ERROR("after lrbCountHashGlobal");
 
   _d_temp_storage = nullptr; _temp_storage_bytes = 0;
   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
@@ -372,9 +382,11 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
   cudaMemset(d_counter, 0, tableSize * sizeof(index_t));
 
+  CHECK_ERROR("before lrbCopy");
   lrbCopyToGraphD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, d_offSet, 
                                                       d_edges, d_lrbArray, d_splits, 
                                                       ogTableSize, devNum);
+  CHECK_ERROR("after lrbCopy");
 }
 
 #ifndef LRB_BUILD
@@ -594,19 +606,55 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
     exit(0);
   }
 
-  h_hashOff[tid] = keyCount * sizeof(keyval);
-  h_counterOff[tid] = (keyCount * sizeof(keyval)) +
-                        (keyCount * sizeof(HashKey)) +
-                        (2 * keyCount * sizeof(keyval)) + 
-                        ((hashRange + 1) * sizeof(index_t));
-  h_offsetOff[tid] = (keyCount * sizeof(keyval)) + 
-                        (keyCount * sizeof(HashKey)) +
-                        (2 * keyCount * sizeof(keyval));
-  h_edgesOff[tid] =  (keyCount * sizeof(keyval)) + 
-                        (keyCount * sizeof(HashKey));
-  h_lrbOff[tid] =    (keyCount * sizeof(keyval)) +
-                        (keyCount * sizeof(HashKey)) +
-                        (keyCount * sizeof(keyval));
+  // h_hashOff[tid] = keyCount * sizeof(keyval);
+  // h_edgesOff[tid] =  (keyCount * sizeof(keyval)) + 
+  //                       (keyCount * sizeof(HashKey));
+  // h_lrbOff[tid] =    (keyCount * sizeof(keyval)) +
+  //                       (keyCount * sizeof(HashKey)) +
+  //                       (keyCount * sizeof(keyval));
+  // h_offsetOff[tid] = (keyCount * sizeof(keyval)) + 
+  //                       (keyCount * sizeof(HashKey)) +
+  //                       (2 * keyCount * sizeof(keyval));
+  // h_counterOff[tid] = (keyCount * sizeof(keyval)) +
+  //                       (keyCount * sizeof(HashKey)) +
+  //                       (2 * keyCount * sizeof(keyval)) + 
+  //                       ((hashRange + 1) * sizeof(index_t));
+
+  size_t offset = 0;
+  // hash
+  offset += keyCount * sizeof(keyval);
+  if (offset % 8 != 0) {
+    offset += (8 - (offset % 8));
+  }
+  h_hashOff[tid] = offset;
+
+  // edges
+  offset += keyCount * sizeof(HashKey);
+  if (offset % 8 != 0) {
+    offset += (8 - (offset % 8));
+  }
+  h_edgesOff[tid] = offset;
+
+  // lrbArray
+  offset += keyCount * sizeof(keyval);
+  if (offset % 8 != 0) {
+    offset += (8 - (offset % 8));
+  }
+  h_lrbOff[tid] = offset;
+
+  // offset
+  offset += keyCount * sizeof(keyval);
+  if (offset % 8 != 0) {
+    offset += (8 - (offset % 8));
+  }
+  h_offsetOff[tid] = offset;
+
+  // counter
+  offset += (hashRange + 1) * sizeof(index_t);
+  if (offset % 8 != 0) {
+    offset += (8 - (offset % 8));
+  }
+  h_counterOff[tid] = offset;
 
   lrbBuildMultiTable((keyval *) h_dFinalKeys[tid], 
                           (HashKey *) (h_dFinalKeys[tid] + h_hashOff[tid]), // d_hash

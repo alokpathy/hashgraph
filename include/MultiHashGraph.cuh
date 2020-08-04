@@ -59,14 +59,16 @@
 // #define CUDA_PROFILE
 // #define HOST_PROFILE
 
-#define INDEX_TRACK
+// #define INDEX_TRACK
 #define MANAGED_MEM
 #define B32
 
 #ifdef B32
 using hkey_t = uint32_t;
 using index_t = int64_t;
+// using index_t = uint32_t;
 using HashKey = uint32_t;
+// using HashKey = int64_t;
 #else
 using hkey_t = int64_t;
 using index_t = int64_t;
@@ -195,10 +197,14 @@ public:
     char **h_dCountCommon;
     char *uvmPtr;
     char *uvmPtrIntersect;
-    index_t *prefixArray;
-    index_t *prefixArrayIntersect;
-    index_t totalSize;
-    index_t totalSizeIntersect;
+    // index_t *prefixArray;
+    size_t *prefixArray;
+    // index_t *prefixArrayIntersect;
+    size_t *prefixArrayIntersect;
+    // index_t totalSize;
+    size_t totalSize;
+    // index_t totalSizeIntersect;
+    size_t totalSizeIntersect;
 
     size_t **h_dExSumTemp;
     size_t exSumTempBytes;

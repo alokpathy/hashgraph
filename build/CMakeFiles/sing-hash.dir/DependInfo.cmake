@@ -10,6 +10,7 @@ set(CMAKE_CUDA_COMPILER_ID "NVIDIA")
 
 # The include file search paths:
 set(CMAKE_CUDA_TARGET_INCLUDE_PATH
+  "/sw/summit/cuda/10.1.243/targets/ppc64le-linux/include"
   "../externals/cub-1.8.0"
   "../include"
   "../test"

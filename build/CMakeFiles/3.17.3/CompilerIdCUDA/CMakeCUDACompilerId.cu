@@ -218,6 +218,12 @@ char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";
 # elif defined(__ICC430__)
 #  define ARCHITECTURE_ID "MSP430"
 
+# elif defined(__ICCV850__)
+#  define ARCHITECTURE_ID "V850"
+
+# elif defined(__ICC8051__)
+#  define ARCHITECTURE_ID "8051"
+
 # else /* unknown architecture */
 #  define ARCHITECTURE_ID ""
 # endif
@@ -332,7 +338,7 @@ const char* info_language_dialect_default = "INFO" ":" "dialect_default["
 #elif __cplusplus >= 201103L
   "11"
 #else
-  "98"
+  "03"
 #endif
 "]";
 

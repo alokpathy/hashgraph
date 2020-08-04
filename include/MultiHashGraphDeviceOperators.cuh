@@ -31,14 +31,14 @@ __forceinline__ __host__ __device__ uint32_t fmix32( uint32_t h ) {
   h ^= h >> 16;
   return h;
 }
-__forceinline__  __host__ __device__ uint32_t hash_murmur(const HashKey& key) {
+__forceinline__  __host__ __device__ HashKey hash_murmur(const HashKey& key) {
 
 #ifdef ID_HASH
-  return (uint32_t) key;
+  return (HashKey) key;
 #endif
 
   // constexpr int len = sizeof(int);
-  constexpr int len = sizeof(int);
+  constexpr int len = sizeof(HashKey);
   const uint8_t * const data = (const uint8_t*)&key;
   constexpr int nblocks = len / 4;
   uint32_t h1 = 0;
@@ -96,7 +96,8 @@ __global__ void hashValuesD(index_t valCount, keyval *valsArr, HashKey *hashArr,
   for (auto i = id; i < valCount; i += stride) {
     // hashArr[i].key = (HashKey)(hash_murmur(valsArr[i].key) % tableSize);
 #ifdef INDEX_TRACK
-    hashArr[i] = (HashKey)(hash_murmur(valsArr[i].key) % tableSize);
+    // hashArr[i] = (HashKey)(hash_murmur(valsArr[i].key) % tableSize);
+    hashArr[i] = (HashKey)(hash_murmur((index_t)valsArr[i].key) % tableSize);
 #else
     hashArr[i] = (HashKey)(hash_murmur(valsArr[i]) % tableSize);
 #endif
@@ -109,7 +110,12 @@ __global__ void countHashD(index_t valCount, HashKey *hashArr, index_t *countArr
   int64_t     id = blockIdx.x * blockDim.x + threadIdx.x;
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
+#ifdef B32
+    // atomicAdd((countArr + hashArr[i]), 1);
     atomicAdd((unsigned long long int*)(countArr + hashArr[i]), 1);
+#else
+    atomicAdd((unsigned long long int*)(countArr + hashArr[i]), 1);
+#endif
     // atomicAdd((countArr + hashArr[i]), 1);
   }    
 }
@@ -130,7 +136,12 @@ __global__ void copyToGraphD(index_t valCount, hkey_t *valsArr, HashKey *hashArr
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
     HashKey hashVal=hashArr[i];
+#ifdef B32
+    // int pos = atomicAdd((countArr + hashVal),1)+offsetArr[hashVal];
     int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
+#else
+    int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
+#endif
     // int pos = atomicAdd((countArr + hashVal),1)+offsetArr[hashVal];
 #ifdef INDEX_TRACK
     edges[pos]={valsArr[i],i};
@@ -170,7 +181,12 @@ __global__ void countBinSizes(HashKey *d_vals, index_t size, index_t *d_binSizes
   for (index_t i = id; i < size; i += stride) {
     // index_t bin = d_vals[i] / binRange;
     index_t bin = d_vals[i] / binRange;
+#ifdef B32
+    // atomicAdd((&d_binSizes[bin]), 1);
     atomicAdd((unsigned long long int*)(&d_binSizes[bin]), 1);
+#else
+    atomicAdd((unsigned long long int*)(&d_binSizes[bin]), 1);
+#endif
   }
 }
 
@@ -190,7 +206,12 @@ __global__ void countHashBinSizes(HashKey *d_vals, index_t size, index_t *d_binS
   int64_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < size; i += stride) {
     index_t bin = d_vals[i] / binRange;
+#ifdef B32
+    // atomicAdd((&d_binSizes[bin]), 1);
     atomicAdd((unsigned long long int*)(&d_binSizes[bin]), 1);
+#else
+    atomicAdd((unsigned long long int*)(&d_binSizes[bin]), 1);
+#endif
   }
 }
 
@@ -204,7 +225,12 @@ __global__ void countBufferSizes(index_t *hashSplits, index_t size, index_t *buf
     // TODO: This might make things slow.
     for (index_t j = 0; j < gpuCount; j++) {
       if (hashSplits[j] <= hash && hash < hashSplits[j + 1]) {
+#ifdef B32
+        // atomicAdd((&bufferCounter[j]), 1);
         atomicAdd((unsigned long long int*)(&bufferCounter[j]), 1);
+#else
+        atomicAdd((unsigned long long int*)(&bufferCounter[j]), 1);
+#endif
         break;
       }
     }
@@ -245,14 +271,24 @@ __global__ void countKeyBuffSizes(HashKey *hashVals, index_t size_, index_t *cou
     for (uint32_t j = 0; j < gpuCount; j++) {
       if (hash < splits[j + 1]) {
         // atomicAdd((unsigned long long int*)(&counter[j]), 1);
+#ifdef B32
+        // atomicAdd((&internalCounters[j]), 1);
         atomicAdd((unsigned long long int*)(&internalCounters[j]), 1);
+#else
+        atomicAdd((unsigned long long int*)(&internalCounters[j]), 1);
+#endif
         break;
       }
     }
   }
   __syncthreads();
   if(threadIdx.x<gpuCount){
+#ifdef B32
+      // atomicAdd((&counter[threadIdx.x]), internalCounters[threadIdx.x]);
       atomicAdd((unsigned long long int*)(&counter[threadIdx.x]), internalCounters[threadIdx.x]);
+#else
+      atomicAdd((unsigned long long int*)(&counter[threadIdx.x]), internalCounters[threadIdx.x]);
+#endif
   }
 }
 
@@ -266,7 +302,12 @@ __global__ void binKeyValues(index_t size, hkey_t *keys, hkey_t *keyBuff, index_
     hkey_t key = keys[i];
     for (index_t j = 0; j < gpuCount; j++) {
       if (splits[j] <= key && key < splits[j + 1]) {
+#ifdef B32
+        // index_t pos = atomicAdd((&counter[j]), 1);
         index_t pos = atomicAdd((unsigned long long int*)(&counter[j]), 1);
+#else
+        index_t pos = atomicAdd((unsigned long long int*)(&counter[j]), 1);
+#endif
         index_t off = offsets[j];
         keyBuff[off + pos] = key;
         break;
@@ -323,14 +364,24 @@ __global__ void binHashValues(index_t size, hkey_t *keys, HashKey *hashes,
     HashKey hash = hashes[i];
     for (index_t j = 0; j < gpuCount; j++) {
       if (hash < hashSplits[j + 1]) {
+#ifdef B32
+        // index_t pos = atomicAdd((&internalCounters[j]), 1);
         index_t pos = atomicAdd((unsigned long long int*)(&internalCounters[j]), 1);
+#else
+        index_t pos = atomicAdd((unsigned long long int*)(&internalCounters[j]), 1);
+#endif
         break;
       }
     }
   }
   __syncthreads();
   if(threadIdx.x<gpuCount){
+#ifdef B32
+        // posGPUs[threadIdx.x] = atomicAdd((&counter[threadIdx.x]), internalCounters[threadIdx.x]);
         posGPUs[threadIdx.x] = atomicAdd((unsigned long long int*)(&counter[threadIdx.x]), internalCounters[threadIdx.x]);
+#else
+        posGPUs[threadIdx.x] = atomicAdd((unsigned long long int*)(&counter[threadIdx.x]), internalCounters[threadIdx.x]);
+#endif
   }
   __syncthreads();
   for (auto i = id; i < size; i += stride) {
@@ -339,7 +390,12 @@ __global__ void binHashValues(index_t size, hkey_t *keys, HashKey *hashes,
     index_t pos, off;
     for (index_t j = 0; j < gpuCount; j++) {
       if (hash < hashSplits[j + 1]) {
+#ifdef B32
+        // pos = atomicAdd((&posGPUs[j]), 1);
         pos = atomicAdd((unsigned long long int*)(&posGPUs[j]), 1);
+#else
+        pos = atomicAdd((unsigned long long int*)(&posGPUs[j]), 1);
+#endif
         off = offsets[j];
         break;
       }
@@ -400,7 +456,12 @@ __global__ void binKeyValues(hkey_t *keyBuff, hkey_t *keys, size_t size, index_t
     index_t bin = key / binRange;
 
     hkey_t *row = (hkey_t*)((char*)keyBuff + bin * pitch);
+#ifdef B32
+    // index_t pos = atomicAdd((&counter[bin]), 1);
     index_t pos = atomicAdd((unsigned long long int*)(&counter[bin]), 1);
+#else
+    index_t pos = atomicAdd((unsigned long long int*)(&counter[bin]), 1);
+#endif
     row[pos] = key;
   }
 }
@@ -412,9 +473,14 @@ __global__ void lrbCountHashD(index_t valCount, HashKey *hashArr, index_t *d_lrb
   int     id = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
-      index_t ha = (index_t)(hashArr[i] / lrbBinSize);
+      index_t ha = ((index_t)hashArr[i]) / lrbBinSize;
       // index_t ha = (index_t)(hashArr[i].key / lrbBinSize);
+#ifdef B32
+      // atomicAdd((d_lrbCounters + ha),1);
       atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1);
+#else
+      atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1);
+#endif
       // atomicAdd((d_lrbCounters + ha),1);
   }    
 }
@@ -426,14 +492,20 @@ __global__ void lrbRehashD(index_t valCount, keyval *valsArr, HashKey *hashArr,
                               index_t *d_lrbCountersPrefix, index_t lrbBinSize,
                               index_t devNum) {
 
-  int     id = blockIdx.x * blockDim.x + threadIdx.x;
-  int stride = blockDim.x * gridDim.x;
+  index_t     id = blockIdx.x * blockDim.x + threadIdx.x;
+  index_t stride = blockDim.x * gridDim.x;
   for (auto i = id; i < valCount; i += stride) {
       // HashKey ha = hashArr[i].key/lrbBinSize;
-      HashKey ha = hashArr[i]/lrbBinSize;
-      index_t pos = atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
+      // HashKey ha = hashArr[i]/lrbBinSize;
+      index_t ha = ((index_t)hashArr[i])/lrbBinSize;
+#ifdef B32
       // index_t pos = atomicAdd((d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
-      // d_lrbHashReordered[pos]={valsArr[i],i};
+      index_t pos = atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
+#else
+      index_t pos = atomicAdd((unsigned long long int*)(d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
+#endif
+      // index_t pos = atomicAdd((d_lrbCounters + ha),1)+ d_lrbCountersPrefix[ha];
+      // d_lrbHashReordered[pos]={valsArr[i].key,i};
       d_lrbHashReordered[pos] = valsArr[i];
   }
 }
@@ -450,8 +522,13 @@ __global__ void lrbCountHashGlobalD(index_t valCount, index_t *countArr,
 #else
       HashKey hash = hash_murmur(d_lrbHashReordered[i]);
 #endif
-      HashKey ha = (hash % tableSize) - splits[devNum];
+      index_t ha = (((index_t)hash) % tableSize) - splits[devNum];
+#ifdef B32
+      atomicAdd((unsigned long long*)(countArr + ha),1);
+      // atomicAdd((unsigned long long int*)(countArr + ha),1);
+#else
       atomicAdd((unsigned long long int*)(countArr + ha),1);
+#endif
       // atomicAdd((countArr + ha),1);
   }    
 }
@@ -470,7 +547,12 @@ __global__ void lrbCopyToGraphD(index_t valCount, index_t *countArr, index_t *of
 #endif
       HashKey hashVal = (hash % tableSize) - splits[devNum];
       // HashKey hashVal=d_lrbHashReordered[i].key;
+#ifdef B32
+      // int pos = atomicAdd((countArr + hashVal),1)+offsetArr[hashVal];
       int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
+#else
+      int pos = atomicAdd((unsigned long long int*)(countArr + hashVal),1)+offsetArr[hashVal];
+#endif
       // int pos = atomicAdd((countArr + hashVal),1)+offsetArr[hashVal];
       edges[pos]=d_lrbHashReordered[i];
   }    
