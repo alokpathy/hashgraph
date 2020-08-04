@@ -364,14 +364,14 @@ void allToAll(inputData *h_dVals, char **h_dFinalKeys,
     // cudaMemcpyAsync(h_dFinalKeys[j] + (h_hFinalOffset[j][tid] * sizeof(keyval)),
     //                   h_dKeyBinBuff[tid] + h_hKeyBinOff[tid][j],
     //                   keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
-    cudaMemcpyAsync(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
-                      h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
-                      keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice,streams[j]);
-    // cudaMemcpyPeerAsync(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
-    //                   tid,
+    // cudaMemcpyAsync(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
     //                   h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
-    //                   j,
-    //                   keyCount * sizeof(keyval), streams[j]);
+    //                   keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice,streams[j]);
+    cudaMemcpyPeerAsync(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
+                      tid,
+                      h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
+                      j,
+                      keyCount * sizeof(keyval), streams[j]);
     // cudaMemcpy(h_dFinalKeys[tid] + (h_hFinalOffset[tid][j] * sizeof(keyval)),
     //                   h_dKeyBinBuff[j] + h_hKeyBinOff[j][tid],
     //                   keyCount * sizeof(keyval), cudaMemcpyDeviceToDevice);
