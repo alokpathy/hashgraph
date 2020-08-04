@@ -15,10 +15,9 @@ declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index
 declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
 # declare -a exps=("strong_scaling" "weak_scaling")
 
-# 64-bit section
-sed -i 's/^#define B32/\/\/&/' $includepath/MultiHashGraph.cuh
-keysize=8
-echo "64-bit keys"
+sed -i 's/^\/\/.*#define B32/#define B32/' $includepath/MultiHashGraph.cuh
+keysize=4
+echo "32-bit keys"
 
 sed -i 's/^#define HOST_PROFILE/\/\/&/' $includepath/MultiHashGraph.cuh
 for hash in "${hashes[@]}"

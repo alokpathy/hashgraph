@@ -48,7 +48,7 @@ using namespace std::chrono;
 // Uncomment once we remove "using namespace hornets_nest"
 // const int BLOCK_SIZE_OP2 = 256;
 
-#define ERROR_CHECK
+// #define ERROR_CHECK
 // #define PRINT_KEYS
 #define LRB_BUILD
 
@@ -327,10 +327,8 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
   decrHash<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(d_hash, valCount, d_splits, 
                                                 devNum);
 
-  CHECK_ERROR("before lrbCountHash");
   lrbCountHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_hash, d_lrbCounters, 
                                                     lrbBinSize);
-  CHECK_ERROR("after lrbCountHash");
   _d_temp_storage = nullptr; _temp_storage_bytes = 0;
 
   cub::DeviceScan::ExclusiveSum(NULL, _temp_storage_bytes, d_lrbCounters, 
@@ -349,18 +347,14 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
   cudaMemset(d_lrbCounters, 0, (lrbBins + 1) * sizeof(index_t));
 
-  CHECK_ERROR("before lrbRehash");
   lrbRehashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_vals, d_hash, 
                                                     d_lrbCounters, d_lrbArray, 
                                                     d_lrbCountersPrefix, lrbBinSize,
                                                     devNum);
-  CHECK_ERROR("after lrbRehash");
 
-  CHECK_ERROR("before lrbCountHashGlobal");
   lrbCountHashGlobalD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, 
                                                             d_lrbArray, d_splits, 
                                                             ogTableSize, devNum);
-  CHECK_ERROR("after lrbCountHashGlobal");
 
   _d_temp_storage = nullptr; _temp_storage_bytes = 0;
   cub::DeviceScan::ExclusiveSum(_d_temp_storage, _temp_storage_bytes,d_counter, 
@@ -382,11 +376,9 @@ void lrbBuildMultiTable(keyval *d_vals, HashKey *d_hash, index_t *d_counter,
 
   cudaMemset(d_counter, 0, tableSize * sizeof(index_t));
 
-  CHECK_ERROR("before lrbCopy");
   lrbCopyToGraphD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(valCount, d_counter, d_offSet, 
                                                       d_edges, d_lrbArray, d_splits, 
                                                       ogTableSize, devNum);
-  CHECK_ERROR("after lrbCopy");
 }
 
 #ifndef LRB_BUILD

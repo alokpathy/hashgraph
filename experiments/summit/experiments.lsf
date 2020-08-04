@@ -1,5 +1,5 @@
 #!/bin/bash
-#BSUB -P CSC318LBL
+#BSUB -P BIF115
 #BSUB -W 2:00
 #BSUB -nnodes 1
 #BSUB -alloc_flags gpumps
@@ -14,12 +14,15 @@ buildpath="../../build"
 includepath="../../include"
 
 declare -a hashes=("id" "murmur")
-declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
-# declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
+# declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
+declare -a modes=("noindex_nomanaged" "index_nomanaged")
+declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
 # declare -a exps=("strong_scaling" "weak_scaling")
-declare -a exps=("duplicate_keys")
+# declare -a exps=("duplicate_keys")
 
-keysize=8
+sed -i 's/^\/\/.*#define B32/#define B32/' $includepath/MultiHashGraph.cuh
+# keysize=8
+keysize=4
 
 sed -i 's/^#define HOST_PROFILE/\/\/&/' $includepath/MultiHashGraph.cuh
 for hash in "${hashes[@]}"

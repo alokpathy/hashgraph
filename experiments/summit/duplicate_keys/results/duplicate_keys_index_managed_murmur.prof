@@ -1,48 +1,48 @@
 duplicate_keys
 keycount,tablesize,gpucount,time
 build tests
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.015,0.001,0.009,0.013,1.198,0.158,1.45693
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.004,0.001,0.009,0.018,0.898,0.297,1.44238
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.006,0.001,0.009,0.018,0.889,0.249,1.23703
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.014,0.001,0.009,0.018,1.091,0.187,1.38342
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.014,0.001,0.009,0.014,1.272,0.178,1.5621
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.018,0.001,0.009,0.018,1.115,0.201,1.4806
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.014,0.001,0.009,0.019,0.953,0.2,1.36366
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.014,0.001,0.009,0.019,1.138,0.217,1.4604
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.003,0.001,0.009,0.022,0.99,0.229,1.38323
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.003,0.001,0.009,0.028,1.134,0.258,1.49813
-536870912,6,
-countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.003,0.001,0.009,0.031,0.737,0.278,1.48113
+536870912,1048576,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.01,0.001,0.005,0.016,0.17,0.139,0.354218
+536870912,2097152,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.005,0.001,0.005,0.023,0.273,0.049,0.375338
+536870912,4194304,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.005,0.001,0.005,0.019,0.158,0.07,0.315248
+536870912,8388608,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.012,0.001,0.005,0.021,0.177,0.049,0.280159
+536870912,16777216,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.005,0.001,0.005,0.019,0.154,0.049,0.294019
+536870912,33554432,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.01,0.001,0.005,0.022,0.165,0.05,0.348713
+536870912,67108864,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.012,0.001,0.005,0.02,0.186,0.05,0.339382
+536870912,134217728,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.002,0.001,0.005,0.02,0.152,0.052,0.27439
+536870912,268435456,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.005,0.001,0.005,0.021,0.165,0.084,0.370322
+536870912,536870912,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.013,0.001,0.005,0.023,0.182,0.066,0.301468
+536870912,1073741824,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.007,0.001,0.005,0.039,0.183,0.08,0.346567
 intersect tests
-268435456,6,
-times: 0.003,0,0.004,0.01,0.563,0.079,0.001,0.004,0.01,0.592,0.08,0.059,1.723,4.87975
-268435456,6,
-times: 0.009,0,0.004,0.004,0.485,0.126,0.001,0.004,0.013,0.449,0.087,0.051,0.871,3.20418
-268435456,6,
-times: 0.004,0.005,0.004,0.004,0.453,0.098,0.001,0.004,0.014,0.554,0.093,0.051,0.426,2.33214
-268435456,6,
-times: 0.009,0,0.004,0.01,0.434,0.091,0.001,0.004,0.015,0.482,0.105,0.062,0.196,1.92212
-268435456,6,
-times: 0.004,0,0.004,0.013,0.512,0.09,0.001,0.004,0.007,0.607,0.085,0.056,0.105,1.72653
-268435456,6,
-times: 0.009,0,0.004,0.004,0.509,0.095,0.001,0.004,0.01,0.565,0.095,0.088,0.051,1.59015
-268435456,6,
-times: 0.009,0,0.004,0.01,0.471,0.103,0.001,0.004,0.007,0.531,0.099,0.063,0.025,1.59661
-268435456,6,
-times: 0.009,0,0.004,0.007,0.648,0.093,0.001,0.004,0.011,0.587,0.097,0.053,0.014,1.66292
-268435456,6,
-times: 0.004,0.001,0.004,0.012,0.556,0.105,0.001,0.004,0.011,0.549,0.111,0.065,0.009,1.58224
-268435456,6,
-times: 0.009,0,0.004,0.008,0.573,0.125,0.001,0.004,0.016,0.483,0.129,0.077,0.009,1.6715
-268435456,6,
-times: 0.009,0,0.004,0.013,0.634,0.132,0.001,0.004,0.018,0.586,0.137,0.192,0.15,2.05997
+268435456,1048576,6,
+times: 0.006,0,0.002,0.008,0.084,0.051,0.001,0.002,0.025,0.082,0.028,0.013,1.715,3.76791
+268435456,2097152,6,
+times: 0.006,0,0.002,0.009,0.078,0.048,0.001,0.002,0.014,0.081,0.025,0.038,0.872,2.11786
+268435456,4194304,6,
+times: 0.006,0,0.002,0.008,0.121,0.024,0.001,0.002,0.013,0.076,0.024,0.034,0.428,1.23287
+268435456,8388608,6,
+times: 0.007,0,0.002,0.011,0.126,0.024,0.001,0.002,0.011,0.077,0.032,0.036,0.198,0.741593
+268435456,16777216,6,
+times: 0.006,0,0.002,0.011,0.079,0.029,0.001,0.002,0.013,0.07,0.025,0.023,0.105,0.52337
+268435456,33554432,6,
+times: 0.006,0,0.002,0.012,0.131,0.025,0.004,0.002,0.012,0.121,0.028,0.033,0.05,0.488446
+268435456,67108864,6,
+times: 0.003,0.001,0.002,0.013,0.116,0.026,0.001,0.002,0.012,0.075,0.026,0.034,0.023,0.438451
+268435456,134217728,6,
+times: 0.006,0,0.002,0.01,0.111,0.028,0.001,0.003,0.01,0.11,0.028,0.038,0.012,0.422404
+268435456,268435456,6,
+times: 0.007,0,0.002,0.015,0.091,0.04,0.001,0.002,0.017,0.093,0.049,0.044,0.008,0.435231
+268435456,536870912,6,
+times: 0.007,0,0.002,0.021,0.128,0.039,0.001,0.002,0.022,0.074,0.039,0.013,0.008,0.558114
+268435456,1073741824,6,
+times: 0.003,0,0.002,0.029,0.148,0.052,0.001,0.002,0.018,0.085,0.067,0.164,0.011,0.809787
