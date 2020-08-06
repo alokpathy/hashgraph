@@ -1,0 +1,14 @@
+duplicate_keys
+keycount,tablesize,gpucount,time
+build tests
+1073741824,16777216,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.01,0.003,0.007,0.001,1.129,0.103,1.44033
+1073741824,33554432,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.01,0.003,0.007,0.001,1.2,0.121,1.41931
+1073741824,67108864,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.008,0.003,0.007,0.001,0.768,0.271,1.4402
+1073741824,134217728,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.009,0.002,0.006,0.002,0.717,0.13,1.14687
+1073741824,268435456,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.009,0.003,0.006,0.028,0.859,0.071,1.10455
+1073741824,536870912,16,

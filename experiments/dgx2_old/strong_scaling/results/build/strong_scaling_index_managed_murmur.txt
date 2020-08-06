@@ -4,82 +4,117 @@ build tests
 countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
 16777216,1,
 total_time
-times: 0.0421304
+times: 0.0200704
 16777216,2,
 total_time
-times: 0.0577884
+times: 0.115127
 16777216,4,
 total_time
-times: 0.0815391
+times: 0.0927928
 16777216,8,
 total_time
-times: 0.175319
+times: 0.150046
 16777216,16,
 total_time
-times: 0.463297
+times: 0.238865
 33554432,1,
 total_time
-times: 0.0449649
+times: 0.0561091
 33554432,2,
 total_time
-times: 0.0943862
+times: 0.0762327
 33554432,4,
 total_time
-times: 0.137895
+times: 0.188847
 33554432,8,
 total_time
-times: 0.324512
+times: 0.209228
 33554432,16,
 total_time
-times: 0.479147
+times: 0.249175
 67108864,1,
 total_time
-times: 0.109212
+times: 0.110607
 67108864,2,
 total_time
-times: 0.202891
+times: 0.156855
 67108864,4,
 total_time
-times: 0.241411
+times: 0.179472
 67108864,8,
 total_time
-times: 0.245706
+times: 0.212921
 67108864,16,
 total_time
-times: 0.416298
+times: 0.513773
 134217728,1,
 total_time
-times: 0.256797
+times: 0.258095
 134217728,2,
 total_time
-times: 0.348421
+times: 0.322205
 134217728,4,
 total_time
-times: 0.362482
+times: 0.360276
 134217728,8,
 total_time
-times: 0.391885
+times: 0.389285
 134217728,16,
 total_time
-times: 0.623494
+times: 0.518296
 268435456,1,
 total_time
-times: 0.638399
+times: 0.619612
 268435456,2,
 total_time
-times: 0.712875
+times: 0.626698
 268435456,4,
 total_time
-times: 0.792646
+times: 0.671528
 268435456,8,
 total_time
-times: 0.640163
+times: 0.709073
 268435456,16,
 total_time
-times: 0.85715
+times: 1.00242
 536870912,1,oom
 536870912,2,
 total_time
-times: 1.58529
+times: 1.34194
 536870912,4,
 total_time
+times: 1.53015
+536870912,8,
+total_time
+times: 1.34813
+536870912,16,
+total_time
+times: 1.75719
+1073741824,1,oom
+1073741824,2,oom
+1073741824,4,
+total_time
+times: 3.48901
+1073741824,8,
+total_time
+times: 2.5561
+1073741824,16,
+total_time
+times: 3.25046
+2147483648,1,oom
+2147483648,2,oom
+2147483648,4,oom
+2147483648,8,
+total_time
+times: 6.04265
+2147483648,16,
+total_time
+times: 5.90082
+4294967296,1,oom
+4294967296,2,oom
+4294967296,4,oom
+4294967296,8,oom
+4294967296,16,
+total_time
+times: 10.2452
+8589934592,1,oom

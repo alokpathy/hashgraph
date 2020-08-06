@@ -4,79 +4,79 @@ build tests
 countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
 16777216,1,
 total_time
-times: 0.0129464
+times: 0.012458
 33554432,2,
 total_time
-times: 0.0165786
+times: 0.0440381
 67108864,4,
 total_time
-times: 0.0298107
+times: 0.0254331
 134217728,8,
 total_time
-times: 0.0671027
+times: 0.0658104
 268435456,16,
 total_time
-times: 0.229948
+times: 0.393827
 33554432,1,
 total_time
-times: 0.0650056
+times: 0.0607887
 67108864,2,
 total_time
-times: 0.0348508
+times: 0.0342999
 134217728,4,
 total_time
-times: 0.0518656
+times: 0.0880732
 268435456,8,
 total_time
-times: 0.091306
+times: 0.142962
 536870912,16,
 total_time
-times: 0.32325
+times: 0.351319
 67108864,1,
 total_time
-times: 0.0792996
+times: 0.0779909
 134217728,2,
 total_time
-times: 0.119148
+times: 0.0820019
 268435456,4,
 total_time
-times: 0.198457
+times: 0.16155
 536870912,8,
 total_time
-times: 0.382173
+times: 0.241214
 1073741824,16,
 total_time
-times: 0.810272
+times: 0.743683
 134217728,1,
 total_time
-times: 0.20924
+times: 0.189998
 268435456,2,
 total_time
-times: 0.191901
+times: 0.351496
 536870912,4,
 total_time
-times: 0.250934
+times: 0.325577
 1073741824,8,
 total_time
-times: 0.609098
+times: 0.4745
 2147483648,16,
 total_time
-times: 1.1462
+times: 0.934588
 268435456,1,
 total_time
-times: 0.495709
+times: 0.557251
 536870912,2,
 total_time
-times: 0.463849
+times: 0.472333
 1073741824,4,
 total_time
-times: 0.497031
+times: 0.902903
 2147483648,8,
 total_time
-times: 2.07384
+times: 0.898186
 4294967296,16,
 total_time
-times: 2.74862
+times: 2.57229
 536870912,1,oom
 1073741824,2,oom
 2147483648,4,oom
@@ -104,55 +104,80 @@ times: 2.74862
 137438953472,16,oom
 intersect tests
 8388608,1,
-multi intersect() time: 0.0154163
+total_time
+times: 0.0154214
 16777216,2,
-multi intersect() time: 0.0575949
+total_time
+times: 0.0252713
 33554432,4,
-multi intersect() time: 0.0559667
+total_time
+times: 0.0886989
 67108864,8,
-multi intersect() time: 0.221823
+total_time
+times: 0.30516
 134217728,16,
-multi intersect() time: 0.972052
+total_time
+times: 0.962321
 16777216,1,
-multi intersect() time: 0.0306893
+total_time
+times: 0.0306401
 33554432,2,
-multi intersect() time: 0.0420792
+total_time
+times: 0.075137
 67108864,4,
-multi intersect() time: 0.0846817
+total_time
+times: 0.079999
 134217728,8,
-multi intersect() time: 0.53766
+total_time
+times: 0.348327
 268435456,16,
-multi intersect() time: 1.10656
+total_time
+times: 1.03619
 33554432,1,
-multi intersect() time: 0.0941169
+total_time
+times: 0.0714496
 67108864,2,
-multi intersect() time: 0.114047
+total_time
+times: 0.224748
 134217728,4,
-multi intersect() time: 0.212327
+total_time
+times: 0.274416
 268435456,8,
-multi intersect() time: 0.699147
+total_time
+times: 0.365514
 536870912,16,
-multi intersect() time: 1.19568
+total_time
+times: 1.12799
 67108864,1,
-multi intersect() time: 0.195893
+total_time
+times: 0.185846
 134217728,2,
-multi intersect() time: 0.255549
+total_time
+times: 0.260401
 268435456,4,
-multi intersect() time: 0.3814
+total_time
+times: 0.408709
 536870912,8,
-multi intersect() time: 0.893896
+total_time
+times: 1.07706
 1073741824,16,
-multi intersect() time: 1.6681
+total_time
+times: 1.98395
 134217728,1,
-multi intersect() time: 0.490323
+total_time
+times: 0.44953
 268435456,2,
-multi intersect() time: 0.520004
+total_time
+times: 0.446809
 536870912,4,
-multi intersect() time: 0.722268
+total_time
+times: 1.03184
 1073741824,8,
-multi intersect() time: 1.72605
+total_time
+times: 1.75571
 2147483648,16,
-multi intersect() time: 2.99164
+total_time
+times: 3.43348
 268435456,1,oom
 536870912,2,oom
 1073741824,4,oom
