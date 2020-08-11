@@ -51,3 +51,8 @@ countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,tot
 countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.039,0.005,0.011,0.01,0.034,0.03,0.132104
 1073741824,1,oom
 1073741824,2,oom
+1073741824,4,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.09,0.014,0.029,0.016,0.014,0.097,0.263314
+1073741824,6,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.059,0.009,0.019,0.03,0.055,0.056,0.230252
+intersect tests

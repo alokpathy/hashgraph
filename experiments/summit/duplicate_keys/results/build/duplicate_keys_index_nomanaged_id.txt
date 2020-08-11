@@ -30,3 +30,8 @@ total_time
 times: 1.33093
 536870912,536870912,6,
 total_time
+times: 1.35457
+536870912,1073741824,6,
+total_time
+times: 1.60006
+intersect tests

@@ -31,3 +31,7 @@ times: 0.54569
 536870912,536870912,6,
 total_time
 times: 0.719376
+536870912,1073741824,6,
+total_time
+times: 0.95109
+intersect tests

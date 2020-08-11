@@ -70,3 +70,8 @@ total_time
 times: 1.45068
 1073741824,1,oom
 1073741824,2,oom
+1073741824,4,oom
+1073741824,6,
+total_time
+times: 2.92791
+intersect tests

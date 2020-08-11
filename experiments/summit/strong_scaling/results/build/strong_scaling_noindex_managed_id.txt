@@ -76,3 +76,8 @@ times: 0.120496
 1073741824,2,oom
 1073741824,4,
 total_time
+times: 0.24861
+1073741824,6,
+total_time
+times: 0.254819
+intersect tests

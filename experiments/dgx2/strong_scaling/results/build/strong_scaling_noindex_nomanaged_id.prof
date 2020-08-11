@@ -88,3 +88,8 @@ countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,tot
 countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.057,0.013,0.027,0.336,0.07,0.121,0.693711
 8589934592,1,oom
 8589934592,2,oom
+8589934592,4,oom
+8589934592,8,oom
+8589934592,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.187,0.023,0.047,0.459,0.04,0.692,2.10117
+intersect tests
