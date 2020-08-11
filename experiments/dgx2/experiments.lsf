@@ -11,7 +11,7 @@ buildpath="../../build"
 includepath="../../include"
 
 declare -a hashes=("id" "murmur")
-declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
+declare -a modes=("noindex_managed" "index_managed")
 # declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
 # declare -a exps=("strong_scaling" "weak_scaling")
 # declare -a exps=("strong_scaling" "weak_scaling")
