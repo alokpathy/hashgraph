@@ -14587,9 +14587,11 @@ static __attribute__((deprecated)) __inline__ __attribute__((host)) cudaError_t 
 #pragma GCC diagnostic pop
 # 1 "<command-line>" 2
 # 1 "CMakeCUDACompilerId.cu"
-# 40 "CMakeCUDACompilerId.cu"
+# 64 "CMakeCUDACompilerId.cu"
 char const* info_compiler = "INFO" ":" "compiler[" "NVIDIA" "]";
-# 278 "CMakeCUDACompilerId.cu"
+
+char const* info_simulate = "INFO" ":" "simulate[" "GNU" "]";
+# 305 "CMakeCUDACompilerId.cu"
 char const info_version[] = {
   'I', 'N', 'F', 'O', ':',
   'c','o','m','p','i','l','e','r','_','v','e','r','s','i','o','n','[',
@@ -14604,7 +14606,27 @@ char const info_version[] = {
 
 
   ']','\0'};
-# 325 "CMakeCUDACompilerId.cu"
+# 332 "CMakeCUDACompilerId.cu"
+char const info_simulate_version[] = {
+  'I', 'N', 'F', 'O', ':',
+  's','i','m','u','l','a','t','e','_','v','e','r','s','i','o','n','[',
+  ('0' + (((6) / 10000000)%10)), ('0' + (((6) / 1000000)%10)), ('0' + (((6) / 100000)%10)), ('0' + (((6) / 10000)%10)), ('0' + (((6) / 1000)%10)), ('0' + (((6) / 100)%10)), ('0' + (((6) / 10)%10)), ('0' + ((6) % 10)),
+
+  '.', ('0' + (((4) / 10000000)%10)), ('0' + (((4) / 1000000)%10)), ('0' + (((4) / 100000)%10)), ('0' + (((4) / 10000)%10)), ('0' + (((4) / 1000)%10)), ('0' + (((4) / 100)%10)), ('0' + (((4) / 10)%10)), ('0' + ((4) % 10)),
+
+
+
+
+
+
+
+  ']','\0'};
+
+
+
+
+
+
 char const* info_platform = "INFO" ":" "platform[" "Linux" "]";
 char const* info_arch = "INFO" ":" "arch[" "]";
 
@@ -14636,10 +14658,10 @@ int main(int argc, char* argv[])
   require += info_version[argc];
 
 
+  require += info_simulate[argc];
 
 
-
-
+  require += info_simulate_version[argc];
 
   require += info_language_dialect_default[argc];
   (void)argv;

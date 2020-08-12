@@ -1178,13 +1178,13 @@ MultiHashGraph.cuh
 MultiHashGraph.cuh
 ../include/MultiHashGraph.cuh
 
-/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu
+/ccs/home/alokt/hashgraph/src/MultiHashGraph.cu
 MultiHashGraph.cuh
-/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cuh
+/ccs/home/alokt/hashgraph/src/MultiHashGraph.cuh
 MultiHashGraphDeviceOperators.cuh
-/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraphDeviceOperators.cuh
+/ccs/home/alokt/hashgraph/src/MultiHashGraphDeviceOperators.cuh
 MultiHashGraphHostOperators.cuh
-/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraphHostOperators.cuh
+/ccs/home/alokt/hashgraph/src/MultiHashGraphHostOperators.cuh
 iostream
 -
 fstream

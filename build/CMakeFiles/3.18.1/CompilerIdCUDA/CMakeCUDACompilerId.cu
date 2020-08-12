@@ -10,12 +10,36 @@
 # define COMPILER_ID "NVIDIA"
 # if defined(_MSC_VER)
 #  define SIMULATE_ID "MSVC"
+# elif defined(__clang__)
+#  define SIMULATE_ID "Clang"
+# elif defined(__GNUC__)
+#  define SIMULATE_ID "GNU"
 # endif
 # if defined(__CUDACC_VER_MAJOR__)
 #  define COMPILER_VERSION_MAJOR DEC(__CUDACC_VER_MAJOR__)
 #  define COMPILER_VERSION_MINOR DEC(__CUDACC_VER_MINOR__)
 #  define COMPILER_VERSION_PATCH DEC(__CUDACC_VER_BUILD__)
 # endif
+# if defined(_MSC_VER)
+   /* _MSC_VER = VVRR */
+#  define SIMULATE_VERSION_MAJOR DEC(_MSC_VER / 100)
+#  define SIMULATE_VERSION_MINOR DEC(_MSC_VER % 100)
+# elif defined(__clang__)
+#  define SIMULATE_VERSION_MAJOR DEC(__clang_major__)
+#  define SIMULATE_VERSION_MINOR DEC(__clang_minor__)
+# elif defined(__GNUC__)
+#  define SIMULATE_VERSION_MAJOR DEC(__GNUC__)
+#  define SIMULATE_VERSION_MINOR DEC(__GNUC_MINOR__)
+# endif
+
+#elif defined(__clang__)
+# define COMPILER_ID "Clang"
+# if defined(_MSC_VER)
+#  define SIMULATE_ID "MSVC"
+# endif
+# define COMPILER_VERSION_MAJOR DEC(__clang_major__)
+# define COMPILER_VERSION_MINOR DEC(__clang_minor__)
+# define COMPILER_VERSION_PATCH DEC(__clang_patchlevel__)
 # if defined(_MSC_VER)
    /* _MSC_VER = VVRR */
 #  define SIMULATE_VERSION_MAJOR DEC(_MSC_VER / 100)
@@ -130,6 +154,9 @@ char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";
 
 # elif defined(__WINDOWS__)
 #  define PLATFORM_ID "Windows3x"
+
+# elif defined(__VXWORKS__)
+#  define PLATFORM_ID "VxWorks"
 
 # else /* unknown platform */
 #  define PLATFORM_ID

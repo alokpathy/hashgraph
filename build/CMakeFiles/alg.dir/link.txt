@@ -1,2 +1,2 @@
-/usr/bin/ar qc libalg.a  CMakeFiles/alg.dir/src/MultiHashGraph.cu.o CMakeFiles/alg.dir/src/SingleHashGraph.cu.o
+/usr/bin/ar qc libalg.a CMakeFiles/alg.dir/src/MultiHashGraph.cu.o CMakeFiles/alg.dir/src/SingleHashGraph.cu.o
 /usr/bin/ranlib libalg.a

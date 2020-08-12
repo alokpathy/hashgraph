@@ -1168,9 +1168,9 @@ cuda_runtime_api.h
 cub/cub.cuh
 -
 
-/autofs/nccs-svm1_home1/alokt/hashgraph/test/MultiHashGraphTest.cu
+/ccs/home/alokt/hashgraph/test/MultiHashGraphTest.cu
 MultiHashGraph.cuh
-/autofs/nccs-svm1_home1/alokt/hashgraph/test/MultiHashGraph.cuh
+/ccs/home/alokt/hashgraph/test/MultiHashGraph.cuh
 algorithm
 -
 unistd.h

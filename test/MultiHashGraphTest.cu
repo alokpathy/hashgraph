@@ -306,9 +306,6 @@ int main(int argc, char **argv) {
     cudaProfilerStart();
 #endif
 
-    cudaSetDevice(0);
-    cudaEventRecord(start);
-
     #pragma omp parallel
     {
       index_t tid = omp_get_thread_num();
@@ -335,6 +332,9 @@ int main(int argc, char **argv) {
         }
 #endif
       } // master
+
+      cudaSetDevice(0);
+      cudaEventRecord(start);
 
       #pragma omp barrier
 

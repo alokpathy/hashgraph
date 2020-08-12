@@ -19,6 +19,7 @@ set(CMAKE_CXX_SIMULATE_VERSION "")
 
 
 
+
 set(CMAKE_AR "/usr/bin/ar")
 set(CMAKE_CXX_COMPILER_AR "/sw/summit/gcc/6.4.0/bin/gcc-ar")
 set(CMAKE_RANLIB "/usr/bin/ranlib")
@@ -82,7 +83,7 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/autofs/nccs-svm1_sw/summit/.swci/1-compute/opt/spack/20180914/linux-rhel7-ppc64le/gcc-6.4.0/spectrum-mpi-10.3.1.2-20200121-awz2q5brde7wgdqqw4ugalrkukeub4eb/include;/sw/summit/cuda/10.1.243/include;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/backward;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed;/usr/local/include;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include;/usr/include")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/sw/summit/cuda/10.1.243/include;/autofs/nccs-svm1_sw/summit/.swci/1-compute/opt/spack/20180914/linux-rhel7-ppc64le/gcc-6.4.0/spectrum-mpi-10.3.1.2-20200121-awz2q5brde7wgdqqw4ugalrkukeub4eb/include;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/powerpc64le-none-linux-gnu;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include/c++/6.4.0/backward;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0/include-fixed;/usr/local/include;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/include;/usr/include")
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc_s;gcc;c;gcc_s;gcc")
 set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc/powerpc64le-none-linux-gnu/6.4.0;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib/gcc;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib64;/lib64;/usr/lib64;/autofs/nccs-svm1_sw/summit/.swci/1-compute/opt/spack/20180914/linux-rhel7-ppc64le/gcc-6.4.0/spectrum-mpi-10.3.1.2-20200121-awz2q5brde7wgdqqw4ugalrkukeub4eb/lib;/autofs/nccs-svm1_sw/summit/.swci/1-compute/opt/spack/20180914/linux-rhel7-ppc64le/gcc-4.8.5/darshan-runtime-3.1.7-cnvxicgf5j4ap64qi6v5gxp67hmrjz43/lib;/autofs/nccs-svm1_sw/summit/gcc/6.4.0/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

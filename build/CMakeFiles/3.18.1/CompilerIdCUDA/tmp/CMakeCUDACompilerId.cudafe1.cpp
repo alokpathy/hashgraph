@@ -15448,35 +15448,43 @@ return (err == (cudaSuccess)) ? cudaBindSurfaceToArray(surf, array, desc) : err;
 } 
 # 2025 "/sw/summit/cuda/10.1.243/bin/../targets/ppc64le-linux/include/cuda_runtime.h"
 #pragma GCC diagnostic pop
-# 40 "CMakeCUDACompilerId.cu"
+# 64 "CMakeCUDACompilerId.cu"
 const char *info_compiler = ("INFO:compiler[NVIDIA]"); 
-# 278 "CMakeCUDACompilerId.cu"
+# 66
+const char *info_simulate = ("INFO:simulate[GNU]"); 
+# 305 "CMakeCUDACompilerId.cu"
 const char info_version[] = {'I', 'N', 'F', 'O', ':', 'c', 'o', 'm', 'p', 'i', 'l', 'e', 'r', '_', 'v', 'e', 'r', 's', 'i', 'o', 'n', '[', (('0') + ((10 / 10000000) % 10)), (('0') + ((10 / 1000000) % 10)), (('0') + ((10 / 100000) % 10)), (('0') + ((10 / 10000) % 10)), (('0') + ((10 / 1000) % 10)), (('0') + ((10 / 100) % 10)), (('0') + ((10 / 10) % 10)), (('0') + (10 % 10)), '.', (('0') + ((1 / 10000000) % 10)), (('0') + ((1 / 1000000) % 10)), (('0') + ((1 / 100000) % 10)), (('0') + ((1 / 10000) % 10)), (('0') + ((1 / 1000) % 10)), (('0') + ((1 / 100) % 10)), (('0') + ((1 / 10) % 10)), (('0') + (1 % 10)), '.', (('0') + ((243 / 10000000) % 10)), (('0') + ((243 / 1000000) % 10)), (('0') + ((243 / 100000) % 10)), (('0') + ((243 / 10000) % 10)), (('0') + ((243 / 1000) % 10)), (('0') + ((243 / 100) % 10)), (('0') + ((243 / 10) % 10)), (('0') + (243 % 10)), ']', '\000'}; 
-# 325 "CMakeCUDACompilerId.cu"
+# 332 "CMakeCUDACompilerId.cu"
+const char info_simulate_version[] = {'I', 'N', 'F', 'O', ':', 's', 'i', 'm', 'u', 'l', 'a', 't', 'e', '_', 'v', 'e', 'r', 's', 'i', 'o', 'n', '[', (('0') + ((6 / 10000000) % 10)), (('0') + ((6 / 1000000) % 10)), (('0') + ((6 / 100000) % 10)), (('0') + ((6 / 10000) % 10)), (('0') + ((6 / 1000) % 10)), (('0') + ((6 / 100) % 10)), (('0') + ((6 / 10) % 10)), (('0') + (6 % 10)), '.', (('0') + ((4 / 10000000) % 10)), (('0') + ((4 / 1000000) % 10)), (('0') + ((4 / 100000) % 10)), (('0') + ((4 / 10000) % 10)), (('0') + ((4 / 1000) % 10)), (('0') + ((4 / 100) % 10)), (('0') + ((4 / 10) % 10)), (('0') + (4 % 10)), ']', '\000'}; 
+# 352
 const char *info_platform = ("INFO:platform[Linux]"); 
-# 326
-const char *info_arch = ("INFO:arch[]"); 
-# 331
-const char *info_language_dialect_default = ("INFO:dialect_default[14]"); 
-# 347
-int main(int argc, char *argv[]) 
-# 348
-{ 
-# 349
-int require = 0; 
-# 350
-require += (info_compiler[argc]); 
-# 351
-require += (info_platform[argc]); 
 # 353
+const char *info_arch = ("INFO:arch[]"); 
+# 358
+const char *info_language_dialect_default = ("INFO:dialect_default[14]"); 
+# 374
+int main(int argc, char *argv[]) 
+# 375
+{ 
+# 376
+int require = 0; 
+# 377
+require += (info_compiler[argc]); 
+# 378
+require += (info_platform[argc]); 
+# 380
 require += (info_version[argc]); 
-# 361
+# 383
+require += (info_simulate[argc]); 
+# 386
+require += (info_simulate_version[argc]); 
+# 388
 require += (info_language_dialect_default[argc]); 
-# 362
+# 389
 (void)argv; 
-# 363
+# 390
 return require; 
-# 364
+# 391
 } 
 
 # 1 "CMakeCUDACompilerId.cudafe1.stub.c"
