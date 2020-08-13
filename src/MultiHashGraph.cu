@@ -690,6 +690,9 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
 void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index_t *h_Common,
                                     keypair **h_dOutput, index_t tid) {
 
+#ifdef CUDA_PROFILE
+  cudaProfilerStart();
+#endif
   index_t gpuCount = mhgA.gpuCount;
 
   cudaSetDevice(tid);
@@ -727,6 +730,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
                             mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
                             tid);
 #else
+  printf("non managed memory???\n"); fflush(stdout);
   cudaMalloc(&d_countCommon, (size_t)(2 * ((tableSize + 1) * sizeof(index_t))));
 #endif
   d_outputPositions = d_countCommon + tableSize + 1;
@@ -779,6 +783,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
 
   // printf("Size of the ouput is : %ld\n", h_Common[tid]); fflush(stdout);
 
+#if 0
 #ifdef HOST_PROFILE
   float buildTime = 0.0f; // milliseoncds
   high_resolution_clock::time_point t1;
@@ -827,6 +832,11 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
 #ifdef ERROR_CHECK
   cudaDeviceSynchronize();
   CHECK_ERROR("intersect error");
+#endif
+
+#ifdef CUDA_PROFILE
+  cudaProfilerStop();
+#endif
 #endif
 }
 

@@ -303,7 +303,7 @@ int main(int argc, char **argv) {
     std::cout << "times: ";
 #endif
 #ifdef CUDA_PROFILE
-    cudaProfilerStart();
+    // cudaProfilerStart();
 #endif
 
     #pragma omp parallel
@@ -333,14 +333,14 @@ int main(int argc, char **argv) {
 #endif
       } // master
 
-      cudaSetDevice(0);
-      cudaEventRecord(start);
-
       #pragma omp barrier
 
       mhgB.build(false, tid); // Build second HG but use same splits as first HG.
 
       #pragma omp barrier
+
+      cudaSetDevice(0);
+      cudaEventRecord(start);
 
       MultiHashGraph::intersect(mhgA, mhgB, h_Common, h_dOutput, tid);
     } // pragma
@@ -349,7 +349,7 @@ int main(int argc, char **argv) {
     cudaEventRecord(stop);
 
 #ifdef CUDA_PROFILE
-    cudaProfilerStop();
+    // cudaProfilerStop();
     CHECK_ERROR("end of intersect");
 #endif
     

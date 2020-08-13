@@ -1,0 +1,890 @@
+
+Lmod is automatically replacing "xl/16.1.1-5" with "gcc/6.4.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) spectrum-mpi/10.3.1.2-20200121
+
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_nomanaged
+strong_scaling
+weak_scaling
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+index_nomanaged
+strong_scaling
+weak_scaling
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_managed
+strong_scaling
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:17:55:448 67843 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+index_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:18:25:409 69057 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:18:27:053 69113 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_nomanaged
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:18:56:347 69346 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:18:57:999 69403 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+index_nomanaged
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:19:26:592 69635 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:19:28:234 69691 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:19:56:434 69917 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:19:58:092 69973 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+index_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:20:27:098 70222 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:20:28:747 70279 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_nomanaged
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:20:57:971 70507 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:20:59:847 70564 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+index_nomanaged
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:21:28:561 70790 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:21:30:111 70846 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:21:58:165 71072 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:21:59:836 71129 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+index_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:22:28:976 71358 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:22:30:631 71414 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_nomanaged
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:22:57:641 71641 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:22:59:610 71697 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+index_nomanaged
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:23:25:745 71924 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:23:27:387 71980 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:23:53:501 72204 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:23:55:167 72260 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(232): warning: variable "keyCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(233): warning: variable "hashRange" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+index_managed
+strong_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:24:24:878 72491 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+weak_scaling
+Error: Remote JSM server is not responding on host batch407-22-2020 02:24:26:529 72547 main: Error initializing RM connection. Exiting.
+head: : invalid number of lines
+tail: +: invalid number of lines
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch4>
+Subject: Job 238226: <snmg-hg-experiments> in cluster <summit> Exited
+
+Job <snmg-hg-experiments> was submitted from host <login4> by user <alokt> in cluster <summit> at Wed Jul 22 02:09:56 2020
+Job was executed on host(s) <1*batch4>, in queue <batch>, as user <alokt> in cluster <summit> at Wed Jul 22 02:10:10 2020
+                            <42*h27n08>
+</ccs/home/alokt> was used as the home directory.
+</autofs/nccs-svm1_home1/alokt/hashgraph/experiments/summit> was used as the working directory.
+Started at Wed Jul 22 02:10:10 2020
+Terminated at Wed Jul 22 02:24:27 2020
+Results reported at Wed Jul 22 02:24:27 2020
+
+The output (if any) is above this job summary.
+

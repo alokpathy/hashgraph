@@ -1,0 +1,149 @@
+strong_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.00856154
+16777216,2,
+total_time
+times: 0.00662368
+16777216,4,
+total_time
+times: 0.00747526
+16777216,6,
+total_time
+times: 0.00997514
+33554432,1,
+total_time
+times: 0.01704
+33554432,2,
+total_time
+times: 0.0121004
+33554432,4,
+total_time
+times: 0.00980813
+33554432,6,
+total_time
+times: 0.01316
+67108864,1,
+total_time
+times: 0.0342917
+67108864,2,
+total_time
+times: 0.0239631
+67108864,4,
+total_time
+times: 0.0195558
+67108864,6,
+total_time
+times: 0.0224853
+134217728,1,
+total_time
+times: 0.0690182
+134217728,2,
+total_time
+times: 0.0420312
+134217728,4,
+total_time
+times: 0.0303446
+134217728,6,
+total_time
+times: 0.0344993
+268435456,1,oom
+268435456,2,
+total_time
+times: 0.0878768
+268435456,4,
+total_time
+times: 0.0677671
+268435456,6,
+total_time
+times: 0.0666803
+536870912,1,oom
+536870912,2,oom
+536870912,4,
+total_time
+times: 0.12853
+536870912,6,
+total_time
+times: 0.126331
+1073741824,1,oom
+1073741824,2,oom
+1073741824,4,oom
+1073741824,6,
+total_time
+times: 0.250273
+intersect tests
+8388608,1,
+total_time
+times: 0.0102622
+8388608,2,
+total_time
+times: 0.00953024
+8388608,4,
+total_time
+times: 0.0227756
+8388608,6,
+total_time
+times: 0.0246643
+16777216,1,
+total_time
+times: 0.0195343
+16777216,2,
+total_time
+times: 0.0266942
+16777216,4,
+total_time
+times: 0.0256858
+16777216,6,
+total_time
+times: 0.0365177
+33554432,1,
+total_time
+times: 0.0388814
+33554432,2,
+total_time
+times: 0.029763
+33554432,4,
+total_time
+times: 0.0441544
+33554432,6,
+total_time
+times: 0.043
+67108864,1,
+total_time
+times: 0.0766285
+67108864,2,
+total_time
+times: 0.061337
+67108864,4,
+total_time
+times: 0.0492049
+67108864,6,
+total_time
+times: 0.0633998
+134217728,1,oom
+134217728,2,
+total_time
+times: 0.116434
+134217728,4,
+total_time
+times: 0.111883
+134217728,6,
+total_time
+times: 0.113604
+268435456,1,oom
+268435456,2,oom
+268435456,4,
+total_time
+times: 0.194638
+268435456,6,
+total_time
+times: 0.21329
+536870912,1,oom
+536870912,2,oom
+536870912,4,oom
+536870912,6,
+total_time
+times: 0.389976

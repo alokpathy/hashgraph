@@ -1,0 +1,79 @@
+intersect tests
+8388608,1,
+total_time
+times: 0.00966022
+8388608,2,
+total_time
+times: 0.00823171
+8388608,4,
+total_time
+times: 0.0152522
+8388608,6,
+total_time
+times: 0.0218854
+16777216,1,
+total_time
+times: 0.0192421
+16777216,2,
+total_time
+times: 0.0155306
+16777216,4,
+total_time
+times: 0.0191285
+16777216,6,
+total_time
+times: 0.029082
+33554432,1,
+total_time
+times: 0.0400448
+33554432,2,
+total_time
+times: 0.0277854
+33554432,4,
+total_time
+times: 0.0329856
+33554432,6,
+total_time
+times: 0.0384257
+67108864,1,
+total_time
+times: 0.0780448
+67108864,2,
+total_time
+times: 0.0563929
+67108864,4,
+total_time
+times: 0.0527303
+67108864,6,
+total_time
+times: 0.0597626
+134217728,1,
+total_time
+times: 0.148741
+134217728,2,
+total_time
+times: 0.104996
+134217728,4,
+total_time
+times: 0.0933544
+134217728,6,
+total_time
+times: 0.103336
+268435456,1,oom
+268435456,2,
+total_time
+times: 0.203847
+268435456,4,
+total_time
+times: 0.157676
+268435456,6,
+total_time
+times: 0.205278
+536870912,1,oom
+536870912,2,oom
+536870912,4,
+total_time
+times: 0.353273
+536870912,6,
+total_time
+times: 0.355288

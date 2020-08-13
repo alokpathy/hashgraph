@@ -1,0 +1,68 @@
+make: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[2]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target alg
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 20%] Building CUDA object CMakeFiles/alg.dir/src/MultiHashGraph.cu.o
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphDeviceOperators.cuh(321): warning: variable "key" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(154): warning: variable "_d_temp_storage" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/include/MultiHashGraphHostOperators.cuh(286): warning: variable "size" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(87): warning: variable "seed" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "start" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(415): warning: variable "stop" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(417): warning: variable "buildTime" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(418): warning: variable "t1" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(419): warning: variable "t2" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(651): warning: variable "gpuCount" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(657): warning: variable "d_counterA" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(661): warning: variable "d_counterB" was declared but never referenced
+
+/autofs/nccs-svm1_home1/alokt/hashgraph/src/MultiHashGraph.cu(664): warning: variable "d_GlobalCounter" was declared but never referenced
+
+[ 40%] Linking CUDA static library libalg.a
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 60%] Built target alg
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+Scanning dependencies of target multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[3]: Entering directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[ 80%] Building CUDA object CMakeFiles/multi-hash.dir/test/MultiHashGraphTest.cu.o
+[100%] Linking CUDA executable multi-hash
+make[3]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+[100%] Built target multi-hash
+make[2]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make[1]: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+make: Leaving directory `/autofs/nccs-svm1_home1/alokt/hashgraph/build'
+noindex_nomanaged
+strong_scaling
+User defined signal 2
+ERROR:  One or more process (first noticed rank 0) terminated with signal 12
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch4>
+Subject: Job 236999: <snmg-hg-experiments> in cluster <summit> Exited
+
+Job <snmg-hg-experiments> was submitted from host <batch5> by user <alokt> in cluster <summit> at Tue Jul 21 02:32:40 2020
+Job was executed on host(s) <1*batch4>, in queue <batch>, as user <alokt> in cluster <summit> at Tue Jul 21 02:32:58 2020
+                            <42*e04n14>
+</ccs/home/alokt> was used as the home directory.
+</autofs/nccs-svm1_home1/alokt/hashgraph/experiments/summit> was used as the working directory.
+Started at Tue Jul 21 02:32:58 2020
+Terminated at Tue Jul 21 04:33:27 2020
+Results reported at Tue Jul 21 04:33:27 2020
+
+The output (if any) is above this job summary.
+

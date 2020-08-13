@@ -1,0 +1,81 @@
+intersect tests
+8388608,1,
+total_time
+times: 0.0122523
+16777216,2,
+total_time
+times: 0.015659
+33554432,4,
+total_time
+times: 0.0319007
+50331648,6,
+total_time
+times: 0.0487897
+16777216,1,
+total_time
+times: 0.0203335
+33554432,2,
+total_time
+times: 0.0275342
+67108864,4,
+total_time
+times: 0.060727
+100663296,6,
+total_time
+times: 0.0850744
+33554432,1,
+total_time
+times: 0.0401423
+67108864,2,
+total_time
+times: 0.0590015
+134217728,4,
+total_time
+times: 0.101958
+201326592,6,
+total_time
+times: 0.147498
+67108864,1,
+total_time
+times: 0.0748322
+134217728,2,
+total_time
+times: 0.104514
+268435456,4,
+total_time
+times: 0.205662
+402653184,6,
+total_time
+times: 0.297358
+134217728,1,
+total_time
+times: 0.14858
+268435456,2,
+total_time
+times: 0.195805
+536870912,4,
+total_time
+times: 0.352489
+805306368,6,
+total_time
+times: 0.537136
+268435456,1,oom
+536870912,2,oom
+1073741824,4,oom
+1610612736,6,oom
+536870912,1,oom
+1073741824,2,oom
+2147483648,4,oom
+3221225472,6,oom
+1073741824,1,oom
+2147483648,2,oom
+4294967296,4,oom
+6442450944,6,oom
+2147483648,1,oom
+4294967296,2,oom
+8589934592,4,oom
+12884901888,6,oom
+4294967296,1,oom
+8589934592,2,oom
+17179869184,4,oom
+25769803776,6,oom
