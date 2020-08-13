@@ -11,11 +11,11 @@ buildpath="../../build"
 includepath="../../include"
 
 declare -a hashes=("id" "murmur")
-declare -a modes=("noindex_managed" "index_managed")
-# declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
+# declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
+declare -a modes=("rand" "seq")
+declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
 # declare -a exps=("strong_scaling" "weak_scaling")
 # declare -a exps=("strong_scaling" "weak_scaling")
-declare -a exps=("duplicate_keys")
 
 sed -i 's/^\/\/.*#define B32/#define B32/' $includepath/MultiHashGraph.cuh
 keysize=4
@@ -33,19 +33,26 @@ for hash in "${hashes[@]}"
     for mode in "${modes[@]}"
       do
         bytes=8
-        if [ "$mode" == "noindex_nomanaged" ]; then
-          sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
-          sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-        elif [ "$mode" == "index_nomanaged" ]; then
-          sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
-          sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-          bytes=16
-        elif [ "$mode" == "noindex_managed" ]; then
-          sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
-          sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
-        elif [ "$mode" == "index_managed" ]; then
-          sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
-          sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+        # if [ "$mode" == "noindex_nomanaged" ]; then
+        #   sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+        #   sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+        # elif [ "$mode" == "index_nomanaged" ]; then
+        #   sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+        #   sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+        #   bytes=16
+        # elif [ "$mode" == "noindex_managed" ]; then
+        #   sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+        #   sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+        # elif [ "$mode" == "index_managed" ]; then
+        #   sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+        #   sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+        #   bytes=16
+        # fi
+
+        if [ "$mode" == "rand" ]; then
+          sed -i 's/^\/\/.*#define RAND_KEYS/#define RAND_KEYS/' ./test/MultiHashGraphTest.cuh
+        elif [ "$mode" == "seq" ]; then
+          sed -i 's/^#define RAND_KEYS/\/\/&/' ./test/MultiHashGraphTest.cuh
           bytes=16
         fi
 
@@ -75,19 +82,26 @@ for hash in "${hashes[@]}"
     for mode in "${modes[@]}"
       do
         bytes=8
-        if [ "$mode" == "noindex_nomanaged" ]; then
-          sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
-          sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-        elif [ "$mode" == "index_nomanaged" ]; then
-          sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
-          sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-          bytes=16
-        elif [ "$mode" == "noindex_managed" ]; then
-          sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
-          sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
-        elif [ "$mode" == "index_managed" ]; then
-          sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
-          sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+        # if [ "$mode" == "noindex_nomanaged" ]; then
+        #   sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+        #   sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+        # elif [ "$mode" == "index_nomanaged" ]; then
+        #   sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+        #   sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+        #   bytes=16
+        # elif [ "$mode" == "noindex_managed" ]; then
+        #   sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+        #   sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+        # elif [ "$mode" == "index_managed" ]; then
+        #   sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+        #   sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+        #   bytes=16
+        # fi
+
+        if [ "$mode" == "rand" ]; then
+          sed -i 's/^\/\/.*#define RAND_KEYS/#define RAND_KEYS/' ./test/MultiHashGraphTest.cuh
+        elif [ "$mode" == "seq" ]; then
+          sed -i 's/^#define RAND_KEYS/\/\/&/' ./test/MultiHashGraphTest.cuh
           bytes=16
         fi
 

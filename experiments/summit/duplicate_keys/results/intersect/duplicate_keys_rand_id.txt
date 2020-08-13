@@ -1,34 +1,31 @@
 intersect tests
 268435456,1048576,6,
 total_time
-times: 3.79864
+times: 1.96945
 268435456,2097152,6,
 total_time
-times: 1.1494
+times: 0.58988
 268435456,4194304,6,
 total_time
-times: 0.673403
+times: 0.281918
 268435456,8388608,6,
 total_time
-times: 0.376286
+times: 0.181602
 268435456,16777216,6,
 total_time
-times: 0.180434
+times: 0.0362515
 268435456,33554432,6,
 total_time
-times: 0.163043
+times: 0.0048352
 268435456,67108864,6,
 total_time
-times: 0.187602
+times: 0.0134153
 268435456,134217728,6,
 total_time
-times: 0.193758
+times: 0.0331292
 268435456,268435456,6,
 total_time
-times: 0.196894
+times: 0.066579
 268435456,536870912,6,
 total_time
-times: 20.7884
-268435456,1073741824,6,
-total_time
-times: 454.779
+times: 19.8439
