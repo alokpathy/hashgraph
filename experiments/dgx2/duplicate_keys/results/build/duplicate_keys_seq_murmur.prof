@@ -1,0 +1,24 @@
+duplicate_keys
+keycount,tablesize,gpucount,time
+build tests
+536870912,1048576,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.006,0.152,0.01,0.186416
+536870912,2097152,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.007,0.08,0.008,0.115944
+536870912,4194304,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.008,0.033,0.008,0.0905411
+536870912,8388608,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.006,0.287,0.009,0.336212
+536870912,16777216,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.021,0.087,0.008,0.130757
+536870912,33554432,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.007,0.179,0.011,0.246359
+536870912,67108864,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.009,0.235,0.008,0.280685
+536870912,134217728,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.007,0.081,0.009,0.103367
+536870912,268435456,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.008,0.063,0.01,0.0980552
+536870912,536870912,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.013,0.048,0.01,0.104094
+intersect tests

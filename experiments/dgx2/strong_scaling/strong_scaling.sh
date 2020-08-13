@@ -42,16 +42,17 @@ for i in "${keycounts[@]}"
                 if (( $gpureq > $gc )) ; then
                   echo "${kc},${gc},oom"
                   continue
-                fi
-                
-                # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc build | grep "time")
-                ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc build | grep "time")
-                # tokens=( $ans )
-                # time=${tokens[3]}
+                else 
+                  # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc build | grep "time")
+                  ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc build | grep "time")
+                  # tokens=( $ans )
+                  # time=${tokens[3]}
 
-                # echo "${kc},${gc},${time}" >> $resultsfile
-                # echo "${kc},${gc},${time}"
-                echo -e "${kc},${gc},\n${ans}"
+                  # echo "${kc},${gc},${time}" >> $resultsfile
+                  # echo "${kc},${gc},${time}"
+                  echo -e "${kc},${gc},\n${ans}"
+                  break
+                fi
             done
     done
 
@@ -80,16 +81,17 @@ for i in "${keycounts[@]}"
                 if (( $gpureq > $gc )) ; then
                   echo "${kc},${gc},oom"
                   continue
+                else
+                  # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc intersect | grep "time")
+                  ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc intersect | grep "time")
+                  # tokens=( $ans )
+                  # time=${tokens[3]}
+
+                  # echo "${kc},${gc},${time}" >> $resultsfile
+                  # echo "${kc},${gc},${time}"
+                  echo -e "${kc},${gc},\n${ans}"
+                  break
                 fi
-
-                # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc intersect | grep "time")
-                ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc intersect | grep "time")
-                # tokens=( $ans )
-                # time=${tokens[3]}
-
-                # echo "${kc},${gc},${time}" >> $resultsfile
-                # echo "${kc},${gc},${time}"
-                echo -e "${kc},${gc},\n${ans}"
             done
     done
 

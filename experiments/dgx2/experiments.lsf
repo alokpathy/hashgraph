@@ -13,7 +13,8 @@ includepath="../../include"
 declare -a hashes=("id" "murmur")
 # declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
 declare -a modes=("rand" "seq")
-declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
+# declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
+declare -a exps=("strong_scaling" "duplicate_keys")
 # declare -a exps=("strong_scaling" "weak_scaling")
 # declare -a exps=("strong_scaling" "weak_scaling")
 
@@ -53,7 +54,6 @@ for hash in "${hashes[@]}"
           sed -i 's/^\/\/.*#define RAND_KEYS/#define RAND_KEYS/' ./test/MultiHashGraphTest.cuh
         elif [ "$mode" == "seq" ]; then
           sed -i 's/^#define RAND_KEYS/\/\/&/' ./test/MultiHashGraphTest.cuh
-          bytes=16
         fi
 
         make -C $buildpath multi-hash

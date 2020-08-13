@@ -1,0 +1,205 @@
+weak_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.00919347
+33554432,2,
+total_time
+times: 0.0126351
+67108864,4,
+total_time
+times: 0.0207258
+134217728,8,
+total_time
+times: 0.0294492
+268435456,16,
+total_time
+times: 0.0746752
+33554432,1,
+total_time
+times: 0.0185364
+67108864,2,
+total_time
+times: 0.0245432
+134217728,4,
+total_time
+times: 0.0268933
+268435456,8,
+total_time
+times: 0.0485181
+536870912,16,
+total_time
+times: 0.140388
+67108864,1,
+total_time
+times: 0.0373012
+134217728,2,
+total_time
+times: 0.0494971
+268435456,4,
+total_time
+times: 0.090028
+536870912,8,
+total_time
+times: 0.103585
+1073741824,16,
+total_time
+times: 0.189059
+134217728,1,
+total_time
+times: 0.0746117
+268435456,2,
+total_time
+times: 0.0967045
+536870912,4,
+total_time
+times: 0.185261
+1073741824,8,
+total_time
+times: 0.2105
+2147483648,16,
+total_time
+times: 0.44774
+268435456,1,
+total_time
+times: 0.139908
+536870912,2,
+total_time
+times: 0.160833
+1073741824,4,
+total_time
+times: 0.408007
+2147483648,8,
+total_time
+times: 0.395723
+4294967296,16,
+total_time
+times: 0.700208
+536870912,1,oom
+1073741824,2,oom
+2147483648,4,oom
+4294967296,8,oom
+8589934592,16,oom
+1073741824,1,oom
+2147483648,2,oom
+4294967296,4,oom
+8589934592,8,oom
+17179869184,16,oom
+2147483648,1,oom
+4294967296,2,oom
+8589934592,4,oom
+17179869184,8,oom
+34359738368,16,oom
+4294967296,1,oom
+8589934592,2,oom
+17179869184,4,oom
+34359738368,8,oom
+68719476736,16,oom
+8589934592,1,oom
+17179869184,2,oom
+34359738368,4,oom
+68719476736,8,oom
+137438953472,16,oom
+intersect tests
+8388608,1,
+total_time
+times: 0.00657306
+16777216,2,
+total_time
+times: 0.00874701
+33554432,4,
+total_time
+times: 0.0141261
+67108864,8,
+total_time
+times: 0.0219822
+134217728,16,
+total_time
+times: 0.0564101
+16777216,1,
+total_time
+times: 0.0131461
+33554432,2,
+total_time
+times: 0.016384
+67108864,4,
+total_time
+times: 0.0248056
+134217728,8,
+total_time
+times: 0.039424
+268435456,16,
+total_time
+times: 0.0783786
+33554432,1,
+total_time
+times: 0.0261734
+67108864,2,
+total_time
+times: 0.031443
+134217728,4,
+total_time
+times: 0.0514427
+268435456,8,
+total_time
+times: 0.0821473
+536870912,16,
+total_time
+times: 0.144377
+67108864,1,
+total_time
+times: 0.0525947
+134217728,2,
+total_time
+times: 0.060586
+268435456,4,
+total_time
+times: 0.0952135
+536870912,8,
+total_time
+times: 0.142397
+1073741824,16,
+total_time
+times: 0.282862
+134217728,1,
+total_time
+times: 0.105028
+268435456,2,
+total_time
+times: 0.129301
+536870912,4,
+total_time
+times: 0.212085
+1073741824,8,
+total_time
+times: 0.336722
+2147483648,16,
+total_time
+times: 0.593951
+268435456,1,oom
+536870912,2,oom
+1073741824,4,oom
+2147483648,8,oom
+4294967296,16,oom
+536870912,1,oom
+1073741824,2,oom
+2147483648,4,oom
+4294967296,8,oom
+8589934592,16,oom
+1073741824,1,oom
+2147483648,2,oom
+4294967296,4,oom
+8589934592,8,oom
+17179869184,16,oom
+2147483648,1,oom
+4294967296,2,oom
+8589934592,4,oom
+17179869184,8,oom
+34359738368,16,oom
+4294967296,1,oom
+8589934592,2,oom
+17179869184,4,oom
+34359738368,8,oom
+68719476736,16,oom

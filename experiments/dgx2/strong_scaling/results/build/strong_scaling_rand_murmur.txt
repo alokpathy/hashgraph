@@ -1,0 +1,135 @@
+strong_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.00923341
+16777216,2,
+total_time
+times: 0.00660992
+16777216,4,
+total_time
+times: 0.00599757
+16777216,8,
+total_time
+times: 0.00816742
+16777216,16,
+total_time
+times: 0.0360479
+33554432,1,
+total_time
+times: 0.0185252
+33554432,2,
+total_time
+times: 0.0123894
+33554432,4,
+total_time
+times: 0.00936448
+33554432,8,
+total_time
+times: 0.0108872
+33554432,16,
+total_time
+times: 0.0340296
+67108864,1,
+total_time
+times: 0.0373279
+67108864,2,
+total_time
+times: 0.0210278
+67108864,4,
+total_time
+times: 0.0162621
+67108864,8,
+total_time
+times: 0.0157194
+67108864,16,
+total_time
+times: 0.0494561
+134217728,1,
+total_time
+times: 0.0752599
+134217728,2,
+total_time
+times: 0.0414884
+134217728,4,
+total_time
+times: 0.0381839
+134217728,8,
+total_time
+times: 0.0270316
+134217728,16,
+total_time
+times: 0.0469084
+268435456,1,
+total_time
+times: 0.15215
+268435456,2,
+total_time
+times: 0.0963942
+268435456,4,
+total_time
+times: 0.0659968
+268435456,8,
+total_time
+times: 0.0543007
+268435456,16,
+total_time
+times: 0.0635556
+536870912,1,
+total_time
+times: 0.29596
+536870912,2,
+total_time
+times: 0.1578
+536870912,4,
+total_time
+times: 0.151493
+536870912,8,
+total_time
+times: 0.0970414
+536870912,16,
+total_time
+times: 0.128932
+1073741824,1,oom
+1073741824,2,
+total_time
+times: 0.361451
+1073741824,4,
+total_time
+times: 0.29851
+1073741824,8,
+total_time
+times: 0.229904
+1073741824,16,
+total_time
+times: 0.240307
+2147483648,1,oom
+2147483648,2,oom
+2147483648,4,
+total_time
+times: 0.719871
+2147483648,8,
+total_time
+times: 0.340008
+2147483648,16,
+total_time
+times: 0.326283
+4294967296,1,oom
+4294967296,2,oom
+4294967296,4,oom
+4294967296,8,
+total_time
+times: 0.696161
+4294967296,16,
+total_time
+times: 0.509229
+8589934592,1,oom
+8589934592,2,oom
+8589934592,4,oom
+8589934592,8,oom
+8589934592,16,
+total_time
+times: 1.08243
+intersect tests

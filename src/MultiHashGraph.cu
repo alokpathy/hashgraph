@@ -739,7 +739,8 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
 
   // cudaMemsetAsync(d_countCommon, 0, (size_t)(tableSize + 1) * sizeof(index_t));
   // cudaMemsetAsync(d_outputPositions, 0, (size_t)(tableSize + 1) * sizeof(index_t));
-  cudaMemsetAsync(d_countCommon, 0, (size_t)(2 * ((tableSize + 1) * sizeof(index_t))));
+  // cudaMemsetAsync(d_countCommon, 0, (size_t)(2 * ((tableSize + 1) * sizeof(index_t))));
+  cudaMemsetAsync(d_countCommon, 0, mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid]);
 
   simpleIntersect<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(tableSize, d_offsetA, d_edgesA, d_offsetB,
                                                         d_edgesB, d_countCommon, NULL, true);

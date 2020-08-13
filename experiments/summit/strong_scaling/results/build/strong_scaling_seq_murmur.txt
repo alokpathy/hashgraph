@@ -2,4 +2,76 @@ strong_scaling
 keycount,gpucount,time
 build tests
 countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.0085752
+16777216,2,
+total_time
+times: 0.00598733
+16777216,4,
+total_time
+times: 0.00764931
+16777216,6,
+total_time
+times: 0.0100454
+33554432,1,
+total_time
+times: 0.017068
+33554432,2,
+total_time
+times: 0.0117709
+33554432,4,
+total_time
+times: 0.00956109
+33554432,6,
+total_time
+times: 0.0142223
+67108864,1,
+total_time
+times: 0.0343255
+67108864,2,
+total_time
+times: 0.0198175
+67108864,4,
+total_time
+times: 0.0188744
+67108864,6,
+total_time
+times: 0.0209439
+134217728,1,
+total_time
+times: 0.0776878
+134217728,2,
+total_time
+times: 0.0396442
+134217728,4,
+total_time
+times: 0.0312105
+134217728,6,
+total_time
+times: 0.0447109
+268435456,1,oom
+268435456,2,
+total_time
+times: 0.0758999
+268435456,4,
+total_time
+times: 0.0623718
+268435456,6,
+total_time
+times: 0.06981
+536870912,1,oom
+536870912,2,oom
+536870912,4,
+total_time
+times: 0.115891
+536870912,6,
+total_time
+times: 0.125957
+1073741824,1,oom
+1073741824,2,oom
+1073741824,4,oom
+1073741824,6,
+total_time
+times: 0.258605
 intersect tests

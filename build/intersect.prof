@@ -1,6 +1,6 @@
-==138308== NVPROF is profiling process 138308, command: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
+==172526== NVPROF is profiling process 172526, command: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
 deviceCount: 6
-hostname: h50n08
+hostname: h32n05
 countSizeA: 536870912
 maxkey: 536870912
 generating input
@@ -17,57 +17,59 @@ bin_range: 33555
 table_size: 536870912
 BLOCK_COUNT: 349525 BLOCKS_SIZE: 64
 managed alloc size: 17179869424
-==138308== Profiling application: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
+==172526== Profiling application: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
 total_time
-times: 0.434901
-==138308== Profiling result:
+times: 0.256571
+==172526== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
- GPU activities:   78.62%  10.138ms         2  5.0689ms  4.5941ms  5.5438ms  simpleIntersect(long, long*, unsigned int*, long*, unsigned int*, long*, keypair*, bool)
-                   14.79%  1.9073ms         1  1.9073ms  1.9073ms  1.9073ms  void cub::DeviceScanKernel<cub::DispatchScan<long*, long*, cub::Sum, long, int>::PtxAgentScanPolicy, long*, long*, cub::ScanTileState<long, bool=1>, cub::Sum, long, int>(long*, cub::Sum, long, int, int, cub::DispatchScan<long*, long*, cub::Sum, long, int>::PtxAgentScanPolicy, long*)
-                    6.47%  834.36us         1  834.36us  834.36us  834.36us  void cub::DeviceReduceKernel<cub::DeviceReducePolicy<long, int, cub::Sum>::Policy600, long*, long*, int, cub::Sum>(int, cub::Sum, cub::DeviceReducePolicy<long, int, cub::Sum>::Policy600, cub::GridEvenShare<cub::Sum>, long*)
-                    0.06%  7.4240us         1  7.4240us  7.4240us  7.4240us  void cub::DeviceReduceSingleTileKernel<cub::DeviceReducePolicy<long, int, cub::Sum>::Policy600, long*, long*, int, cub::Sum, long>(int, cub::Sum, cub::DeviceReducePolicy<long, int, cub::Sum>::Policy600, long*, long*)
-                    0.03%  4.2880us         1  4.2880us  4.2880us  4.2880us  void cub::DeviceScanInitKernel<cub::ScanTileState<long, bool=1>>(long, int)
-                    0.02%  2.0480us         1  2.0480us  2.0480us  2.0480us  [CUDA memcpy DtoH]
+ GPU activities:   67.90%  5.8346ms         1  5.8346ms  5.8346ms  5.8346ms  simpleIntersect(long, long*, unsigned int*, long*, unsigned int*, long*, keypair*, bool)
+                   22.20%  1.9078ms         1  1.9078ms  1.9078ms  1.9078ms  void cub::DeviceScanKernel<cub::DispatchScan<long*, long*, cub::Sum, long, int>::PtxAgentScanPolicy, long*, long*, cub::ScanTileState<long, bool=1>, cub::Sum, long, int>(long*, cub::Sum, long, int, int, cub::DispatchScan<long*, long*, cub::Sum, long, int>::PtxAgentScanPolicy, long*)
+                    9.72%  834.97us         1  834.97us  834.97us  834.97us  void cub::DeviceReduceKernel<cub::DeviceReducePolicy<long, int, cub::Sum>::Policy600, long*, long*, int, cub::Sum>(int, cub::Sum, cub::DeviceReducePolicy<long, int, cub::Sum>::Policy600, cub::GridEvenShare<cub::Sum>, long*)
+                    0.09%  7.3280us         1  7.3280us  7.3280us  7.3280us  void cub::DeviceReduceSingleTileKernel<cub::DeviceReducePolicy<long, int, cub::Sum>::Policy600, long*, long*, int, cub::Sum, long>(int, cub::Sum, cub::DeviceReducePolicy<long, int, cub::Sum>::Policy600, long*, long*)
+                    0.05%  4.1920us         1  4.1920us  4.1920us  4.1920us  void cub::DeviceScanInitKernel<cub::ScanTileState<long, bool=1>>(long, int)
+                    0.03%  2.3040us         1  2.3040us  2.3040us  2.3040us  [CUDA memcpy DtoH]
                     0.01%  1.1520us         1  1.1520us  1.1520us  1.1520us  [CUDA memset]
-      API calls:   37.83%  156.40ms         2  78.200ms  73.158ms  83.242ms  cudaProfilerStart
-                   33.58%  138.82ms         1  138.82ms  138.82ms  138.82ms  cudaMalloc
-                   15.20%  62.861ms         1  62.861ms  62.861ms  62.861ms  cudaMemPrefetchAsync
-                    9.60%  39.685ms         6  6.6142ms  11.600us  39.603ms  cudaLaunchKernel
-                    1.77%  7.3106ms         1  7.3106ms  7.3106ms  7.3106ms  cudaMemsetAsync
-                    1.30%  5.3864ms         1  5.3864ms  5.3864ms  5.3864ms  cudaMemcpy
-                    0.70%  2.9116ms         1  2.9116ms  2.9116ms  2.9116ms  cudaMemAdvise
-                    0.01%  30.101us         4  7.5250us  5.2050us  9.8480us  cudaFuncGetAttributes
-                    0.01%  25.354us         6  4.2250us  3.9530us  4.5510us  cudaSetDevice
-                    0.00%  4.8340us         3  1.6110us  1.3260us  2.1640us  cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags
-                    0.00%  4.4430us         5     888ns     772ns  1.1460us  cudaDeviceGetAttribute
-                    0.00%  3.8320us         4     958ns     695ns  1.3070us  cudaGetDevice
-                    0.00%  1.2170us         4     304ns     278ns     350ns  cudaPeekAtLastError
+      API calls:   59.41%  113.72ms         2  56.860ms  30.575ms  83.145ms  cudaProfilerStart
+                   20.14%  38.560ms         1  38.560ms  38.560ms  38.560ms  cudaMemPrefetchAsync
+                   12.29%  23.535ms         1  23.535ms  23.535ms  23.535ms  cudaMemAdvise
+                    3.66%  7.0006ms         5  1.4001ms  11.816us  6.9338ms  cudaLaunchKernel
+                    3.45%  6.6047ms         1  6.6047ms  6.6047ms  6.6047ms  cudaMemcpy
+                    0.98%  1.8685ms         1  1.8685ms  1.8685ms  1.8685ms  cudaDeviceSynchronize
+                    0.02%  34.370us         1  34.370us  34.370us  34.370us  cudaMemsetAsync
+                    0.02%  31.357us         4  7.8390us  5.1680us  11.050us  cudaFuncGetAttributes
+                    0.02%  28.879us         7  4.1250us  3.1320us  5.0860us  cudaSetDevice
+                    0.01%  15.573us         1  15.573us  15.573us  15.573us  cudaEventRecord
+                    0.00%  6.9760us         1  6.9760us  6.9760us  6.9760us  cudaEventElapsedTime
+                    0.00%  5.8620us         3  1.9540us  1.3340us  2.3480us  cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags
+                    0.00%  5.5230us         5  1.1040us     777ns  1.6150us  cudaDeviceGetAttribute
+                    0.00%  4.7550us         4  1.1880us     794ns  1.6620us  cudaGetDevice
+                    0.00%  4.5370us         1  4.5370us  4.5370us  4.5370us  cudaEventSynchronize
+                    0.00%  1.5730us         4     393ns     273ns     511ns  cudaPeekAtLastError
+                    0.00%     465ns         1     465ns     465ns     465ns  cudaGetLastError
 
-==138308== Unified Memory profiling result:
+==172526== Unified Memory profiling result:
 Device "Tesla V100-SXM2-16GB (0)"
    Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
-       1         -         -         -           -  32.66051ms  Gpu page fault groups
+       1         -         -         -           -  101.2480us  Gpu page fault groups
        1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping from device
-       1  64.000KB  64.000KB  64.000KB  64.00000KB  3.552000us  Transfers from Device
+       2  64.000KB  64.000KB  64.000KB  128.0000KB  10.84800us  Transfers from Device
+       2  64.000KB  64.000KB  64.000KB  128.0000KB  9.152000us  Transfers to Device
 Device "Tesla V100-SXM2-16GB (1)"
    Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
-       2  64.000KB  64.000KB  64.000KB  128.0000KB           -  Remote mapping to device
-       2  64.000KB  64.000KB  64.000KB  128.0000KB  7.328000us  Transfers to Device
+       1         -         -         -           -  152.9280us  Gpu page fault groups
+       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping to device
+       2  64.000KB  64.000KB  64.000KB  128.0000KB  9.152000us  Transfers from Device
+       3  64.000KB  64.000KB  64.000KB  192.0000KB  14.56000us  Transfers to Device
 Device "Tesla V100-SXM2-16GB (2)"
    Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
-       2         -         -         -           -  38.91584ms  Gpu page fault groups
-       2  64.000KB  64.000KB  64.000KB  128.0000KB           -  Remote mapping from device
-       2  64.000KB  64.000KB  64.000KB  128.0000KB  6.688000us  Transfers from Device
+       1  64.000KB  64.000KB  64.000KB  64.00000KB  3.712000us  Transfers from Device
+       1  64.000KB  64.000KB  64.000KB  64.00000KB  2.976000us  Transfers to Device
 Device "Tesla V100-SXM2-16GB (3)"
    Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
-       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping to device
-       2  64.000KB  64.000KB  64.000KB  128.0000KB  6.752000us  Transfers to Device
+       2  64.000KB  64.000KB  64.000KB  128.0000KB  6.752000us  Transfers from Device
 Device "Tesla V100-SXM2-16GB (4)"
    Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
-       1         -         -         -           -  137.0560us  Gpu page fault groups
-       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping from device
-       2  64.000KB  64.000KB  64.000KB  128.0000KB  7.936000us  Transfers from Device
+       2  64.000KB  64.000KB  64.000KB  128.0000KB  7.456000us  Transfers to Device
 Device "Tesla V100-SXM2-16GB (5)"
    Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
-       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping to device
-       1  64.000KB  64.000KB  64.000KB  64.00000KB  4.096000us  Transfers to Device
+       1  64.000KB  64.000KB  64.000KB  64.00000KB  3.680000us  Transfers from Device

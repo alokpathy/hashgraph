@@ -1,0 +1,44 @@
+duplicate_keys
+keycount,tablesize,gpucount,time
+build tests
+536870912,1048576,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.006,0.07,0.01,0.13326
+536870912,2097152,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.006,0.121,0.008,0.141061
+536870912,4194304,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.008,0.072,0.008,0.112005
+536870912,8388608,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.007,0.08,0.008,0.107849
+536870912,16777216,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.007,0.104,0.008,0.15735
+536870912,33554432,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.008,0.062,0.008,0.126865
+536870912,67108864,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.006,0.067,0.009,0.0883231
+536870912,134217728,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.008,0.031,0.009,0.0971694
+536870912,268435456,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.014,0.107,0.012,0.186605
+536870912,536870912,16,
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,totaltimes: 0.001,0,0.001,0.011,0.062,0.01,0.10103
+intersect tests
+268435456,1048576,16,
+times: 0.001,0,0.001,0.004,0.06,0.004,0,0,0.005,0.023,0.004,0.159518
+268435456,2097152,16,
+times: 0,0,0,0.004,0.049,0.003,0,0,0.005,0.03,0.003,0.229849
+268435456,4194304,16,
+times: 0,0,0,0.004,0.059,0.005,0,0,0.005,0.033,0.003,0.129194
+268435456,8388608,16,
+times: 0,0,0,0.004,0.031,0.003,0,0,0.004,0.024,0.004,0.0859238
+268435456,16777216,16,
+times: 0,0,0,0.005,0.205,0.003,0,0,0.005,0.026,0.005,0.0522465
+268435456,33554432,16,
+times: 0.001,0,0.001,0.004,0.028,0.004,0,0,0.005,0.034,0.004,0.0531599
+268435456,67108864,16,
+times: 0.001,0,0,0.005,0.028,0.004,0,0,0.006,0.027,0.004,0.0527708
+268435456,134217728,16,
+times: 0,0,0,0.005,0.048,0.004,0,0,0.005,0.028,0.005,0.0616724
+268435456,268435456,16,
+times: 0,0,0.001,0.007,0.076,0.005,0,0,0.008,0.032,0.005,0.0777605
+268435456,536870912,16,
+times: 0.001,0,0.001,0.017,0.055,0.007,0,0,0.012,0.028,0.007,0.101095

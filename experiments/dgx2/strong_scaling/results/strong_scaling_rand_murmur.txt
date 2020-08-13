@@ -1,0 +1,265 @@
+strong_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.00923341
+16777216,2,
+total_time
+times: 0.00660992
+16777216,4,
+total_time
+times: 0.00599757
+16777216,8,
+total_time
+times: 0.00816742
+16777216,16,
+total_time
+times: 0.0360479
+33554432,1,
+total_time
+times: 0.0185252
+33554432,2,
+total_time
+times: 0.0123894
+33554432,4,
+total_time
+times: 0.00936448
+33554432,8,
+total_time
+times: 0.0108872
+33554432,16,
+total_time
+times: 0.0340296
+67108864,1,
+total_time
+times: 0.0373279
+67108864,2,
+total_time
+times: 0.0210278
+67108864,4,
+total_time
+times: 0.0162621
+67108864,8,
+total_time
+times: 0.0157194
+67108864,16,
+total_time
+times: 0.0494561
+134217728,1,
+total_time
+times: 0.0752599
+134217728,2,
+total_time
+times: 0.0414884
+134217728,4,
+total_time
+times: 0.0381839
+134217728,8,
+total_time
+times: 0.0270316
+134217728,16,
+total_time
+times: 0.0469084
+268435456,1,
+total_time
+times: 0.15215
+268435456,2,
+total_time
+times: 0.0963942
+268435456,4,
+total_time
+times: 0.0659968
+268435456,8,
+total_time
+times: 0.0543007
+268435456,16,
+total_time
+times: 0.0635556
+536870912,1,
+total_time
+times: 0.29596
+536870912,2,
+total_time
+times: 0.1578
+536870912,4,
+total_time
+times: 0.151493
+536870912,8,
+total_time
+times: 0.0970414
+536870912,16,
+total_time
+times: 0.128932
+1073741824,1,oom
+1073741824,2,
+total_time
+times: 0.361451
+1073741824,4,
+total_time
+times: 0.29851
+1073741824,8,
+total_time
+times: 0.229904
+1073741824,16,
+total_time
+times: 0.240307
+2147483648,1,oom
+2147483648,2,oom
+2147483648,4,
+total_time
+times: 0.719871
+2147483648,8,
+total_time
+times: 0.340008
+2147483648,16,
+total_time
+times: 0.326283
+4294967296,1,oom
+4294967296,2,oom
+4294967296,4,oom
+4294967296,8,
+total_time
+times: 0.696161
+4294967296,16,
+total_time
+times: 0.509229
+8589934592,1,oom
+8589934592,2,oom
+8589934592,4,oom
+8589934592,8,oom
+8589934592,16,
+total_time
+times: 1.08243
+intersect tests
+8388608,1,
+total_time
+times: 0.00640614
+8388608,2,
+total_time
+times: 0.00467866
+8388608,4,
+total_time
+times: 0.0069673
+8388608,8,
+total_time
+times: 0.00857805
+8388608,16,
+total_time
+times: 0.0308327
+16777216,1,
+total_time
+times: 0.012884
+16777216,2,
+total_time
+times: 0.008448
+16777216,4,
+total_time
+times: 0.00791757
+16777216,8,
+total_time
+times: 0.00922214
+16777216,16,
+total_time
+times: 0.0241111
+33554432,1,
+total_time
+times: 0.026026
+33554432,2,
+total_time
+times: 0.0178934
+33554432,4,
+total_time
+times: 0.013655
+33554432,8,
+total_time
+times: 0.0134001
+33554432,16,
+total_time
+times: 0.0253348
+67108864,1,
+total_time
+times: 0.0522138
+67108864,2,
+total_time
+times: 0.0454533
+67108864,4,
+total_time
+times: 0.0272599
+67108864,8,
+total_time
+times: 0.0207165
+67108864,16,
+total_time
+times: 0.0342436
+134217728,1,
+total_time
+times: 0.102276
+134217728,2,
+total_time
+times: 0.0622582
+134217728,4,
+total_time
+times: 0.049621
+134217728,8,
+total_time
+times: 0.0419871
+134217728,16,
+total_time
+times: 0.0501558
+268435456,1,
+total_time
+times: 0.206404
+268435456,2,
+total_time
+times: 0.129404
+268435456,4,
+total_time
+times: 0.110134
+268435456,8,
+total_time
+times: 0.0735785
+268435456,16,
+total_time
+times: 0.0854989
+536870912,1,oom
+536870912,2,
+total_time
+times: 0.264561
+536870912,4,
+total_time
+times: 0.120351
+536870912,8,
+total_time
+times: 0.13926
+536870912,16,
+total_time
+times: 0.13583
+1073741824,1,oom
+1073741824,2,oom
+1073741824,4,
+total_time
+times: 0.437546
+1073741824,8,
+total_time
+times: 0.319037
+1073741824,16,
+total_time
+times: 0.300529
+2147483648,1,oom
+2147483648,2,oom
+2147483648,4,oom
+2147483648,8,
+total_time
+times: 0.652167
+2147483648,16,
+total_time
+times: 0.55443
+4294967296,1,oom
+4294967296,2,oom
+4294967296,4,oom
+4294967296,8,oom
+4294967296,16,
+total_time
+times: 0.867701

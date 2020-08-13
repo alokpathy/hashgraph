@@ -1,0 +1,22 @@
+==174921== NVPROF is profiling process 174921, command: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
+deviceCount: 6
+hostname: h32n05
+countSizeA: 536870912
+maxkey: 536870912
+generating input
+done generating input
+generating input
+done generating input
+bin_count: 16000
+bin_range: 33555
+table_size: 536870912
+BLOCK_COUNT: 349525 BLOCKS_SIZE: 64
+bin_count: 16000
+bin_range: 33555
+table_size: 536870912
+======== Profiling result:
+No kernels were profiled.
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+      API calls:   97.04%  823.81us         2  411.90us  366.80us  457.00us  cudaProfilerStart
+                    2.96%  25.120us         6  4.1860us  3.7100us  4.8590us  cudaSetDevice
+======== Error: unified memory profiling failed.
