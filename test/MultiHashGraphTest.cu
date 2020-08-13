@@ -334,13 +334,12 @@ int main(int argc, char **argv) {
       } // master
 
       #pragma omp barrier
+      cudaSetDevice(0);
+      cudaEventRecord(start);
 
       mhgB.build(false, tid); // Build second HG but use same splits as first HG.
 
       #pragma omp barrier
-
-      cudaSetDevice(0);
-      cudaEventRecord(start);
 
       MultiHashGraph::intersect(mhgA, mhgB, h_Common, h_dOutput, tid);
     } // pragma

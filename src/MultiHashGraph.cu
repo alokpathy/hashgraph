@@ -730,7 +730,6 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
                             mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
                             tid);
 #else
-  printf("non managed memory???\n"); fflush(stdout);
   cudaMalloc(&d_countCommon, (size_t)(2 * ((tableSize + 1) * sizeof(index_t))));
 #endif
   d_outputPositions = d_countCommon + tableSize + 1;
