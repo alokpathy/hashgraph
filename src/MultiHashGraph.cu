@@ -413,7 +413,7 @@ void buildMultiTable(hkey_t *d_vals, HashKey *d_hash, index_t *d_counter,
 }
 #endif
 
-void MultiHashGraph::build(bool findSplits, index_t tid) {
+void MultiHashGraph::build(bool findSplits, bool prefetchIntersect, index_t tid) {
   // index_t binRange = std::ceil(maxkey / ((float)binCount));
   index_t binRange = std::ceil(tableSize / ((float)binCount));
   
@@ -446,6 +446,31 @@ void MultiHashGraph::build(bool findSplits, index_t tid) {
     // Count the number of keys in each key bin and determine the hash range per device.
     countBinSizes(h_dVals, h_hBinSizes, h_dBinSizes, h_binSizes, h_psBinSizes, h_binSplits,
                       h_dBinSplits, countSize, tableSize, binRange, binCount, gpuCount, tid);
+
+    if (prefetchIntersect) {
+        #pragma omp master
+        {
+            prefixArrayIntersect[0] = 0;
+            for (index_t i = 1; i < gpuCount; i++) {
+              index_t tidHashRange = h_binSplits[i] - h_binSplits[i - 1];
+              index_t size = (tidHashRange + 1) * sizeof(index_t);
+              prefixArrayIntersect[i] = prefixArrayIntersect[i - 1] + size;
+            }
+            prefixArrayIntersect[gpuCount] = totalSizeIntersect;
+
+            h_dCountCommon[0] = uvmPtrIntersect;
+            for (index_t i = 1; i < gpuCount; i++) {
+              h_dCountCommon[i] = uvmPtrIntersect + 
+                                            prefixArrayIntersect[i];
+            }
+        } // master
+        #pragma omp barrier
+
+        index_t *d_countCommon = (index_t *) h_dCountCommon[tid];
+        cudaMemAdvise(d_countCommon, prefixArrayIntersect[tid + 1] - prefixArrayIntersect[tid], cudaMemAdviseSetPreferredLocation, tid);
+        cudaMemPrefetchAsync(d_countCommon, prefixArrayIntersect[tid + 1] - prefixArrayIntersect[tid], tid);
+    }
+
 #ifdef HOST_PROFILE
     if (tid == tidFocused) {
       cudaDeviceSynchronize();
@@ -727,11 +752,10 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
 #ifdef MANAGED_MEM
   cudaSetDevice(tid);
   d_countCommon = (index_t *) mhgA.h_dCountCommon[tid];
-  cudaMemAdvise(d_countCommon, mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], cudaMemAdviseSetPreferredLocation, tid);
-  cudaSetDevice(tid);
-  cudaMemPrefetchAsync(d_countCommon, 
-                            mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
-                            tid);
+  // cudaMemAdvise(d_countCommon, mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], cudaMemAdviseSetPreferredLocation, tid);
+  // cudaMemPrefetchAsync(d_countCommon, 
+  //                           mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
+  //                           tid);
 #else
   cudaMalloc(&d_countCommon, (size_t)(2 * ((tableSize + 1) * sizeof(index_t))));
 #endif

@@ -245,7 +245,7 @@ int main(int argc, char **argv) {
       }
       
 
-      mhg.build(true, tid);
+      mhg.build(true, false, tid);
 
       #pragma omp barrier
       if (tid == 0) {
@@ -283,6 +283,7 @@ int main(int argc, char **argv) {
 
 #ifdef MANAGED_MEM
     // size_t size = 2 * (tableSize + gpuCount) * sizeof(index_t);
+    // size_t size = (tableSize + gpuCount) * sizeof(index_t);
     size_t size = (tableSize + gpuCount) * sizeof(index_t);
     cudaMallocManaged(&mhgA.uvmPtrIntersect, size);
     // mhgA.prefixArrayIntersect = new index_t[gpuCount + 1]();
@@ -308,7 +309,7 @@ int main(int argc, char **argv) {
     {
       index_t tid = omp_get_thread_num();
       cudaSetDevice(tid);
-      mhgA.build(true, tid);
+      mhgA.build(true, true, tid);
 
       #pragma omp master
       {
@@ -316,33 +317,40 @@ int main(int argc, char **argv) {
         mhgB.h_dBinSplits = mhgA.h_dBinSplits;
 
 #ifdef MANAGED_MEM
-        mhgA.prefixArrayIntersect[0] = 0;
-        for (index_t i = 1; i < gpuCount; i++) {
-          index_t tidHashRange = mhgA.h_binSplits[i] - mhgA.h_binSplits[i - 1];
-          index_t size = (tidHashRange + 1) * sizeof(index_t);
-          mhgA.prefixArrayIntersect[i] = mhgA.prefixArrayIntersect[i - 1] + size;
-        }
-        mhgA.prefixArrayIntersect[gpuCount] = mhgA.totalSizeIntersect;
+        // mhgA.prefixArrayIntersect[0] = 0;
+        // for (index_t i = 1; i < gpuCount; i++) {
+        //   index_t tidHashRange = mhgA.h_binSplits[i] - mhgA.h_binSplits[i - 1];
+        //   index_t size = (tidHashRange + 1) * sizeof(index_t);
+        //   mhgA.prefixArrayIntersect[i] = mhgA.prefixArrayIntersect[i - 1] + size;
+        // }
+        // mhgA.prefixArrayIntersect[gpuCount] = mhgA.totalSizeIntersect;
 
-        mhgA.h_dCountCommon[0] = mhgA.uvmPtrIntersect;
-        for (index_t i = 1; i < gpuCount; i++) {
-          mhgA.h_dCountCommon[i] = mhgA.uvmPtrIntersect + 
-                                        mhgA.prefixArrayIntersect[i];
-        }
+        // mhgA.h_dCountCommon[0] = mhgA.uvmPtrIntersect;
+        // for (index_t i = 1; i < gpuCount; i++) {
+        //   mhgA.h_dCountCommon[i] = mhgA.uvmPtrIntersect + 
+        //                                 mhgA.prefixArrayIntersect[i];
+        // }
+
 #endif
       } // master
 
       #pragma omp barrier
       if(tid==0)
       {
-#ifdef CUDA_PROFILE
-        cudaProfilerStart();
-#endif
         cudaEventRecord(start);
       }
       cudaSetDevice(tid);
 
-      mhgB.build(false, tid); // Build second HG but use same splits as first HG.
+#ifdef CUDA_PROFILE
+      cudaProfilerStart();
+#endif
+      mhgB.build(false, false, tid); // Build second HG but use same splits as first HG.
+
+#ifdef CUDA_PROFILE
+      cudaProfilerStop();
+      CHECK_ERROR("end of intersect");
+#endif
+    
 
       #pragma omp barrier
 
@@ -358,11 +366,6 @@ int main(int argc, char **argv) {
     cudaSetDevice(0);
     cudaEventRecord(stop);
 
-#ifdef CUDA_PROFILE
-    cudaProfilerStop();
-    CHECK_ERROR("end of intersect");
-#endif
-    
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&buildTime, start, stop);
 

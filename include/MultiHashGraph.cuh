@@ -161,7 +161,7 @@ public:
                       index_t tableSize,
                       index_t binCount, index_t lrbBins, index_t gpuCount); ~MultiHashGraph();
 
-    void build(bool buildSplits, index_t tid);
+    void build(bool buildSplits, bool prefetchIntersect, index_t tid);
     void buildSingle();
 
     static void intersect(MultiHashGraph &mgA, MultiHashGraph &mgB, index_t *h_Common,
