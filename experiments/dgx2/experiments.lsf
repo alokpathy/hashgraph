@@ -10,13 +10,11 @@
 buildpath="../../build"
 includepath="../../include"
 
-declare -a hashes=("id" "murmur")
-# declare -a modes=("noindex_nomanaged" "index_nomanaged" "noindex_managed" "index_managed")
+# declare -a hashes=("id" "murmur")
+declare -a hashes=("murmur")
 declare -a modes=("rand" "seq")
 # declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
-declare -a exps=("strong_scaling" "duplicate_keys")
-# declare -a exps=("strong_scaling" "weak_scaling")
-# declare -a exps=("strong_scaling" "weak_scaling")
+declare -a exps=("weak_scaling" "duplicate_keys")
 
 sed -i 's/^\/\/.*#define B32/#define B32/' $includepath/MultiHashGraph.cuh
 keysize=4
@@ -64,57 +62,57 @@ for hash in "${hashes[@]}"
           do
             echo $exp
             ./$exp/$exp.sh $bytes $keysize > ./$exp/results/$exp\_$mode\_$hash.txt
-            head -n $(cat ./$exp/results/$exp\_$mode\_$hash.txt | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.txt > ./$exp/results/build/$exp\_$mode\_$hash.txt
+            # head -n $(cat ./$exp/results/$exp\_$mode\_$hash.txt | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.txt > ./$exp/results/build/$exp\_$mode\_$hash.txt
             tail -n +$(cat ./$exp/results/$exp\_$mode\_$hash.txt | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.txt > ./$exp/results/intersect/$exp\_$mode\_$hash.txt
           done
       done
   done
 
-sed -i 's/^\/\/.*#define HOST_PROFILE/#define HOST_PROFILE/' $includepath/MultiHashGraph.cuh
-for hash in "${hashes[@]}"
-  do
-    if [ "$hash" == "id" ]; then
-      sed -i 's/^\/\/.*#define ID_HASH/#define ID_HASH/' $includepath/MultiHashGraphDeviceOperators.cuh
-    elif [ "$hash" == "murmur" ]; then
-      sed -i 's/^#define ID_HASH/\/\/&/' $includepath/MultiHashGraphDeviceOperators.cuh
-    fi
-
-    for mode in "${modes[@]}"
-      do
-        bytes=8
-        # if [ "$mode" == "noindex_nomanaged" ]; then
-        #   sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
-        #   sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-        # elif [ "$mode" == "index_nomanaged" ]; then
-        #   sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
-        #   sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
-        #   bytes=16
-        # elif [ "$mode" == "noindex_managed" ]; then
-        #   sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
-        #   sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
-        # elif [ "$mode" == "index_managed" ]; then
-        #   sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
-        #   sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
-        #   bytes=16
-        # fi
-
-        if [ "$mode" == "rand" ]; then
-          sed -i 's/^\/\/.*#define RAND_KEYS/#define RAND_KEYS/' ./test/MultiHashGraphTest.cuh
-        elif [ "$mode" == "seq" ]; then
-          sed -i 's/^#define RAND_KEYS/\/\/&/' ./test/MultiHashGraphTest.cuh
-          bytes=16
-        fi
-
-        make -C $buildpath multi-hash
-
-        echo $mode
-
-        for exp in "${exps[@]}"
-          do
-            echo $exp
-            ./$exp/$exp.sh $bytes $keysize > ./$exp/results/$exp\_$mode\_$hash.prof
-            head -n $(cat ./$exp/results/$exp\_$mode\_$hash.prof | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.prof > ./$exp/results/build/$exp\_$mode\_$hash.prof
-            tail -n +$(cat ./$exp/results/$exp\_$mode\_$hash.prof | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.prof > ./$exp/results/intersect/$exp\_$mode\_$hash.prof
-          done
-      done
-  done
+# sed -i 's/^\/\/.*#define HOST_PROFILE/#define HOST_PROFILE/' $includepath/MultiHashGraph.cuh
+# for hash in "${hashes[@]}"
+#   do
+#     if [ "$hash" == "id" ]; then
+#       sed -i 's/^\/\/.*#define ID_HASH/#define ID_HASH/' $includepath/MultiHashGraphDeviceOperators.cuh
+#     elif [ "$hash" == "murmur" ]; then
+#       sed -i 's/^#define ID_HASH/\/\/&/' $includepath/MultiHashGraphDeviceOperators.cuh
+#     fi
+# 
+#     for mode in "${modes[@]}"
+#       do
+#         bytes=8
+#         # if [ "$mode" == "noindex_nomanaged" ]; then
+#         #   sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+#         #   sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+#         # elif [ "$mode" == "index_nomanaged" ]; then
+#         #   sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+#         #   sed -i 's/^#define MANAGED_MEM/\/\/&/' $includepath/MultiHashGraph.cuh
+#         #   bytes=16
+#         # elif [ "$mode" == "noindex_managed" ]; then
+#         #   sed -i 's/^#define INDEX_TRACK/\/\/&/' $includepath/MultiHashGraph.cuh
+#         #   sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+#         # elif [ "$mode" == "index_managed" ]; then
+#         #   sed -i 's/^\/\/.*#define MANAGED_MEM/#define MANAGED_MEM/' $includepath/MultiHashGraph.cuh
+#         #   sed -i 's/^\/\/.*#define INDEX_TRACK/#define INDEX_TRACK/' $includepath/MultiHashGraph.cuh
+#         #   bytes=16
+#         # fi
+# 
+#         if [ "$mode" == "rand" ]; then
+#           sed -i 's/^\/\/.*#define RAND_KEYS/#define RAND_KEYS/' ./test/MultiHashGraphTest.cuh
+#         elif [ "$mode" == "seq" ]; then
+#           sed -i 's/^#define RAND_KEYS/\/\/&/' ./test/MultiHashGraphTest.cuh
+#           bytes=16
+#         fi
+# 
+#         make -C $buildpath multi-hash
+# 
+#         echo $mode
+# 
+#         for exp in "${exps[@]}"
+#           do
+#             echo $exp
+#             ./$exp/$exp.sh $bytes $keysize > ./$exp/results/$exp\_$mode\_$hash.prof
+#             head -n $(cat ./$exp/results/$exp\_$mode\_$hash.prof | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.prof > ./$exp/results/build/$exp\_$mode\_$hash.prof
+#             tail -n +$(cat ./$exp/results/$exp\_$mode\_$hash.prof | grep -n "intersect tests" | cut -f1 -d:) ./$exp/results/$exp\_$mode\_$hash.prof > ./$exp/results/intersect/$exp\_$mode\_$hash.prof
+#           done
+#       done
+#   done

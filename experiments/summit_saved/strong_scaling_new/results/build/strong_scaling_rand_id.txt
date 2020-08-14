@@ -1,0 +1,29 @@
+strong_scaling
+keycount,gpucount,time
+build tests
+countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total
+16777216,1,
+total_time
+times: 0.0116644
+33554432,1,
+total_time
+times: 0.0238275
+67108864,1,
+total_time
+times: 0.0519916
+134217728,1,
+total_time
+times: 0.0979589
+268435456,1,
+total_time
+times: 0.18701
+536870912,1,oom
+536870912,2,
+total_time
+times: 0.229361
+1073741824,1,oom
+1073741824,2,oom
+1073741824,4,
+total_time
+times: 0.275881
+intersect tests

@@ -1,0 +1,25 @@
+intersect tests
+8388608,1,
+total_time
+times: 0.00767693
+16777216,1,
+total_time
+times: 0.0158761
+33554432,1,
+total_time
+times: 0.0316774
+67108864,1,
+total_time
+times: 0.0632207
+134217728,1,
+total_time
+times: 0.125711
+268435456,1,oom
+268435456,2,
+total_time
+times: 0.169123
+536870912,1,oom
+536870912,2,oom
+536870912,4,
+total_time
+times: 0.261464

@@ -18,42 +18,42 @@ echo "keycount,gpucount,time"
 echo "build tests"
 # echo "build tests" >> $resultsfile
 
-echo "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total"
-for i in "${keycounts[@]}"
-    do
-        let kcdev=$((echo 2^$i) | bc)
-        # echo "keycount / dev: ${kcdev}"
-        for j in "${gpucounts[@]}"
-            do
-                # let gc=$((echo 2^$j) | bc)
-                let gc=$j
-                # echo "gpucount: ${gc}"
-
-                let kc=$(($kcdev * $gc))
-                let ts=$kc
-                if [ $2 -eq 4 ] ; then
-                    ts=$(($kc < (2**($2 * 8 - 1)) ? $kc : 2**($2 * 8 - 1)))
-                fi
-
-                # internal cuda malloc + keys + hashes + keyBinBuff
-                let gigs=$((echo "((($kc * $1) + ($kc * $2) + (2 * $kc * $1) + (2 * $kc * 8)) + ($kc * $2) + ($kc * $2) + ($kc * $1)) / 2^30") | bc)
-                let gpureq=$((echo "($gigs + 32) / 32") | bc)
-
-                if (( $gpureq > $gc )) ; then
-                  echo "${kc},${gc},oom"
-                  continue
-                fi
-
-                # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc build | grep "time")
-                ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc build | grep "time")
-                # tokens=( $ans )
-                # time=${tokens[3]}
-
-                # echo "${kc},${gc},${time}" >> $resultsfile
-                # echo "${kc},${gc},${time}"
-                echo -e "${kc},${gc},\n${ans}"
-            done
-    done
+# echo "countBinSizes,countKeyBuff,populateKeyBuffs,countFinalKeys,allToAll,building,total"
+# for i in "${keycounts[@]}"
+#     do
+#         let kcdev=$((echo 2^$i) | bc)
+#         # echo "keycount / dev: ${kcdev}"
+#         for j in "${gpucounts[@]}"
+#             do
+#                 # let gc=$((echo 2^$j) | bc)
+#                 let gc=$j
+#                 # echo "gpucount: ${gc}"
+# 
+#                 let kc=$(($kcdev * $gc))
+#                 let ts=$kc
+#                 if [ $2 -eq 4 ] ; then
+#                     ts=$(($kc < (2**($2 * 8 - 1)) ? $kc : 2**($2 * 8 - 1)))
+#                 fi
+# 
+#                 # internal cuda malloc + keys + hashes + keyBinBuff
+#                 let gigs=$((echo "((($kc * $1) + ($kc * $2) + (2 * $kc * $1) + (2 * $kc * 8)) + ($kc * $2) + ($kc * $2) + ($kc * $1)) / 2^30") | bc)
+#                 let gpureq=$((echo "($gigs + 32) / 32") | bc)
+# 
+#                 if (( $gpureq > $gc )) ; then
+#                   echo "${kc},${gc},oom"
+#                   continue
+#                 fi
+# 
+#                 # ans=$(./$execpath/multi-hash $kc $kc $bincount $gc $bincount nocheck $kc build | grep "time")
+#                 ans=$(./$execpath/multi-hash $kc $ts $bincount $gc $bincount nocheck $kc build | grep "time")
+#                 # tokens=( $ans )
+#                 # time=${tokens[3]}
+# 
+#                 # echo "${kc},${gc},${time}" >> $resultsfile
+#                 # echo "${kc},${gc},${time}"
+#                 echo -e "${kc},${gc},\n${ans}"
+#             done
+#     done
 
 echo "intersect tests"
 # echo "intersect tests" >> $resultsfile

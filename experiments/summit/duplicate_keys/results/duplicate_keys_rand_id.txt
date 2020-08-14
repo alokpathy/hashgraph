@@ -1,52 +1,28 @@
 duplicate_keys
 keycount,tablesize,gpucount,time
 build tests
-536870912,4194304,6,
-total_time
-times: 0.122547
-536870912,8388608,6,
-total_time
-times: 0.128447
-536870912,16777216,6,
-total_time
-times: 0.132215
-536870912,33554432,6,
-total_time
-times: 0.174771
-536870912,67108864,6,
-total_time
-times: 0.215517
-536870912,134217728,6,
-total_time
-times: 0.233036
-536870912,268435456,6,
-total_time
-times: 0.211578
-536870912,536870912,6,
-total_time
-times: 0.111684
 intersect tests
 268435456,4194304,6,
 total_time
-times: 0.32666
+times: 0.32092
 268435456,8388608,6,
 total_time
-times: 0.217186
+times: 0.18318
 268435456,16777216,6,
 total_time
-times: 0.106488
+times: 0.103175
 268435456,33554432,6,
 total_time
-times: 0.0869427
+times: 0.0770294
 268435456,67108864,6,
 total_time
-times: 0.0883159
+times: 0.0851178
 268435456,134217728,6,
 total_time
-times: 0.114674
+times: 0.08541
 268435456,268435456,6,
 total_time
-times: 0.115141
+times: 0.0560241
 268435456,536870912,6,
 total_time
-times: 22.3585
+times: 0.223665
