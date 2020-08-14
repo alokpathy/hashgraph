@@ -47,7 +47,9 @@ times: 0.046292
 67108864,6,
 total_time
 times: 0.0278999
-134217728,1,oom
+134217728,1,
+total_time
+times: 0.125551
 134217728,2,
 total_time
 times: 0.0880773
@@ -58,7 +60,9 @@ times: 0.0871444
 total_time
 times: 0.057343
 268435456,1,oom
-268435456,2,oom
+268435456,2,
+total_time
+times: 0.172181
 268435456,4,
 total_time
 times: 0.124783
@@ -67,7 +71,9 @@ total_time
 times: 0.106129
 536870912,1,oom
 536870912,2,oom
-536870912,4,oom
+536870912,4,
+total_time
+times: 0.246481
 536870912,6,
 total_time
 times: 0.24324

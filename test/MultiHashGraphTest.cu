@@ -282,7 +282,8 @@ int main(int argc, char **argv) {
     MultiHashGraph mhgB(h_dValsB, countSizeB, maxkey, tableSize, binCount, lrbBins, gpuCount);
 
 #ifdef MANAGED_MEM
-    size_t size = 2 * (tableSize + gpuCount) * sizeof(index_t);
+    // size_t size = 2 * (tableSize + gpuCount) * sizeof(index_t);
+    size_t size = (tableSize + gpuCount) * sizeof(index_t);
     cudaMallocManaged(&mhgA.uvmPtrIntersect, size);
     // mhgA.prefixArrayIntersect = new index_t[gpuCount + 1]();
     mhgA.prefixArrayIntersect = new size_t[gpuCount + 1]();
@@ -302,13 +303,11 @@ int main(int argc, char **argv) {
     std::cout << "total_time\n"; // seconds
     std::cout << "times: ";
 #endif
-#ifdef CUDA_PROFILE
-    // cudaProfilerStart();
-#endif
 
     #pragma omp parallel
     {
       index_t tid = omp_get_thread_num();
+      cudaSetDevice(tid);
       mhgA.build(true, tid);
 
       #pragma omp master
@@ -320,7 +319,7 @@ int main(int argc, char **argv) {
         mhgA.prefixArrayIntersect[0] = 0;
         for (index_t i = 1; i < gpuCount; i++) {
           index_t tidHashRange = mhgA.h_binSplits[i] - mhgA.h_binSplits[i - 1];
-          index_t size = 2 * (tidHashRange + 1) * sizeof(index_t);
+          index_t size = (tidHashRange + 1) * sizeof(index_t);
           mhgA.prefixArrayIntersect[i] = mhgA.prefixArrayIntersect[i - 1] + size;
         }
         mhgA.prefixArrayIntersect[gpuCount] = mhgA.totalSizeIntersect;
@@ -334,21 +333,33 @@ int main(int argc, char **argv) {
       } // master
 
       #pragma omp barrier
-      cudaSetDevice(0);
-      cudaEventRecord(start);
+      if(tid==0)
+      {
+#ifdef CUDA_PROFILE
+        cudaProfilerStart();
+#endif
+        cudaEventRecord(start);
+      }
+      cudaSetDevice(tid);
 
       mhgB.build(false, tid); // Build second HG but use same splits as first HG.
 
       #pragma omp barrier
 
+      cudaSetDevice(tid);
+
       MultiHashGraph::intersect(mhgA, mhgB, h_Common, h_dOutput, tid);
+
+      cudaDeviceSynchronize();
+      #pragma omp barrier
+
     } // pragma
 
     cudaSetDevice(0);
     cudaEventRecord(stop);
 
 #ifdef CUDA_PROFILE
-    // cudaProfilerStop();
+    cudaProfilerStop();
     CHECK_ERROR("end of intersect");
 #endif
     

@@ -244,6 +244,7 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
   index_t equalChunk = size / gpuCount;
   for (index_t i = 0; i < gpuCount; i++) {
     cudaSetDevice(i);
+    cudaMemAdvise(uvmPtr + equalChunk * i, equalChunk, cudaMemAdviseSetPreferredLocation, i);
     cudaMemPrefetchAsync(uvmPtr + equalChunk * i, equalChunk, i);
   }
   // prefixArray = new index_t[gpuCount + 1]();
@@ -691,7 +692,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
                                     keypair **h_dOutput, index_t tid) {
 
 #ifdef CUDA_PROFILE
-  cudaProfilerStart();
+  // cudaProfilerStart();
 #endif
   index_t gpuCount = mhgA.gpuCount;
 
@@ -724,8 +725,10 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
   // cudaMalloc(&d_countCommon, (size_t)(tableSize + 1) * sizeof(index_t));
   // cudaMalloc(&d_outputPositions, (size_t)(tableSize + 1) * sizeof(index_t));
 #ifdef MANAGED_MEM
+  cudaSetDevice(tid);
   d_countCommon = (index_t *) mhgA.h_dCountCommon[tid];
   cudaMemAdvise(d_countCommon, mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], cudaMemAdviseSetPreferredLocation, tid);
+  cudaSetDevice(tid);
   cudaMemPrefetchAsync(d_countCommon, 
                             mhgA.prefixArrayIntersect[tid + 1] - mhgA.prefixArrayIntersect[tid], 
                             tid);
@@ -744,6 +747,7 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
 
   simpleIntersect<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(tableSize, d_offsetA, d_edgesA, d_offsetB,
                                                         d_edgesB, d_countCommon, NULL, true);
+#if 0
   // forAll (vertices,simpleIntersect<true>{d_offSetA.data(),d_edgesA.data(), d_offSetB.data(),
   //                                              d_edgesB.data(),d_countCommon.data(),NULL});
 
@@ -783,7 +787,6 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
 
   // printf("Size of the ouput is : %ld\n", h_Common[tid]); fflush(stdout);
 
-#if 0
 #ifdef HOST_PROFILE
   float buildTime = 0.0f; // milliseoncds
   high_resolution_clock::time_point t1;

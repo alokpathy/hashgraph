@@ -1,0 +1,103 @@
+==51692== NVPROF is profiling process 51692, command: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
+deviceCount: 6
+hostname: g35n10
+countSizeA: 536870912
+maxkey: 536870912
+generating input
+done generating input
+generating input
+done generating input
+bin_count: 16000
+bin_range: 33555
+table_size: 536870912
+BLOCK_COUNT: 349525 BLOCKS_SIZE: 64
+managed alloc size: 17179869424
+bin_count: 16000
+bin_range: 33555
+table_size: 536870912
+BLOCK_COUNT: 349525 BLOCKS_SIZE: 64
+managed alloc size: 17179869424
+total_time
+times: 0.285622
+==51692== Profiling application: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
+==51692== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   25.86%  9.7980ms         1  9.7980ms  9.7980ms  9.7980ms  lrbRehashD(long, unsigned int*, unsigned int*, long*, unsigned int*, long*, long, long)
+                   16.37%  6.2037ms         1  6.2037ms  6.2037ms  6.2037ms  lrbCopyToGraphD(long, long*, long*, unsigned int*, unsigned int*, long*, long, long)
+                   15.30%  5.7969ms         1  5.7969ms  5.7969ms  5.7969ms  simpleIntersect(long, long*, unsigned int*, long*, unsigned int*, long*, keypair*, bool)
+                   11.22%  4.2523ms         1  4.2523ms  4.2523ms  4.2523ms  binHashValues(long, unsigned int*, unsigned int*, unsigned int*, long*, long*, long*, long, long)
+                    8.97%  3.3991ms         1  3.3991ms  3.3991ms  3.3991ms  lrbCountHashGlobalD(long, long*, unsigned int*, long*, long, long)
+                    5.18%  1.9626ms         1  1.9626ms  1.9626ms  1.9626ms  countKeyBuffSizes(unsigned int*, long, long*, long*, long)
+                    4.73%  1.7916ms         3  597.19us  6.0800us  1.7782ms  void cub::DeviceScanKernel<cub::DispatchScan<long*, long*, cub::Sum, long, int>::PtxAgentScanPolicy, long*, long*, cub::ScanTileState<long, bool=1>, cub::Sum, long, int>(long*, cub::Sum, long, int, int, cub::DispatchScan<long*, long*, cub::Sum, long, int>::PtxAgentScanPolicy, long*)
+                    4.44%  1.6816ms         1  1.6816ms  1.6816ms  1.6816ms  lrbCountHashD(long, unsigned int*, long*, long)
+                    2.82%  1.0694ms         1  1.0694ms  1.0694ms  1.0694ms  hashValuesD(long, unsigned int*, unsigned int*, long, long)
+                    2.54%  960.83us         1  960.83us  960.83us  960.83us  decrHash(unsigned int*, unsigned long, long*, long)
+                    2.48%  940.64us         1  940.64us  940.64us  940.64us  basicHashD(long, unsigned int*, unsigned int*, long)
+                    0.03%  11.392us         3  3.7970us  3.5200us  4.0320us  void cub::DeviceScanInitKernel<cub::ScanTileState<long, bool=1>>(long, int)
+                    0.02%  6.0480us         3  2.0160us  1.4720us  2.7520us  [CUDA memcpy DtoH]
+                    0.02%  5.8560us         5  1.1710us     832ns  1.6320us  [CUDA memcpy PtoP]
+                    0.01%  5.6640us         6     944ns     800ns  1.1200us  [CUDA memset]
+                    0.01%  2.5910us         2  1.2950us     927ns  1.6640us  [CUDA memcpy HtoD]
+                    0.00%  1.6640us         1  1.6640us  1.6640us  1.6640us  [CUDA memcpy DtoD]
+      API calls:   53.67%  141.69ms         6  23.616ms  195.98us  117.18ms  cudaMemcpyPeerAsync
+                   12.32%  32.519ms         2  16.259ms  4.2560ms  28.263ms  cudaMemPrefetchAsync
+                   10.25%  27.059ms         2  13.529ms  4.8658ms  22.193ms  cudaMemAdvise
+                    9.78%  25.807ms         5  5.1615ms  22.292us  15.016ms  cudaMemcpy
+                    6.80%  17.955ms         5  3.5910ms  6.7940us  17.104ms  cudaMemset
+                    3.26%  8.6181ms        16  538.63us  10.590us  4.8737ms  cudaLaunchKernel
+                    2.49%  6.5789ms         1  6.5789ms  6.5789ms  6.5789ms  cudaDeviceSynchronize
+                    1.31%  3.4565ms         6  576.08us  8.7750us  2.9220ms  cudaStreamCreate
+                    0.05%  120.35us         6  20.059us  7.9430us  44.391us  cudaStreamDestroy
+                    0.02%  42.290us         6  7.0480us  5.0740us  10.838us  cudaFuncGetAttributes
+                    0.01%  36.628us        14  2.6160us     739ns  4.8830us  cudaSetDevice
+                    0.01%  33.561us         1  33.561us  33.561us  33.561us  cudaMemsetAsync
+                    0.01%  26.278us         3  8.7590us  7.2030us  10.537us  cudaEventRecord
+                    0.00%  8.9560us         9     995ns     639ns  1.4890us  cudaDeviceGetAttribute
+                    0.00%  7.1660us         1  7.1660us  7.1660us  7.1660us  cudaEventSynchronize
+                    0.00%  6.3600us         6  1.0600us     670ns  1.6530us  cudaGetDevice
+                    0.00%  5.4390us         3  1.8130us  1.4400us  2.5580us  cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags
+                    0.00%  5.1230us         1  5.1230us  5.1230us  5.1230us  cudaEventCreate
+                    0.00%  3.1090us         1  3.1090us  3.1090us  3.1090us  cudaEventDestroy
+                    0.00%  2.5030us         6     417ns     264ns     686ns  cudaPeekAtLastError
+
+==51692== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     145         -         -         -           -  101.6569ms  Gpu page fault groups
+     150  1.9313MB  64.000KB  2.0000MB  289.6875MB           -  Remote mapping from device
+     150  1.9758MB  64.000KB  2.0000MB  296.3750MB           -  Remote mapping to device
+       3  149.33KB  64.000KB  320.00KB  448.0000KB  16.35200us  Transfers to Device
+Device "Tesla V100-SXM2-16GB (1)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     148         -         -         -           -  61.61866ms  Gpu page fault groups
+     151  1.9503MB  64.000KB  2.0000MB  294.5000MB           -  Remote mapping from device
+     148  1.9932MB  1.0000MB  2.0000MB  295.0000MB           -  Remote mapping to device
+       5  115.20KB  64.000KB  320.00KB  576.0000KB  23.52000us  Transfers from Device
+       3  256.00KB  64.000KB  640.00KB  768.0000KB  24.76800us  Transfers to Device
+Device "Tesla V100-SXM2-16GB (2)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     143         -         -         -           -  100.4680ms  Gpu page fault groups
+     147  1.9868MB  64.000KB  2.0000MB  292.0625MB           -  Remote mapping from device
+     151  1.9483MB  64.000KB  2.0000MB  294.1875MB           -  Remote mapping to device
+       4  208.00KB  64.000KB  640.00KB  832.0000KB  27.71200us  Transfers from Device
+       5  89.600KB  64.000KB  192.00KB  448.0000KB  21.24800us  Transfers to Device
+Device "Tesla V100-SXM2-16GB (3)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     145         -         -         -           -  109.9808ms  Gpu page fault groups
+     150  1.9613MB  64.000KB  2.0000MB  294.1875MB           -  Remote mapping from device
+     150  1.9725MB  64.000KB  2.0000MB  295.8750MB           -  Remote mapping to device
+       5  89.600KB  64.000KB  192.00KB  448.0000KB  24.19200us  Transfers from Device
+       4  160.00KB  64.000KB  448.00KB  640.0000KB  23.13600us  Transfers to Device
+Device "Tesla V100-SXM2-16GB (4)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     146         -         -         -           -  109.4020ms  Gpu page fault groups
+     149  2.0000MB  2.0000MB  2.0000MB  298.0000MB           -  Remote mapping from device
+     155  1.9206MB  64.000KB  2.0000MB  297.6875MB           -  Remote mapping to device
+       3  192.00KB  64.000KB  448.00KB  576.0000KB  20.19200us  Transfers from Device
+       6  202.67KB  64.000KB  640.00KB  1.187500MB  44.76800us  Transfers to Device
+Device "Tesla V100-SXM2-16GB (5)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     149         -         -         -           -  112.2565ms  Gpu page fault groups
+     154  1.9765MB  64.000KB  2.0000MB  304.3750MB           -  Remote mapping from device
+     147  1.9979MB  1.6875MB  2.0000MB  293.6875MB           -  Remote mapping to device
+       4  272.00KB  64.000KB  640.00KB  1.062500MB  34.65600us  Transfers from Device

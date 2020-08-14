@@ -57,7 +57,7 @@
 	{cudaDeviceSynchronize(); cudaError_t err; err = cudaGetLastError(); if(err!=0) {printf("ERROR %s:  %d %s\n", str, err, cudaGetErrorString(err)); fflush(stdout); exit(0);}}
 
 // #define CUDA_PROFILE
-#define HOST_PROFILE
+// #define HOST_PROFILE
 
 // #define INDEX_TRACK
 #define MANAGED_MEM

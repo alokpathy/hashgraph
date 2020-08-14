@@ -18,7 +18,7 @@ declare -a hashes=("id" "murmur")
 declare -a modes=("rand" "seq")
 # declare -a exps=("strong_scaling" "weak_scaling" "duplicate_keys")
 # declare -a exps=("strong_scaling" "duplicate_keys")
-declare -a exps=("strong_scaling")
+declare -a exps=("duplicate_keys")
 
 sed -i 's/^\/\/.*#define B32/#define B32/' $includepath/MultiHashGraph.cuh
 # keysize=8

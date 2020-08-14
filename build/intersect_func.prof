@@ -1,0 +1,62 @@
+==48111== NVPROF is profiling process 48111, command: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
+deviceCount: 6
+hostname: g35n10
+countSizeA: 536870912
+maxkey: 536870912
+generating input
+done generating input
+generating input
+done generating input
+bin_count: 16000
+bin_range: 33555
+table_size: 536870912
+BLOCK_COUNT: 349525 BLOCKS_SIZE: 64
+managed alloc size: 17179869424
+bin_count: 16000
+bin_range: 33555
+table_size: 536870912
+BLOCK_COUNT: 349525 BLOCKS_SIZE: 64
+managed alloc size: 17179869424
+total_time
+times: 0.257423
+==48111== Profiling application: ./multi-hash 536870912 536870912 16000 6 16000 nocheck 536870912 intersect
+==48111== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   99.98%  5.8437ms         1  5.8437ms  5.8437ms  5.8437ms  simpleIntersect(long, long*, unsigned int*, long*, unsigned int*, long*, keypair*, bool)
+                    0.02%  1.1200us         1  1.1200us  1.1200us  1.1200us  [CUDA memset]
+      API calls:   74.36%  88.077ms         1  88.077ms  88.077ms  88.077ms  cudaMemPrefetchAsync
+                   25.52%  30.224ms         1  30.224ms  30.224ms  30.224ms  cudaLaunchKernel
+                    0.04%  46.517us         1  46.517us  46.517us  46.517us  cudaMemAdvise
+                    0.04%  43.235us         1  43.235us  43.235us  43.235us  cudaMemsetAsync
+                    0.03%  33.157us         7  4.7360us  2.9420us  7.0230us  cudaSetDevice
+                    0.01%  16.644us         1  16.644us  16.644us  16.644us  cudaEventRecord
+
+==48111== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       1         -         -         -           -  52.76800us  Gpu page fault groups
+       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping from device
+       1  64.000KB  64.000KB  64.000KB  64.00000KB  3.840000us  Transfers from Device
+Device "Tesla V100-SXM2-16GB (1)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping to device
+       2  64.000KB  64.000KB  64.000KB  128.0000KB  7.424000us  Transfers to Device
+Device "Tesla V100-SXM2-16GB (2)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       1         -         -         -           -  115.4560us  Gpu page fault groups
+       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping from device
+       2  64.000KB  64.000KB  64.000KB  128.0000KB  6.400000us  Transfers from Device
+Device "Tesla V100-SXM2-16GB (3)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping to device
+       2  64.000KB  64.000KB  64.000KB  128.0000KB  6.432000us  Transfers to Device
+Device "Tesla V100-SXM2-16GB (4)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping to device
+       1  64.000KB  64.000KB  64.000KB  64.00000KB  3.616000us  Transfers from Device
+       1  64.000KB  64.000KB  64.000KB  64.00000KB  3.744000us  Transfers to Device
+Device "Tesla V100-SXM2-16GB (5)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       1         -         -         -           -  84.09600us  Gpu page fault groups
+       1  64.000KB  64.000KB  64.000KB  64.00000KB           -  Remote mapping from device
+       1  64.000KB  64.000KB  64.000KB  64.00000KB  3.744000us  Transfers from Device

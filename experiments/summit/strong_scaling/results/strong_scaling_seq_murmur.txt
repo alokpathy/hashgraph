@@ -50,7 +50,9 @@ times: 0.0312105
 134217728,6,
 total_time
 times: 0.0447109
-268435456,1,oom
+268435456,1,
+total_time
+times: 0.138659
 268435456,2,
 total_time
 times: 0.0758999
@@ -61,7 +63,9 @@ times: 0.0623718
 total_time
 times: 0.06981
 536870912,1,oom
-536870912,2,oom
+536870912,2,
+total_time
+times: 0.171353
 536870912,4,
 total_time
 times: 0.115891
@@ -70,7 +74,9 @@ total_time
 times: 0.125957
 1073741824,1,oom
 1073741824,2,oom
-1073741824,4,oom
+1073741824,4,
+total_time
+times: 0.220276
 1073741824,6,
 total_time
 times: 0.258605
@@ -123,7 +129,9 @@ times: 0.0428911
 67108864,6,
 total_time
 times: 0.0352846
-134217728,1,oom
+134217728,1,
+total_time
+times: 0.124577
 134217728,2,
 total_time
 times: 0.0880937
@@ -134,7 +142,9 @@ times: 0.0837028
 total_time
 times: 0.0645532
 268435456,1,oom
-268435456,2,oom
+268435456,2,
+total_time
+times: 0.171731
 268435456,4,
 total_time
 times: 0.150525
@@ -143,7 +153,9 @@ total_time
 times: 0.116632
 536870912,1,oom
 536870912,2,oom
-536870912,4,oom
+536870912,4,
+total_time
+times: 0.294556
 536870912,6,
 total_time
 times: 0.242107
