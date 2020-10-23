@@ -428,7 +428,7 @@ void MultiHashGraph::build(bool findSplits, bool prefetchIntersect, index_t tid)
   cudaSetDevice(tid);
 
 #ifdef CUDA_PROFILE
-  // cudaProfilerStart();
+  cudaProfilerStart();
 #endif
 
   basicHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(h_dVals[tid].len, h_dVals[tid].d_keys,
@@ -708,7 +708,7 @@ void MultiHashGraph::build(bool findSplits, bool prefetchIntersect, index_t tid)
 #endif
 
 #ifdef CUDA_PROFILE
-  // cudaProfilerStop();
+  cudaProfilerStop();
 #endif
 
 }
