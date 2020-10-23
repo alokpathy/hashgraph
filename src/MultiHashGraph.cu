@@ -427,10 +427,6 @@ void MultiHashGraph::build(bool findSplits, bool prefetchIntersect, index_t tid)
   // Hash all keys on each device.
   cudaSetDevice(tid);
 
-#ifdef CUDA_PROFILE
-  cudaProfilerStart();
-#endif
-
   basicHashD<<<BLOCK_COUNT, BLOCK_SIZE_OP2>>>(h_dVals[tid].len, h_dVals[tid].d_keys,
                                                   // h_dVals[tid].d_keys + h_dVals[tid].len, tableSize);
                                                   h_dVals[tid].d_hash, tableSize);
@@ -707,18 +703,11 @@ void MultiHashGraph::build(bool findSplits, bool prefetchIntersect, index_t tid)
   CHECK_ERROR("build error");
 #endif
 
-#ifdef CUDA_PROFILE
-  cudaProfilerStop();
-#endif
-
 }
 
 void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index_t *h_Common,
                                     keypair **h_dOutput, index_t tid) {
 
-#ifdef CUDA_PROFILE
-  // cudaProfilerStart();
-#endif
   index_t gpuCount = mhgA.gpuCount;
 
   cudaSetDevice(tid);
@@ -861,9 +850,6 @@ void MultiHashGraph::intersect(MultiHashGraph &mhgA, MultiHashGraph &mhgB, index
   CHECK_ERROR("intersect error");
 #endif
 
-#ifdef CUDA_PROFILE
-  cudaProfilerStop();
-#endif
 #endif
 }
 
