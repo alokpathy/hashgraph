@@ -252,6 +252,24 @@ MultiHashGraph::MultiHashGraph(inputData *h_dVals, index_t countSize, index_t ma
   
   h_dCountCommon = new char*[gpuCount]();
 #endif
+#ifdef PREALLOC
+  size_t size = countSize * sizeof(keyval) + 
+                     countSize * sizeof(HashKey) +
+                     (2 * countSize * sizeof(keyval)) +
+                     (2 * (tableSize + gpuCount) * sizeof(index_t));
+  size_t padding = 6 * gpuCount * 4; // #arrays_per_gpu * #gpus * padding
+  size += padding;
+
+  std::cout << "prealloc total size: " << size << std::endl;
+  this->totalSize = size;
+
+  index_t equalChunk = (index_t)(((double)size) / gpuCount * 1.25); // allocate 25% buffer
+  printf("equalChunk: %ld\n", equalChunk);
+  for (index_t i = 0; i < gpuCount; i++) {
+    cudaSetDevice(i);
+    cudaMalloc(&h_dFinalKeys[i], equalChunk);
+  }
+#endif
 
   CHECK_ERROR("constructor");
 }
@@ -443,6 +461,7 @@ void MultiHashGraph::build(bool findSplits, bool prefetchIntersect, index_t tid)
     countBinSizes(h_dVals, h_hBinSizes, h_dBinSizes, h_binSizes, h_psBinSizes, h_binSplits,
                       h_dBinSplits, countSize, tableSize, binRange, binCount, gpuCount, tid);
 
+#ifdef MANAGD_MEM
     if (prefetchIntersect) {
         #pragma omp master
         {
@@ -466,6 +485,7 @@ void MultiHashGraph::build(bool findSplits, bool prefetchIntersect, index_t tid)
         cudaMemAdvise(d_countCommon, prefixArrayIntersect[tid + 1] - prefixArrayIntersect[tid], cudaMemAdviseSetPreferredLocation, tid);
         cudaMemPrefetchAsync(d_countCommon, prefixArrayIntersect[tid + 1] - prefixArrayIntersect[tid], tid);
     }
+#endif
 
 #ifdef HOST_PROFILE
     if (tid == tidFocused) {

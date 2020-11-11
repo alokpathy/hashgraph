@@ -312,13 +312,16 @@ void countFinalKeys(index_t **h_bufferCounter, char **h_dFinalKeys,
   cudaMemPrefetchAsync(h_dFinalKeys[tid], prefixArray[tid + 1] - prefixArray[tid], tid);
 
 #else
+#ifndef PREALLOC
   size_t size = keyCount * sizeof(keyval) + 
                                  keyCount * sizeof(HashKey) +
                                  (2 * keyCount * sizeof(keyval)) +
                                  (2 * (hashRange + 1) * sizeof(index_t));
   size_t padding = 6 * gpuCount * 4; // #arrays_per_gpu * #gpus * padding
   size += padding;
+  printf("gpu: %d size: %d\n", tid, size);
   cudaMalloc(&h_dFinalKeys[tid], size);
+#endif
 #endif
 }
 

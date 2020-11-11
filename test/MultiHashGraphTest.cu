@@ -18,7 +18,7 @@
 #include <algorithm>
 #include <unistd.h>
 
-// #define RAND_KEYS
+#define RAND_KEYS
 // #define PRINT_KEYS
 
 // #define BUILD_TEST
